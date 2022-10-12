@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c396eb638ada3484cb41c317b6616afb, type: 3}
+  m_Name: Lvl37 Ghost
+  m_EditorClassIdentifier: 
+  characterName: Ghost
+  level: 37
+  exp: 0
+  expToLvl: 430
+  remainPoints: 0
+  maxHealth: 125
+  currentHealth: -6
+  strength:
+    baseValue: 0
+  stamina:
+    baseValue: 0
+  vitality:
+    baseValue: 0
+  agility:
+    baseValue: 0
+  luck:
+    baseValue: 0
+  damageMin:
+    baseValue: 130
+  damageMax:
+    baseValue: 130
+  defense:
+    baseValue: 0
+  criticalDamage:
+    baseValue: 0
+  criticalChance:
+    baseValue: 0
+  equipment:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  rewardGold: 42
+  rewardExp: 38
+  possibleRarity: 2
+  loot:
+  - item: {fileID: 11400000, guid: da8ce9354be7a8643ad5034d8f1b8ccc, type: 2}
+    chanceToDrop: 0.4
+  - item: {fileID: 11400000, guid: 7659f91fe0c71cd46a343fc9b2328ada, type: 2}
+    chanceToDrop: 0.4
+  - item: {fileID: 11400000, guid: 6d5e4f974b8ba1845a287502fd42d37c, type: 2}
+    chanceToDrop: 0.4
+  - item: {fileID: 11400000, guid: bab26a8e167fce946b052cafc2794ad5, type: 2}
+    chanceToDrop: 0.4
+  - item: {fileID: 11400000, guid: 4baa8703c4e055048845b2d9a563297d, type: 2}
+    chanceToDrop: 0.4
+  - item: {fileID: 11400000, guid: cadf0986e4165af4aba7db5d481e9653, type: 2}
+    chanceToDrop: 0.4
+  - item: {fileID: 11400000, guid: c5ca63552633f2240bb4978d8f7d6002, type: 2}
+    chanceToDrop: 0.4
+  equipmentBases: []
+  towerEnemy: 0

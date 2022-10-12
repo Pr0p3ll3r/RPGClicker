@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c396eb638ada3484cb41c317b6616afb, type: 3}
+  m_Name: Lvl100 Death Reaper
+  m_EditorClassIdentifier: 
+  characterName: Death Reaper
+  level: 100
+  exp: 0
+  expToLvl: 1060
+  remainPoints: 0
+  maxHealth: 355
+  currentHealth: 355
+  strength:
+    baseValue: 0
+  stamina:
+    baseValue: 0
+  vitality:
+    baseValue: 0
+  agility:
+    baseValue: 0
+  luck:
+    baseValue: 0
+  damage:
+    baseValue: 0
+  defense:
+    baseValue: 0
+  criticalDamage:
+    baseValue: 0
+  criticalChance:
+    baseValue: 0
+  equipment:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  look: {fileID: 0}
+  boss: 1
+  rewardGold: 150
+  rewardExp: 150
+  possibleRarity: 2
+  loot:
+  - item: {fileID: 11400000, guid: aa1dce0e24c4a744cae369fa21095744, type: 2}
+    chanceToDrop: 0.4
+  - item: {fileID: 11400000, guid: 3c039bbccfe546f45adef96702291af4, type: 2}
+    chanceToDrop: 0.4
+  equipmentBases: []
+  bossLocation: {fileID: 0}

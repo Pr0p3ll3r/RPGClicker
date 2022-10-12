@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c396eb638ada3484cb41c317b6616afb, type: 3}
+  m_Name: Lvl70 Reef Shark
+  m_EditorClassIdentifier: 
+  characterName: Reef Shark
+  level: 70
+  exp: 0
+  expToLvl: 760
+  remainPoints: 0
+  maxHealth: 220
+  currentHealth: 220
+  strength:
+    baseValue: 0
+  stamina:
+    baseValue: 0
+  vitality:
+    baseValue: 0
+  agility:
+    baseValue: 0
+  luck:
+    baseValue: 0
+  damage:
+    baseValue: 0
+  defense:
+    baseValue: 0
+  criticalDamage:
+    baseValue: 0
+  criticalChance:
+    baseValue: 0
+  equipment:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  look: {fileID: 0}
+  boss: 1
+  rewardGold: 85
+  rewardExp: 85
+  possibleRarity: 0
+  loot:
+  - item: {fileID: 11400000, guid: 664fc47cbd3d5734e99c937ca7a5e32f, type: 2}
+    chanceToDrop: 0.4
+  - item: {fileID: 11400000, guid: a9ee5b8ad1cad7540b525dc53064e8cf, type: 2}
+    chanceToDrop: 0.4
+  equipmentBases: []
+  bossLocation: {fileID: 0}

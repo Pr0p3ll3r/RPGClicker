@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5909854e74360de4b8519d49373cd057, type: 3}
+  m_Name: Diamond Gloves
+  m_EditorClassIdentifier: 
+  itemName: Diamond Gloves
+  icon: {fileID: 9195117132523163108, guid: 3c26d2085cd896a4db7ec342bbe01c58, type: 3}
+  itemType: 1
+  quantity: 1
+  cost: 1
+  equipSlot: 4
+  rarity: 0
+  lvlRequired: 75
+  level: 0
+  damageMin: 0
+  damageMax: 0
+  defenseModifier: 0
+  strengthModifier: 0
+  vitalityModifier: 0
+  criticalDamageModifier: 0
+  criticalChanceModifier: 0
+  damageMin1Common: 0
+  damageMin2Common: 0
+  damageMax1Common: 0
+  damageMax2Common: 0
+  damageMin1Rare: 0
+  damageMin2Rare: 0
+  damageMax1Rare: 0
+  damageMax2Rare: 0
+  damageMin1Epic: 0
+  damageMin2Epic: 0
+  damageMax1Epic: 0
+  damageMax2Epic: 0
+  damageMin1Legendary: 0
+  damageMin2Legendary: 0
+  damageMax1Legendary: 0
+  damageMax2Legendary: 0
+  defenseMinCommon: 28
+  defenseMaxCommon: 30
+  defenseMinRare: 31
+  defenseMaxRare: 33
+  defenseMinEpic: 34
+  defenseMaxEpic: 36
+  defenseMinLegendary: 37
+  defenseMaxLegendary: 39
+  strengthMinCommon: 0
+  strengthMaxCommon: 0
+  strengthMinRare: 0
+  strengthMaxRare: 0
+  strengthMinEpic: 0
+  strengthMaxEpic: 0
+  strengthMinLegendary: 0
+  strengthMaxLegendary: 0
+  vitalityMinCommon: 0
+  vitalityMaxCommon: 0
+  vitalityMinRare: 0
+  vitalityMaxRare: 0
+  vitalityMinEpic: 0
+  vitalityMaxEpic: 0
+  vitalityMinLegendary: 0
+  vitalityMaxLegendary: 0
+  criticalDamageMinCommon: 0
+  criticalDamageMaxCommon: 0
+  criticalDamageMinRare: 0
+  criticalDamageMaxRare: 0
+  criticalDamageMinEpic: 0
+  criticalDamageMaxEpic: 0
+  criticalDamageMinLegendary: 0
+  criticalDamageMaxLegendary: 0
+  criticalChanceMinCommon: 0
+  criticalChanceMaxCommon: 0
+  criticalChanceMinRare: 0
+  criticalChanceMaxRare: 0
+  criticalChanceMinEpic: 0
+  criticalChanceMaxEpic: 0
+  criticalChanceMinLegendary: 0
+  criticalChanceMaxLegendary: 0

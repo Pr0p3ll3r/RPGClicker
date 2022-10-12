@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5909854e74360de4b8519d49373cd057, type: 3}
+  m_Name: Ruby Sword
+  m_EditorClassIdentifier: 
+  itemName: Ruby Sword
+  icon: {fileID: 8289387723579576647, guid: 2e32fc36ce1495641aab3d33aaa7904c, type: 3}
+  itemType: 1
+  quantity: 1
+  cost: 1
+  equipSlot: 5
+  rarity: 0
+  lvlRequired: 100
+  level: 0
+  damage: 0
+  defense: 0
+  strength: 0
+  vitality: 0
+  criticalDamage: 0
+  criticalChance: 0
+  damageMinCommon: 64
+  damageMaxCommon: 66
+  damageMinRare: 68
+  damageMaxRare: 70
+  damageMinEpic: 72
+  damageMaxEpic: 74
+  damageMinLegendary: 76
+  damageMaxLegendary: 78
+  defenseMinCommon: 0
+  defenseMaxCommon: 0
+  defenseMinRare: 0
+  defenseMaxRare: 0
+  defenseMinEpic: 0
+  defenseMaxEpic: 0
+  defenseMinLegendary: 0
+  defenseMaxLegendary: 0
+  strengthMinCommon: 0
+  strengthMaxCommon: 0
+  strengthMinRare: 0
+  strengthMaxRare: 0
+  strengthMinEpic: 0
+  strengthMaxEpic: 0
+  strengthMinLegendary: 0
+  strengthMaxLegendary: 0
+  vitalityMinCommon: 0
+  vitalityMaxCommon: 0
+  vitalityMinRare: 0
+  vitalityMaxRare: 0
+  vitalityMinEpic: 0
+  vitalityMaxEpic: 0
+  vitalityMinLegendary: 0
+  vitalityMaxLegendary: 0
+  criticalDamageMinCommon: 0
+  criticalDamageMaxCommon: 0
+  criticalDamageMinRare: 0
+  criticalDamageMaxRare: 0
+  criticalDamageMinEpic: 0
+  criticalDamageMaxEpic: 0
+  criticalDamageMinLegendary: 0
+  criticalDamageMaxLegendary: 0
+  criticalChanceMinCommon: 0
+  criticalChanceMaxCommon: 0
+  criticalChanceMinRare: 0
+  criticalChanceMaxRare: 0
+  criticalChanceMinEpic: 0
+  criticalChanceMaxEpic: 0
+  criticalChanceMinLegendary: 0
+  criticalChanceMaxLegendary: 0

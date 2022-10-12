@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c396eb638ada3484cb41c317b6616afb, type: 3}
+  m_Name: Lvl3 Gold Master
+  m_EditorClassIdentifier: 
+  characterName: Gold Master
+  level: 50
+  exp: 0
+  expToLvl: 560
+  remainPoints: 0
+  maxHealth: 100
+  currentHealth: 100
+  strength:
+    baseValue: 0
+  stamina:
+    baseValue: 0
+  vitality:
+    baseValue: 0
+  agility:
+    baseValue: 0
+  luck:
+    baseValue: 0
+  damageMin:
+    baseValue: 0
+  damageMax:
+    baseValue: 0
+  defense:
+    baseValue: 0
+  criticalDamage:
+    baseValue: 0
+  criticalChance:
+    baseValue: 0
+  equipment:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  rewardGold: 0
+  rewardExp: 0
+  possibleRarity: 0
+  loot: []
+  equipmentBases:
+  - {fileID: 11400000, guid: 371d4ac3c539e014598e3020a3580545, type: 2}
+  - {fileID: 11400000, guid: f1b3d579e43251e4792cb615278a46e6, type: 2}
+  - {fileID: 11400000, guid: a5e384495e539434eb9d741769af839b, type: 2}
+  - {fileID: 11400000, guid: 00dc6f3fb652ac0439c7b06011174771, type: 2}
+  - {fileID: 11400000, guid: dd1f96073199bd846addfe932c20a64f, type: 2}
+  - {fileID: 11400000, guid: c586783ab1c4408459f284148205447d, type: 2}
+  - {fileID: 11400000, guid: 82e08f51b96458c45aecf030bc7fcd7c, type: 2}
+  - {fileID: 11400000, guid: 4d1a9543e3985a7449d0f65b5ae048e5, type: 2}
+  - {fileID: 11400000, guid: 26e51bd173bf1884db3d1a33571dc9ad, type: 2}
+  towerEnemy: 1

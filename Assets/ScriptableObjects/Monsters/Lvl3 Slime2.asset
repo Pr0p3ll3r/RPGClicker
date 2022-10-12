@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c396eb638ada3484cb41c317b6616afb, type: 3}
+  m_Name: Lvl3 Slime2
+  m_EditorClassIdentifier: 
+  characterName: Slime
+  level: 3
+  exp: 0
+  expToLvl: 70
+  remainPoints: 0
+  maxHealth: 20
+  currentHealth: 20
+  strength:
+    baseValue: 0
+  stamina:
+    baseValue: 0
+  vitality:
+    baseValue: 0
+  agility:
+    baseValue: 0
+  luck:
+    baseValue: 0
+  damage:
+    baseValue: 2
+  defense:
+    baseValue: 0
+  criticalDamage:
+    baseValue: 0
+  criticalChance:
+    baseValue: 0
+  equipment:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  look: {fileID: 21300000, guid: 9e2b81db9b1f9d5419e0dd36e9dfb563, type: 3}
+  boss: 0
+  rewardGold: 3
+  rewardExp: 3
+  possibleRarity: 0
+  loot:
+  - item: {fileID: 11400000, guid: dbbe3bd8154837444b355292c97fa349, type: 2}
+    chanceToDrop: 0.4
+  - item: {fileID: 11400000, guid: 8f9b4cac39e41f4499e5d5399b3d845f, type: 2}
+    chanceToDrop: 0.4
+  - item: {fileID: 11400000, guid: c4728fb92f682f44bae3b2218310323e, type: 2}
+    chanceToDrop: 0.4
+  - item: {fileID: 11400000, guid: 6d555a7c363226141a322fff3ca52cdc, type: 2}
+    chanceToDrop: 0.4
+  - item: {fileID: 11400000, guid: 6493a5ae29a57ba4c9633263c4e4cf70, type: 2}
+    chanceToDrop: 0.4
+  - item: {fileID: 11400000, guid: 14447488517e3c844b819eea0f762896, type: 2}
+    chanceToDrop: 0.4
+  - item: {fileID: 11400000, guid: 7fb5fcd40603b3b47b606752e1505429, type: 2}
+    chanceToDrop: 0.4
+  - item: {fileID: 11400000, guid: 4784816ef8df8e442949be68dc571441, type: 2}
+    chanceToDrop: 0.4
+  equipmentBases: []
