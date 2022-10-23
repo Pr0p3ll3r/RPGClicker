@@ -15,31 +15,32 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Image look;
     [SerializeField] private TextMeshProUGUI enemyName;
     [SerializeField] private Animation anim;
-    public EnemyInfo info;
+    public EnemyData data;
     [SerializeField] private Image healthBar;
 
     private Player player;
     private bool triggered;
     private bool spawned;
     private float attackRate;
-    private bool isDead;
+    private int currentHealth;
+    public bool IsDead { get; private set; }
 
     private void Start()
     {
         player = Player.Instance;
         attackRate = 5f;
-        UpdateHealthBar();
+        //UpdateHealthBar();
     }
 
-    public void SetUp(EnemyInfo newEnemy)
+    public void SetUp(EnemyData newEnemy)
     {
         StopAllCoroutines();
         anim.Play("EnemyIn");
         triggered = false;
-        info = newEnemy;
-        info.Initialize();
-        look.sprite = info.look;
-        enemyName.text = info.characterName;
+        data = newEnemy;
+        currentHealth = data.health;
+        look.sprite = data.look;
+        enemyName.text = data.enemyName;
         look.enabled = true;
         attackRate = 5f;
         UpdateHealthBar();
@@ -59,25 +60,21 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (!spawned) return;
+        if (!spawned && IsDead) return;
 
-        isDead = info.TakeDamage(damage);
+        currentHealth -= damage;
         anim.Play("EnemyHit");
         UpdateHealthBar();
         triggered = true;
 
-        if (isDead)
+        if (currentHealth <= 0)
         {
-            GameManager.Instance.Reward(info);
+            IsDead = true;
+            GameManager.Instance.Reward(data);
             triggered = false;
             spawned = false;
             anim.Play("EnemyOut");         
         }
-    }
-
-    public bool IsDead()
-    {
-        return isDead;
     }
 
     public void NextEnemy()
@@ -88,16 +85,16 @@ public class Enemy : MonoBehaviour
     public void Spawned()
     {
         spawned = true;
-        isDead = false;
+        IsDead = false;
     }
 
     void Attack()
     {
-        if (isDead) return;
+        if (IsDead) return;
 
-        int damage = info.damage.GetValue();
-        Utilities.Critical(info, ref damage);
-        damage -= player.info.defense.GetValue();
+        int damage = data.damage;
+        Utils.Critical(data.criticalChance, data.criticalDamage, ref damage);
+        damage -= player.data.defense.GetValue();
         damage = Mathf.Clamp(damage, 1, int.MaxValue);
         player.TakeDamage(damage);
         attackRate = 5f;
@@ -105,7 +102,7 @@ public class Enemy : MonoBehaviour
 
     public void UpdateHealthBar()
     {
-        float ratio = (float)info.currentHealth / (float)info.maxHealth;
+        float ratio = (float)currentHealth / data.health;
         healthBar.fillAmount = ratio;
     }
 }

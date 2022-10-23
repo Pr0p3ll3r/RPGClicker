@@ -9,53 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c396eb638ada3484cb41c317b6616afb, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f4d05af8e2b28e458d358be48badf59, type: 3}
   m_Name: Lvl3 Slime King
   m_EditorClassIdentifier: 
-  characterName: Slime King
-  level: 3
+  look: {fileID: 0}
+  enemyName: 
+  enemyType: 0
+  level: 1
+  maxHealth: 0
+  currentHealth: 100
+  damage: 0
+  defense: 0
+  criticalDamage: 0
+  criticalChance: 0
   exp: 0
-  expToLvl: 90
-  remainPoints: 0
-  maxHealth: 25
-  currentHealth: 25
-  strength:
-    baseValue: 0
-  stamina:
-    baseValue: 0
-  vitality:
-    baseValue: 0
-  agility:
-    baseValue: 0
-  luck:
-    baseValue: 0
-  damage:
-    baseValue: 0
-  defense:
-    baseValue: 0
-  criticalDamage:
-    baseValue: 0
-  criticalChance:
-    baseValue: 0
-  equipment:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  look: {fileID: 21300000, guid: f13e50a617c20c14a8c7f7c477774c33, type: 3}
-  boss: 1
-  rewardGold: 3
-  rewardExp: 3
+  gold: 0
+  loot: []
   possibleRarity: 0
-  loot:
-  - item: {fileID: 11400000, guid: 97b65123bff327549ad43ee913f0af73, type: 2}
-    chanceToDrop: 0.4
-  - item: {fileID: 11400000, guid: 29078ec680825554d85d49f9670baf8f, type: 2}
-    chanceToDrop: 0.4
-  equipmentBases: []
-  bossLocation: {fileID: 11400000, guid: 47c772e4c1169384aa1d3e126ba31221, type: 2}
+  towerEnemy: 0
+  bossLocation: {fileID: 0}

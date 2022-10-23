@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Blueprint", menuName = "RPG/Item/Blueprint")]
+[CreateAssetMenu(fileName = "Blueprint", menuName = "RPG/Items/Blueprint")]
 public class Blueprint : Item
 {
-    public EquipmentBase resultItem;
-    public List<NeededItem> neededItems;
+    public Equipment resultItem;
+    public List<NeedItem> needItems;
 
-    public void NewAsset(Blueprint basic)
+    public override Item GetCopy()
     {
-        base.NewAsset(basic);
-        resultItem = basic.resultItem;
-        neededItems = basic.neededItems;
+        return Instantiate(this);
     }
 }

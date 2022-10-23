@@ -13,15 +13,15 @@ public class BlueprintInfo : MonoBehaviour
 
     public void SetUp(Blueprint b)
     {
-        resultItem.AddItem(b.resultItem);
+        resultItem.FillSlot(b.resultItem);
 
-        foreach (NeededItem needItem in b.neededItems)
+        foreach (NeedItem needItem in b.needItems)
         {
             GameObject item = Instantiate(neededItemPrefab, itemList);
             item.transform.Find("Icon").GetComponent<Image>().sprite = needItem.item.icon;
             TextMeshProUGUI quantity = item.transform.Find("Quantity").GetComponent<TextMeshProUGUI>();
-            quantity.text = needItem.quantity.ToString();
-            if (Inventory.Instance.info.CheckItem(needItem))
+            quantity.text = needItem.amount.ToString();
+            if (PlayerInventory.Instance.HaveItem(needItem.item, needItem.amount))
                 quantity.color = Color.green;
             else
                 quantity.color = Color.red;

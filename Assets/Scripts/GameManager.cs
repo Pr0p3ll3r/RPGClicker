@@ -9,11 +9,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    public static string[] Values = new string[]
-    {
-        "K","M",
-    };
-
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -24,9 +19,7 @@ public class GameManager : MonoBehaviour
 
     private Player player;
     private Enemy enemy;
-    [SerializeField] private PlayerInfo playerBase;
     [SerializeField] private GameObject inventoryPanel;
-    [SerializeField] private TextMeshProUGUI goldText;
     [SerializeField] private Transform lootList;
     [SerializeField] private Animation textAnimation;
     [SerializeField] private GameObject exitBox;
@@ -57,6 +50,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Pet pet;
     [SerializeField] private GameObject petPrefab;
 
+    [Header("Poolers")]
+    public ObjectPooler damagePopupPooler;
+
     private int maxPets = 8;
     private int nextPetIndex = 0;
     private Location currentLocation;
@@ -64,6 +60,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         player = Player.Instance;
+        player.data = new PlayerData();
         enemy = Enemy.Instance;
 
         ClearLootList();
@@ -78,20 +75,10 @@ public class GameManager : MonoBehaviour
         towerPanel.SetActive(false);
 
         CreateLocationList();
-        currentLocation = Library.Locations[0];
+        currentLocation = Database.Locations[0];
+        enemy.SetUp(currentLocation.enemies[0].GetCopy());
 
-        if (Data.Check())
-        {
-            Data.Load();
-            LoadPets();
-            //Player.Instance.info.Initialize();
-        }
-        else
-        {
-            PlayerInfo newPlayer = ScriptableObject.CreateInstance<PlayerInfo>();
-            newPlayer.NewAsset(playerBase);
-            player.info = newPlayer;
-        }
+        Data.Load();
     }
 
     void Update()
@@ -110,48 +97,29 @@ public class GameManager : MonoBehaviour
         //    screenPressed = false;
         //}
 
-        //ConvertNumber(plusValue, plusText);
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             exitBox.SetActive(true);
         }
     }
 
-    public void Reward(EnemyInfo enemy)
-    {
-        //add gold
-        Inventory.Instance.AddGold(enemy.rewardGold);
-        goldText.text = Inventory.Instance.info.gold.ToString();
-       
-        //add loot
-        if(Inventory.Instance.CheckSpace())
+    public void Reward(EnemyData enemy)
+    {  
+        if(!PlayerInventory.Instance.IsFull())
         {
-            int random = Random.Range(0, enemy.loot.Count);
-            LootItem probableItem = enemy.loot[random];
-            Item drop = Loot.Drop(probableItem, probableItem.chanceToDrop, enemy.possibleRarity);
+            Item drop = LootTable.Drop(enemy.loot);
             if (drop != null)
             {
                 if (lastlootSlot == lootSlots)
                     ClearLootList();
-                Debug.Log(enemy.characterName + " : " + drop.itemName);
-                Inventory.Instance.AddItem(drop);
-                lootList.GetChild(lastlootSlot).GetComponent<InventorySlot>().AddItem(drop);
+                Debug.Log("Dropped: " + drop.itemName);
+                PlayerInventory.Instance.AddItem(drop, 1);
+                lootList.GetChild(lastlootSlot).GetComponent<InventorySlot>().FillSlot(drop);
                 lastlootSlot++;
             }
         }
 
-        //add exp
-        player.AddExp(enemy.rewardExp);
-
-        //add stats
-        player.AddMonsterKill();
-
-        if(enemy.boss)
-        {
-            currentLocation.bossDefeated = true;
-            enemy.bossLocation.discovered = true;
-        }
+        player.Reward(enemy.exp, enemy.gold);
     }
 
     void ClearLootList()
@@ -174,50 +142,6 @@ public class GameManager : MonoBehaviour
     public void CheckFingers()
     {
         screenPressed = true;
-    }
-
-    public static void ConvertNumber(float number, TextMeshProUGUI text)
-    {
-        if (number < 1000)
-        {
-            text.text = number.ToString();
-        }
-
-        if (number >= 1000)
-        {
-            number /= 1000;
-            text.text = number.ToString(new CultureInfo("en-US")) + Values[0];
-        }
-
-        if (number >= 10000)
-        {
-            number /= 10000;
-            text.text = number.ToString(new CultureInfo("en-US")) + Values[0];
-        }
-
-        if (number >= 100000)
-        {
-            number /= 100000;
-            text.text = number.ToString(new CultureInfo("en-US")) + Values[0];
-        }
-
-        if (number >= 1000000)
-        {
-            number /= 1000000;
-            text.text = number.ToString(new CultureInfo("en-US")) + Values[1];
-        }
-
-        if (number >= 10000000)
-        {
-            number /= 10000000;
-            text.text = number.ToString(new CultureInfo("en-US")) + Values[1];
-        }
-
-        if (number >= 100000000)
-        {
-            number /= 100000000;
-            text.text = number.ToString(new CultureInfo("en-US")) + Values[1];
-        }
     }
 
     public void QuitGame()
@@ -248,7 +172,7 @@ public class GameManager : MonoBehaviour
 
     void CreateLocationList()
     {
-        foreach (Location location in Library.Locations)
+        foreach (Location location in Database.Locations)
         {
             GameObject locationGO = Instantiate(locationPrefab, locationList);
             locationGO.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = location.name;
@@ -260,7 +184,7 @@ public class GameManager : MonoBehaviour
             RefreshLocationList();
         }
 
-        foreach (Location boss in Library.Bosses)
+        foreach (Location boss in Database.Bosses)
         {
             if (!boss.discovered) continue;
 
@@ -279,30 +203,30 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < locationList.childCount; i++)
         {
-            if (Library.Locations[i].unlocked)
+            if (Database.Locations[i].unlocked)
                 locationList.GetChild(i).GetComponent<Button>().interactable = true;
-            else if (Library.Locations[i].discovered)
+            else if (Database.Locations[i].discovered)
                 locationList.GetChild(i).transform.Find("Unlock").gameObject.SetActive(true);
 
-            if(currentLocation == Library.Locations[i])
+            if(currentLocation == Database.Locations[i])
                 locationList.GetChild(i).GetComponent<Button>().interactable = false;
         }
 
         for (int i = 0; i < bossList.childCount; i++)
         {
-            if (Library.Locations[i].unlocked)
+            if (Database.Locations[i].unlocked)
                 bossList.GetChild(i).GetComponent<Button>().interactable = true;
-            else if (Library.Locations[i].discovered)
+            else if (Database.Locations[i].discovered)
                 bossList.GetChild(i).transform.Find("Unlock").gameObject.SetActive(true);
 
-            if (currentLocation == Library.Locations[i])
+            if (currentLocation == Database.Locations[i])
                 bossList.GetChild(i).GetComponent<Button>().interactable = false;
         }
     }
     
     void UnlockLocation(Location location)
     {
-        if(!Inventory.Instance.CheckGold(location.price))
+        if(!PlayerInventory.Instance.CheckGold(location.price))
         {
             //show some notification, Not enough gold!
         }
@@ -323,13 +247,13 @@ public class GameManager : MonoBehaviour
             enemy.SetUp(newLocation.boss);
     }
 
-    public EnemyInfo NextEnemy()
+    public EnemyData NextEnemy()
     {
         int randomEnemy = Random.Range(0, currentLocation.enemies.Length);
         return currentLocation.enemies[randomEnemy];
     }
 
-    public void DisplayDropInfo(EnemyInfo enemy)
+    public void DisplayDropInfo(EnemyData enemy)
     {
         dropInfo.GetComponent<DropInfo>().SetUpInfo(enemy);
     }
@@ -337,7 +261,7 @@ public class GameManager : MonoBehaviour
     public void AddPet()
     {
         Pet newPet = ScriptableObject.CreateInstance<Pet>();
-        newPet.NewAsset(pet);
+        //newPet.NewAsset(pet);
         newPet.index = nextPetIndex;
         nextPetIndex++;
 
@@ -358,7 +282,7 @@ public class GameManager : MonoBehaviour
             textAnimation.Play();
             return;
         }
-        Inventory.Instance.UpdateUI();
+        PlayerInventory.Instance.RefreshUI();
         AddPet();
     }
 
@@ -404,6 +328,6 @@ public class GameManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        Data.Save(Player.Instance.info, Inventory.Instance.info, Player.Instance.myPets);
+        //Data.Save(Player.Instance.data, PlayerInventory.Instance, PlayerEquipment.Instance.slots);
     }
 }

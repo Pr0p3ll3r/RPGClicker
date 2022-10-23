@@ -9,63 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c396eb638ada3484cb41c317b6616afb, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f4d05af8e2b28e458d358be48badf59, type: 3}
   m_Name: Lvl51 Harpy
   m_EditorClassIdentifier: 
-  characterName: Harpy
-  level: 51
+  look: {fileID: 0}
+  enemyName: 
+  enemyType: 0
+  level: 1
+  maxHealth: 0
+  currentHealth: 100
+  damage: 0
+  defense: 0
+  criticalDamage: 0
+  criticalChance: 0
   exp: 0
-  expToLvl: 570
-  remainPoints: 0
-  maxHealth: 180
-  currentHealth: -19
-  strength:
-    baseValue: 0
-  stamina:
-    baseValue: 0
-  vitality:
-    baseValue: 0
-  agility:
-    baseValue: 0
-  luck:
-    baseValue: 0
-  damageMin:
-    baseValue: 150
-  damageMax:
-    baseValue: 150
-  defense:
-    baseValue: 0
-  criticalDamage:
-    baseValue: 0
-  criticalChance:
-    baseValue: 0
-  equipment:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  rewardGold: 62
-  rewardExp: 60
-  possibleRarity: 1
-  loot:
-  - item: {fileID: 11400000, guid: 00dc6f3fb652ac0439c7b06011174771, type: 2}
-    chanceToDrop: 0.4
-  - item: {fileID: 11400000, guid: f1b3d579e43251e4792cb615278a46e6, type: 2}
-    chanceToDrop: 0.4
-  - item: {fileID: 11400000, guid: a5e384495e539434eb9d741769af839b, type: 2}
-    chanceToDrop: 0.4
-  - item: {fileID: 11400000, guid: dd1f96073199bd846addfe932c20a64f, type: 2}
-    chanceToDrop: 0.4
-  - item: {fileID: 11400000, guid: 371d4ac3c539e014598e3020a3580545, type: 2}
-    chanceToDrop: 0.4
-  - item: {fileID: 11400000, guid: 26e51bd173bf1884db3d1a33571dc9ad, type: 2}
-    chanceToDrop: 0.4
-  - item: {fileID: 11400000, guid: 4d1a9543e3985a7449d0f65b5ae048e5, type: 2}
-    chanceToDrop: 0.4
-  equipmentBases: []
+  gold: 0
+  loot: []
+  possibleRarity: 0
   towerEnemy: 0
+  bossLocation: {fileID: 0}

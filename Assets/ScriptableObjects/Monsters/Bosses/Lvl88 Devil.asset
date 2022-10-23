@@ -9,53 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c396eb638ada3484cb41c317b6616afb, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f4d05af8e2b28e458d358be48badf59, type: 3}
   m_Name: Lvl88 Devil
   m_EditorClassIdentifier: 
-  characterName: Devil
-  level: 88
-  exp: 0
-  expToLvl: 940
-  remainPoints: 0
-  maxHealth: 325
-  currentHealth: 325
-  strength:
-    baseValue: 0
-  stamina:
-    baseValue: 0
-  vitality:
-    baseValue: 0
-  agility:
-    baseValue: 0
-  luck:
-    baseValue: 0
-  damage:
-    baseValue: 0
-  defense:
-    baseValue: 0
-  criticalDamage:
-    baseValue: 0
-  criticalChance:
-    baseValue: 0
-  equipment:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   look: {fileID: 0}
-  boss: 1
-  rewardGold: 114
-  rewardExp: 114
+  enemyName: 
+  enemyType: 0
+  level: 1
+  maxHealth: 0
+  currentHealth: 100
+  damage: 0
+  defense: 0
+  criticalDamage: 0
+  criticalChance: 0
+  exp: 0
+  gold: 0
+  loot: []
   possibleRarity: 0
-  loot:
-  - item: {fileID: 11400000, guid: aa1dce0e24c4a744cae369fa21095744, type: 2}
-    chanceToDrop: 0.4
-  - item: {fileID: 11400000, guid: 3c039bbccfe546f45adef96702291af4, type: 2}
-    chanceToDrop: 0.4
-  equipmentBases: []
+  towerEnemy: 0
   bossLocation: {fileID: 0}

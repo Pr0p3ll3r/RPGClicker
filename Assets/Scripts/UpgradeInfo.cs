@@ -14,24 +14,24 @@ public class UpgradeInfo : MonoBehaviour
 
     public void SetUp(Equipment eq)
     {
-        EquipmentUpgrade upgradeItem = Library.FindItem(eq);
+        //EquipmentUpgrade upgradeItem = Library.FindItem(eq);
 
-        resultItem.AddItem(eq);
+        //resultItem.FillSlot(eq);
 
-        int currentLevel = eq.level;
+        //int currentLevel = eq.lvlRequired;
 
-        for (int i = 0; i < upgradeItem.upgradeLevels[currentLevel].neededItems.Length; i++)
-        {
-            NeededItem needItem = upgradeItem.upgradeLevels[currentLevel].neededItems[i];
-            GameObject item = Instantiate(neededItemPrefab, itemList);
-            item.transform.Find("Icon").GetComponent<Image>().sprite = needItem.item.icon;
-            TextMeshProUGUI quantity = item.transform.Find("Quantity").GetComponent<TextMeshProUGUI>();
-            quantity.text = needItem.quantity.ToString();
-            chance.text = $"{100 - eq.level * 10}%";
-            if (Inventory.Instance.info.CheckItem(needItem))
-                quantity.color = Color.green;
-            else
-                quantity.color = Color.red;
-        }
+        //for (int i = 0; i < upgradeItem.upgradeLevels[currentLevel].neededItems.Length; i++)
+        //{
+        //    NeedItem needItem = upgradeItem.upgradeLevels[currentLevel].neededItems[i];
+        //    GameObject item = Instantiate(neededItemPrefab, itemList);
+        //    item.transform.Find("Icon").GetComponent<Image>().sprite = needItem.item.icon;
+        //    TextMeshProUGUI quantity = item.transform.Find("Quantity").GetComponent<TextMeshProUGUI>();
+        //    quantity.text = needItem.amount.ToString();
+        //    //chance.text = $"{100 - eq. * 10}%";
+        //    if (Inventory.Instance.HaveItem(needItem.item, needItem.amount))
+        //        quantity.color = Color.green;
+        //    else
+        //        quantity.color = Color.red;
+        //}
     }
 }

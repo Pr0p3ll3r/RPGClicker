@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4108817624274402529}
   - component: {fileID: 3611486795658131804}
   - component: {fileID: 4341035550259695047}
+  - component: {fileID: 7421009525811149395}
   - component: {fileID: 4522198883881658064}
   - component: {fileID: 4004415490079289462}
   m_Layer: 5
@@ -30,6 +31,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2337330228701579959}
   m_RootOrder: 0
@@ -77,6 +79,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7421009525811149395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2499981211695783498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8255d528bc29d3841bb85836469f6484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: 0
+  offset: {x: 0, y: 0}
 --- !u!223 &4522198883881658064
 Canvas:
   m_ObjectHideFlags: 0
@@ -126,7 +142,7 @@ GameObject:
   - component: {fileID: 2337330228701579959}
   - component: {fileID: 2121899213446855899}
   - component: {fileID: 8968031962890365765}
-  - component: {fileID: 3681312435623234682}
+  - component: {fileID: 4262860749294260015}
   m_Layer: 5
   m_Name: EquipmentSlot
   m_TagString: Untagged
@@ -144,6 +160,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4108817624274402529}
   m_Father: {fileID: 0}
@@ -192,7 +209,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3681312435623234682
+--- !u!114 &4262860749294260015
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -201,8 +218,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5096360743406812206}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73c42aae0cfd1104da465452cdc0c66e, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ee7646d5414e4f489099466f831ccff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 4341035550259695047}
-  clearIcon: {fileID: 0}
+  placeholderIcon: {fileID: 0}
+  item: {fileID: 0}
+  equipmentType: 0

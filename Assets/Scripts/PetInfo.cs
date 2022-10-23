@@ -24,8 +24,6 @@ public class PetInfo : MonoBehaviour
     void RefreshStats()
     {
         lvl.text = info.level.ToString();
-        speed.text = info.speed.ToString() + "%";
-        luck.text = info.luck.ToString() + "%";
         UpdateExpBar();
     }
 

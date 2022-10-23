@@ -9,128 +9,147 @@ public class Player : MonoBehaviour
     public static Player Instance { get; private set; }
     private void Awake()
     {
-        Instance = this;    
+        Instance = this;
     }
 
-    public PlayerInfo info;
+    public PlayerData data = new PlayerData();
+
+    private PlayerHUD hud;
+    private LevelSystem ls;
+    private GameManager gameManager => GameManager.Instance;
+    private PlayerEquipment Equipment => PlayerEquipment.Instance;
+    private PlayerInventory Inventory => PlayerInventory.Instance;
     public List<Pet> myPets = new List<Pet>();
 
-    [SerializeField] private Transform equipmentParent;
-    [SerializeField] private TextMeshProUGUI level;
-    [SerializeField] private Image healthBar;
-    [SerializeField] private TextMeshProUGUI health;
-    [SerializeField] private Image expBar;
-    [SerializeField] private TextMeshProUGUI exp;
     [SerializeField] private Transform popupPosition;
-    [SerializeField] private GameObject vignette;
 
-    private PlayerUI playerUI;
+    private PlayerInfo playerInfo;
     private Enemy enemy;
-    private EquipmentSlotUI[] slots;
+    private bool isDead;
 
     private void Start()
     {
-        slots = equipmentParent.GetComponentsInChildren<EquipmentSlotUI>();
-        playerUI = GetComponent<PlayerUI>();
-        SetUpUI();
-        RefreshPlayer();
+        hud = GetComponent<PlayerHUD>();
+        playerInfo = GetComponent<PlayerInfo>();
+        ls = GetComponent<LevelSystem>();
+        //RefreshPlayer();
+        data.currentHealth = data.maxHealth.GetValue();
+        hud.UpdateHealthBar(data.currentHealth, data.maxHealth.GetValue());
         enemy = Enemy.Instance;
+    }
+
+    void Update()
+    {
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            TakeDamage(1);
+        }
+#endif
     }
 
     public void Attack()
     {
-        if (enemy.IsDead()) return;
+        if (isDead || enemy.IsDead) return;
 
-        int damage = info.damage.GetValue();
-        DamagePopup damagePopup = DamagePopupPooler.Instance.Get().GetComponent<DamagePopup>();
+        int damage = data.damage.GetValue();
+        int enemyDefense = enemy.data.defense;
+        Debug.Log("Your Damage: " + damage + " Enemy Defense: " + enemyDefense);
+        DamagePopup damagePopup = gameManager.damagePopupPooler.Get().GetComponent<DamagePopup>();
         damagePopup.transform.position = popupPosition.position;
-        if (Utilities.Critical(info, ref damage))
-        {
-            damagePopup.Setup(damage, true);
-        }
-        else
-        {
-            damagePopup.Setup(damage, false);
-        }
-        damagePopup.gameObject.SetActive(true);
-        damage -= enemy.info.defense.GetValue();
+        bool crit = Utils.Critical(data.criticalRate.GetValue(), data.criticalDamage.GetValue(), ref damage);
+        damage -= enemyDefense;
         damage = Mathf.Clamp(damage, 1, int.MaxValue);
+        Debug.Log("Damage: " + damage);
+        damagePopup.Setup(damage, crit);
+        damagePopup.gameObject.SetActive(true);
         enemy.TakeDamage(damage);
         SoundManager.Instance.PlayOneShot("Hit");
     }
 
-    public void RefreshPlayer()
-    {   
-        RefreshEquipment();
-        UpdateHealthBar();
-        UpdateExpBar();
-        playerUI.RefreshStats();
-    }
-
-    public void SetUpUI()
-    {
-        playerUI.info = info;
-    }
-
-    void RefreshEquipment()
-    {
-        for (int i = 0; i < info.equipment.Length; i++)
-        {
-            if (info.equipment[i] != null)
-                slots[i].AddEquipment(info.equipment[i]);
-            else
-                slots[i].ClearSlot();
-        }
-    }
-
-    void UpdateHealthBar()
-    {
-        float ratio = (float)info.currentHealth / (float)info.maxHealth;
-        healthBar.fillAmount = ratio;
-        health.text = $"{info.currentHealth}/{info.maxHealth}";
-    }
+    //public void RefreshPlayer()
+    //{
+    //    Equipment.RefreshUI();
+    //    hud.UpdateHealthBar();
+    //    hud.UpdateExpBar();
+    //    playerUI.RefreshStats();
+    //}
 
     public void TakeDamage(int damage)
     {
-        info.TakeDamage(damage);
-        //SoundManager.Instance.PlayOneShot("Hit");
-        StartCoroutine(FadeToZeroAlpha());
-        UpdateHealthBar();
-    }
-
-    public void AddExp(int exp)
-    {
-        info.AddExp(exp);
-        UpdateExpBar();
-    }
-
-    void UpdateExpBar()
-    {
-        float ratio = (float)info.exp / (float)info.expToLvl;
-        expBar.fillAmount = ratio;
-        exp.text = $"{info.exp}/{info.expToLvl}";
-        level.text = info.level.ToString();
-    }
-
-    public void ShowDeadText()
-    {
-        vignette.GetComponent<CanvasGroup>().alpha = 1f;
-    }
-
-    private IEnumerator FadeToZeroAlpha()
-    {
-        vignette.GetComponent<CanvasGroup>().alpha = 0.5f;
-
-        while (vignette.GetComponent<CanvasGroup>().alpha > 0.0f)
+        if (isDead == false)
         {
-            vignette.GetComponent<CanvasGroup>().alpha -= (Time.deltaTime / 4f);
-            yield return null;
+            SoundManager.Instance.Play("PlayerHurt");
+            hud.UpdateHealthBar(data.currentHealth, data.maxHealth.GetValue());
+            hud.ShowVignette();
+            data.currentHealth -= damage;
+
+            if (data.currentHealth <= 0)
+            {
+                Die();
+            }
         }
     }
 
-    public void AddMonsterKill()
+    public void Reward(int exp, int gold)
     {
-        info.killedMonsters++;
-        playerUI.RefreshOtherStats();
+        ls.GetExp(exp);
+        Inventory.data.gold += gold;
+    }
+
+    public void Die()
+    {
+        if (PlayerPrefs.GetInt("Extra") == 1)
+            SoundManager.Instance.Play("PlayerDeathExtra");
+        else
+            SoundManager.Instance.Play("PlayerDeath");
+        isDead = true;
+        hud.ShowDeadText();
+        //GameManager.Instance.Gameover();
+    }
+
+    public bool Equip(Equipment item, InventorySlot slot)
+    {
+        Equipment previousItem;
+        if (item.lvlRequired <= data.level)
+        {
+            PlayerInventory.Instance.RemoveItem(item);
+            PlayerEquipment.Instance.EquipItem(item, out previousItem);
+            item.AddStats(data);
+            if (previousItem != null)
+            {
+                Inventory.AddItemAtSlot(previousItem, slot);
+                previousItem.RemoveStats(data);
+            }
+        }
+        else
+        {
+            //GameManager.Instance.ShowText("Level is too low", new Color32(255, 65, 52, 255));
+            return false;
+        }
+        playerInfo.RefreshStats();
+        Equipment.RefreshUI();
+        return true;
+    }
+
+    public bool Unequip(Equipment item, InventorySlot slot)
+    {
+        if (slot != null)
+        {
+            Equipment.UnequipItem(item);
+            Inventory.AddItemAtSlot(item, slot);
+        }
+        else if (!Inventory.IsFull())
+        {
+            Equipment.UnequipItem(item);
+            Inventory.AddItem(item, 1);
+        }
+        else
+        {
+            //GameManager.Instance.ShowText("Inventory is full", new Color32(255, 65, 52, 255));
+            return false;
+        }
+        Equipment.RefreshUI();
+        return true;
     }
 }

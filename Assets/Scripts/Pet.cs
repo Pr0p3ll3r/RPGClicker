@@ -11,8 +11,7 @@ public class Pet : ScriptableObject
     public int expToLvlUp = 10;
     public int index;
     public int cost;
-    public int speed;
-    public int luck;
+    public ItemStat[] stats = new ItemStat[30];
 
     void CheckLvlUp()
     {
@@ -22,8 +21,6 @@ public class Pet : ScriptableObject
         {
             exp -= expToLvlUp;
             level++;
-            speed++;
-            luck++;
             Debug.Log(name + ": Level Up! Current level: " + level);
         }
     }
@@ -35,14 +32,8 @@ public class Pet : ScriptableObject
         CheckLvlUp();
     }
 
-    public void NewAsset(Pet basic)
+    public Pet GetCopy()
     {
-        name = "Pet";
-        level = basic.level;
-        exp = basic.exp;
-        index = basic.index;
-        cost = basic.cost;
-        speed = basic.speed;
-        luck = basic.luck;
+        return Instantiate(this);
     }
 }

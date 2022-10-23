@@ -12,11 +12,11 @@ public class DropInfo : MonoBehaviour
     [SerializeField] private GameObject lootItemPrefab;
     [SerializeField] private Transform itemList;
 
-    public void SetUpInfo(EnemyInfo enemy)
+    public void SetUpInfo(EnemyData enemy)
     {
-        hp.text = enemy.maxHealth.ToString();
-        damage.text = enemy.damage.GetValue().ToString();
-        defense.text = enemy.defense.GetValue().ToString();
+        hp.text = enemy.health.ToString();
+        damage.text = enemy.damage.ToString();
+        defense.text = enemy.defense.ToString();
         switch (enemy.possibleRarity)
         {
             case 0:
@@ -31,12 +31,12 @@ public class DropInfo : MonoBehaviour
         }
 
         bool nextBlueprint = false;
-        foreach (LootItem lootItem in enemy.loot)
+        foreach (Loot lootItem in enemy.loot)
         {
             if (lootItem.item.itemType == ItemType.Blueprint && nextBlueprint) continue;
             if (lootItem.item.itemType == ItemType.Blueprint) nextBlueprint = true;
             GameObject item = Instantiate(lootItemPrefab, itemList); 
-            item.GetComponent<InventorySlot>().AddItem(lootItem.item);
+            item.GetComponent<InventorySlot>().FillSlot(lootItem.item);
         }
     }
 }

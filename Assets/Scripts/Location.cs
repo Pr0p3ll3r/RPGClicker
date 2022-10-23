@@ -10,6 +10,6 @@ public class Location : ScriptableObject
     public bool discovered = false;
     public bool unlocked = false;
     public bool bossDefeated = false;
-    public EnemyInfo[] enemies;
-    public EnemyInfo boss;
+    public EnemyData[] enemies;
+    public EnemyData boss;
 }

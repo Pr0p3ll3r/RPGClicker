@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6720340148789051510}
   - component: {fileID: 6944036742709802522}
   - component: {fileID: 96956282962551172}
-  - component: {fileID: 1769119368816693736}
+  - component: {fileID: 7368002327614318214}
   m_Layer: 5
   m_Name: LootItem
   m_TagString: Untagged
@@ -29,6 +29,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4911702523094054432}
   - {fileID: 6898699078108184860}
@@ -78,7 +79,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1769119368816693736
+--- !u!114 &7368002327614318214
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,13 +88,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4293414441192945391}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0dc78776162ec54ebcb2df78f1a101a, type: 3}
+  m_Script: {fileID: 11500000, guid: 772d85a11aca9c04db1dbc672eb0e22c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 4689048080488990470}
   quantity: {fileID: 1472215602513885300}
-  onTop: 0
-  canEquip: 0
+  item: {fileID: 0}
+  amount: 0
 --- !u!1 &5712141954515023997
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,6 +123,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6720340148789051510}
   m_RootOrder: 1
@@ -256,6 +258,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6720340148789051510}
   m_RootOrder: 0

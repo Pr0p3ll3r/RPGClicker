@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4223496723645704497}
   - component: {fileID: 3568882955128908940}
   - component: {fileID: 4586873262042159127}
+  - component: {fileID: 3535064072825406341}
   - component: {fileID: 2814501143966976419}
   - component: {fileID: 3686301384836601073}
   m_Layer: 5
@@ -30,6 +31,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2591383211860467559}
   m_RootOrder: 0
@@ -77,6 +79,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3535064072825406341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2389189916653767578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8255d528bc29d3841bb85836469f6484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: 1
+  offset: {x: 0, y: 0}
 --- !u!223 &2814501143966976419
 Canvas:
   m_ObjectHideFlags: 0
@@ -143,6 +159,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2591383211860467559}
   m_RootOrder: 1
@@ -260,7 +277,7 @@ GameObject:
   - component: {fileID: 2591383211860467559}
   - component: {fileID: 2227923021543172363}
   - component: {fileID: 9218153439077154453}
-  - component: {fileID: 7365685835734290169}
+  - component: {fileID: 9168369786714150010}
   m_Layer: 5
   m_Name: InventorySlot
   m_TagString: Untagged
@@ -278,6 +295,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4223496723645704497}
   - {fileID: 2380181875054386701}
@@ -327,7 +345,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7365685835734290169
+--- !u!114 &9168369786714150010
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -336,8 +354,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4981057194051168766}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0dc78776162ec54ebcb2df78f1a101a, type: 3}
+  m_Script: {fileID: 11500000, guid: 772d85a11aca9c04db1dbc672eb0e22c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 4586873262042159127}
   quantity: {fileID: 7699849989452998501}
+  item: {fileID: 0}
+  amount: 0

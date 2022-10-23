@@ -396,7 +396,7 @@ TextureImporter:
       213: 4852574507876460360
     second: The Humble Item Pack_130
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -456,6 +456,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -483,6 +484,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -1064,7 +1089,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: The Humble Item Pack_27
+      name: Iron Bracelet
       rect:
         serializedVersion: 2
         x: 112
@@ -1400,7 +1425,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: The Humble Item Pack_43
+      name: Gold Bracelet
       rect:
         serializedVersion: 2
         x: 112
@@ -1736,7 +1761,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: The Humble Item Pack_59
+      name: Diamond Bracelet
       rect:
         serializedVersion: 2
         x: 112
@@ -2072,7 +2097,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: The Humble Item Pack_75
+      name: Wooden Bracelet
       rect:
         serializedVersion: 2
         x: 112
@@ -2345,7 +2370,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: The Humble Item Pack_88
+      name: Ruby Bracelet
       rect:
         serializedVersion: 2
         x: 112
@@ -2618,7 +2643,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: The Humble Item Pack_101
+      name: Lava Bracelet
       rect:
         serializedVersion: 2
         x: 112
@@ -3259,11 +3284,11 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       The Humble Item Pack_122: 8562140422485522189
+      Wooden Bracelet: 8156459662213006053
       The Humble Item Pack_110: 809769012740052837
       The Humble Item Pack_68: -4530713259362039845
       The Humble Item Pack_54: -2015333388550093641
       The Humble Item Pack_31: -6772822338833781622
-      The Humble Item Pack_43: 3353990839960808192
       Iron: 8139414941502515078
       The Humble Item Pack_100: -2227152458720240039
       The Humble Item Pack_91: -5547333311154820082
@@ -3277,6 +3302,7 @@ TextureImporter:
       The Humble Item Pack_7: -5834830281605086846
       The Humble Item Pack_106: -4507419286728860315
       The Humble Item Pack_115: -7340762543330127869
+      Lava Bracelet: -1072651525219049189
       The Humble Item Pack_117: 3364201297037830788
       The Humble Item Pack_72: 2354493754837047698
       The Humble Item Pack_118: -1458700408820524387
@@ -3295,7 +3321,6 @@ TextureImporter:
       The Humble Item Pack_34: 9073102271531267923
       The Humble Item Pack_78: -11402003245679640
       The Humble Item Pack_6: -8913703816770813903
-      The Humble Item Pack_75: 8156459662213006053
       The Humble Item Pack_95: -3793259078438529061
       The Humble Item Pack_39: 5507940516938952375
       The Humble Item Pack_49: 5604283362426631463
@@ -3320,8 +3345,7 @@ TextureImporter:
       The Humble Item Pack_89: 2317764885151726246
       The Humble Item Pack_37: 4952098269995115326
       The Humble Item Pack_57: -2630428215893370486
-      The Humble Item Pack_88: 6043686632926405830
-      The Humble Item Pack_101: -1072651525219049189
+      Gold Bracelet: 3353990839960808192
       The Humble Item Pack_50: 874579415652001630
       The Humble Item Pack_97: -3460116536562878425
       The Humble Item Pack_66: 792082166966466273
@@ -3336,7 +3360,6 @@ TextureImporter:
       The Humble Item Pack_29: -4425463445174765670
       The Humble Item Pack_18: 4334263860496171024
       The Humble Item Pack_35: -3945561589604383307
-      The Humble Item Pack_27: -3318907474849097072
       The Humble Item Pack_61: 9079136351500377447
       The Humble Item Pack_24: 510107937113201734
       The Humble Item Pack_81: -837778845932097676
@@ -3350,12 +3373,11 @@ TextureImporter:
       The Humble Item Pack_28: 5474779296427847613
       The Humble Item Pack_60: -8783724852524946427
       The Humble Item Pack_41: -1946102336299758840
-      The Humble Item Pack_59: 2122821760433203515
+      The Humble Item Pack_130: 4852574507876460360
       The Humble Item Pack_82: 6086726443145275323
       The Humble Item Pack_23: 462162469481655481
       The Humble Item Pack_15: 6788153639332843351
       The Humble Item Pack_99: -796853795091482135
-      The Humble Item Pack_130: 4852574507876460360
       The Humble Item Pack_76: 4941173692510039364
       The Humble Item Pack_120: 764215048864233297
       The Humble Item Pack_9: 689664205713802623
@@ -3369,12 +3391,14 @@ TextureImporter:
       The Humble Item Pack_79: -1366005229288591004
       The Humble Item Pack_126: 3956378084594549913
       Spider Eye: -3293396588010426162
+      Diamond Bracelet: 2122821760433203515
       The Humble Item Pack_93: -1523144537914541147
       The Humble Item Pack_105: -9036055525913155322
       The Humble Item Pack_92: -8519181538350615690
       The Humble Item Pack_125: 4174918768811278255
       The Humble Item Pack_56: -8016166555503940539
       Wood: -2981925656955532046
+      Ruby Bracelet: 6043686632926405830
       The Humble Item Pack_4: -7805586136896220278
       The Humble Item Pack_20: 1955725127503826509
       The Humble Item Pack_19: -6019176722732589995
@@ -3384,6 +3408,7 @@ TextureImporter:
       The Humble Item Pack_51: -5305385246229005532
       The Humble Item Pack_47: -6255693584513256172
       The Humble Item Pack_98: -7748958414239035225
+      Iron Bracelet: -3318907474849097072
       The Humble Item Pack_55: 3063791434796768377
       The Humble Item Pack_129: -2784668691823543853
       The Humble Item Pack_40: 8843702143365559092

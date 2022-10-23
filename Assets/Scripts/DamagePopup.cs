@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DamagePopup : MonoBehaviour
+public class DamagePopup : MonoBehaviour, IPooledObject
 {
     private TextMeshProUGUI text;
     private float disappearTime;
     private Color textColor;
+
+    public ObjectPooler Pool { get; set; }
 
     void Awake()
     {
@@ -40,7 +42,7 @@ public class DamagePopup : MonoBehaviour
             text.color = textColor;
             if(textColor.a < 0)
             {
-                DamagePopupPooler.Instance.ReturnToPool(gameObject);
+                Pool.ReturnToPool(gameObject);
             }
         }
     }
