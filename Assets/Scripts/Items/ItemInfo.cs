@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemInfo : MonoBehaviour
 {
@@ -12,13 +13,28 @@ public class ItemInfo : MonoBehaviour
     [SerializeField] private Transform statParent;
     [SerializeField] private GameObject statPrefab;
 
-    public void SetUp(Item item)
+    [SerializeField] private Button equipButton;
+    [SerializeField] private Button unequipButton;
+    [SerializeField] private Button sellButton;
+    [SerializeField] private Button closeButton;
+
+    public void SetUp(Item item, bool equipped)
     {
+        Clear();
         itemName.text = item.itemName;
         price.SetUp("Price:", $"{item.price}");
         description.text = item.description;
-        if (item.description == "")
-            description.gameObject.SetActive(false);
+        if (item.description != "")
+            description.gameObject.SetActive(true);
+
+        if(!equipped)
+        {
+            sellButton.onClick.AddListener(delegate { SellItem(item); });
+            sellButton.gameObject.SetActive(true);
+        }
+
+        closeButton.onClick.AddListener(delegate { CloseItemInfo(); });
+
         if (item.itemType == ItemType.Equipment)
         {
             Equipment eq = (Equipment)item;
@@ -67,46 +83,56 @@ public class ItemInfo : MonoBehaviour
                 }
             }
 
-            if(eq.equipmentType == EquipmentType.Weapon)
+            if (!equipped)
             {
-                Weapon weapon = (Weapon)eq;
-                ItemStatInfo type = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-                type.SetUp("Type:", $"{weapon.equipmentTypeSlot}");
-                ItemStatInfo damage = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-                int weaponDamage = Utils.GetStat(Stats.Damage, weapon.CurrentNormalStats());
-                damage.SetUp("Damage:", $"{weaponDamage}");
-                ItemStatInfo range = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-                range.SetUp("Range:", $"{weapon.range}");
-                ItemStatInfo attackRate = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-                attackRate.SetUp("Attack Rate:", $"{60 / weapon.attackRate}");
-
-                Weapon currentWeapon = (Weapon)PlayerEquipment.Instance.slots[(int)weapon.equipmentTypeSlot].item;
-                if (currentWeapon != weapon && currentWeapon != null)
-                {
-                    int currentDamage = Utils.GetStat(Stats.Damage, currentWeapon.CurrentNormalStats());
-                    if (currentDamage > weaponDamage)
-                        damage.SetColor(Color.green);
-                    else
-                        damage.SetColor(Color.red);
-
-                    if (currentWeapon.range > weapon.range)
-                        range.SetColor(Color.green);
-                    else
-                        range.SetColor(Color.red);
-
-                    if (currentWeapon.attackRate > weapon.attackRate)
-                        attackRate.SetColor(Color.green);
-                    else
-                        attackRate.SetColor(Color.red);
-                }
-                else if(currentWeapon != weapon)
-                {
-                    damage.SetColor(Color.green);
-                    attackRate.SetColor(Color.green);
-                    range.SetColor(Color.green);
-                }
+                equipButton.onClick.AddListener(delegate { EquipItem(eq); });
+                equipButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                unequipButton.onClick.AddListener(delegate { UnequipItem(eq); });
+                unequipButton.gameObject.SetActive(true);
             }
         }
-        gameObject.SetActive(true);
+    }
+
+    private void Clear()
+    {
+        equipButton.onClick.RemoveAllListeners();
+        unequipButton.onClick.RemoveAllListeners();
+        sellButton.onClick.RemoveAllListeners();
+        closeButton.onClick.RemoveAllListeners();
+        equipButton.gameObject.SetActive(false);
+        unequipButton.gameObject.SetActive(false);
+        description.gameObject.SetActive(false);
+        sellButton.gameObject.SetActive(false);
+        foreach (Transform stat in statParent)
+            Destroy(stat.gameObject);
+        itemName.text = "";
+        price.SetUp("Price:", $"0");
+        description.text = "";
+    }
+
+    private void SellItem(Item item)
+    {
+        PlayerInventory.Instance.RemoveItem(item);
+        CloseItemInfo();
+    }
+
+    private void EquipItem(Equipment item)
+    {
+        Player.Instance.Equip(item, null);
+        CloseItemInfo();
+    }
+
+    private void UnequipItem(Equipment item)
+    {
+        Player.Instance.Unequip(item, null);
+        CloseItemInfo();
+    }
+
+    private void CloseItemInfo()
+    {
+        gameObject.SetActive(false);
     }
 }

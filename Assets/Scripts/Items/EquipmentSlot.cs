@@ -9,7 +9,7 @@ public class EquipmentSlot : MonoBehaviour
     [SerializeField] private Sprite placeholderIcon;
 
     public Equipment item;
-    public EquipmentTypeSlot equipmentType;
+    public EquipmentType equipmentType;
 
     public bool CanPlaceInSlot(Equipment _item)
     {

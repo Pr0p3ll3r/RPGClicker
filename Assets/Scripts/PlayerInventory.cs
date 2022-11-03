@@ -22,11 +22,8 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private List<Item> startingItems = new List<Item>();
 
     [SerializeField] private TextMeshProUGUI goldText;
-    [SerializeField] private GameObject itemInfoPrefab;
-    [SerializeField] private Transform canvas;
-    [SerializeField] private Vector2 offset;
-
-    private GameObject currentItemInfo;
+    [SerializeField] private GameObject equippedItemInfo;
+    [SerializeField] private GameObject selectedItemInfo;
 
     void Awake()
     {
@@ -40,6 +37,8 @@ public class PlayerInventory : MonoBehaviour
             AddItem(item, 1);
         }
 
+        equippedItemInfo.SetActive(false);
+        selectedItemInfo.SetActive(false);
         RefreshUI();
     }
 
@@ -113,6 +112,7 @@ public class PlayerInventory : MonoBehaviour
         {
             if (slots[i].item == _item)
             {
+                data.gold += slots[i].item.price * slots[i].amount;
                 slots[i].item = null;
             }
         }
@@ -145,30 +145,31 @@ public class PlayerInventory : MonoBehaviour
         else return false;
     }
 
-    public void SwapSlot(InventorySlot slot1, InventorySlot slot2)
+    public void DisplayItemInfo(Item item, bool inventory)
     {
-        Item temp = slot1.item;
-        AddItemAtSlot(slot2.item, slot1);
-        AddItemAtSlot(temp, slot2);
-    }
-
-    public void DisplayItemInfo(Item item, Vector2 position)
-    {
-        DestroyItemInfo();
-
-        if (item == null) return;
-
-        currentItemInfo = Instantiate(itemInfoPrefab, position, Quaternion.identity, canvas);
-        currentItemInfo.SetActive(false);
-        currentItemInfo.GetComponent<ItemInfo>().SetUp(item);
-    }
-
-    public void DestroyItemInfo()
-    {
-        if (currentItemInfo != null)
+        selectedItemInfo.SetActive(false);
+        equippedItemInfo.SetActive(false);
+        if (inventory)
         {
-            Destroy(currentItemInfo);
+            if (item.itemType == ItemType.Equipment)
+            {
+                Equipment selectedEq = (Equipment)item; 
+                selectedItemInfo.GetComponent<ItemInfo>().SetUp(item, false);
+                selectedItemInfo.SetActive(true);
+                Equipment equippedEq = PlayerEquipment.Instance.slots[(int)selectedEq.equipmentTypeSlot].item;
+                if (equippedEq != null)
+                {
+                    equippedItemInfo.GetComponent<ItemInfo>().SetUp(equippedEq, true);
+                    equippedItemInfo.SetActive(true);
+                }               
+            }
         }
+        else
+        {
+            Equipment equippedEq = (Equipment)item;
+            equippedItemInfo.GetComponent<ItemInfo>().SetUp(equippedEq, true);
+            equippedItemInfo.SetActive(true);
+        }           
     }
 
     public bool CheckGold(int neededGold)

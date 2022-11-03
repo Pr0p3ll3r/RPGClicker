@@ -4,8 +4,7 @@
 public class Equipment : Item
 {
     [Header("Equipment")]
-    public EquipmentTypeSlot equipmentTypeSlot;
-    public EquipmentType equipmentType;
+    public EquipmentType equipmentTypeSlot;
     public EquipmentRarity rarity;
     public int lvlRequired = 1;
     public int grade = 0;
@@ -119,13 +118,6 @@ public enum EquipmentRarity
 }
 
 public enum EquipmentType
-{
-    Weapon,
-    Armor,
-    Jewelry
-}
-
-public enum EquipmentTypeSlot
 {
     MainHand,
     OffHand,

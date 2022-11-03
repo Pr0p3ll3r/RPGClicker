@@ -1053,7 +1053,7 @@ TextureImporter:
       213: 7134318060516000048
     second: spritesheet_16x16_349
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -1113,6 +1113,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -1150,11 +1151,35 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spritesheet_16x16_0
+      name: Wooden Chestplate
       rect:
         serializedVersion: 2
         x: 0
@@ -1175,7 +1200,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet_16x16_1
+      name: Iron Chestplate
       rect:
         serializedVersion: 2
         x: 16
@@ -1196,7 +1221,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet_16x16_2
+      name: Diamond Chestplate
       rect:
         serializedVersion: 2
         x: 32
@@ -1217,7 +1242,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet_16x16_3
+      name: Gold Chestplate
       rect:
         serializedVersion: 2
         x: 48
@@ -1238,7 +1263,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet_16x16_4
+      name: Ruby Chestplate
       rect:
         serializedVersion: 2
         x: 64
@@ -2477,7 +2502,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet_16x16_63
+      name: Wooden Boots
       rect:
         serializedVersion: 2
         x: 240
@@ -2498,7 +2523,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet_16x16_64
+      name: Iron Boots
       rect:
         serializedVersion: 2
         x: 0
@@ -2519,7 +2544,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet_16x16_65
+      name: Diamond Boots
       rect:
         serializedVersion: 2
         x: 16
@@ -2540,7 +2565,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet_16x16_66
+      name: Golden Boots
       rect:
         serializedVersion: 2
         x: 32
@@ -2561,7 +2586,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet_16x16_67
+      name: Ruby Boots
       rect:
         serializedVersion: 2
         x: 48
@@ -4745,7 +4770,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet_16x16_171
+      name: Wooden Gloves
       rect:
         serializedVersion: 2
         x: 176
@@ -4766,7 +4791,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet_16x16_172
+      name: Iron Gloves
       rect:
         serializedVersion: 2
         x: 192
@@ -4787,7 +4812,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet_16x16_173
+      name: Diamond Gloves
       rect:
         serializedVersion: 2
         x: 208
@@ -4808,7 +4833,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet_16x16_174
+      name: Gold Gloves
       rect:
         serializedVersion: 2
         x: 224
@@ -4829,7 +4854,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet_16x16_175
+      name: Ruby Gloves
       rect:
         serializedVersion: 2
         x: 240
@@ -4976,7 +5001,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet_16x16_182
+      name: Wooden Helmet
       rect:
         serializedVersion: 2
         x: 96
@@ -4997,7 +5022,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet_16x16_183
+      name: Iron Helmet
       rect:
         serializedVersion: 2
         x: 112
@@ -5018,7 +5043,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet_16x16_184
+      name: Diamond Helmet
       rect:
         serializedVersion: 2
         x: 128
@@ -5039,7 +5064,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet_16x16_185
+      name: Golden Helmet
       rect:
         serializedVersion: 2
         x: 144
@@ -5060,7 +5085,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet_16x16_186
+      name: Ruby Helmet
       rect:
         serializedVersion: 2
         x: 160
@@ -8517,8 +8542,8 @@ TextureImporter:
       spritesheet_16x16_222: 5389033053815039200
       spritesheet_16x16_240: 6835124139221763565
       spritesheet_16x16_224: 7233629009942597211
+      Gold Gloves: 1873374622076413371
       spritesheet_16x16_13: -7771637418718853571
-      spritesheet_16x16_185: 7076390497088474586
       spritesheet_16x16_263: -6020380115921375358
       spritesheet_16x16_155: 3274757852649736650
       spritesheet_16x16_270: -7228883074731245275
@@ -8526,20 +8551,19 @@ TextureImporter:
       spritesheet_16x16_121: -8798510042324694341
       spritesheet_16x16_195: -6657731067345253607
       spritesheet_16x16_162: 421307538023439172
+      Iron Helmet: -5991502738490247151
       spritesheet_16x16_103: -6641788381679545672
       spritesheet_16x16_341: 1669016803717978988
       spritesheet_16x16_248: -1476960089201537617
       spritesheet_16x16_273: 6424941124305458779
       spritesheet_16x16_282: 3780491666094917998
       spritesheet_16x16_105: -6222933974538903702
-      spritesheet_16x16_172: 701334144051075334
       spritesheet_16x16_112: 7706717077951257384
       spritesheet_16x16_5: 3084964034046833009
       spritesheet_16x16_21: 7816217266380852529
       spritesheet_16x16_49: 1441733866405534793
       spritesheet_16x16_152: 1395014000466118569
       spritesheet_16x16_344: 656398202401799057
-      spritesheet_16x16_0: 4674224726878878948
       spritesheet_16x16_226: -2413019476703862403
       spritesheet_16x16_123: -7738604205480488178
       spritesheet_16x16_249: 1728785865748156391
@@ -8548,11 +8572,10 @@ TextureImporter:
       spritesheet_16x16_199: 5676209460021714887
       spritesheet_16x16_59: -4618424389497504064
       spritesheet_16x16_143: 3184731812935176402
-      spritesheet_16x16_184: 5054754538824127542
+      spritesheet_16x16_250: -2740861266392343213
       spritesheet_16x16_10: 6373941844655526032
       spritesheet_16x16_110: 8107716787819004690
       spritesheet_16x16_153: -7325079378359898665
-      spritesheet_16x16_250: -2740861266392343213
       spritesheet_16x16_330: -8856697496123052244
       spritesheet_16x16_231: 941937916681516622
       spritesheet_16x16_6: 102417638678697499
@@ -8561,7 +8584,6 @@ TextureImporter:
       spritesheet_16x16_17: 7463719354332707029
       spritesheet_16x16_52: 7594644431125407483
       spritesheet_16x16_151: 2210714983547892875
-      spritesheet_16x16_66: 299591799156234410
       spritesheet_16x16_28: 1798059558619084531
       spritesheet_16x16_20: -1989021796040570097
       spritesheet_16x16_98: 2314395503844697259
@@ -8572,19 +8594,20 @@ TextureImporter:
       spritesheet_16x16_168: 8136125706371385449
       spritesheet_16x16_204: 4773959659835498304
       spritesheet_16x16_268: -2487794804310676429
+      Gold Chestplate: 5367102645604608502
       spritesheet_16x16_322: -1774382620467178882
       spritesheet_16x16_221: -6221380400280393233
       spritesheet_16x16_38: 4001262023563643109
       spritesheet_16x16_315: 8162227888753430490
       spritesheet_16x16_230: -1802040302893234917
       spritesheet_16x16_207: -4117642136899892087
+      Iron Boots: 4679557916695401523
       spritesheet_16x16_189: -8974053817001532310
       spritesheet_16x16_126: 6051869834277587389
       spritesheet_16x16_146: -5538982396403552700
       spritesheet_16x16_50: -2286590929910093585
       spritesheet_16x16_247: 1154369704206144365
       Gold Shield: 3719762752232908718
-      spritesheet_16x16_4: -5742115123698595625
       spritesheet_16x16_41: 7128831858329598539
       spritesheet_16x16_237: -8915031037078131714
       spritesheet_16x16_51: -7736478807948243938
@@ -8597,10 +8620,13 @@ TextureImporter:
       spritesheet_16x16_283: -3455914554855678932
       spritesheet_16x16_132: 4341192063269971019
       spritesheet_16x16_125: 8313983122485465899
+      Iron Chestplate: -1122222750625558779
       spritesheet_16x16_200: -6531598128732150990
       spritesheet_16x16_271: -7166755044787669358
       spritesheet_16x16_260: -394017037812523062
+      Ruby Chestplate: -5742115123698595625
       spritesheet_16x16_243: 783990427361351814
+      Diamond Gloves: 5151356610125396966
       spritesheet_16x16_156: -6367567858084311082
       spritesheet_16x16_280: -4310154571118919097
       spritesheet_16x16_120: 7760056112220092547
@@ -8612,32 +8638,33 @@ TextureImporter:
       spritesheet_16x16_309: -9172200467940495579
       spritesheet_16x16_78: 5432263036173039874
       spritesheet_16x16_306: -7559147093238052915
+      Golden Boots: 299591799156234410
       spritesheet_16x16_246: -2662480574571297040
       spritesheet_16x16_62: 2196645563048252023
       spritesheet_16x16_136: -6998372146573083654
       spritesheet_16x16_203: -7927658203091121825
+      Ruby Boots: 7937016989916433210
       spritesheet_16x16_31: -6906492117827229493
       spritesheet_16x16_100: -2294524248970365890
       spritesheet_16x16_127: -4591822662268741225
       spritesheet_16x16_267: -186559370199503502
       spritesheet_16x16_46: 55668738562977282
       spritesheet_16x16_71: -2688318615972836844
-      spritesheet_16x16_1: -266883865066856737
       spritesheet_16x16_37: -6956682310036256653
-      spritesheet_16x16_135: -3016235341627232787
       spritesheet_16x16_274: -5660470433651810702
+      spritesheet_16x16_135: -3016235341627232787
       spritesheet_16x16_323: -3052566882253815009
-      spritesheet_16x16_63: 1950767155518941465
+      Diamond Chestplate: -1122222750625558779
       spritesheet_16x16_128: 8124250149068480115
       spritesheet_16x16_22: 3155191402415865666
       spritesheet_16x16_167: 3742702238856006977
+      Ruby Helmet: 724078732085288075
       spritesheet_16x16_86: -2603981159974162915
       spritesheet_16x16_140: 297753132511671846
       spritesheet_16x16_90: -2499800578706800109
       spritesheet_16x16_265: -116227155505953714
       spritesheet_16x16_198: 4015473523190559789
       spritesheet_16x16_60: -788178633012956139
-      spritesheet_16x16_175: -8413048983050647654
       spritesheet_16x16_92: 3345558996882140122
       spritesheet_16x16_193: -8387155709117254515
       spritesheet_16x16_53: 8418503455152409894
@@ -8650,12 +8677,12 @@ TextureImporter:
       spritesheet_16x16_178: -3957183014957457705
       spritesheet_16x16_337: -5611134651838796117
       spritesheet_16x16_285: -4196405969983660786
-      spritesheet_16x16_173: 5151356610125396966
       spritesheet_16x16_272: -1173435767230499843
       spritesheet_16x16_170: -8329771157870841129
       spritesheet_16x16_257: -231206634116056884
       spritesheet_16x16_129: -6724503783799510909
       spritesheet_16x16_191: -1778218901292092026
+      Iron Gloves: 701334144051075334
       spritesheet_16x16_43: 1072796973745308101
       spritesheet_16x16_164: 2558052404510915204
       spritesheet_16x16_99: 8168345966591394503
@@ -8664,8 +8691,8 @@ TextureImporter:
       spritesheet_16x16_339: -4489893414055713528
       spritesheet_16x16_79: 3037142646987967716
       spritesheet_16x16_124: 424145493011907174
-      spritesheet_16x16_55: 327548700726244371
       spritesheet_16x16_213: 1417840729191121697
+      spritesheet_16x16_55: 327548700726244371
       spritesheet_16x16_218: 4652921878758747096
       spritesheet_16x16_48: -8859383209430391892
       spritesheet_16x16_102: -8210811185666271284
@@ -8676,10 +8703,9 @@ TextureImporter:
       spritesheet_16x16_163: -1368131537961073585
       spritesheet_16x16_106: 1421040711889851810
       spritesheet_16x16_95: 3754117133830805013
-      spritesheet_16x16_114: 1162054435852173003
       spritesheet_16x16_343: 1553810817972623985
+      spritesheet_16x16_114: 1162054435852173003
       spritesheet_16x16_7: -7589337708111216820
-      spritesheet_16x16_174: 1873374622076413371
       spritesheet_16x16_241: -182240347139641945
       spritesheet_16x16_206: -702172821695515199
       spritesheet_16x16_141: -3559253890189666715
@@ -8690,13 +8716,13 @@ TextureImporter:
       spritesheet_16x16_266: -8174096228513540595
       spritesheet_16x16_16: -9115526643566758266
       spritesheet_16x16_93: 5309704437562416240
+      Golden Helmet: 7076390497088474586
       spritesheet_16x16_340: -379388545519143159
       spritesheet_16x16_215: 3996410755277433361
       spritesheet_16x16_54: 718822593347627388
       spritesheet_16x16_133: -2804320032993076793
-      spritesheet_16x16_65: -4059254120870841877
-      spritesheet_16x16_254: 6824629412589316799
       spritesheet_16x16_216: 774192300151941215
+      spritesheet_16x16_254: 6824629412589316799
       spritesheet_16x16_342: 6335821477452556650
       spritesheet_16x16_142: 6348380479517253080
       spritesheet_16x16_24: 5967933724826460690
@@ -8704,11 +8730,9 @@ TextureImporter:
       spritesheet_16x16_328: -545427556089145685
       spritesheet_16x16_42: 4197679598097503232
       spritesheet_16x16_258: 3144429149792546981
-      spritesheet_16x16_171: 6554923970561247729
       spritesheet_16x16_176: -1649578886978462577
       spritesheet_16x16_15: 5651723158275140057
       spritesheet_16x16_310: 3329316347563575725
-      spritesheet_16x16_186: 724078732085288075
       spritesheet_16x16_74: 4309415310507313882
       spritesheet_16x16_150: 6613708675518738141
       Diamond Shield: 7730120186900130073
@@ -8728,6 +8752,7 @@ TextureImporter:
       spritesheet_16x16_116: -2689047993623020199
       spritesheet_16x16_107: -5301447779580228923
       spritesheet_16x16_201: -2453289629197179864
+      Wooden Helmet: -2650294036199017241
       spritesheet_16x16_304: 3382340716553928063
       spritesheet_16x16_291: -6479057538699681362
       spritesheet_16x16_197: -6900274472964666115
@@ -8749,121 +8774,121 @@ TextureImporter:
       spritesheet_16x16_295: -8594803241429462710
       spritesheet_16x16_82: 71385027979629128
       Wooden Shield: -6933340266121659879
+      Wooden Chestplate: -266883865066856737
       spritesheet_16x16_166: -2980334663621201453
       spritesheet_16x16_336: 3429465571681469685
+      Diamond Helmet: 5054754538824127542
+      Ruby Gloves: -8413048983050647654
       spritesheet_16x16_117: -2312749784161265675
       spritesheet_16x16_165: -6726495705657179552
-      spritesheet_16x16_2: -1122222750625558779
-      spritesheet_16x16_220: -1597429237831061909
-      spritesheet_16x16_188: 8243036523572105560
-      spritesheet_16x16_239: -2753453217774113585
-      spritesheet_16x16_77: -5636344014400117891
-      spritesheet_16x16_292: -3157118323034051082
-      spritesheet_16x16_84: 7231568141035219346
-      spritesheet_16x16_39: -1889656418363773286
-      spritesheet_16x16_202: -9106964600407496243
-      spritesheet_16x16_253: 8477827233652008251
-      spritesheet_16x16_251: -1274943549874889476
-      spritesheet_16x16_30: 4671792192571708956
-      spritesheet_16x16_113: -5058030640954945506
-      spritesheet_16x16_118: -4650194416109999676
-      spritesheet_16x16_325: -447984547829001853
-      spritesheet_16x16_182: -2650294036199017241
-      spritesheet_16x16_47: 6360341906603698901
-      spritesheet_16x16_177: -100314041738540394
-      spritesheet_16x16_312: -5026235083283132322
-      spritesheet_16x16_87: 4815795463852020569
-      spritesheet_16x16_316: 515110446498329835
-      Head1: -8930743284929476645
-      Head2: 9130334741533069595
-      spritesheet_16x16_145: 133436814551778994
-      spritesheet_16x16_281: 7910086774954668247
-      spritesheet_16x16_313: 5368604999866498816
-      spritesheet_16x16_209: -5088558624430498682
-      spritesheet_16x16_329: -1246548991035559906
-      spritesheet_16x16_297: -5500346039070275411
-      spritesheet_16x16_192: 4708332904257470256
-      spritesheet_16x16_311: -4071236212980727663
-      spritesheet_16x16_9: -9195710096929781329
-      spritesheet_16x16_45: -2638949242372396714
-      spritesheet_16x16_80: -4790839912641102173
-      spritesheet_16x16_319: -388937191996292399
-      spritesheet_16x16_348: -6141275665157068670
-      spritesheet_16x16_293: -8760584606742648236
-      spritesheet_16x16_236: -9091143503784967429
-      spritesheet_16x16_108: 6934021142646326024
-      spritesheet_16x16_94: 3331495120365696307
-      spritesheet_16x16_3: 5367102645604608502
-      spritesheet_16x16_19: 3216130968448647181
-      spritesheet_16x16_96: -1822660361351376804
-      spritesheet_16x16_72: -1566905376343170664
-      spritesheet_16x16_261: 340633971145703101
-      spritesheet_16x16_347: 6204880252582584907
-      spritesheet_16x16_44: -2025723501205953700
-      spritesheet_16x16_194: -127847099825400749
-      spritesheet_16x16_148: 2808185447293992086
-      spritesheet_16x16_68: 4042519114044362358
-      spritesheet_16x16_214: -8369300427453070293
-      spritesheet_16x16_210: -5660408031851104282
-      spritesheet_16x16_25: -3528320432291363372
-      spritesheet_16x16_279: -7235800306986772316
-      spritesheet_16x16_298: -7407871054792768285
-      spritesheet_16x16_157: -778127625166385926
-      spritesheet_16x16_181: 2259017855881038974
-      spritesheet_16x16_318: 408326201073813398
-      spritesheet_16x16_33: -5757476064424775058
-      spritesheet_16x16_294: 1378867303504203830
-      spritesheet_16x16_35: -6155865623287860420
-      spritesheet_16x16_338: -1293132741933517604
-      spritesheet_16x16_89: -8629314810023590244
-      spritesheet_16x16_225: 5795891398519726300
-      spritesheet_16x16_179: 8190965288179806410
-      spritesheet_16x16_183: -5991502738490247151
-      spritesheet_16x16_211: -7482468546301326998
-      spritesheet_16x16_327: 4540322775123472492
-      spritesheet_16x16_212: 2802648277527392637
-      spritesheet_16x16_245: 1441400051593580635
-      spritesheet_16x16_104: 5600030520023959508
-      spritesheet_16x16_234: -52939836716695331
-      spritesheet_16x16_14: 8221628451177193175
-      spritesheet_16x16_137: -4675223355382066839
-      spritesheet_16x16_64: 4679557916695401523
-      Gold: -3282236179042937268
-      spritesheet_16x16_196: 1348651423337023527
-      spritesheet_16x16_23: -1541218532963897780
-      spritesheet_16x16_169: -5942131115258548395
-      spritesheet_16x16_139: 7729234919768959484
-      spritesheet_16x16_190: -977123250118855242
-      spritesheet_16x16_115: -1313699053837631898
-      spritesheet_16x16_321: -5729508513982410058
-      spritesheet_16x16_320: -6504812609700180607
-      spritesheet_16x16_58: -4087969783484496749
-      spritesheet_16x16_101: 2881381650908986851
-      spritesheet_16x16_232: 2573672776319594838
-      spritesheet_16x16_149: 3433883461839653994
-      spritesheet_16x16_56: 7022708997075412171
-      spritesheet_16x16_85: 1881877419139861821
-      spritesheet_16x16_75: 293966502587656957
-      spritesheet_16x16_324: 7399698837982395578
-      spritesheet_16x16_154: 499183513860081706
-      Ruby Shield: 458053287860756818
-      spritesheet_16x16_67: 7937016989916433210
-      spritesheet_16x16_219: 6574243036321251370
-      spritesheet_16x16_303: -28586320690754342
-      spritesheet_16x16_317: -5548529015185944672
-      spritesheet_16x16_27: -2144243883996313047
-      spritesheet_16x16_277: -1634793333432363222
-      spritesheet_16x16_269: 4422116295973203241
-      spritesheet_16x16_308: 6034871821907351378
-      spritesheet_16x16_314: 6984946802669619064
-      spritesheet_16x16_26: 2544454699952110515
-      spritesheet_16x16_284: 2392997192712688753
-      spritesheet_16x16_187: -8608642915253106854
-      spritesheet_16x16_238: -3053217982843643606
-      spritesheet_16x16_349: 7134318060516000048
-      spritesheet_16x16_57: -5973716601481167368
-      spritesheet_16x16_158: -1551652896029731425
-      spritesheet_16x16_119: 1058496470708151085
+      spritesheet_16x16_220: 8243036523572105560
+      spritesheet_16x16_188: -2753453217774113585
+      spritesheet_16x16_239: -5636344014400117891
+      spritesheet_16x16_77: -3157118323034051082
+      Wooden Boots: 1950767155518941465
+      spritesheet_16x16_292: 7231568141035219346
+      spritesheet_16x16_84: -1889656418363773286
+      spritesheet_16x16_39: -9106964600407496243
+      spritesheet_16x16_202: 8477827233652008251
+      spritesheet_16x16_253: -1274943549874889476
+      spritesheet_16x16_251: 4671792192571708956
+      spritesheet_16x16_30: -5058030640954945506
+      spritesheet_16x16_113: -4650194416109999676
+      spritesheet_16x16_118: -447984547829001853
+      spritesheet_16x16_325: -2650294036199017241
+      spritesheet_16x16_47: -100314041738540394
+      spritesheet_16x16_177: -5026235083283132322
+      spritesheet_16x16_312: 4815795463852020569
+      spritesheet_16x16_87: 515110446498329835
+      spritesheet_16x16_316: -8930743284929476645
+      Head1: 9130334741533069595
+      Head2: 133436814551778994
+      spritesheet_16x16_145: 7910086774954668247
+      spritesheet_16x16_281: 5368604999866498816
+      spritesheet_16x16_313: -5088558624430498682
+      spritesheet_16x16_209: -1246548991035559906
+      spritesheet_16x16_329: -5500346039070275411
+      spritesheet_16x16_297: 4708332904257470256
+      spritesheet_16x16_192: -4071236212980727663
+      spritesheet_16x16_311: -9195710096929781329
+      spritesheet_16x16_9: -2638949242372396714
+      spritesheet_16x16_45: -4790839912641102173
+      spritesheet_16x16_80: -388937191996292399
+      spritesheet_16x16_319: -6141275665157068670
+      spritesheet_16x16_348: -8760584606742648236
+      spritesheet_16x16_293: -9091143503784967429
+      spritesheet_16x16_236: 6934021142646326024
+      spritesheet_16x16_108: 3331495120365696307
+      Wooden Gloves: 6554923970561247729
+      spritesheet_16x16_94: 5367102645604608502
+      spritesheet_16x16_19: -1822660361351376804
+      spritesheet_16x16_96: -1566905376343170664
+      spritesheet_16x16_72: 340633971145703101
+      spritesheet_16x16_261: 6204880252582584907
+      spritesheet_16x16_347: -2025723501205953700
+      spritesheet_16x16_44: -127847099825400749
+      spritesheet_16x16_194: 2808185447293992086
+      spritesheet_16x16_148: 4042519114044362358
+      spritesheet_16x16_68: -8369300427453070293
+      spritesheet_16x16_214: -5660408031851104282
+      spritesheet_16x16_210: -3528320432291363372
+      spritesheet_16x16_25: -7235800306986772316
+      spritesheet_16x16_279: -7407871054792768285
+      spritesheet_16x16_298: -778127625166385926
+      spritesheet_16x16_157: 2259017855881038974
+      spritesheet_16x16_181: 408326201073813398
+      spritesheet_16x16_318: -5757476064424775058
+      spritesheet_16x16_33: 1378867303504203830
+      spritesheet_16x16_294: -6155865623287860420
+      spritesheet_16x16_35: -1293132741933517604
+      Diamond Boots: -4059254120870841877
+      spritesheet_16x16_338: -8629314810023590244
+      spritesheet_16x16_89: 5795891398519726300
+      spritesheet_16x16_225: 8190965288179806410
+      spritesheet_16x16_179: -5991502738490247151
+      spritesheet_16x16_211: 4540322775123472492
+      spritesheet_16x16_327: 2802648277527392637
+      spritesheet_16x16_212: 1441400051593580635
+      spritesheet_16x16_245: 5600030520023959508
+      spritesheet_16x16_104: -52939836716695331
+      spritesheet_16x16_234: 8221628451177193175
+      spritesheet_16x16_14: -4675223355382066839
+      spritesheet_16x16_137: 4679557916695401523
+      spritesheet_16x16_321: -6504812609700180607
+      Gold: 1348651423337023527
+      spritesheet_16x16_196: -1541218532963897780
+      spritesheet_16x16_23: -5942131115258548395
+      spritesheet_16x16_169: 7729234919768959484
+      spritesheet_16x16_139: -977123250118855242
+      spritesheet_16x16_190: -1313699053837631898
+      spritesheet_16x16_115: -5729508513982410058
+      spritesheet_16x16_320: -4087969783484496749
+      spritesheet_16x16_58: 2881381650908986851
+      spritesheet_16x16_101: 2573672776319594838
+      spritesheet_16x16_232: 3433883461839653994
+      spritesheet_16x16_149: 7022708997075412171
+      spritesheet_16x16_56: 1881877419139861821
+      spritesheet_16x16_85: 293966502587656957
+      spritesheet_16x16_75: 7399698837982395578
+      spritesheet_16x16_324: 499183513860081706
+      spritesheet_16x16_154: 458053287860756818
+      Ruby Shield: 7937016989916433210
+      spritesheet_16x16_219: -28586320690754342
+      spritesheet_16x16_303: -5548529015185944672
+      spritesheet_16x16_317: -2144243883996313047
+      spritesheet_16x16_27: -1634793333432363222
+      spritesheet_16x16_277: 4422116295973203241
+      spritesheet_16x16_269: 6034871821907351378
+      spritesheet_16x16_308: 6984946802669619064
+      spritesheet_16x16_314: 2544454699952110515
+      spritesheet_16x16_26: 2392997192712688753
+      spritesheet_16x16_284: -8608642915253106854
+      spritesheet_16x16_187: -3053217982843643606
+      spritesheet_16x16_238: 7134318060516000048
+      spritesheet_16x16_349: -5973716601481167368
+      spritesheet_16x16_57: -1551652896029731425
+      spritesheet_16x16_158: 1058496470708151085
+      spritesheet_16x16_119: 4674224726878878948
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
