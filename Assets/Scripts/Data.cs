@@ -83,7 +83,7 @@ public static class Data
                 }
                 else
                 {
-                    slot.item = Database.Instance.itemDatabase.GetItemById(saveItem.ID).GetCopy();
+                    slot.item = Database.data.GetItemById(saveItem.ID).GetCopy();
                     slot.amount = saveItem.amount;
                 }
             }
@@ -105,7 +105,7 @@ public static class Data
                 }
                 else
                 {
-                    slot.item = (Equipment)Database.Instance.itemDatabase.GetItemById(saveItem.ID).GetCopy();
+                    slot.item = (Equipment)Database.data.GetItemById(saveItem.ID).GetCopy();
                 }
             }
             file.Close();

@@ -9,7 +9,7 @@ public class PlayerEquipment : MonoBehaviour
 
     public EquipmentSlot[] slots;
     [SerializeField] private Transform equipmentParent;
-    [SerializeField] private PlayerHUD hud;
+    [SerializeField] private PlayerUI hud;
 
     void Awake()
     {

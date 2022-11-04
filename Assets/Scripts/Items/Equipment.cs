@@ -8,13 +8,13 @@ public class Equipment : Item
     public EquipmentRarity rarity;
     public int lvlRequired = 1;
     public int grade = 0;
-    public Grade[] normalUpgrades;
+    public Grade[] normalGrades;
 
     [Header("Armor and Weapon")]
     public int extremeGrade = 0;
-    public Grade[] extremeUpgrades;
+    public Grade[] extremeGrades;
     public int divineGrade = 0;
-    public Grade[] divineUpgrades;
+    public Grade[] divineGrades;
     public int slots = 2;
     public int maxSlots = 3;
     public ItemStat[] slotStats = new ItemStat[3];
@@ -30,9 +30,9 @@ public class Equipment : Item
     public int[] upgradePrices;
     public float upgradeMultiplier;
 
-    public ItemStat[] CurrentNormalStats(){ return normalUpgrades[grade].stats; }
-    public ItemStat[] CurrentExtremeStats() { return extremeUpgrades[grade].stats; }
-    public ItemStat[] CurrentDivineStats() { return divineUpgrades[grade].stats; }
+    public ItemStat[] CurrentNormalStats(){ return normalGrades[grade].stats; }
+    public ItemStat[] CurrentExtremeStats() { return extremeGrades[grade].stats; }
+    public ItemStat[] CurrentDivineStats() { return divineGrades[grade].stats; }
 
     public override Item GetCopy()
     {
@@ -41,7 +41,7 @@ public class Equipment : Item
 
     public void AddStats(PlayerData data)
     {
-        foreach(ItemStat stat in normalUpgrades[grade].stats)
+        foreach(ItemStat stat in normalGrades[grade].stats)
         {
             switch (stat.stat)
             {
@@ -66,7 +66,7 @@ public class Equipment : Item
 
     public void RemoveStats(PlayerData data)
     {
-        foreach (ItemStat stat in normalUpgrades[grade].stats)
+        foreach (ItemStat stat in normalGrades[grade].stats)
         {
             switch (stat.stat)
             {
@@ -104,7 +104,7 @@ public class Equipment : Item
     public void Upgrade()
     {
         grade++;
-        if (grade == normalUpgrades.Length)
+        if (grade == normalGrades.Length)
             canBeUpgraded = false;
     }
 }

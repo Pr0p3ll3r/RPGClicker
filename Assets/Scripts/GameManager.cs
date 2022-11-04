@@ -4,6 +4,7 @@ using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.FilePathAttribute;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,12 +18,13 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = Screen.currentResolution.refreshRate;
     }
 
-    private Player player;
-    private Enemy enemy;
-    [SerializeField] private GameObject inventoryPanel;
+    private Player Player => Player.Instance;
+    private Enemy Enemy => Enemy.Instance;
     [SerializeField] private Transform lootList;
-    [SerializeField] private Animation textAnimation;
+    [SerializeField] private Animation popupText;
     [SerializeField] private GameObject exitBox;
+    [SerializeField] private DatabaseSO database;
+    [SerializeField] private TextMeshProUGUI locationName;
 
     int fingerCount;
     bool screenPressed = false;
@@ -32,19 +34,23 @@ public class GameManager : MonoBehaviour
 
     [Header("Panels")]
     [SerializeField] private GameObject mainPanel;
-    [SerializeField] private GameObject statsPanel;
     [SerializeField] private GameObject playerPanel;
     [SerializeField] private GameObject townPanel;
-    [SerializeField] private GameObject locationPanel;
+    [SerializeField] private GameObject adventurePanel;
     [SerializeField] private GameObject petsPanel;
     [SerializeField] private GameObject armoryPanel;
     [SerializeField] private GameObject towerPanel;
 
-    [Header("Location")]
+    [Header("Adventure")]
     [SerializeField] private GameObject locationPrefab;
     [SerializeField] private Transform locationList;
-    [SerializeField] private Transform bossList;
+    [SerializeField] private Transform dungeonsList;
     [SerializeField] private GameObject dropInfo;
+
+    [SerializeField] private GameObject locationPanel;
+    [SerializeField] private GameObject dungeonPanel;
+    [SerializeField] private Button locationButton;
+    [SerializeField] private Button dungeonButton;
 
     [Header("Pet")]
     [SerializeField] private Pet pet;
@@ -53,35 +59,37 @@ public class GameManager : MonoBehaviour
     [Header("Poolers")]
     public ObjectPooler damagePopupPooler;
 
-    private int maxPets = 8;
+    private int maxPets = 2;
     private int nextPetIndex = 0;
     private Location currentLocation;
+    private Location previousLocation;
 
-    void Start()
+    private void Start()
     {
-        player = Player.Instance;
-        player.data = new PlayerData();
-        enemy = Enemy.Instance;
+        Player.data = new PlayerData();
+        Database.data = database;
 
         ClearLootList();
 
         mainPanel.SetActive(true);
         playerPanel.SetActive(false);
         townPanel.SetActive(false);
-        statsPanel.SetActive(false);
-        locationPanel.SetActive(false);
+        adventurePanel.SetActive(false);
         petsPanel.SetActive(false);
         armoryPanel.SetActive(false);
         towerPanel.SetActive(false);
 
+        ChangeLocation(Database.data.locations[0]);
         CreateLocationList();
-        currentLocation = Database.Locations[0];
-        enemy.SetUp(currentLocation.enemies[0].GetCopy());
+        CloseAdventurePanels();
+        locationPanel.SetActive(true);
+        locationButton.onClick.AddListener(delegate { CloseAdventurePanels(); locationPanel.SetActive(true); });
+        dungeonButton.onClick.AddListener(delegate { CloseAdventurePanels(); dungeonPanel.SetActive(true); });
 
         Data.Load();
     }
 
-    void Update()
+    private void Update()
     {
         //if (screenPressed)
         //{
@@ -119,10 +127,10 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        player.Reward(enemy.exp, enemy.gold);
+        Player.Reward(enemy.exp, enemy.gold);
     }
 
-    void ClearLootList()
+    private void ClearLootList()
     {
         foreach (Transform lootSlot in lootList.transform)
         {
@@ -133,10 +141,10 @@ public class GameManager : MonoBehaviour
 
     public void ShowText(string text, Color color)
     {
-        textAnimation.GetComponent<TextMeshProUGUI>().text = text;
-        textAnimation.GetComponent<TextMeshProUGUI>().color = color;
-        textAnimation.Stop();
-        textAnimation.Play();
+        popupText.GetComponentInChildren<TextMeshProUGUI>().text = text;
+        popupText.GetComponentInChildren<TextMeshProUGUI>().color = color;
+        popupText.Stop();
+        popupText.Play();
     }
 
     public void CheckFingers()
@@ -149,30 +157,20 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void ShowInventory()
-    {
-        inventoryPanel.SetActive(true);
-    }
-
-    public void ShowStats()
-    {
-        statsPanel.SetActive(true);
-    }
-
-    public void ShowLocations()
-    {
-        locationPanel.SetActive(true);
-        locationPanel.transform.GetChild(1).gameObject.SetActive(true);
-    }
-
     public void ShowArmory()
     {
         armoryPanel.SetActive(true);
     }
 
-    void CreateLocationList()
+    private void CloseAdventurePanels()
     {
-        foreach (Location location in Database.Locations)
+        locationPanel.SetActive(false);
+        dungeonPanel.SetActive(false);
+    }
+
+    private void CreateLocationList()
+    {
+        foreach (Location location in Database.data.locations)
         {
             GameObject locationGO = Instantiate(locationPrefab, locationList);
             locationGO.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = location.name;
@@ -181,54 +179,46 @@ public class GameManager : MonoBehaviour
             locationGO.transform.Find("Unlock").gameObject.SetActive(false);
             locationGO.transform.Find("Unlock/ButtonUnlock").GetComponent<Button>().onClick.AddListener(delegate { UnlockLocation(location); });
             locationGO.GetComponent<Button>().interactable = false;
-            RefreshLocationList();
         }
 
-        foreach (Location boss in Database.Bosses)
+        foreach (Location dungeon in Database.data.dungeons)
         {
-            if (!boss.discovered) continue;
-
-            GameObject bossGO = Instantiate(locationPrefab, bossList);
-            bossGO.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = boss.name;
-            bossGO.transform.Find("Unlock/Price").GetComponent<TextMeshProUGUI>().text = $"{boss.price}";
-            bossGO.GetComponent<Button>().onClick.AddListener(delegate { ChangeLocation(boss); });
-            bossGO.transform.Find("Unlock").gameObject.SetActive(false);
-            bossGO.transform.Find("Unlock/ButtonUnlock").GetComponent<Button>().onClick.AddListener(delegate { UnlockLocation(boss); });
-            bossGO.GetComponent<Button>().interactable = false;
-            RefreshLocationList();
+            GameObject bossGO = Instantiate(locationPrefab, dungeonsList);
+            bossGO.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = dungeon.name;
+            bossGO.transform.Find("Unlock/Price").GetComponent<TextMeshProUGUI>().text = $"{dungeon.price}";
+            bossGO.GetComponent<Button>().onClick.AddListener(delegate { EnterDungeon(dungeon); });
+            bossGO.transform.Find("Unlock").gameObject.SetActive(true);
+            bossGO.transform.Find("Unlock/ButtonUnlock").gameObject.SetActive(false);
         }
+
+        RefreshLocationList();
     }
 
-    void RefreshLocationList()
+    private void RefreshLocationList()
     {
         for (int i = 0; i < locationList.childCount; i++)
         {
-            if (Database.Locations[i].unlocked)
+            if (Database.data.locations[i].unlocked)
                 locationList.GetChild(i).GetComponent<Button>().interactable = true;
-            else if (Database.Locations[i].discovered)
+            else
                 locationList.GetChild(i).transform.Find("Unlock").gameObject.SetActive(true);
 
-            if(currentLocation == Database.Locations[i])
+            if(currentLocation == Database.data.locations[i])
                 locationList.GetChild(i).GetComponent<Button>().interactable = false;
         }
 
-        for (int i = 0; i < bossList.childCount; i++)
+        for (int i = 0; i < dungeonsList.childCount; i++)
         {
-            if (Database.Locations[i].unlocked)
-                bossList.GetChild(i).GetComponent<Button>().interactable = true;
-            else if (Database.Locations[i].discovered)
-                bossList.GetChild(i).transform.Find("Unlock").gameObject.SetActive(true);
-
-            if (currentLocation == Database.Locations[i])
-                bossList.GetChild(i).GetComponent<Button>().interactable = false;
+            if (currentLocation == Database.data.dungeons[i])
+                dungeonsList.GetChild(i).GetComponent<Button>().interactable = false;
         }
     }
-    
-    void UnlockLocation(Location location)
+
+    private void UnlockLocation(Location location)
     {
         if(!PlayerInventory.Instance.CheckGold(location.price))
         {
-            //show some notification, Not enough gold!
+            ShowText("Not enough gold!", Color.red);
         }
         else
         {
@@ -237,14 +227,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void ChangeLocation(Location newLocation)
+    private void EnterDungeon(Location dungeon)
     {
+        if (!PlayerInventory.Instance.CheckGold(dungeon.price))
+        {
+            ShowText("Not enough gold!", Color.red);
+        }
+        else
+        {
+            ChangeLocation(dungeon);
+        }
+    }
+
+    private void ChangeLocation(Location newLocation)
+    {
+        previousLocation = currentLocation;
         currentLocation = newLocation;
+        locationName.text = currentLocation.name;
+        adventurePanel.SetActive(false);
 
         if (newLocation.bossDefeated)
-            enemy.SetUp(NextEnemy());
+            Enemy.SetUp(NextEnemy());
         else
-            enemy.SetUp(newLocation.boss);
+            Enemy.SetUp(newLocation.boss);
     }
 
     public EnemyData NextEnemy()
@@ -278,8 +283,8 @@ public class GameManager : MonoBehaviour
         int petsCount = Player.Instance.myPets.Count;
         if (petsCount == maxPets)
         {
-            textAnimation.GetComponent<TextMeshProUGUI>().text = "You can't have more pets";
-            textAnimation.Play();
+            popupText.GetComponent<TextMeshProUGUI>().text = "You can't have more pets";
+            popupText.Play();
             return;
         }
         PlayerInventory.Instance.RefreshUI();
@@ -310,7 +315,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void LoadPets()
+    private void LoadPets()
     {
         foreach (Pet pet in Player.Instance.myPets)
         {
@@ -321,7 +326,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void ShowPetInfo(Pet pet)
+    private void ShowPetInfo(Pet pet)
     {
 
     }

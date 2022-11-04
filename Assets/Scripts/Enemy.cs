@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private Image look;
     [SerializeField] private TextMeshProUGUI enemyName;
-    [SerializeField] private Animation anim;
+    [SerializeField] private Animator animator;
     public EnemyData data;
     [SerializeField] private Image healthBar;
 
@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
     public void SetUp(EnemyData newEnemy)
     {
         StopAllCoroutines();
-        anim.Play("EnemyIn");
+        animator.Play("EnemyIn");
         triggered = false;
         data = newEnemy;
         currentHealth = data.health;
@@ -63,7 +63,7 @@ public class Enemy : MonoBehaviour
         if (!spawned && IsDead) return;
 
         currentHealth -= damage;
-        anim.Play("EnemyHit");
+        animator.Play("EnemyHit", -1, 0f);
         UpdateHealthBar();
         triggered = true;
 
@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour
             GameManager.Instance.Reward(data);
             triggered = false;
             spawned = false;
-            anim.Play("EnemyOut");         
+            animator.Play("EnemyOut");
         }
     }
 

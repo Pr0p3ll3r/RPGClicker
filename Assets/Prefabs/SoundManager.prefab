@@ -44,4 +44,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4e42cc9ba1e42499f7c624e541bd85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: Hit
+    clip: {fileID: 8300000, guid: 37c9133889e2bfc4296ead93a281acc2, type: 3}
+    mixer: {fileID: -6519579120896787049, guid: 562f33b73e73c5a4d906e62d245f849e, type: 2}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: PlayerHurt
+    clip: {fileID: 8300000, guid: e53793f5440bb924ab6808f0f8164837, type: 3}
+    mixer: {fileID: -6519579120896787049, guid: 562f33b73e73c5a4d906e62d245f849e, type: 2}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: Click
+    clip: {fileID: 8300000, guid: 1e7a587164fcbef45b40536469e6c432, type: 3}
+    mixer: {fileID: -6519579120896787049, guid: 562f33b73e73c5a4d906e62d245f849e, type: 2}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}

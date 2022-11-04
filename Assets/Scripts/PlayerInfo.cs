@@ -15,21 +15,22 @@ public class PlayerInfo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI strength;
     [SerializeField] private TextMeshProUGUI intelligence;
     [SerializeField] private TextMeshProUGUI dexterity;
-    [SerializeField] private GameObject playerUI;
     [SerializeField] private Button[] statsButtons;
 
-    private Player player;
+    private Player Player => Player.Instance;
 
     private void Start()
     {
-        playerUI.SetActive(false);
-        player = GetComponent<Player>();
         RefreshStats();
+
+        statsButtons[0].onClick.AddListener(delegate { Player.data.AddStrength(); RefreshStats(); });
+        statsButtons[1].onClick.AddListener(delegate { Player.data.AddIntelligence(); RefreshStats(); });
+        statsButtons[2].onClick.AddListener(delegate { Player.data.AddDexterity(); RefreshStats(); });
     }
 
-    void CheckPoints()
+    private void CheckPoints()
     {
-        if (player.data.remainPoints > 0)
+        if (Player.data.remainingPoints > 0)
         {
             foreach (Button b in statsButtons)
             {
@@ -47,14 +48,15 @@ public class PlayerInfo : MonoBehaviour
 
     public void RefreshStats()
     {
-        lvl.text = $"{player.data.level}";
-        damage.text = $"{player.data.damage.GetValue()}";
-        defense.text = $"{player.data.defense.GetValue()}";
-        health.text = $"{player.data.maxHealth.GetValue()}";
-        critDamage.text = $"{player.data.criticalDamage.GetValue()}%";
-        critRate.text = $"{player.data.criticalRate.GetValue()}%";
-        strength.text = $"{player.data.strength.GetValue()}";
-        intelligence.text = $"{player.data.intelligence.GetValue()}";
-        dexterity.text = $"{player.data.dexterity.GetValue()}";
+        lvl.text = $"{Player.data.level}";
+        damage.text = $"{Player.data.damage.GetValue()}";
+        defense.text = $"{Player.data.defense.GetValue()}";
+        health.text = $"{Player.data.maxHealth.GetValue()}";
+        critDamage.text = $"{Player.data.criticalDamage.GetValue()}%";
+        critRate.text = $"{Player.data.criticalRate.GetValue()}%";
+        strength.text = $"{Player.data.strength.GetValue()}";
+        intelligence.text = $"{Player.data.intelligence.GetValue()}";
+        dexterity.text = $"{Player.data.dexterity.GetValue()}";
+        CheckPoints();
     }
 }

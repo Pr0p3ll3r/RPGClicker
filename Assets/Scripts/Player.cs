@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
 
     public PlayerData data = new PlayerData();
 
-    private PlayerHUD hud;
+    private PlayerUI hud;
     private LevelSystem ls;
     private GameManager gameManager => GameManager.Instance;
     private PlayerEquipment Equipment => PlayerEquipment.Instance;
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        hud = GetComponent<PlayerHUD>();
+        hud = GetComponent<PlayerUI>();
         playerInfo = GetComponent<PlayerInfo>();
         ls = GetComponent<LevelSystem>();
         //RefreshPlayer();

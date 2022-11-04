@@ -9,7 +9,6 @@ public class EnemyData : ScriptableObject
 {
     public Sprite look;
     public string enemyName;
-    public EnemyType enemyType;
     public int level = 1;
 
     public int health = 10;
@@ -22,18 +21,11 @@ public class EnemyData : ScriptableObject
     public int gold;
     public Loot[] loot;
     public int possibleRarity;
-    public bool towerEnemy = false;
-    public Location bossLocation;
+    public bool isTowerEnemy = false;
+    public bool isBoss = false;
 
     public EnemyData GetCopy()
     {
         return Instantiate(this);
     }
-}
-
-public enum EnemyType
-{
-    Melee,
-    Range,
-    Boss
 }

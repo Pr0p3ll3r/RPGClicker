@@ -9,7 +9,7 @@ public class PlayerData
 
     public int level;
     public int exp;
-    public int remainPoints;
+    public int remainingPoints;
     public Stat strength;
     public Stat intelligence;
     public Stat dexterity;
@@ -30,7 +30,7 @@ public class PlayerData
         nickname = "BOB";
         level = 1;
         exp = 0;
-        remainPoints = 0;
+        remainingPoints = 0;
         strength = new Stat(0);
         intelligence = new Stat(0);
         dexterity = new Stat(0);
@@ -38,10 +38,29 @@ public class PlayerData
         defense = new Stat(0);
         maxHealth = new Stat(10);
         currentHealth = maxHealth.GetValue();
-        criticalDamage = new Stat(50);
+        criticalDamage = new Stat(20);
         criticalRate = new Stat(5);
         maxCriticalRate = new Stat(50);
         hardcore = false;
         currentTowerLevel = 0;
+    }
+
+    public void AddStrength()
+    {
+        strength.AddModifier(1);
+        damage.AddModifier(1);
+    }
+
+    public void AddIntelligence()
+    {
+        intelligence.AddModifier(1);
+        maxHealth.AddModifier(1);
+    }
+
+    public void AddDexterity()
+    {
+        dexterity.AddModifier(1);
+        defense.AddModifier(1);
+        //add accuracy?
     }
 }

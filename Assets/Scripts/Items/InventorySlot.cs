@@ -22,7 +22,7 @@ public class InventorySlot : MonoBehaviour
     {
         item = _item;
         quantity.text = amount.ToString();
-        icon.sprite = Database.Instance.itemDatabase.items[item.ID].icon;
+        icon.sprite = Database.data.items[item.ID].icon;
         icon.enabled = true;
 
         if (amount <= 1) quantity.gameObject.SetActive(false);

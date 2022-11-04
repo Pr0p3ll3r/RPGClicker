@@ -23,7 +23,7 @@ public class EquipmentSlot : MonoBehaviour
         item = _item;
         icon.enabled = true;   
         icon.raycastTarget = true;
-        icon.sprite = Database.Instance.itemDatabase.GetItemById(_item.ID).icon;                 
+        icon.sprite = Database.data.GetItemById(_item.ID).icon;                 
     }
 
     public void ClearSlot()
