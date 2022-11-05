@@ -4,13 +4,13 @@ using UnityEngine;
 
 public static class Utils
 {
-    public static int GetStat(Stats stat, ItemStat[] stats)
+    public static int GetStat(Stats stat, ItemStat[] stats, int grade)
     {
         foreach(ItemStat _stat in stats)
         {
             if(_stat.stat == stat)
             {
-                return _stat.currentValue;
+                return _stat.values[grade];
             }
         }
         return 0;

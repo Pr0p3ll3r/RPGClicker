@@ -21,11 +21,37 @@ MonoBehaviour:
   stackable: 0
   price: 0
   equipmentTypeSlot: 5
-  equipmentType: 0
   rarity: 0
-  stats: []
   lvlRequired: 1
-  lvl: 0
+  grade: 0
+  normalGrades:
+  - level: 1
+    stats:
+    - stat: 1
+      name: Defense
+      currentValue: 0
+      values: 0100000003000000
+  extremeGrade: 0
+  extremeGrades: []
+  divineGrade: 0
+  divineGrades: []
+  slots: 2
+  maxSlots: 3
+  slotStats:
+  - stat: 0
+    name: 
+    currentValue: 0
+    values: 0000000000000000000000000000000000000000
+  - stat: 0
+    name: 
+    currentValue: 0
+    values: 0000000000000000000000000000000000000000
+  - stat: 0
+    name: 
+    currentValue: 0
+    values: 0000000000000000000000000000000000000000
+  chaosGrade: 0
+  chaosUpgrades: []
   canBeSold: 0
   canBeUpgraded: 0
   startPrice: 0

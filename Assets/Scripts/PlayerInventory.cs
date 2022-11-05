@@ -89,6 +89,12 @@ public class PlayerInventory : MonoBehaviour
         RefreshUI();
     }
 
+    public void AddGold(int amount)
+    {
+        data.gold += amount;
+        goldText.text = data.gold.ToString();
+    }
+
     public void RemoveItem(Item _item, int amount)
     {
         foreach (InventorySlot slot in slots)

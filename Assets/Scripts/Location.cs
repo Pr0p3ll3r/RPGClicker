@@ -9,6 +9,7 @@ public class Location : ScriptableObject
     public int price = 1;
     public bool unlocked = false;
     public bool bossDefeated = false;
+    public bool isDungeon = false;
     public EnemyData[] enemies;
     public EnemyData boss;
 }

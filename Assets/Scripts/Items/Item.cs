@@ -34,15 +34,6 @@ public class Loot
 }
 
 [System.Serializable]
-public class ItemStat
-{
-	public Stats stat;
-	public string name;
-	public int currentValue;
-	public int[] values = new int[5];
-}
-
-[System.Serializable]
 public class NeedItem
 {
 	public Item item;

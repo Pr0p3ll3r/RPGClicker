@@ -13,7 +13,8 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private Image expBar;
     [SerializeField] private TextMeshProUGUI expText;
     [SerializeField] private GameObject vignette;
-    [SerializeField] private TextMeshProUGUI deadText;
+    [SerializeField] private GameObject revivePanel;
+    [SerializeField] private TextMeshProUGUI reviveTimer;
 
     [SerializeField] private GameObject statsPanel;
     [SerializeField] private GameObject moreStatsPanel;
@@ -24,10 +25,14 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private Button petsButton;
     [SerializeField] private Button equipmentButton;
 
+    private Player player;
+
     private void Start()
     {
+        player = GetComponent<Player>();
         ClosePanels();
         statsPanel.SetActive(true);
+        revivePanel.SetActive(false);
 
         statsButton.onClick.AddListener(delegate { ClosePanels(); statsPanel.SetActive(true); });
         moreStatsButton.onClick.AddListener(delegate { ClosePanels(); moreStatsPanel.SetActive(true); });
@@ -66,10 +71,25 @@ public class PlayerUI : MonoBehaviour
         StartCoroutine(FadeToZeroAlpha());
     }
 
-    public void ShowDeadText()
+    public void ShowRevivePanel()
     {
-        vignette.GetComponent<CanvasGroup>().alpha = 1f;
-        deadText.text = "YOU ARE DEAD!";
+        revivePanel.SetActive(true);
+        StartCoroutine(Revive(10));
+    }
+
+    private IEnumerator Revive(int value)
+    {
+        reviveTimer.text = value.ToString();
+        yield return new WaitForSeconds(1f);
+        value--;
+        reviveTimer.text = value.ToString();
+        if(value > 0)
+            StartCoroutine(Revive(value));
+        else
+        {
+            revivePanel.SetActive(false);
+            player.Revive();
+        }           
     }
 
     private void ClosePanels()

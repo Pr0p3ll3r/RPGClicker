@@ -1551,10 +1551,10 @@ MonoBehaviour:
   price: {fileID: 2872314614773751465}
   statParent: {fileID: 7964864955137193874}
   statPrefab: {fileID: 5818986949930921085, guid: f211e9d872a2f8e41abf15557f7b7965, type: 3}
-  equipButton: {fileID: 0}
-  UnequipButton: {fileID: 0}
-  sellButton: {fileID: 0}
-  closeButton: {fileID: 0}
+  equipButton: {fileID: 2964312532472834090}
+  unequipButton: {fileID: 480720299656486895}
+  sellButton: {fileID: 1754339253}
+  closeButton: {fileID: 584395898}
 --- !u!222 &386811527
 CanvasRenderer:
   m_ObjectHideFlags: 0

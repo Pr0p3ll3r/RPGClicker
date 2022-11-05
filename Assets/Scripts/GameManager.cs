@@ -258,6 +258,14 @@ public class GameManager : MonoBehaviour
         return currentLocation.enemies[randomEnemy];
     }
 
+    public void PlayerDeath()
+    {
+        if(currentLocation.isDungeon)
+            ChangeLocation(Database.data.locations[0]);
+        else
+            Enemy.SetUp(NextEnemy());
+    }
+
     public void DisplayDropInfo(EnemyData enemy)
     {
         dropInfo.GetComponent<DropInfo>().SetUpInfo(enemy);

@@ -8,11 +8,13 @@ public class LevelSystem : MonoBehaviour
     private int requireExp = 60;
 
     private PlayerUI hud;
+    private PlayerInfo playerInfo;
     private PlayerData data;
 
     private void Start()
     {
         hud = GetComponent<PlayerUI>();
+        playerInfo = GetComponent<PlayerInfo>();
         data = Player.Instance.data;
         requireExp = BASE_REQUIRE_EXP * data.level;
         hud.UpdateLevel(data.level, data.exp, requireExp);
@@ -27,13 +29,14 @@ public class LevelSystem : MonoBehaviour
 
     void CheckLevelUp()
     {
-        if (data.exp >= requireExp)
-        {
-            data.exp -= requireExp;
-            data.level++;
-            requireExp *= 2;
-        }
+        if (data.exp < requireExp) return;
 
+        data.exp -= requireExp;
+        data.level++;
+        data.remainingPoints++;
+        GameManager.Instance.ShowText("Level Up!", Color.green);
+        requireExp *= 2;
+        playerInfo.RefreshStats();
         hud.UpdateLevel(data.level, data.exp, requireExp);
     }
 }

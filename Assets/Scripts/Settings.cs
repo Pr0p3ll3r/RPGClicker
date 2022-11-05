@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
 {
-    public Sprite soundOn, soundOff, vibrationOn, vibrationOff, musicOn, musicOff;
-    public Image soundImage, vibrationImage, musicImage;
-    public AudioMixer audioMixer;
+    [SerializeField] private Sprite soundOn, soundOff, vibrationOn, vibrationOff, musicOn, musicOff;
+    [SerializeField] private Image soundImage, vibrationImage, musicImage;
+    [SerializeField] private AudioMixer audioMixer;
 
     void Start()
     {
@@ -32,8 +32,6 @@ public class Settings : MonoBehaviour
             audioMixer.SetFloat("sfxVolume", 0);
             ChangeSetting("Sounds", 1);
         }
-
-        SoundManager.Instance.Play("Clock");
     }
 
     public void ChangeMusic()
@@ -52,8 +50,6 @@ public class Settings : MonoBehaviour
             audioMixer.SetFloat("musicVolume", 0);
             ChangeSetting("Music", 1);
         }
-
-        SoundManager.Instance.Play("Clock");
     }
 
     public void ChangeVibration()
@@ -70,8 +66,6 @@ public class Settings : MonoBehaviour
             vibrationImage.sprite = vibrationOn;
             ChangeSetting("vibration", 1);
         }
-
-        SoundManager.Instance.Play("Clock");
     }
 
     public static bool GetSetting(string name)

@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
 
     private PlayerInfo playerInfo;
     private Enemy enemy;
-    private bool isDead;
+    public bool IsDead { get; private set; }
 
     private void Start()
     {
@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
 
     public void Attack()
     {
-        if (isDead || enemy.IsDead) return;
+        if (IsDead || enemy.IsDead) return;
 
         int damage = data.damage.GetValue();
         int enemyDefense = enemy.data.defense;
@@ -77,35 +77,38 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (isDead == false)
-        {
-            SoundManager.Instance.Play("PlayerHurt");
-            hud.UpdateHealthBar(data.currentHealth, data.maxHealth.GetValue());
-            hud.ShowVignette();
-            data.currentHealth -= damage;
+        if (IsDead) return;
 
-            if (data.currentHealth <= 0)
-            {
-                Die();
-            }
+        SoundManager.Instance.Play("PlayerHurt");
+        data.currentHealth -= damage;
+        hud.ShowVignette();      
+        hud.UpdateHealthBar(data.currentHealth, data.maxHealth.GetValue());
+
+        if (data.currentHealth <= 0)
+        {
+            Die();
         }
     }
 
     public void Reward(int exp, int gold)
     {
         ls.GetExp(exp);
-        Inventory.data.gold += gold;
+        Inventory.AddGold(gold);
     }
 
     public void Die()
     {
-        if (PlayerPrefs.GetInt("Extra") == 1)
-            SoundManager.Instance.Play("PlayerDeathExtra");
-        else
-            SoundManager.Instance.Play("PlayerDeath");
-        isDead = true;
-        hud.ShowDeadText();
-        //GameManager.Instance.Gameover();
+        //SoundManager.Instance.Play("PlayerDeath");
+        IsDead = true;
+        hud.ShowRevivePanel();
+        GameManager.Instance.PlayerDeath();
+    }
+
+    public void Revive()
+    {
+        IsDead = false;
+        data.currentHealth = data.maxHealth.GetValue();
+        hud.UpdateHealthBar(data.currentHealth, data.maxHealth.GetValue());
     }
 
     public bool Equip(Equipment item, InventorySlot slot)

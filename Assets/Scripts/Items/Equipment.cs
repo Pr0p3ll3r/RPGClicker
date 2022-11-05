@@ -7,32 +7,34 @@ public class Equipment : Item
     public EquipmentType equipmentTypeSlot;
     public EquipmentRarity rarity;
     public int lvlRequired = 1;
-    public int grade = 0;
-    public Grade[] normalGrades;
-
-    [Header("Armor and Weapon")]
-    public int extremeGrade = 0;
-    public Grade[] extremeGrades;
-    public int divineGrade = 0;
-    public Grade[] divineGrades;
-    public int slots = 2;
-    public int maxSlots = 3;
-    public ItemStat[] slotStats = new ItemStat[3];
-
-    [Header("Jewelry")]
-    public int chaosGrade = 0;
-    public Grade[] chaosUpgrades;
-
-    [Header("Shop")]
-    public bool canBeSold;
+    public Grade normalGrade;
     public bool canBeUpgraded;
+    public bool canBeExtremeUpgraded;
+    public bool canBeDivineUpgraded;
+    public bool canBeChaosUpgraded;
+    public bool scrollsCanBeAdded;
     public int startPrice;
     public int[] upgradePrices;
-    public float upgradeMultiplier;
 
-    public ItemStat[] CurrentNormalStats(){ return normalGrades[grade].stats; }
-    public ItemStat[] CurrentExtremeStats() { return extremeGrades[grade].stats; }
-    public ItemStat[] CurrentDivineStats() { return divineGrades[grade].stats; }
+    [Header("Armor and Weapon")]
+    public Grade extremeGrade;
+    public Grade divineGrade;
+    public int scrollSlots = 2;
+    public int maxScrollSlots = 3;
+    public Scroll[] scrolls = new Scroll[3];
+
+    [Header("Jewelry")]
+    public Grade chaosGrade;
+
+    public ItemStat[] CurrentNormalStats() { return normalGrade.stats; }
+    public ItemStat[] CurrentExtremeStats() { return extremeGrade.stats; }
+    public ItemStat[] CurrentDivineStats() { return divineGrade.stats; }
+    public ItemStat[] CurrentChaosStats() { return chaosGrade.stats; }
+
+    private static int MAX_NORMAL_GRADE = 20;
+    private static int MAX_EXTREME_GRADE = 15;
+    private static int MAX_DIVINE_GRADE = 15;
+    private static int MAX_CAHOS_GRADE = 15;
 
     public override Item GetCopy()
     {
@@ -41,24 +43,24 @@ public class Equipment : Item
 
     public void AddStats(PlayerData data)
     {
-        foreach(ItemStat stat in normalGrades[grade].stats)
+        foreach(ItemStat stat in normalGrade.stats)
         {
             switch (stat.stat)
             {
                 case Stats.Damage:
-                    data.damage.AddModifier(stat.currentValue);
+                    data.damage.AddModifier(stat.values[normalGrade.level]);
                     break;
                 case Stats.Defense:
-                    data.defense.AddModifier(stat.currentValue);
+                    data.defense.AddModifier(stat.values[normalGrade.level]);
                     break;
                 case Stats.Health:
-                    data.maxHealth.AddModifier(stat.currentValue);
+                    data.maxHealth.AddModifier(stat.values[normalGrade.level]);
                     break;
                 case Stats.CritDamage:
-                    data.criticalDamage.AddModifier(stat.currentValue);
+                    data.criticalDamage.AddModifier(stat.values[normalGrade.level]);
                     break;
                 case Stats.CritRate:
-                    data.criticalRate.AddModifier(stat.currentValue);
+                    data.criticalRate.AddModifier(stat.values[normalGrade.level]);
                     break;
             }
         }
@@ -66,24 +68,24 @@ public class Equipment : Item
 
     public void RemoveStats(PlayerData data)
     {
-        foreach (ItemStat stat in normalGrades[grade].stats)
+        foreach (ItemStat stat in normalGrade.stats)
         {
             switch (stat.stat)
             {
                 case Stats.Damage:
-                    data.damage.RemoveModifier(stat.currentValue);
+                    data.damage.RemoveModifier(stat.values[normalGrade.level]);
                     break;
                 case Stats.Defense:
-                    data.defense.RemoveModifier(stat.currentValue);
+                    data.defense.RemoveModifier(stat.values[normalGrade.level]);
                     break;
                 case Stats.Health:
-                    data.maxHealth.RemoveModifier(stat.currentValue);
+                    data.maxHealth.RemoveModifier(stat.values[normalGrade.level]);
                     break;
                 case Stats.CritDamage:
-                    data.criticalDamage.RemoveModifier(stat.currentValue);
+                    data.criticalDamage.RemoveModifier(stat.values[normalGrade.level]);
                     break;
                 case Stats.CritRate:
-                    data.criticalRate.RemoveModifier(stat.currentValue);
+                    data.criticalRate.RemoveModifier(stat.values[normalGrade.level]);
                     break;
             }
         }
@@ -93,7 +95,7 @@ public class Equipment : Item
     {
         int sellPrice;
         sellPrice = startPrice;
-        for (int i = 0; i < grade; i++)
+        for (int i = 0; i < normalGrade.level; i++)
         {
             sellPrice += upgradePrices[i];
         }
@@ -103,8 +105,29 @@ public class Equipment : Item
 
     public void Upgrade()
     {
-        grade++;
-        if (grade == normalGrades.Length)
+        normalGrade.level++;
+        if (normalGrade.level == MAX_NORMAL_GRADE)
+            canBeUpgraded = false;
+    }
+
+    public void ExtremeUpgrade()
+    {
+        extremeGrade.level++;
+        if (extremeGrade.level == MAX_EXTREME_GRADE)
+            canBeUpgraded = false;
+    }
+
+    public void DivineUpgrade()
+    {
+        divineGrade.level++;
+        if (divineGrade.level == MAX_DIVINE_GRADE)
+            canBeUpgraded = false;
+    }
+
+    public void ChaosUpgrade()
+    {
+        chaosGrade.level++;
+        if (chaosGrade.level == MAX_CAHOS_GRADE)
             canBeUpgraded = false;
     }
 }
@@ -134,8 +157,16 @@ public enum EquipmentType
 }
 
 [System.Serializable]
+public class ItemStat
+{
+    public Stats stat;
+    public string name;
+    public int[] values;
+}
+
+[System.Serializable]
 public class Grade
 {
     public int level;
-    public ItemStat[] stats;
+    public ItemStat[] stats;  
 }

@@ -22,7 +22,6 @@ public class PlayerData
     public Stat criticalRate;
     public Stat maxCriticalRate;
 
-    public bool hardcore;
     public int currentTowerLevel;
 
     public PlayerData()
@@ -41,24 +40,26 @@ public class PlayerData
         criticalDamage = new Stat(20);
         criticalRate = new Stat(5);
         maxCriticalRate = new Stat(50);
-        hardcore = false;
         currentTowerLevel = 0;
     }
 
     public void AddStrength()
     {
+        remainingPoints--;
         strength.AddModifier(1);
         damage.AddModifier(1);
     }
 
     public void AddIntelligence()
     {
+        remainingPoints--;
         intelligence.AddModifier(1);
         maxHealth.AddModifier(1);
     }
 
     public void AddDexterity()
     {
+        remainingPoints--;
         dexterity.AddModifier(1);
         defense.AddModifier(1);
         //add accuracy?

@@ -19,42 +19,35 @@ MonoBehaviour:
   description: 
   maxInStack: 999
   stackable: 0
-  price: 0
+  price: 123
   equipmentTypeSlot: 0
-  equipmentType: 0
   rarity: 0
   lvlRequired: 1
-  grade: 0
-  normalUpgrades:
-  - level: 0
+  normalGrade:
+    level: 0
     stats:
     - stat: 0
       name: Damage
-      currentValue: 1
-      values: 
-  extremeGrade: 0
-  extremeUpgrades: []
-  divineGrade: 0
-  divineUpgrades: []
-  slots: 2
-  maxSlots: 3
-  slotStats:
-  - stat: 0
-    name: 
-    currentValue: 0
-    values: 0000000000000000000000000000000000000000
-  - stat: 0
-    name: 
-    currentValue: 0
-    values: 0000000000000000000000000000000000000000
-  - stat: 0
-    name: 
-    currentValue: 0
-    values: 0000000000000000000000000000000000000000
-  chaosGrade: 0
-  chaosUpgrades: []
-  canBeSold: 0
-  canBeUpgraded: 0
+      values: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000120000001300000014000000
+  canBeUpgraded: 1
+  canBeExtremeUpgraded: 0
+  canBeDivineUpgraded: 0
+  canBeChaosUpgraded: 0
+  scrollsCanBeAdded: 0
   startPrice: 0
   upgradePrices: 
-  upgradeMultiplier: 0
+  extremeGrade:
+    level: 0
+    stats: []
+  divineGrade:
+    level: 0
+    stats: []
+  scrollSlots: 2
+  maxScrollSlots: 3
+  scrolls:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  chaosGrade:
+    level: 0
+    stats: []
