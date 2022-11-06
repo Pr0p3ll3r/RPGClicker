@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 966419439a071b84a8dfb12b399b23fc, type: 3}
+  m_Name: Blueprint Lava Sword
+  m_EditorClassIdentifier: 
+  ID: 0
+  itemName: Blueprint Lava Sword
+  icon: {fileID: -3785583486000893709, guid: b7fff23f234fd9346978fef62c10f4f2, type: 3}
+  itemType: 0
+  description: 
+  maxInStack: 999
+  stackable: 1
+  price: 0
+  resultItem: {fileID: 11400000, guid: 8e246cfeb2faf034092bb73d478940a0, type: 2}
+  needItems: []

@@ -11,13 +11,6 @@ public class EquipmentSlot : MonoBehaviour
     public Equipment item;
     public EquipmentType equipmentType;
 
-    public bool CanPlaceInSlot(Equipment _item)
-    {
-        if (_item.equipmentTypeSlot == equipmentType)
-            return true;
-        return false;
-    }
-
     public void FillSlot(Equipment _item)
     {
         item = _item;

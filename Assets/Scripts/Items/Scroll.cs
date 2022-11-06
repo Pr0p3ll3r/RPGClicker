@@ -5,5 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Scroll", menuName = "RPG/Items/Scroll")]
 public class Scroll : Item
 {
-    public ItemStat stat;
+    [Header("Scroll")]
+    public Stats stat;
+    public int value;
+
+    public override Item GetCopy()
+    {
+        return Instantiate(this);
+    }
 }

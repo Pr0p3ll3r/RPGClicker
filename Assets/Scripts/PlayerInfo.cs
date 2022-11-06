@@ -12,10 +12,19 @@ public class PlayerInfo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI health;
     [SerializeField] private TextMeshProUGUI critDamage;
     [SerializeField] private TextMeshProUGUI critRate;
+    [SerializeField] private TextMeshProUGUI maxCritRate;
+    [SerializeField] private TextMeshProUGUI accuracy;
+    [SerializeField] private TextMeshProUGUI hpSteal;
+    [SerializeField] private TextMeshProUGUI hpStealLimit;
     [SerializeField] private TextMeshProUGUI strength;
     [SerializeField] private TextMeshProUGUI intelligence;
     [SerializeField] private TextMeshProUGUI dexterity;
     [SerializeField] private Button[] statsButtons;
+
+    [Header("More Stats")]
+    [SerializeField] private TextMeshProUGUI expBonus;
+    [SerializeField] private TextMeshProUGUI goldBonus;
+    [SerializeField] private TextMeshProUGUI twoslotDropBonus;
 
     private Player Player => Player.Instance;
 
@@ -23,9 +32,9 @@ public class PlayerInfo : MonoBehaviour
     {
         RefreshStats();
 
-        statsButtons[0].onClick.AddListener(delegate { Player.data.AddStrength(); RefreshStats(); });
-        statsButtons[1].onClick.AddListener(delegate { Player.data.AddIntelligence(); RefreshStats(); });
-        statsButtons[2].onClick.AddListener(delegate { Player.data.AddDexterity(); RefreshStats(); });
+        statsButtons[0].onClick.AddListener(delegate { Player.data.AddStrength(true, 1); RefreshStats(); });
+        statsButtons[1].onClick.AddListener(delegate { Player.data.AddIntelligence(true, 1); RefreshStats(); });
+        statsButtons[2].onClick.AddListener(delegate { Player.data.AddDexterity(true, 1); RefreshStats(); });
     }
 
     private void CheckPoints()
@@ -54,9 +63,16 @@ public class PlayerInfo : MonoBehaviour
         health.text = $"{Player.data.maxHealth.GetValue()}";
         critDamage.text = $"{Player.data.criticalDamage.GetValue()}%";
         critRate.text = $"{Player.data.criticalRate.GetValue()}%";
+        maxCritRate.text = $"{Player.data.maxCriticalRate.GetValue()}%";
+        accuracy.text = $"{Player.data.accuracy.GetValue()}";
+        hpSteal.text = $"{Player.data.hpSteal.GetValue()}%";
+        hpStealLimit.text = $"{Player.data.hpStealLimit.GetValue()}";
         strength.text = $"{Player.data.strength.GetValue()}";
         intelligence.text = $"{Player.data.intelligence.GetValue()}";
         dexterity.text = $"{Player.data.dexterity.GetValue()}";
+        expBonus.text = $"{Player.data.expBonus.GetValue()}";
+        goldBonus.text = $"{Player.data.goldBonus.GetValue()}";
+        twoslotDropBonus.text = $"{Player.data.twoSlotDropBonus.GetValue()}";
         CheckPoints();
     }
 }

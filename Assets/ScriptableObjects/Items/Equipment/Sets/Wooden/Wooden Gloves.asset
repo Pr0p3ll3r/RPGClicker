@@ -12,48 +12,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc3e9056b2f44744dad1f2b9d3b9b02f, type: 3}
   m_Name: Wooden Gloves
   m_EditorClassIdentifier: 
-  ID: 2
+  ID: 8
   itemName: Wooden Gloves
-  icon: {fileID: 0}
+  icon: {fileID: -1647156419, guid: eff6633938febe54d8ee653b4bbc1199, type: 3}
   itemType: 0
   description: 
-  maxInStack: 999
+  maxInStack: 1
   stackable: 0
   price: 0
   equipmentTypeSlot: 5
   rarity: 0
   lvlRequired: 1
-  grade: 0
-  normalGrades:
-  - level: 1
-    stats:
-    - stat: 1
-      name: Defense
-      currentValue: 0
-      values: 0100000003000000
-  extremeGrade: 0
-  extremeGrades: []
-  divineGrade: 0
-  divineGrades: []
-  slots: 2
-  maxSlots: 3
-  slotStats:
-  - stat: 0
-    name: 
-    currentValue: 0
-    values: 0000000000000000000000000000000000000000
-  - stat: 0
-    name: 
-    currentValue: 0
-    values: 0000000000000000000000000000000000000000
-  - stat: 0
-    name: 
-    currentValue: 0
-    values: 0000000000000000000000000000000000000000
-  chaosGrade: 0
-  chaosUpgrades: []
-  canBeSold: 0
-  canBeUpgraded: 0
+  normalGrade:
+    level: 0
+    stats: []
+  canBeUpgraded: 1
+  canBeExtremeUpgraded: 0
+  canBeDivineUpgraded: 0
+  canBeChaosUpgraded: 0
+  scrollsCanBeAdded: 0
   startPrice: 0
   upgradePrices: 
-  upgradeMultiplier: 0
+  extremeGrade:
+    level: 0
+    stats: []
+  divineGrade:
+    level: 0
+    stats: []
+  scrollSlots: 2
+  maxScrollSlots: 3
+  scrolls:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  chaosGrade:
+    level: 0
+    stats: []

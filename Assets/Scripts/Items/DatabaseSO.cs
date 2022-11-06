@@ -10,6 +10,7 @@ public class DatabaseSO : ScriptableObject, ISerializationCallbackReceiver
     public Location[] dungeons;
     public EquipmentUpgrade[] allUpgradeInfos;
     public EnemyInfo[] TowerEnemies;
+    public RarityBonus[] rarityBonuses;
 
     public void OnBeforeSerialize()
     {     

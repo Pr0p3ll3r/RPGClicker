@@ -423,7 +423,7 @@ TextureImporter:
       213: -3257854411389905029
     second: freeicons_B_preview_139
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -483,6 +483,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -510,6 +511,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -2939,7 +2964,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: freeicons_B_preview_115
+      name: Scroll
       rect:
         serializedVersion: 2
         x: 160
@@ -3477,7 +3502,6 @@ TextureImporter:
       freeicons_B_preview_18: -3982948484520617574
       freeicons_B_preview_31: 8131097660923418796
       freeicons_B_preview_55: -4346121528041701833
-      freeicons_B_preview_123: 3442439215070732205
       freeicons_B_preview_22: -828643614025907126
       Feather: 1172720620965983476
       freeicons_B_preview_121: -6419387925094864883
@@ -3547,6 +3571,7 @@ TextureImporter:
       freeicons_B_preview_114: 4735116663805515644
       freeicons_B_preview_60: 8316762531963529942
       freeicons_B_preview_81: 3422585250441896352
+      Scroll: -3785583486000893709
       freeicons_B_preview_19: 1692126500438349887
       freeicons_B_preview_5: -20376336368184069
       freeicons_B_preview_96: 8856316835257168705
@@ -3578,10 +3603,11 @@ TextureImporter:
       freeicons_B_preview_13: -5312057869411326118
       freeicons_B_preview_11: 660392933895554477
       freeicons_B_preview_92: 2113201968734948746
+      freeicons_B_preview_123: 3442439215070732205
       freeicons_B_preview_37: -2088562773500221768
       freeicons_B_preview_50: 3151063094303211124
-      freeicons_B_preview_77: -1259561684524616564
       freeicons_B_preview_40: -6163887393390385989
+      freeicons_B_preview_77: -1259561684524616564
       freeicons_B_preview_84: 7332323590911105494
       freeicons_B_preview_75: -9127400356360041849
       freeicons_B_preview_79: 8132152013681302206
@@ -3592,9 +3618,8 @@ TextureImporter:
       freeicons_B_preview_137: -3397449354735011370
       freeicons_B_preview_10: 8833964246278792347
       freeicons_B_preview_44: 8665740659666142738
-      freeicons_B_preview_115: -3785583486000893709
-      freeicons_B_preview_124: 5823651387977950969
       freeicons_B_preview_133: -1140847132750177962
+      freeicons_B_preview_124: 5823651387977950969
       freeicons_B_preview_76: -2021633676374537281
       Wood: -437658641771338095
       freeicons_B_preview_49: -5268111798568848370

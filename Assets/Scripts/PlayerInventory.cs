@@ -16,11 +16,11 @@ public class InventoryData
 public class PlayerInventory : MonoBehaviour
 {
     public static PlayerInventory Instance { get; private set; }
-    
+
     public InventorySlot[] slots;
+    [SerializeField] private Transform itemList;
     public InventoryData data = new InventoryData();
     [SerializeField] private List<Item> startingItems = new List<Item>();
-
     [SerializeField] private TextMeshProUGUI goldText;
     [SerializeField] private GameObject equippedItemInfo;
     [SerializeField] private GameObject selectedItemInfo;
@@ -32,7 +32,9 @@ public class PlayerInventory : MonoBehaviour
 
     private void Start()
     {
-        foreach(Item item in startingItems)
+        slots = itemList.GetComponentsInChildren<InventorySlot>();
+
+        foreach (Item item in startingItems)
         {
             AddItem(item, 1);
         }
@@ -81,12 +83,6 @@ public class PlayerInventory : MonoBehaviour
             }
         }
         return false;
-    }
-
-    public void AddItemAtSlot(Item item, InventorySlot slot)
-    {
-        slot.item = item;
-        RefreshUI();
     }
 
     public void AddGold(int amount)

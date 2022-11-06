@@ -23,6 +23,7 @@ public enum ItemType
 	Equipment,
 	Health,
 	Blueprint,
+	Scroll,
 	Default
 }
 

@@ -12,23 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc3e9056b2f44744dad1f2b9d3b9b02f, type: 3}
   m_Name: Wooden Sword
   m_EditorClassIdentifier: 
-  ID: 6
+  ID: 12
   itemName: Wooden Sword
-  icon: {fileID: 4942803658038726614, guid: 2e32fc36ce1495641aab3d33aaa7904c, type: 3}
+  icon: {fileID: 1839951357, guid: eff6633938febe54d8ee653b4bbc1199, type: 3}
   itemType: 0
   description: 
-  maxInStack: 999
+  maxInStack: 1
   stackable: 0
   price: 123
   equipmentTypeSlot: 0
   rarity: 0
   lvlRequired: 1
+  rarityBonus: {fileID: 0}
   normalGrade:
     level: 0
     stats:
     - stat: 0
-      name: Damage
-      values: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000120000001300000014000000
+      values: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000
   canBeUpgraded: 1
   canBeExtremeUpgraded: 0
   canBeDivineUpgraded: 0

@@ -1,45 +1,9 @@
 fileFormatVersion: 2
 guid: 111f4609a522c6d46999fd8f7d413e03
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 77457145437977130
-    second: Wooden Ring
-  - first:
-      213: 83807112660430937
-    second: Iron Ring
-  - first:
-      213: 481351952589351511
-    second: Diamond Ring
-  - first:
-      213: -1488407679497184394
-    second: Golden Ring
-  - first:
-      213: 1919457100496327687
-    second: Ruby Ring
-  - first:
-      213: -788311544848416245
-    second: Wooden Necklace
-  - first:
-      213: -5840707045121968587
-    second: Iron Necklace
-  - first:
-      213: -5982470276915118385
-    second: Diamond Necklace
-  - first:
-      213: -5168703726192340309
-    second: Golden Necklace
-  - first:
-      213: -1516856491372522928
-    second: Ruby Necklace
-  - first:
-      213: 6055100915144632438
-    second: Lava Ring
-  - first:
-      213: -1748086016585653915
-    second: Lava Necklace
+  internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -99,6 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -136,6 +101,30 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -144,7 +133,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 16
+        y: 64
         width: 16
         height: 16
       alignment: 0
@@ -154,8 +143,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2a75270dde231100800000000000000
-      internalID: 77457145437977130
+      spriteID: 433422541cdcc244eb764b90f1e0d854
+      internalID: -503788788
       vertices: []
       indices: 
       edges: []
@@ -165,6 +154,363 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0162dbdbde2ebe43a8ab0835177fd37
+      internalID: -500201545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Ring
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06c4d54aca058d64eab9565e67aac404
+      internalID: -1164424004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond Ring
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85083b8f853092d419249a75707fd441
+      internalID: 242848506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ruby Ring
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2865551cf8e69f44681f2ba813522c86
+      internalID: -450014566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lava Ring
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fc37927b4cc1e343861fa1a21350009
+      internalID: -1189324413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wooden Amulet
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75f2ee0d6bd91f34682404aa3ed48ef6
+      internalID: -285004848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iron Amulet
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64302658b6e11964ea8d3f892c0d4b64
+      internalID: -699404031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Amulet
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dd18b5f7a2981a43a68c847493872ce
+      internalID: 937618852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond Amulet
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2e0d465b6fe82c438d9dbf109832cdf
+      internalID: 2143983487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ruby Amulet
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dcdfc4ea0ef0bc44aeafe40784d9b9d
+      internalID: -394463548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lava Amulet
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7baa87ef5ad91e45858b576deff0afa
+      internalID: -1189379187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wooden Bracelet
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66d5dc57298b1d54eb0480a8ac92a582
+      internalID: 1341698624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Iron Bracelet
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b3adbfad7728f44e88e9f88f527b281
+      internalID: -251411420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Bracelet
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0f40c3b921856c46bb76ad1f0685d26
+      internalID: 369179953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond Bracelet
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0054aab8b88ca9e489a263038102059e
+      internalID: 763539891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ruby Bracelet
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3be36d03e7b9804caaf6136fa2489fe
+      internalID: 1448907247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lava Bracelet
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42aed6da27bd8b246b76868cf0b6d94e
+      internalID: -863194633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wooden Belt
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 16
         width: 16
         height: 16
@@ -175,14 +521,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 950b6cbff1eb92100800000000000000
-      internalID: 83807112660430937
+      spriteID: 070d65d1000d1aa4e9bd1a67e345a923
+      internalID: -1977724760
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Diamond Ring
+      name: Iron Belt
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 577540885f9a36745825e1f6a1ab1d4c
+      internalID: -238159641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Golden Belt
       rect:
         serializedVersion: 2
         x: 32
@@ -196,14 +563,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75a6702fc0b1ea600800000000000000
-      internalID: 481351952589351511
+      spriteID: c3b5802c7c439894abf68d0c558a21dc
+      internalID: 1878914596
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golden Ring
+      name: Diamond Belt
       rect:
         serializedVersion: 2
         x: 48
@@ -217,14 +584,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67b5b96f91d185be0800000000000000
-      internalID: -1488407679497184394
+      spriteID: 59d5ed0c72753cb4da98ae8e5a8585a8
+      internalID: 566055122
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ruby Ring
+      name: Ruby Belt
       rect:
         serializedVersion: 2
         x: 64
@@ -238,14 +605,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7045fac201843aa10800000000000000
-      internalID: 1919457100496327687
+      spriteID: 7b1a20a000e176a4ba9fade5cc3a7600
+      internalID: 1638149080
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wooden Necklace
+      name: Lava Belt
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acac04a14df39814d800b00de236ba54
+      internalID: -218387879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wooden Earrings
       rect:
         serializedVersion: 2
         x: 0
@@ -259,14 +647,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0288fc93da5f05f0800000000000000
-      internalID: -788311544848416245
+      spriteID: 39cf1ef5012d4c1429dee2cfa7b34abb
+      internalID: -1239708817
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Iron Necklace
+      name: Iron Earrings
       rect:
         serializedVersion: 2
         x: 16
@@ -280,14 +668,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 536326a43e3a1fea0800000000000000
-      internalID: -5840707045121968587
+      spriteID: 6feb4a01353b2ea499b3a8b388220e3c
+      internalID: 366047384
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Diamond Necklace
+      name: Golden Earrings
       rect:
         serializedVersion: 2
         x: 32
@@ -301,14 +689,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fce3429cafef9fca0800000000000000
-      internalID: -5982470276915118385
+      spriteID: 0f98fe276d0dc014b909e001051fe9cb
+      internalID: -1556109727
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Golden Necklace
+      name: Diamond Earrings
       rect:
         serializedVersion: 2
         x: 48
@@ -322,14 +710,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba2511398531548b0800000000000000
-      internalID: -5168703726192340309
+      spriteID: b298285471c92e644bd38823cc6406b1
+      internalID: 629304368
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ruby Necklace
+      name: Ruby Earrings
       rect:
         serializedVersion: 2
         x: 64
@@ -343,35 +731,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 052de78ce0b03fae0800000000000000
-      internalID: -1516856491372522928
+      spriteID: 5938e95bc5d2f3e42a7fdfd3e31c60c6
+      internalID: -2067091727
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lava Ring
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 678a656733a080450800000000000000
-      internalID: 6055100915144632438
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Lava Necklace
+      name: Lava Earrings
       rect:
         serializedVersion: 2
         x: 80
@@ -379,14 +746,14 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 561a598970d8db7e0800000000000000
-      internalID: -1748086016585653915
+      spriteID: 47e696f0ee9d47b4bb57eeb89ae52661
+      internalID: -1712839476
       vertices: []
       indices: 
       edges: []
@@ -402,18 +769,36 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ruby Necklace: -1516856491372522928
-      Wooden Ring: 77457145437977130
-      Golden Necklace: -5168703726192340309
-      Diamond Ring: 481351952589351511
-      Iron Necklace: -5840707045121968587
-      Lava Necklace: -1748086016585653915
-      Golden Ring: -1488407679497184394
-      Wooden Necklace: -788311544848416245
-      Iron Ring: 83807112660430937
-      Ruby Ring: 1919457100496327687
-      Diamond Necklace: -5982470276915118385
-      Lava Ring: 6055100915144632438
+      Iron Earrings: 366047384
+      Wooden Ring: -503788788
+      Wooden Amulet: -285004848
+      Lava Ring: -1189324413
+      Wooden Earrings: -1239708817
+      Golden Bracelet: 369179953
+      Diamond Amulet: 2143983487
+      Diamond Ring: 242848506
+      Ruby Amulet: -394463548
+      Wooden Belt: -1977724760
+      Diamond Earrings: 629304368
+      Diamond Belt: 566055122
+      Lava Earrings: -1712839476
+      Ruby Belt: 1638149080
+      Diamond Bracelet: 763539891
+      Lava Bracelet: -863194633
+      Lava Belt: -218387879
+      Golden Ring: -1164424004
+      Ruby Bracelet: 1448907247
+      Iron Belt: -238159641
+      Iron Amulet: -699404031
+      Golden Belt: 1878914596
+      Golden Amulet: 937618852
+      Ruby Earrings: -2067091727
+      Iron Bracelet: -251411420
+      Wooden Bracelet: 1341698624
+      Iron Ring: -500201545
+      Lava Amulet: -1189379187
+      Golden Earrings: -1556109727
+      Ruby Ring: -450014566
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

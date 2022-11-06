@@ -16,11 +16,11 @@ MonoBehaviour:
   enemyName: Slime
   level: 1
   health: 10
-  damage: 9
+  damage: 1
   defense: 0
   criticalDamage: 0
   criticalChance: 0
-  exp: 60
+  exp: 1
   gold: 1
   loot:
   - item: {fileID: 11400000, guid: c4728fb92f682f44bae3b2218310323e, type: 2}

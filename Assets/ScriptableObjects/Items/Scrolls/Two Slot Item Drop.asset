@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff4eb6a90eef46c4dbbae1fa25a61d4d, type: 3}
+  m_Name: Two Slot Item Drop
+  m_EditorClassIdentifier: 
+  ID: 0
+  itemName: Option Scroll Two Slot Item Drop
+  icon: {fileID: 0}
+  itemType: 3
+  description: Scroll used to fill a slot in the equipment
+  maxInStack: 999
+  stackable: 1
+  price: 0
+  stat: 10
+  value: 150

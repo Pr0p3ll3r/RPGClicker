@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,8 +7,18 @@ public enum Stats
     Damage,
     Defense,
     Health,
-    CritDamage,
-    CritRate
+    CriticalDamage,
+    CriticalRate,
+    MaxCriticalRate,
+    Accuracy,
+    HPStealPercent,
+    HPStealLimit,
+    GoldBonusPercent,
+    TwoSlotItemDropPercent,
+    ExpBonusPercent,
+    Strength,
+    Intelligence,
+    Dexterity
 }
 
 [System.Serializable]
@@ -18,7 +27,8 @@ public class Stat
     [SerializeField]
     private int baseValue;
 
-    private readonly List<int> modifiers;
+    [SerializeField]
+    private List<int> modifiers;
 
     public Stat(int _baseValue)
     {

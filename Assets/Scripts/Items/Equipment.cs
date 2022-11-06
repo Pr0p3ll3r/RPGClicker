@@ -7,6 +7,7 @@ public class Equipment : Item
     public EquipmentType equipmentTypeSlot;
     public EquipmentRarity rarity;
     public int lvlRequired = 1;
+    public RarityBonus rarityBonus;
     public Grade normalGrade;
     public bool canBeUpgraded;
     public bool canBeExtremeUpgraded;
@@ -26,15 +27,10 @@ public class Equipment : Item
     [Header("Jewelry")]
     public Grade chaosGrade;
 
-    public ItemStat[] CurrentNormalStats() { return normalGrade.stats; }
-    public ItemStat[] CurrentExtremeStats() { return extremeGrade.stats; }
-    public ItemStat[] CurrentDivineStats() { return divineGrade.stats; }
-    public ItemStat[] CurrentChaosStats() { return chaosGrade.stats; }
-
-    private static int MAX_NORMAL_GRADE = 20;
-    private static int MAX_EXTREME_GRADE = 15;
-    private static int MAX_DIVINE_GRADE = 15;
-    private static int MAX_CAHOS_GRADE = 15;
+    private static readonly int MAX_NORMAL_GRADE = 20;
+    private static readonly int MAX_EXTREME_GRADE = 15;
+    private static readonly int MAX_DIVINE_GRADE = 15;
+    private static readonly int MAX_CHAOS_GRADE = 15;
 
     public override Item GetCopy()
     {
@@ -43,51 +39,55 @@ public class Equipment : Item
 
     public void AddStats(PlayerData data)
     {
-        foreach(ItemStat stat in normalGrade.stats)
+        if(canBeUpgraded)
+            foreach (ItemStat stat in normalGrade.stats)
+                data.AddStat(stat.stat, stat.values[normalGrade.level]);
+        if (canBeExtremeUpgraded)
+            foreach (ItemStat stat in extremeGrade.stats)
+                data.AddStat(stat.stat, stat.values[extremeGrade.level]);
+        if (canBeDivineUpgraded)
+            foreach (ItemStat stat in divineGrade.stats)
+                data.AddStat(stat.stat, stat.values[divineGrade.level]);
+        if (canBeChaosUpgraded)
+            foreach (ItemStat stat in chaosGrade.stats)
+                data.AddStat(stat.stat, stat.values[chaosGrade.level]);
+
+        //add stats from rarity bonus
+        if (rarity != EquipmentRarity.Common)
+            data.AddStat(rarityBonus.stat, rarityBonus.values[(int)rarity]);
+
+        //add stats from scrolls
+        foreach (Scroll scroll in scrolls)
         {
-            switch (stat.stat)
-            {
-                case Stats.Damage:
-                    data.damage.AddModifier(stat.values[normalGrade.level]);
-                    break;
-                case Stats.Defense:
-                    data.defense.AddModifier(stat.values[normalGrade.level]);
-                    break;
-                case Stats.Health:
-                    data.maxHealth.AddModifier(stat.values[normalGrade.level]);
-                    break;
-                case Stats.CritDamage:
-                    data.criticalDamage.AddModifier(stat.values[normalGrade.level]);
-                    break;
-                case Stats.CritRate:
-                    data.criticalRate.AddModifier(stat.values[normalGrade.level]);
-                    break;
-            }
+            if(scroll != null)
+                data.AddStat(scroll.stat, scroll.value);
         }
     }
 
     public void RemoveStats(PlayerData data)
     {
-        foreach (ItemStat stat in normalGrade.stats)
+        if (canBeUpgraded)
+            foreach (ItemStat stat in normalGrade.stats)
+                data.RemoveStat(stat.stat, stat.values[normalGrade.level]);
+        if (canBeExtremeUpgraded)
+            foreach (ItemStat stat in extremeGrade.stats)
+                data.RemoveStat(stat.stat, stat.values[extremeGrade.level]);
+        if (canBeDivineUpgraded)
+            foreach (ItemStat stat in divineGrade.stats)
+                data.RemoveStat(stat.stat, stat.values[divineGrade.level]);
+        if (canBeChaosUpgraded)
+            foreach (ItemStat stat in chaosGrade.stats)
+                data.RemoveStat(stat.stat, stat.values[chaosGrade.level]);
+
+        //remove stats from rarity bonus
+        if (rarity != EquipmentRarity.Common)
+            data.RemoveStat(rarityBonus.stat, rarityBonus.values[(int)rarity]);
+
+        //remove stats from scrolls
+        foreach (Scroll scroll in scrolls)
         {
-            switch (stat.stat)
-            {
-                case Stats.Damage:
-                    data.damage.RemoveModifier(stat.values[normalGrade.level]);
-                    break;
-                case Stats.Defense:
-                    data.defense.RemoveModifier(stat.values[normalGrade.level]);
-                    break;
-                case Stats.Health:
-                    data.maxHealth.RemoveModifier(stat.values[normalGrade.level]);
-                    break;
-                case Stats.CritDamage:
-                    data.criticalDamage.RemoveModifier(stat.values[normalGrade.level]);
-                    break;
-                case Stats.CritRate:
-                    data.criticalRate.RemoveModifier(stat.values[normalGrade.level]);
-                    break;
-            }
+            if (scroll != null)
+                data.RemoveStat(scroll.stat, scroll.value);
         }
     }
 
@@ -127,7 +127,7 @@ public class Equipment : Item
     public void ChaosUpgrade()
     {
         chaosGrade.level++;
-        if (chaosGrade.level == MAX_CAHOS_GRADE)
+        if (chaosGrade.level == MAX_CHAOS_GRADE)
             canBeUpgraded = false;
     }
 }
@@ -152,15 +152,13 @@ public enum EquipmentType
     Ring,
     Bracelet,
     Belt,
-    Epaulet,
-    Artifact
+    Earring
 }
 
 [System.Serializable]
 public class ItemStat
 {
     public Stats stat;
-    public string name;
     public int[] values;
 }
 

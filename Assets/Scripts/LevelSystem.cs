@@ -23,6 +23,7 @@ public class LevelSystem : MonoBehaviour
     public void GetExp(int amount)
     {
         data.exp += amount;
+        hud.UpdateLevel(data.level, data.exp, requireExp);
 
         CheckLevelUp();
     }

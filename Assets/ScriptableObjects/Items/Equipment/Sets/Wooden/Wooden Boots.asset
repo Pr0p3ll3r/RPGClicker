@@ -12,22 +12,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc3e9056b2f44744dad1f2b9d3b9b02f, type: 3}
   m_Name: Wooden Boots
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 3
   itemName: Wooden Boots
-  icon: {fileID: 0}
+  icon: {fileID: 898072968, guid: eff6633938febe54d8ee653b4bbc1199, type: 3}
   itemType: 0
   description: 
-  maxInStack: 999
+  maxInStack: 1
   stackable: 0
   price: 0
   equipmentTypeSlot: 6
-  equipmentType: 0
   rarity: 0
-  stats: []
   lvlRequired: 1
-  lvl: 0
-  canBeSold: 0
-  canBeUpgraded: 0
+  normalGrade:
+    level: 0
+    stats: []
+  canBeUpgraded: 1
+  canBeExtremeUpgraded: 0
+  canBeDivineUpgraded: 0
+  canBeChaosUpgraded: 0
+  scrollsCanBeAdded: 0
   startPrice: 0
   upgradePrices: 
-  upgradeMultiplier: 0
+  extremeGrade:
+    level: 0
+    stats: []
+  divineGrade:
+    level: 0
+    stats: []
+  scrollSlots: 2
+  maxScrollSlots: 3
+  scrolls:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  chaosGrade:
+    level: 0
+    stats: []

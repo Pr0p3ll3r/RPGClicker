@@ -32,7 +32,6 @@ public class Player : MonoBehaviour
         hud = GetComponent<PlayerUI>();
         playerInfo = GetComponent<PlayerInfo>();
         ls = GetComponent<LevelSystem>();
-        //RefreshPlayer();
         data.currentHealth = data.maxHealth.GetValue();
         hud.UpdateHealthBar(data.currentHealth, data.maxHealth.GetValue());
         enemy = Enemy.Instance;
@@ -60,20 +59,12 @@ public class Player : MonoBehaviour
         bool crit = Utils.Critical(data.criticalRate.GetValue(), data.criticalDamage.GetValue(), ref damage);
         damage -= enemyDefense;
         damage = Mathf.Clamp(damage, 1, int.MaxValue);
-        Debug.Log("Damage: " + damage);
+        Debug.Log($"Damage: {damage} Crit: {crit}");
         damagePopup.Setup(damage, crit);
         damagePopup.gameObject.SetActive(true);
         enemy.TakeDamage(damage);
         SoundManager.Instance.PlayOneShot("Hit");
     }
-
-    //public void RefreshPlayer()
-    //{
-    //    Equipment.RefreshUI();
-    //    hud.UpdateHealthBar();
-    //    hud.UpdateExpBar();
-    //    playerUI.RefreshStats();
-    //}
 
     public void TakeDamage(int damage)
     {
@@ -111,7 +102,7 @@ public class Player : MonoBehaviour
         hud.UpdateHealthBar(data.currentHealth, data.maxHealth.GetValue());
     }
 
-    public bool Equip(Equipment item, InventorySlot slot)
+    public bool Equip(Equipment item)
     {
         Equipment previousItem;
         if (item.lvlRequired <= data.level)
@@ -121,13 +112,13 @@ public class Player : MonoBehaviour
             item.AddStats(data);
             if (previousItem != null)
             {
-                Inventory.AddItemAtSlot(previousItem, slot);
+                Inventory.AddItem(previousItem, 1);
                 previousItem.RemoveStats(data);
             }
         }
         else
         {
-            //GameManager.Instance.ShowText("Level is too low", new Color32(255, 65, 52, 255));
+            GameManager.Instance.ShowText("Level is too low", new Color32(255, 65, 52, 255));
             return false;
         }
         playerInfo.RefreshStats();
@@ -135,21 +126,16 @@ public class Player : MonoBehaviour
         return true;
     }
 
-    public bool Unequip(Equipment item, InventorySlot slot)
+    public bool Unequip(Equipment item)
     {
-        if (slot != null)
-        {
-            Equipment.UnequipItem(item);
-            Inventory.AddItemAtSlot(item, slot);
-        }
-        else if (!Inventory.IsFull())
+        if (!Inventory.IsFull())
         {
             Equipment.UnequipItem(item);
             Inventory.AddItem(item, 1);
         }
         else
         {
-            //GameManager.Instance.ShowText("Inventory is full", new Color32(255, 65, 52, 255));
+            GameManager.Instance.ShowText("Inventory is full", new Color32(255, 65, 52, 255));
             return false;
         }
         Equipment.RefreshUI();

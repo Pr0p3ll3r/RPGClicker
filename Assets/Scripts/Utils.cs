@@ -28,4 +28,21 @@ public static class Utils
         }
         else return false;
     }
+
+    public static string GetNiceName(Stats stat)
+    {
+        string name = stat.ToString();
+        int index = 0;
+        for (int i = 1; i < name.Length; i++)
+        {
+            if (char.IsUpper(name[i]))
+            {
+                index = i;
+                break;
+            }            
+        }
+        if(index != 0)
+            name = name.Insert(index, " ");
+        return name;
+    }
 }

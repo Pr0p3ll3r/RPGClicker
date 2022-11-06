@@ -16,3 +16,4 @@ public class SlotHandler : MonoBehaviour, IPointerClickHandler
             PlayerInventory.Instance.DisplayItemInfo(GetComponentInParent<EquipmentSlot>().item, inventory);
     }
 }
+
