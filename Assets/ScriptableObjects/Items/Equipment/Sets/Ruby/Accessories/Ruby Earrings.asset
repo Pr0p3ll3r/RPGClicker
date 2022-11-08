@@ -10,30 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc3e9056b2f44744dad1f2b9d3b9b02f, type: 3}
-  m_Name: Wooden Sword
+  m_Name: Ruby Earrings
   m_EditorClassIdentifier: 
   ID: 6
-  itemName: Wooden Sword
-  icon: {fileID: 1839951357, guid: eff6633938febe54d8ee653b4bbc1199, type: 3}
+  itemName: Ruby Earrings
+  icon: {fileID: -2067091727, guid: 111f4609a522c6d46999fd8f7d413e03, type: 3}
   itemType: 0
   description: 
   maxInStack: 1
   stackable: 0
-  price: 123
-  equipmentTypeSlot: 0
+  price: 0
+  equipmentTypeSlot: 10
   rarity: 0
   lvlRequired: 75
+  rarityBonus: {fileID: 0}
   normalGrade:
     level: 0
-    stats:
-    - stat: 0
-      name: Damage
-      values: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000120000001300000014000000
+    stats: []
   canBeUpgraded: 1
-  canBeExtremeUpgraded: 1
-  canBeDivineUpgraded: 1
-  canBeChaosUpgraded: 0
-  scrollsCanBeAdded: 1
+  canBeExtremeUpgraded: 0
+  canBeDivineUpgraded: 0
+  canBeChaosUpgraded: 1
+  scrollsCanBeAdded: 0
   startPrice: 0
   upgradePrices: 
   extremeGrade:

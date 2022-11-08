@@ -6,8 +6,7 @@ using UnityEngine;
 public class Scroll : Item
 {
     [Header("Scroll")]
-    public Stats stat;
-    public int value;
+    public StatBonus scrollStat;
 
     public override Item GetCopy()
     {

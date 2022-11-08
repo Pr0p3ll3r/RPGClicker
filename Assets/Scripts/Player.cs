@@ -19,7 +19,10 @@ public class Player : MonoBehaviour
     private GameManager gameManager => GameManager.Instance;
     private PlayerEquipment Equipment => PlayerEquipment.Instance;
     private PlayerInventory Inventory => PlayerInventory.Instance;
-    public List<Pet> myPets = new List<Pet>();
+
+    public Pet[] myPets = new Pet[2];
+    [SerializeField] private Transform petList;
+    private PetInfo[] petsInfo;
 
     [SerializeField] private Transform popupPosition;
 
@@ -35,6 +38,7 @@ public class Player : MonoBehaviour
         data.currentHealth = data.maxHealth.GetValue();
         hud.UpdateHealthBar(data.currentHealth, data.maxHealth.GetValue());
         enemy = Enemy.Instance;
+        petsInfo = petList.GetComponentsInChildren<PetInfo>();
     }
 
     void Update()
@@ -107,8 +111,8 @@ public class Player : MonoBehaviour
         Equipment previousItem;
         if (item.lvlRequired <= data.level)
         {
-            PlayerInventory.Instance.RemoveItem(item);
-            PlayerEquipment.Instance.EquipItem(item, out previousItem);
+            Inventory.RemoveItem(item);
+            Equipment.EquipItem(item, out previousItem);
             item.AddStats(data);
             if (previousItem != null)
             {
@@ -126,7 +130,7 @@ public class Player : MonoBehaviour
         return true;
     }
 
-    public bool Unequip(Equipment item)
+    public bool Unequip(Item item)
     {
         if (!Inventory.IsFull())
         {
@@ -140,5 +144,65 @@ public class Player : MonoBehaviour
         }
         Equipment.RefreshUI();
         return true;
+    }
+
+    public void EquipPet(Pet pet)
+    {
+        if (myPets.Length != data.maxPets)
+        {
+            for (int i = 0; i < data.maxPets; i++)
+            {
+                if (myPets[i] == null)
+                {
+                    myPets[i] = pet;
+                    break;
+                }
+            }
+            Inventory.RemoveItem(pet);
+            Inventory.RefreshUI();
+            RefreshPetList();
+            pet.AddStats(data);
+        }
+        else
+        {
+            GameManager.Instance.ShowText("Pet slots are full", new Color32(255, 65, 52, 255));
+        }
+    }
+
+    public void UnequipPet(Pet pet)
+    {
+        if (!Inventory.IsFull())
+        {
+            for (int i = 0; i < myPets.Length; i++)
+            {
+                if (myPets[i] == pet)
+                {
+                    myPets[i] = null;
+                    break;
+                }
+            }
+            Inventory.AddItem(pet, 1);
+            pet.RemoveStats(data);
+        }
+        else
+        {
+            GameManager.Instance.ShowText("Inventory is full", new Color32(255, 65, 52, 255));
+        }
+    }
+
+    public void RefreshPetList()
+    {
+        for (int i = 0; i < data.maxPets; i++)
+        {
+            petsInfo[i].SetUp(myPets[i]);
+        }
+    }
+
+    private void LoadPets()
+    {
+        //foreach (Pet pet in myPets)
+        //{
+
+        //}
     }
 }

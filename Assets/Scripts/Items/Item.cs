@@ -24,6 +24,7 @@ public enum ItemType
 	Health,
 	Blueprint,
 	Scroll,
+	Pet,
 	Default
 }
 

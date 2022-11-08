@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ae2c63e1b6441140b3e459ac44a627c, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c5a16ed72bbdf14bba16cab447a666b, type: 3}
   m_Name: Health
   m_EditorClassIdentifier: 
   stat: 2
-  uncommonValue: 90
-  epicValue: 120
-  legendaryValue: 150
+  values: 5a0000007800000096000000

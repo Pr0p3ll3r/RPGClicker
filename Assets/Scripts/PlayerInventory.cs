@@ -156,7 +156,7 @@ public class PlayerInventory : MonoBehaviour
             if (item.itemType == ItemType.Equipment)
             {
                 Equipment selectedEq = (Equipment)item; 
-                selectedItemInfo.GetComponent<ItemInfo>().SetUp(item, false);
+                selectedItemInfo.GetComponent<ItemInfo>().SetUp(selectedEq, false);
                 selectedItemInfo.SetActive(true);
                 Equipment equippedEq = PlayerEquipment.Instance.slots[(int)selectedEq.equipmentTypeSlot].item;
                 if (equippedEq != null)
@@ -164,6 +164,11 @@ public class PlayerInventory : MonoBehaviour
                     equippedItemInfo.GetComponent<ItemInfo>().SetUp(equippedEq, true);
                     equippedItemInfo.SetActive(true);
                 }               
+            }
+            else
+            {
+                selectedItemInfo.GetComponent<ItemInfo>().SetUp(item, false);
+                selectedItemInfo.SetActive(true);
             }
         }
         else

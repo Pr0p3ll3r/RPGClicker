@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System.ComponentModel;
 
 public class ItemInfo : MonoBehaviour
 {
@@ -38,7 +37,25 @@ public class ItemInfo : MonoBehaviour
 
         closeButton.onClick.AddListener(delegate { CloseItemInfo(); });
 
-        if (item.itemType == ItemType.Equipment)
+        if(item.itemType == ItemType.Pet)
+        {
+            Pet pet = (Pet)item;
+            ItemStatInfo lvl = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
+            lvl.SetUp("Level:", $"{pet.level}");
+            ItemStatInfo exp = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
+            exp.SetUp("Exp:", $"{pet.exp}/{pet.expToLvlUp}");
+            foreach (StatBonus stat in pet.stats)
+            {
+                if (stat == null) continue;
+
+                ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
+                statInfo.SetUp($"{Utils.GetNiceName(stat.stat)}:", $"{stat.values[0]}");
+            }
+
+            equipButton.onClick.AddListener(delegate { EquipPet(pet); });
+            equipButton.gameObject.SetActive(true);
+        }
+        else if (item.itemType == ItemType.Equipment)
         {
             Equipment eq = (Equipment)item;
             ItemStatInfo rarity = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
@@ -97,8 +114,8 @@ public class ItemInfo : MonoBehaviour
                     if (scroll == null) continue;
 
                     ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-                    int statValue = scroll.value;
-                    statInfo.SetUp($"{Utils.GetNiceName(scroll.stat)}:", $"{statValue}");
+                    int statValue = scroll.scrollStat.values[0];
+                    statInfo.SetUp($"{Utils.GetNiceName(scroll.scrollStat.stat)}:", $"{statValue}");
                 }
             }
             else
@@ -225,6 +242,7 @@ public class ItemInfo : MonoBehaviour
         sellButton.gameObject.SetActive(false);
         foreach (Transform stat in statParent)
             Destroy(stat.gameObject);
+        itemIcon.sprite = null;
         itemName.text = "";
         price.SetUp("Price:", "0");
         description.text = "";
@@ -241,6 +259,12 @@ public class ItemInfo : MonoBehaviour
     private void EquipItem(Equipment item)
     {
         Player.Instance.Equip(item);
+        CloseItemInfo();
+    }
+
+    private void EquipPet(Pet pet)
+    {
+        Player.Instance.EquipPet(pet);
         CloseItemInfo();
     }
 

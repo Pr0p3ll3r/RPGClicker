@@ -24,6 +24,7 @@ public class PlayerData
     public Stat hpStealLimit;
     public Stat twoSlotDropBonus;
 
+    public int maxPets;
     public int currentTowerLevel;
 
     public PlayerData()
@@ -48,7 +49,7 @@ public class PlayerData
         hpSteal = new Stat(0);
         hpStealLimit = new Stat(0);
         twoSlotDropBonus = new Stat(0);
-
+        maxPets = 1;
         currentTowerLevel = 0;
     }
 

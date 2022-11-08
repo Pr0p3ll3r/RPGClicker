@@ -1,36 +1,82 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PetInfo : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI lvl;
-    [SerializeField] private TextMeshProUGUI speed;
-    [SerializeField] private TextMeshProUGUI luck;
-    [SerializeField] private Image expBar;
+    [SerializeField] private Image petIcon;
+    [SerializeField] private Sprite emptyIcon;
+    [SerializeField] private TextMeshProUGUI petName;
+    [SerializeField] private ItemStatInfo lvl;
+    [SerializeField] private SlicedFilledImage expBar;
     [SerializeField] private TextMeshProUGUI exp;
+    [SerializeField] private Transform statParent;
+    [SerializeField] private GameObject statPrefab;
+    [SerializeField] private Button unequipButton;
 
-    private Pet info;
+    private Pet pet;
 
-    public void SetUp(Pet pet)
+    private void Start()
     {
-        info = pet;
+        Clear();
+    }
+
+    public void SetUp(Pet _pet)
+    {
+        pet = _pet;
+        petName.text = pet.itemName;
+        petIcon.sprite = pet.icon;
+        unequipButton.onClick.RemoveAllListeners();
+        unequipButton.onClick.AddListener(delegate { Unequip(); });
+        unequipButton.gameObject.SetActive(true);
+        expBar.transform.parent.gameObject.SetActive(true);
         RefreshStats();
     }
 
-    void RefreshStats()
+    public void RefreshStats()
     {
-        lvl.text = info.level.ToString();
+        foreach (Transform t in statParent)
+            Destroy(t.gameObject);
+
+        foreach (StatBonus stat in pet.stats)
+        {
+            if (stat == null) continue;
+
+            ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
+            statInfo.SetUp($"{Utils.GetNiceName(stat.stat)}:", $"{stat.values[0]}");
+        }
+
         UpdateExpBar();
     }
 
-    void UpdateExpBar()
+    private void Clear()
     {
-        float ratio = (float)info.exp / (float)(info.expToLvlUp);
+        unequipButton.gameObject.SetActive(false);
+        unequipButton.onClick.RemoveAllListeners();
+        foreach (Transform stat in statParent)
+            Destroy(stat.gameObject);
+        lvl.SetUp("", "");
+        exp.text = "0/0";
+        petName.text = "Slot for Pet";
+        petIcon.sprite = emptyIcon;
+        expBar.transform.parent.gameObject.SetActive(false);
+    }
+
+    private void Unequip()
+    {
+        Player.Instance.UnequipPet(pet);
+        Clear();
+    }
+
+    public void UpdateExpBar()
+    {
+        float ratio = (float)pet.exp / pet.expToLvlUp;
         expBar.fillAmount = ratio;
-        exp.text = $"{info.exp}/{info.expToLvlUp}";
+        exp.text = $"{pet.exp}/{pet.expToLvlUp}";
+        lvl.SetUp("Level:", $"{pet.level}");
     }
 }

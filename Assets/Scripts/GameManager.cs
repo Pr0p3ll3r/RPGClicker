@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static UnityEditor.FilePathAttribute;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,32 +12,28 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
+        Instance = this;
 
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = Screen.currentResolution.refreshRate;
     }
 
-    private Player Player => Player.Instance;
-    private Enemy Enemy => Enemy.Instance;
+    [Header("Main")]
     [SerializeField] private Transform lootList;
     [SerializeField] private Animation popupText;
     [SerializeField] private GameObject exitBox;
     [SerializeField] private DatabaseSO database;
     [SerializeField] private TextMeshProUGUI locationName;
 
-    int fingerCount;
-    bool screenPressed = false;
-
-    private int lastlootSlot;
-    private int lootSlots = 6;
+    [Header("Player")]
+    [SerializeField] private TMP_InputField nameInput;
+    [SerializeField] private Button setNameButton;
 
     [Header("Panels")]
     [SerializeField] private GameObject mainPanel;
     [SerializeField] private GameObject playerPanel;
     [SerializeField] private GameObject townPanel;
     [SerializeField] private GameObject adventurePanel;
-    [SerializeField] private GameObject petsPanel;
     [SerializeField] private GameObject armoryPanel;
     [SerializeField] private GameObject towerPanel;
 
@@ -52,15 +48,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button locationButton;
     [SerializeField] private Button dungeonButton;
 
-    [Header("Pet")]
-    [SerializeField] private Pet pet;
-    [SerializeField] private GameObject petPrefab;
-
     [Header("Poolers")]
     public ObjectPooler damagePopupPooler;
 
-    private int maxPets = 2;
-    private int nextPetIndex = 0;
+    private Player Player => Player.Instance;
+    private Enemy Enemy => Enemy.Instance;
+
+    int fingerCount;
+    bool screenPressed = false;
+
+    private int lastlootSlot;
+    private int lootSlots = 6;
+
     private Location currentLocation;
     private Location previousLocation;
 
@@ -75,7 +74,6 @@ public class GameManager : MonoBehaviour
         playerPanel.SetActive(false);
         townPanel.SetActive(false);
         adventurePanel.SetActive(false);
-        petsPanel.SetActive(false);
         armoryPanel.SetActive(false);
         towerPanel.SetActive(false);
 
@@ -85,6 +83,17 @@ public class GameManager : MonoBehaviour
         locationPanel.SetActive(true);
         locationButton.onClick.AddListener(delegate { CloseAdventurePanels(); locationPanel.SetActive(true); });
         dungeonButton.onClick.AddListener(delegate { CloseAdventurePanels(); dungeonPanel.SetActive(true); });
+
+        //if (PlayerPrefs.GetInt("NewGame", 1) == 1 || !Data.Load())
+        //{
+        //    newGamePanel.SetActive(true);
+        //    setNameButton.onClick.AddListener(delegate { StartNewGame(); });
+        //}
+        //else
+        //{
+        //    Data.Load();
+        //    LoadPlayer();
+        //}
 
         Data.Load();
     }
@@ -110,6 +119,19 @@ public class GameManager : MonoBehaviour
             exitBox.SetActive(true);
         }
     }
+
+    //void StartNewGame()
+    //{
+    //    if (string.IsNullOrEmpty(nameInput.text)) return;
+
+    //    setNameButton.interactable = false;
+    //    nameInput.interactable = false;
+
+    //    PlayerData newPlayer = new PlayerData();
+    //    newPlayer.nickname = nameInput.text;
+    //    Player.Instance.data = newPlayer;
+    //    PlayerPrefs.SetInt("NewGame", 0);
+    //}
 
     public void Reward(EnemyData enemy)
     {  
@@ -261,82 +283,27 @@ public class GameManager : MonoBehaviour
     public void PlayerDeath()
     {
         if(currentLocation.isDungeon)
-            ChangeLocation(Database.data.locations[0]);
+            ChangeLocation(previousLocation);
         else
             Enemy.SetUp(NextEnemy());
+    }
+
+    public void ShowTower()
+    {
+        towerPanel.SetActive(!towerPanel.activeSelf);
+        bool active = towerPanel.activeSelf;
+        towerPanel.SetActive(active);
+
+        GameObject towerEnemy = towerPanel.transform.GetChild(0).gameObject;
+        //EnemyData enemy = Database.Instance.TowerEnemies[Player.Instance.data.currentTowerLevel];
+        //towerEnemy.GetComponent<EnemyInfo>().SetUp(enemy);
+        //towerEnemy.transform.Find("FightButton").GetComponent<Button>().onClick.RemoveAllListeners();
+        //towerEnemy.transform.Find("FightButton").GetComponent<Button>().onClick.AddListener(delegate { StartBattle(enemy); });
     }
 
     public void DisplayDropInfo(EnemyData enemy)
     {
         dropInfo.GetComponent<DropInfo>().SetUpInfo(enemy);
-    }
-
-    public void AddPet()
-    {
-        Pet newPet = ScriptableObject.CreateInstance<Pet>();
-        //newPet.NewAsset(pet);
-        newPet.index = nextPetIndex;
-        nextPetIndex++;
-
-        Player.Instance.myPets.Add(newPet);
-
-        GameObject petUI = Instantiate(petPrefab, petsPanel.transform);
-        petUI.GetComponent<PetInfo>().SetUp(newPet);
-        petUI.GetComponent<Button>().onClick.AddListener(delegate { ShowPetInfo(newPet); });
-        RefreshPetList();
-    }
-
-    public void NewPet()
-    {
-        int petsCount = Player.Instance.myPets.Count;
-        if (petsCount == maxPets)
-        {
-            popupText.GetComponent<TextMeshProUGUI>().text = "You can't have more pets";
-            popupText.Play();
-            return;
-        }
-        PlayerInventory.Instance.RefreshUI();
-        AddPet();
-    }
-
-    public void ShowPetList()
-    {
-        if (Player.Instance.myPets.Count == 0)
-        {
-            //ShowText("You don't have any workers", new Color32(255, 65, 52, 255));
-            return;
-        }
-
-        RefreshPetList();
-        petsPanel.SetActive(!petsPanel.activeSelf);
-        bool active = petsPanel.activeSelf;
-
-        petsPanel.SetActive(active);
-    }
-
-    public void RefreshPetList()
-    {
-        List<Pet> pets = Player.Instance.myPets;
-        for (int i = 0; i < pets.Count; i++)
-        {
-            petsPanel.transform.GetChild(i).GetComponent<PetInfo>().SetUp(pets[i]);
-        }
-    }
-
-    private void LoadPets()
-    {
-        foreach (Pet pet in Player.Instance.myPets)
-        {
-            GameObject petUI = Instantiate(petPrefab, petsPanel.transform);
-            petUI.GetComponent<PetInfo>().SetUp(pet);
-            petUI.GetComponent<Button>().onClick.AddListener(delegate { ShowPetInfo(pet); });
-            nextPetIndex++;
-        }
-    }
-
-    private void ShowPetInfo(Pet pet)
-    {
-
     }
 
     private void OnApplicationQuit()

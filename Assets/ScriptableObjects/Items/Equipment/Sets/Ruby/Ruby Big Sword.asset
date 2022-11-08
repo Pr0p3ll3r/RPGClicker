@@ -10,22 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc3e9056b2f44744dad1f2b9d3b9b02f, type: 3}
-  m_Name: Wooden Gloves
+  m_Name: Ruby Big Sword
   m_EditorClassIdentifier: 
-  ID: 2
-  itemName: Wooden Gloves
-  icon: {fileID: -1647156419, guid: eff6633938febe54d8ee653b4bbc1199, type: 3}
+  ID: 6
+  itemName: Ruby Big Sword
+  icon: {fileID: 311788608, guid: eff6633938febe54d8ee653b4bbc1199, type: 3}
   itemType: 0
-  description: 
+  description: Can be worn by a warrior
   maxInStack: 1
   stackable: 0
-  price: 0
-  equipmentTypeSlot: 5
+  price: 123
+  equipmentTypeSlot: 0
   rarity: 0
   lvlRequired: 75
+  rarityBonus: {fileID: 0}
   normalGrade:
     level: 0
-    stats: []
+    stats:
+    - stat: 0
+      values: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000120000001300000014000000
   canBeUpgraded: 1
   canBeExtremeUpgraded: 1
   canBeDivineUpgraded: 1

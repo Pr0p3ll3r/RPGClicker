@@ -7,7 +7,7 @@ public class Equipment : Item
     public EquipmentType equipmentTypeSlot;
     public EquipmentRarity rarity;
     public int lvlRequired = 1;
-    public RarityBonus rarityBonus;
+    public StatBonus rarityBonus;
     public Grade normalGrade;
     public bool canBeUpgraded;
     public bool canBeExtremeUpgraded;
@@ -60,7 +60,7 @@ public class Equipment : Item
         foreach (Scroll scroll in scrolls)
         {
             if(scroll != null)
-                data.AddStat(scroll.stat, scroll.value);
+                data.AddStat(scroll.scrollStat.stat, scroll.scrollStat.values[0]);
         }
     }
 
@@ -87,7 +87,7 @@ public class Equipment : Item
         foreach (Scroll scroll in scrolls)
         {
             if (scroll != null)
-                data.RemoveStat(scroll.stat, scroll.value);
+                data.RemoveStat(scroll.scrollStat.stat, scroll.scrollStat.values[0]);
         }
     }
 

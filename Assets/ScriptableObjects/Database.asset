@@ -27,9 +27,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4784816ef8df8e442949be68dc571441, type: 2}
   - {fileID: 11400000, guid: 46100280d0a8e3c44991394140734bc7, type: 2}
   - {fileID: 11400000, guid: 865452143c6376f4f8d0b98a1011caac, type: 2}
+  - {fileID: 11400000, guid: ab97ae27abacdb647b1b25376cb5be58, type: 2}
   locations:
   - {fileID: 11400000, guid: 7c29b70c824fac14894c3a5e518f657f, type: 2}
   dungeons:
   - {fileID: 11400000, guid: c34f95fccd94c71468b2b52fd394eb54, type: 2}
   allUpgradeInfos: []
-  TowerEnemies: []
+  towerEnemies: []
+  rarityBonuses: []
+  petBonuses: []

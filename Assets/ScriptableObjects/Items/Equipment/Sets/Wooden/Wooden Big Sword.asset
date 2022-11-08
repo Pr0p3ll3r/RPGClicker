@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Wooden Big Sword
   icon: {fileID: -1532615311, guid: eff6633938febe54d8ee653b4bbc1199, type: 3}
   itemType: 0
-  description: 
+  description: Can be worn by a warrior.
   maxInStack: 1
   stackable: 0
   price: 123
