@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5a16ed72bbdf14bba16cab447a666b, type: 3}
   m_Name: Gold Bonus
   m_EditorClassIdentifier: 
+  ID: 6
   stat: 9
-  values: 320000006400000096000000
+  values: 0f0000001e0000002d000000

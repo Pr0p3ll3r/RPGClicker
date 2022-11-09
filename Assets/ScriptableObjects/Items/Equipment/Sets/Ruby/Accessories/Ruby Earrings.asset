@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc3e9056b2f44744dad1f2b9d3b9b02f, type: 3}
   m_Name: Ruby Earrings
   m_EditorClassIdentifier: 
-  ID: 6
+  ID: 59
   itemName: Ruby Earrings
   icon: {fileID: -2067091727, guid: 111f4609a522c6d46999fd8f7d413e03, type: 3}
   itemType: 0
-  description: 
+  description: 'Can be worn by everyone
+
+'
   maxInStack: 1
   stackable: 0
   price: 0

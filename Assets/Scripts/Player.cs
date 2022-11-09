@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
         hud.UpdateHealthBar(data.currentHealth, data.maxHealth.GetValue());
         enemy = Enemy.Instance;
         petsInfo = petList.GetComponentsInChildren<PetInfo>();
+        RefreshPetList();
     }
 
     void Update()
@@ -89,6 +90,12 @@ public class Player : MonoBehaviour
     {
         ls.GetExp(exp);
         Inventory.AddGold(gold);
+
+        for (int i = 0; i < myPets.Length; i++)
+        {
+            if (myPets[i] != null)
+                myPets[i].GetExp(exp / 2, petsInfo[i]);
+        }
     }
 
     public void Die()
@@ -192,17 +199,10 @@ public class Player : MonoBehaviour
 
     public void RefreshPetList()
     {
-        for (int i = 0; i < data.maxPets; i++)
+        for (int i = 0; i < myPets.Length; i++)
         {
-            petsInfo[i].SetUp(myPets[i]);
+            if (myPets[i] != null)
+                petsInfo[i].SetUp(myPets[i]);
         }
-    }
-
-    private void LoadPets()
-    {
-        //foreach (Pet pet in myPets)
-        //{
-
-        //}
     }
 }

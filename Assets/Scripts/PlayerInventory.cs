@@ -28,16 +28,16 @@ public class PlayerInventory : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        slots = itemList.GetComponentsInChildren<InventorySlot>();
     }
 
     private void Start()
-    {
-        slots = itemList.GetComponentsInChildren<InventorySlot>();
-
-        foreach (Item item in startingItems)
-        {
-            AddItem(item, 1);
-        }
+    {     
+        if (PlayerPrefs.GetInt("NewGame", 1) == 1)
+            foreach (Item item in startingItems)
+            {
+                AddItem(item.GetCopy(), 1);
+            }
 
         equippedItemInfo.SetActive(false);
         selectedItemInfo.SetActive(false);

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 966419439a071b84a8dfb12b399b23fc, type: 3}
   m_Name: Blueprint Lava Bow
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 89
   itemName: Blueprint Lava Bow
   icon: {fileID: -3785583486000893709, guid: b7fff23f234fd9346978fef62c10f4f2, type: 3}
-  itemType: 0
+  itemType: 1
   description: 
   maxInStack: 999
   stackable: 1

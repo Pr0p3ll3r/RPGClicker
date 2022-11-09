@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Wooden Shield
   icon: {fileID: 543311846, guid: eff6633938febe54d8ee653b4bbc1199, type: 3}
   itemType: 0
-  description: Can be worn by a shielder.
+  description: Can be worn by a shielder
   maxInStack: 1
   stackable: 0
   price: 0

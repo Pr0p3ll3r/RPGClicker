@@ -8,10 +8,10 @@ public class DatabaseSO : ScriptableObject, ISerializationCallbackReceiver
     public Item[] items;
     public Location[] locations;
     public Location[] dungeons;
-    public EquipmentUpgrade[] allUpgradeInfos;
-    public EnemyInfo[] towerEnemies;
     public StatBonus[] rarityBonuses;
-    public StatBonus[] petBonuses;
+    public StatBonus[] scrollBonuses;
+    public EnemyInfo[] towerEnemies;
+    public EquipmentUpgrade[] allUpgradeInfos;
 
     public void OnBeforeSerialize()
     {     
@@ -23,6 +23,16 @@ public class DatabaseSO : ScriptableObject, ISerializationCallbackReceiver
         {
             items[i].ID = i;
         }
+
+        for (int i = 0; i < rarityBonuses.Length; i++)
+        {
+            rarityBonuses[i].ID = i;
+        }
+
+        for (int i = 0; i < scrollBonuses.Length; i++)
+        {
+            scrollBonuses[i].ID = i;
+        }
     }
 
     public Item GetItemById(int _id)
@@ -31,5 +41,21 @@ public class DatabaseSO : ScriptableObject, ISerializationCallbackReceiver
             return null;
 
         return items[_id];
+    }
+
+    public StatBonus GetRarityBonusById(int _id)
+    {
+        if (_id >= rarityBonuses.Length)
+            return null;
+
+        return rarityBonuses[_id];
+    }
+
+    public StatBonus GetScrollBonusById(int _id)
+    {
+        if (_id >= scrollBonuses.Length)
+            return null;
+
+        return scrollBonuses[_id];
     }
 }

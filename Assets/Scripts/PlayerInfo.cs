@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerInfo : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI playerName;
     [SerializeField] private TextMeshProUGUI lvl;
     [SerializeField] private TextMeshProUGUI damage;
     [SerializeField] private TextMeshProUGUI defense;
@@ -57,6 +58,7 @@ public class PlayerInfo : MonoBehaviour
 
     public void RefreshStats()
     {
+        playerName.text = Player.data.nickname;
         lvl.text = $"{Player.data.level}";
         damage.text = $"{Player.data.damage.GetValue()}";
         defense.text = $"{Player.data.defense.GetValue()}";

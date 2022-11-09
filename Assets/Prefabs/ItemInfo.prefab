@@ -1609,8 +1609,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 296.18, y: -70}
-  m_SizeDelta: {x: 542.36, y: 20}
+  m_AnchoredPosition: {x: 321.18, y: -70}
+  m_SizeDelta: {x: 492.36, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6548282866814006214
 CanvasRenderer:
@@ -1640,7 +1640,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: used for crafting/upgrade equipment
+  m_text: used for crafting/upgrading equipment
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 040466a75f433ff4b85b163cc52852f3, type: 2}
   m_sharedMaterial: {fileID: -8709763942859980820, guid: 040466a75f433ff4b85b163cc52852f3, type: 2}
@@ -1675,7 +1675,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 32
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1684,7 +1684,7 @@ MonoBehaviour:
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
+  m_wordWrappingRatios: 0.654
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}

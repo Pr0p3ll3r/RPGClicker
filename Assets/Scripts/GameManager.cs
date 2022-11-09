@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -30,6 +28,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button setNameButton;
 
     [Header("Panels")]
+    [SerializeField] private GameObject startPanel;
     [SerializeField] private GameObject mainPanel;
     [SerializeField] private GameObject playerPanel;
     [SerializeField] private GameObject townPanel;
@@ -65,37 +64,35 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Player.data = new PlayerData();
         Database.data = database;
 
         ClearLootList();
 
-        mainPanel.SetActive(true);
+        startPanel.SetActive(false);
+        mainPanel.SetActive(false);
         playerPanel.SetActive(false);
         townPanel.SetActive(false);
         adventurePanel.SetActive(false);
         armoryPanel.SetActive(false);
         towerPanel.SetActive(false);
 
-        ChangeLocation(Database.data.locations[0]);
         CreateLocationList();
         CloseAdventurePanels();
         locationPanel.SetActive(true);
         locationButton.onClick.AddListener(delegate { CloseAdventurePanels(); locationPanel.SetActive(true); });
         dungeonButton.onClick.AddListener(delegate { CloseAdventurePanels(); dungeonPanel.SetActive(true); });
 
-        //if (PlayerPrefs.GetInt("NewGame", 1) == 1 || !Data.Load())
-        //{
-        //    newGamePanel.SetActive(true);
-        //    setNameButton.onClick.AddListener(delegate { StartNewGame(); });
-        //}
-        //else
-        //{
-        //    Data.Load();
-        //    LoadPlayer();
-        //}
-
-        Data.Load();
+        if (PlayerPrefs.GetInt("NewGame", 1) == 1)
+        {
+            startPanel.SetActive(true);
+            setNameButton.onClick.AddListener(delegate { StartNewGame(); });
+        }
+        else
+        {
+            Data.Load();
+            mainPanel.SetActive(true);
+            ChangeLocation(Database.data.locations[0]);
+        }
     }
 
     private void Update()
@@ -120,18 +117,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //void StartNewGame()
-    //{
-    //    if (string.IsNullOrEmpty(nameInput.text)) return;
+    private void StartNewGame()
+    {
+        if (string.IsNullOrEmpty(nameInput.text)) return;
 
-    //    setNameButton.interactable = false;
-    //    nameInput.interactable = false;
+        setNameButton.interactable = false;
+        nameInput.interactable = false;
 
-    //    PlayerData newPlayer = new PlayerData();
-    //    newPlayer.nickname = nameInput.text;
-    //    Player.Instance.data = newPlayer;
-    //    PlayerPrefs.SetInt("NewGame", 0);
-    //}
+        PlayerData newPlayer = new PlayerData();
+        newPlayer.nickname = nameInput.text;
+        Player.Instance.data = newPlayer;
+        PlayerPrefs.SetInt("NewGame", 0);
+        mainPanel.SetActive(true);
+        ChangeLocation(Database.data.locations[0]);
+    }
 
     public void Reward(EnemyData enemy)
     {  
@@ -308,6 +307,6 @@ public class GameManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        //Data.Save(Player.Instance.data, PlayerInventory.Instance, PlayerEquipment.Instance.slots);
+        Data.Save(Player.Instance, PlayerInventory.Instance, PlayerEquipment.Instance.slots);
     }
 }

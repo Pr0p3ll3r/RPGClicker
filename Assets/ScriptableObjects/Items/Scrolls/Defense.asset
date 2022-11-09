@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff4eb6a90eef46c4dbbae1fa25a61d4d, type: 3}
   m_Name: Defense
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 102
   itemName: Option Scroll Defense
-  icon: {fileID: 0}
-  itemType: 3
+  icon: {fileID: 2607994691028543399, guid: 4f994cdb05a8a484f9665f1ce9d29a74, type: 3}
+  itemType: 2
   description: Scroll used to fill a slot in the equipment
   maxInStack: 999
   stackable: 1
   price: 0
-  stat: 1
-  value: 2
+  scrollStat: {fileID: 11400000, guid: 1a6959eae44146042854ad3370fa9bff, type: 2}
+  inHelmet: 1
+  inChest: 1
+  inGloves: 1
+  inBoots: 1
+  inWeapon: 0

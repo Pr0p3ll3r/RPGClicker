@@ -21,7 +21,6 @@ public class Item : ScriptableObject
 public enum ItemType
 {	
 	Equipment,
-	Health,
 	Blueprint,
 	Scroll,
 	Pet,

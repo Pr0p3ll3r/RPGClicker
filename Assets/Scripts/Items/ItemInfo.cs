@@ -43,13 +43,16 @@ public class ItemInfo : MonoBehaviour
             ItemStatInfo lvl = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
             lvl.SetUp("Level:", $"{pet.level}");
             ItemStatInfo exp = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-            exp.SetUp("Exp:", $"{pet.exp}/{pet.expToLvlUp}");
-            foreach (StatBonus stat in pet.stats)
+            if(pet.LevelMaxed())
+                exp.SetUp("Exp:", $"MAXED");
+            else
+                exp.SetUp("Exp:", $"{pet.exp}/{Pet.BASE_REQUIRE_EXP * pet.level}");
+            foreach (StatBonus stat in pet.scrollsStat)
             {
-                if (stat == null) continue;
+                if (stat == null) break;
 
                 ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-                statInfo.SetUp($"{Utils.GetNiceName(stat.stat)}:", $"{stat.values[0]}");
+                statInfo.SetUp($"{Utils.GetNiceName(stat.stat)}:", $"{stat.values[2]}");
             }
 
             equipButton.onClick.AddListener(delegate { EquipPet(pet); });
@@ -109,13 +112,17 @@ public class ItemInfo : MonoBehaviour
             {
                 ItemStatInfo scrollsStats = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
                 scrollsStats.SetUp("Scroll Slots:", "");
-                foreach (Scroll scroll in eq.scrolls)
+                foreach (StatBonus stat in eq.scrollsStat)
                 {
-                    if (scroll == null) continue;
+                    if (stat == null) break;
 
+                    int value;
+                    if (eq.is2HWeapon)
+                        value = stat.values[1];
+                    else
+                        value = stat.values[0];
                     ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-                    int statValue = scroll.scrollStat.values[0];
-                    statInfo.SetUp($"{Utils.GetNiceName(scroll.scrollStat.stat)}:", $"{statValue}");
+                    statInfo.SetUp($"{Utils.GetNiceName(stat.stat)}:", $"{value}");
                 }
             }
             else

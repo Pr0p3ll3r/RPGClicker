@@ -53,17 +53,23 @@ public class PlayerUI : MonoBehaviour
 
     public void UpdateHealthBar(int currentHealth, int maxHealth)
     {
-        float ratio = (float)currentHealth / maxHealth;
-        healthBar.fillAmount = ratio;
+        healthBar.fillAmount = currentHealth / maxHealth;
         healthText.text = $"{currentHealth}/{maxHealth}";
     }
 
     public void UpdateLevel(int level, int exp, int requireExp)
     {
+        if(level == 100)
+        {
+            expText.text = $"MAXED";
+            expBar.fillAmount = 1;
+        }
+        else
+        {
+            expText.text = $"{exp}/{requireExp}";
+            expBar.fillAmount = (float)exp / requireExp;
+        }
         levelText.text = $"{level} ";
-        expText.text = $"{exp}/{requireExp}";
-        float percentage = (float)exp / requireExp;
-        expBar.fillAmount = percentage;
     }
 
     public void ShowVignette()

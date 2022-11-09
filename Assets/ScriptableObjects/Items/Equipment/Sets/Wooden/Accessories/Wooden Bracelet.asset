@@ -16,13 +16,14 @@ MonoBehaviour:
   itemName: Wooden Bracelet
   icon: {fileID: 1341698624, guid: 111f4609a522c6d46999fd8f7d413e03, type: 3}
   itemType: 0
-  description: 
+  description: Can be worn by everyone
   maxInStack: 1
   stackable: 0
   price: 0
   equipmentTypeSlot: 8
   rarity: 0
   lvlRequired: 1
+  rarityBonus: {fileID: 0}
   normalGrade:
     level: 0
     stats: []

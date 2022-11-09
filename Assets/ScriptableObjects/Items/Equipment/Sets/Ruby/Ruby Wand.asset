@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc3e9056b2f44744dad1f2b9d3b9b02f, type: 3}
   m_Name: Ruby Wand
   m_EditorClassIdentifier: 
-  ID: 6
+  ID: 69
   itemName: Ruby Wand
   icon: {fileID: -1567687766, guid: eff6633938febe54d8ee653b4bbc1199, type: 3}
   itemType: 0
@@ -34,8 +34,8 @@ MonoBehaviour:
   canBeDivineUpgraded: 1
   canBeChaosUpgraded: 0
   scrollsCanBeAdded: 1
-  startPrice: 0
   upgradePrices: 
+  is2HWeapon: 1
   extremeGrade:
     level: 0
     stats: []
@@ -44,7 +44,7 @@ MonoBehaviour:
     stats: []
   scrollSlots: 2
   maxScrollSlots: 3
-  scrolls:
+  scrollsStat:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

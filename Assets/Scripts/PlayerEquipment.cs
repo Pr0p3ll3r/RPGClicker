@@ -14,11 +14,11 @@ public class PlayerEquipment : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        slots = equipmentParent.GetComponentsInChildren<EquipmentSlot>();
     }
 
     private void Start()
-    {
-        slots = equipmentParent.GetComponentsInChildren<EquipmentSlot>();
+    {       
         RefreshUI();
     }
 

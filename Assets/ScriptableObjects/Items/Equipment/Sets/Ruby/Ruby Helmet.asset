@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc3e9056b2f44744dad1f2b9d3b9b02f, type: 3}
   m_Name: Ruby Helmet
   m_EditorClassIdentifier: 
-  ID: 3
+  ID: 66
   itemName: Ruby Helmet
   icon: {fileID: -1238385886, guid: eff6633938febe54d8ee653b4bbc1199, type: 3}
   itemType: 0
-  description: 
+  description: 'Can be worn by everyone
+
+'
   maxInStack: 1
   stackable: 0
   price: 0

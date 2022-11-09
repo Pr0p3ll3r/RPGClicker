@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,11 +16,6 @@ public class PetInfo : MonoBehaviour
 
     private Pet pet;
 
-    private void Start()
-    {
-        Clear();
-    }
-
     public void SetUp(Pet _pet)
     {
         pet = _pet;
@@ -42,7 +33,7 @@ public class PetInfo : MonoBehaviour
         foreach (Transform t in statParent)
             Destroy(t.gameObject);
 
-        foreach (StatBonus stat in pet.stats)
+        foreach (StatBonus stat in pet.scrollsStat)
         {
             if (stat == null) continue;
 
@@ -74,9 +65,18 @@ public class PetInfo : MonoBehaviour
 
     public void UpdateExpBar()
     {
-        float ratio = (float)pet.exp / pet.expToLvlUp;
-        expBar.fillAmount = ratio;
-        exp.text = $"{pet.exp}/{pet.expToLvlUp}";
+        if(pet.LevelMaxed())
+        {
+            expBar.fillAmount = 1;
+            exp.text = $"MAXED";
+        }
+        else
+        {
+            int requireExp = Pet.BASE_REQUIRE_EXP * pet.level;
+            float ratio = (float)pet.exp / requireExp;
+            expBar.fillAmount = ratio;
+            exp.text = $"{pet.exp}/{requireExp}";
+        }
         lvl.SetUp("Level:", $"{pet.level}");
     }
 }

@@ -12,30 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc3e9056b2f44744dad1f2b9d3b9b02f, type: 3}
   m_Name: Gold Wand
   m_EditorClassIdentifier: 
-  ID: 6
+  ID: 41
   itemName: Gold Wand
   icon: {fileID: -366947737, guid: eff6633938febe54d8ee653b4bbc1199, type: 3}
   itemType: 0
-  description: 
+  description: Can be worn by a wizard
   maxInStack: 1
   stackable: 0
   price: 123
   equipmentTypeSlot: 0
   rarity: 0
   lvlRequired: 30
+  rarityBonus: {fileID: 0}
   normalGrade:
     level: 0
     stats:
     - stat: 0
-      name: Damage
       values: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000120000001300000014000000
   canBeUpgraded: 1
   canBeExtremeUpgraded: 1
   canBeDivineUpgraded: 0
   canBeChaosUpgraded: 0
   scrollsCanBeAdded: 1
-  startPrice: 0
   upgradePrices: 
+  is2HWeapon: 1
   extremeGrade:
     level: 0
     stats: []
@@ -44,7 +44,7 @@ MonoBehaviour:
     stats: []
   scrollSlots: 2
   maxScrollSlots: 3
-  scrolls:
+  scrollsStat:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

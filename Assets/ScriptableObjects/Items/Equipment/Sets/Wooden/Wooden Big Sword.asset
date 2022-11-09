@@ -16,10 +16,10 @@ MonoBehaviour:
   itemName: Wooden Big Sword
   icon: {fileID: -1532615311, guid: eff6633938febe54d8ee653b4bbc1199, type: 3}
   itemType: 0
-  description: Can be worn by a warrior.
+  description: Can be worn by a warrior
   maxInStack: 1
   stackable: 0
-  price: 123
+  price: 5
   equipmentTypeSlot: 0
   rarity: 0
   lvlRequired: 1
@@ -29,15 +29,13 @@ MonoBehaviour:
     stats:
     - stat: 0
       values: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000120000001300000014000000
-    - stat: 3
-      values: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000120000001300000014000000
   canBeUpgraded: 1
   canBeExtremeUpgraded: 0
   canBeDivineUpgraded: 0
   canBeChaosUpgraded: 0
   scrollsCanBeAdded: 0
-  startPrice: 0
   upgradePrices: 
+  is2HWeapon: 1
   extremeGrade:
     level: 0
     stats: []
@@ -46,7 +44,7 @@ MonoBehaviour:
     stats: []
   scrollSlots: 2
   maxScrollSlots: 3
-  scrolls:
+  scrollsStat:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

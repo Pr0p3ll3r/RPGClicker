@@ -16,13 +16,14 @@ MonoBehaviour:
   itemName: Wooden Gloves
   icon: {fileID: -1647156419, guid: eff6633938febe54d8ee653b4bbc1199, type: 3}
   itemType: 0
-  description: 
+  description: Can be worn by everyone
   maxInStack: 1
   stackable: 0
   price: 0
-  equipmentTypeSlot: 5
+  equipmentTypeSlot: 4
   rarity: 0
   lvlRequired: 1
+  rarityBonus: {fileID: 0}
   normalGrade:
     level: 0
     stats: []
@@ -33,6 +34,7 @@ MonoBehaviour:
   scrollsCanBeAdded: 0
   startPrice: 0
   upgradePrices: 
+  is2HWeapon: 0
   extremeGrade:
     level: 0
     stats: []
@@ -41,7 +43,7 @@ MonoBehaviour:
     stats: []
   scrollSlots: 2
   maxScrollSlots: 3
-  scrolls:
+  scrollsStat:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

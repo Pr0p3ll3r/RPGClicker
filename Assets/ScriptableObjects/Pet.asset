@@ -12,16 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c013e8d0c06b74781a4612a4e65701, type: 3}
   m_Name: Pet
   m_EditorClassIdentifier: 
-  ID: 14
+  ID: 84
   itemName: Pet
   icon: {fileID: 5209519495783068314, guid: afd4b76975377194aad2761ce077332c, type: 3}
-  itemType: 4
+  itemType: 3
   description: 
   maxInStack: 1
   stackable: 0
-  price: 0
+  price: 1
   level: 1
   exp: 0
-  expToLvlUp: 10
-  stats:
+  scrollsStat:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  statsUnlocked: 1

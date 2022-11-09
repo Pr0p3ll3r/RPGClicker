@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc3e9056b2f44744dad1f2b9d3b9b02f, type: 3}
   m_Name: Ruby Amulet
   m_EditorClassIdentifier: 
-  ID: 6
+  ID: 56
   itemName: Ruby Amulet
   icon: {fileID: -285004848, guid: 111f4609a522c6d46999fd8f7d413e03, type: 3}
   itemType: 0
-  description: 
+  description: 'Can be worn by everyone
+
+'
   maxInStack: 1
   stackable: 0
   price: 0
