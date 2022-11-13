@@ -62,7 +62,7 @@ public class PlayerInfo : MonoBehaviour
         lvl.text = $"{Player.data.level}";
         damage.text = $"{Player.data.damage.GetValue()}";
         defense.text = $"{Player.data.defense.GetValue()}";
-        health.text = $"{Player.data.maxHealth.GetValue()}";
+        health.text = $"{Player.data.health.GetValue()}";
         critDamage.text = $"{Player.data.criticalDamage.GetValue()}%";
         critRate.text = $"{Player.data.criticalRate.GetValue()}%";
         maxCritRate.text = $"{Player.data.maxCriticalRate.GetValue()}%";

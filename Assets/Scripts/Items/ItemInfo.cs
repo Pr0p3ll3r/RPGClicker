@@ -16,13 +16,18 @@ public class ItemInfo : MonoBehaviour
 
     [SerializeField] private Button equipButton;
     [SerializeField] private Button unequipButton;
+    [SerializeField] private Button upgradeButton;
+    [SerializeField] private Button enhanceButton;
     [SerializeField] private Button sellButton;
     [SerializeField] private Button closeButton;
+
+    [SerializeField] private Armory armory;
 
     public void SetUp(Item item, bool equipped)
     {
         Clear();
         itemName.text = item.itemName;
+        itemName.color = Color.white;
         itemIcon.sprite = item.icon;
         price.SetUp("Price:", $"{item.price}");
         description.text = item.description;
@@ -57,10 +62,18 @@ public class ItemInfo : MonoBehaviour
 
             equipButton.onClick.AddListener(delegate { EquipPet(pet); });
             equipButton.gameObject.SetActive(true);
+
+            if(pet.CanAddScroll())
+            {
+                enhanceButton.onClick.AddListener(delegate { armory.OpenEnhancePanel(pet); });
+                enhanceButton.gameObject.SetActive(true);
+            }
         }
         else if (item.itemType == ItemType.Equipment)
         {
             Equipment eq = (Equipment)item;
+            price.SetUp("Price:", $"{eq.GetSellPrice()}");
+            itemName.text = $"{eq.itemName} +{eq.normalGrade.level}";
             ItemStatInfo rarity = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
             rarity.SetUp("Rarity Bonus:", $"{eq.rarity}");
             switch (eq.rarity)
@@ -70,12 +83,15 @@ public class ItemInfo : MonoBehaviour
                     break;
                 case EquipmentRarity.Uncommon:
                     rarity.SetColor(Color.green);
+                    itemName.color = Color.green;
                     break;
                 case EquipmentRarity.Epic:
                     rarity.SetColor(new Color(30, 115, 232, 255));
+                    itemName.color = new Color(30, 115, 232, 255);
                     break;
                 case EquipmentRarity.Legendary:
                     rarity.SetColor(new Color32(255, 165, 0, 255));
+                    itemName.color = new Color32(255, 165, 0, 255);
                     break;
             }
             ItemStatInfo reqLvl = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
@@ -86,7 +102,7 @@ public class ItemInfo : MonoBehaviour
             }
 
             ItemStatInfo normalStats = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-            normalStats.SetUp("Normal Stats:", "");
+            normalStats.SetUp($"Normal Stats {eq.normalGrade.level}/{eq.normalGrade.maxLevel}", "");
             foreach (ItemStat itemStat in eq.normalGrade.stats)
             {
                 ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
@@ -111,7 +127,7 @@ public class ItemInfo : MonoBehaviour
             if (eq.scrollsCanBeAdded)
             {
                 ItemStatInfo scrollsStats = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-                scrollsStats.SetUp("Scroll Slots:", "");
+                scrollsStats.SetUp($"Scroll Slots {eq.UsedScrollsSlot()}/{eq.scrollsStat.Length}", "");
                 foreach (StatBonus stat in eq.scrollsStat)
                 {
                     if (stat == null) break;
@@ -134,7 +150,7 @@ public class ItemInfo : MonoBehaviour
             if (eq.canBeExtremeUpgraded)
             {
                 ItemStatInfo extremeStats = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-                extremeStats.SetUp("Extreme Stats:", "");
+                extremeStats.SetUp($"Extreme Stats {eq.extremeGrade.level}/{eq.extremeGrade.maxLevel}", "");
                 foreach (ItemStat itemStat in eq.extremeGrade.stats)
                 {
                     ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
@@ -165,7 +181,7 @@ public class ItemInfo : MonoBehaviour
             if (eq.canBeDivineUpgraded)
             {
                 ItemStatInfo divineStats = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-                divineStats.SetUp("Divine Stats:", "");
+                divineStats.SetUp($"Divine Stats {eq.divineGrade.level}/{eq.divineGrade.maxLevel}", "");
                 foreach (ItemStat itemStat in eq.divineGrade.stats)
                 {
                     ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
@@ -196,7 +212,7 @@ public class ItemInfo : MonoBehaviour
             if (eq.canBeChaosUpgraded)
             {
                 ItemStatInfo chaosStats = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-                chaosStats.SetUp("Chaos Stats:", "");
+                chaosStats.SetUp($"Chaos Stats {eq.chaosGrade.level}/{eq.chaosGrade.maxLevel}", "");
                 foreach (ItemStat itemStat in eq.chaosGrade.stats)
                 {
                     ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
@@ -228,6 +244,14 @@ public class ItemInfo : MonoBehaviour
             {
                 equipButton.onClick.AddListener(delegate { EquipItem(eq); });
                 equipButton.gameObject.SetActive(true);
+                upgradeButton.onClick.AddListener(delegate { armory.OpenUpgradePanel(eq); });
+                upgradeButton.gameObject.SetActive(true);
+
+                if(eq.scrollsCanBeAdded && eq.ScrollsCanStillBeAdded())
+                {
+                    enhanceButton.onClick.AddListener(delegate { armory.OpenEnhancePanel(eq); });
+                    enhanceButton.gameObject.SetActive(true);
+                }            
             }
             else
             {
@@ -242,11 +266,15 @@ public class ItemInfo : MonoBehaviour
         equipButton.onClick.RemoveAllListeners();
         unequipButton.onClick.RemoveAllListeners();
         sellButton.onClick.RemoveAllListeners();
+        upgradeButton.onClick.RemoveAllListeners();
         closeButton.onClick.RemoveAllListeners();
+        enhanceButton.onClick.RemoveAllListeners();
         equipButton.gameObject.SetActive(false);
         unequipButton.gameObject.SetActive(false);
+        upgradeButton.gameObject.SetActive(false);
         description.gameObject.SetActive(false);
         sellButton.gameObject.SetActive(false);
+        enhanceButton.gameObject.SetActive(false);
         foreach (Transform stat in statParent)
             Destroy(stat.gameObject);
         itemIcon.sprite = null;
@@ -283,6 +311,7 @@ public class ItemInfo : MonoBehaviour
 
     private void CloseItemInfo()
     {
+        SoundManager.Instance.PlayOneShot("Click");
         gameObject.SetActive(false);
     }
 }

@@ -55,15 +55,10 @@ public static class Data
             {
                 switch(inventory.slots[i].item.itemType)
                 {
-                    case ItemType.Default:
-                        SaveItem saveItem;
-                        saveItem = new SaveItem(inventory.slots[i].item.ID, inventory.slots[i].amount);
-                        data = JsonUtility.ToJson(saveItem);
-                        break;
                     case ItemType.Equipment:
                         SaveEquipment saveEq;
                         Equipment equipment = (Equipment)item;
-                        saveEq = new SaveEquipment(equipment.ID, equipment.rarity, equipment.rarityBonus, equipment.normalGrade.level, equipment.extremeGrade.level, equipment.divineGrade.level, equipment.chaosGrade.level, equipment.scrollSlots, equipment.scrollsStat);
+                        saveEq = new SaveEquipment(equipment.ID, equipment.rarity, equipment.rarityBonus, equipment.normalGrade.level, equipment.extremeGrade.level, equipment.divineGrade.level, equipment.chaosGrade.level, equipment.scrollsStat);
                         data = JsonUtility.ToJson(saveEq);
                         break;
                     case ItemType.Pet:
@@ -71,6 +66,11 @@ public static class Data
                         Pet pet = (Pet)item;
                         savePet = new SavePet(pet.ID, pet.level, pet.exp, pet.scrollsStat, pet.statsUnlocked);
                         data = JsonUtility.ToJson(savePet);
+                        break;
+                   default:
+                        SaveItem saveItem;
+                        saveItem = new SaveItem(inventory.slots[i].item.ID, inventory.slots[i].amount);
+                        data = JsonUtility.ToJson(saveItem);
                         break;
                 }
             }                       
@@ -84,7 +84,7 @@ public static class Data
             if (eq[i].item == null)
                 saveEq = new SaveEquipment();
             else
-                saveEq = new SaveEquipment(eq[i].item.ID, eq[i].item.rarity, eq[i].item.rarityBonus, eq[i].item.normalGrade.level, eq[i].item.extremeGrade.level, eq[i].item.divineGrade.level, eq[i].item.chaosGrade.level, eq[i].item.scrollSlots, eq[i].item.scrollsStat);
+                saveEq = new SaveEquipment(eq[i].item.ID, eq[i].item.rarity, eq[i].item.rarityBonus, eq[i].item.normalGrade.level, eq[i].item.extremeGrade.level, eq[i].item.divineGrade.level, eq[i].item.chaosGrade.level, eq[i].item.scrollsStat);
             data = JsonUtility.ToJson(saveEq);
             bf.Serialize(file, data);
         }
@@ -158,14 +158,13 @@ public static class Data
                         eq.extremeGrade.level = saveEquipment.extremeGradeLevel;
                         eq.divineGrade.level = saveEquipment.divineGradeLevel;
                         eq.chaosGrade.level = saveEquipment.chaosGradeLevel;
-                        eq.scrollSlots = saveEquipment.scrollSlots;
+                        eq.scrollsStat = new StatBonus[saveEquipment.statsIds.Length];
                         for (int j = 0; j < saveEquipment.statsIds.Length; j++)
                         {
                             if (saveEquipment.statsIds[j] == -1)
                                 break;
                             eq.scrollsStat[j] = Database.data.GetScrollBonusById(saveEquipment.statsIds[j]);
                         }
-                        eq.CheckOptions();
                         slot.item = eq;
                         break;
                     case ItemType.Pet:
@@ -213,14 +212,13 @@ public static class Data
                 eq.extremeGrade.level = saveEquipment.extremeGradeLevel;
                 eq.divineGrade.level = saveEquipment.divineGradeLevel;
                 eq.chaosGrade.level = saveEquipment.chaosGradeLevel;
-                eq.scrollSlots = saveEquipment.scrollSlots;
+                eq.scrollsStat = new StatBonus[saveEquipment.statsIds.Length];
                 for (int j = 0; j < saveEquipment.statsIds.Length; j++)
                 {
                     if (saveEquipment.statsIds[j] == -1)
                         break;
                     eq.scrollsStat[j] = Database.data.GetScrollBonusById(saveEquipment.statsIds[j]);
                 }
-                eq.CheckOptions();
                 slot.item = eq;
             }
         }

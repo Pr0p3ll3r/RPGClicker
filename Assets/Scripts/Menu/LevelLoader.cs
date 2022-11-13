@@ -17,7 +17,7 @@ public class LevelLoader : MonoBehaviour
     }
 
     public void LoadScene(int index)
-    {      
+    {
         StartCoroutine(Load(index));
     }
 

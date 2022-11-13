@@ -19,33 +19,40 @@ MonoBehaviour:
   description: Can be worn by everyone
   maxInStack: 1
   stackable: 0
-  price: 0
+  price: 1
   equipmentTypeSlot: 8
   rarity: 0
   lvlRequired: 1
   rarityBonus: {fileID: 0}
   normalGrade:
     level: 0
+    maxLevel: 0
     stats: []
+    prices: 
   canBeUpgraded: 1
   canBeExtremeUpgraded: 0
   canBeDivineUpgraded: 0
   canBeChaosUpgraded: 0
   scrollsCanBeAdded: 0
-  startPrice: 0
-  upgradePrices: 
+  is2HWeapon: 0
   extremeGrade:
     level: 0
+    maxLevel: 0
     stats: []
+    prices: 
   divineGrade:
     level: 0
+    maxLevel: 0
     stats: []
+    prices: 
   scrollSlots: 2
   maxScrollSlots: 3
-  scrolls:
+  scrollsStat:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   chaosGrade:
     level: 0
+    maxLevel: 0
     stats: []
+    prices: 

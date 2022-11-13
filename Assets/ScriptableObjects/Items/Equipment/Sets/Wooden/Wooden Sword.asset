@@ -19,35 +19,40 @@ MonoBehaviour:
   description: Can be worn by a blader and shielder
   maxInStack: 1
   stackable: 0
-  price: 123
+  price: 1
   equipmentTypeSlot: 0
   rarity: 0
   lvlRequired: 1
-  rarityBonus: {fileID: 0}
-  normalGrade:
-    level: 0
-    stats:
-    - stat: 0
-      values: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000
   canBeUpgraded: 1
   canBeExtremeUpgraded: 0
   canBeDivineUpgraded: 0
   canBeChaosUpgraded: 0
-  scrollsCanBeAdded: 0
-  startPrice: 0
-  upgradePrices: 
+  scrollsCanBeAdded: 1
+  rarityBonus: {fileID: 0}
+  normalGrade:
+    level: 0
+    maxLevel: 0
+    stats:
+    - stat: 0
+      values: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000
+    prices: 
+  is2HWeapon: 0
   extremeGrade:
     level: 0
+    maxLevel: 0
     stats: []
+    prices: 
   divineGrade:
     level: 0
+    maxLevel: 0
     stats: []
-  scrollSlots: 2
-  maxScrollSlots: 3
-  scrolls:
+    prices: 
+  scrollsStat:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   chaosGrade:
     level: 0
+    maxLevel: 0
     stats: []
+    prices: 

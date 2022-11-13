@@ -7,30 +7,65 @@ public class Equipment : Item
     public EquipmentType equipmentTypeSlot;
     public EquipmentRarity rarity;
     public int lvlRequired = 1;
-    public StatBonus rarityBonus;
-    public Grade normalGrade;
     public bool canBeUpgraded;
     public bool canBeExtremeUpgraded;
     public bool canBeDivineUpgraded;
     public bool canBeChaosUpgraded;
     public bool scrollsCanBeAdded;
-    public int[] upgradePrices;
+    public bool CanStillBeUpgraded()
+    {
+        if (normalGrade.level == normalGrade.maxLevel)
+            return false;
+        return true;
+    }
+    public bool CanStillBeExtremeUpgraded()
+    {
+        if (extremeGrade.level == extremeGrade.maxLevel)
+            return false;
+        return true;
+    }
+    public bool CanStillBeDivineUpgraded()
+    {
+        if (divineGrade.level == divineGrade.maxLevel)
+            return false;
+        return true;
+    }
+    public bool CanStillBeChaosUpgraded()
+    {
+        if (chaosGrade.level == chaosGrade.maxLevel)
+            return false;
+        return true;
+    }
+    public bool ScrollsCanStillBeAdded()
+    {
+        for (int i = 0; i < scrollsStat.Length; i++)
+        {
+            if (scrollsStat[i] == null)
+                return true;
+        }
+        return false;
+    }
 
     [Header("Armor and Weapon")]
+    public StatBonus rarityBonus;
+    public Grade normalGrade;
     public bool is2HWeapon;
     public Grade extremeGrade;
     public Grade divineGrade;
-    public int scrollSlots = 2;
-    public int maxScrollSlots = 3;
-    public StatBonus[] scrollsStat = new StatBonus[3];
+    public int UsedScrollsSlot()
+    {
+        int value = 0;
+        for (int i = 0; i < scrollsStat.Length; i++)
+        {
+            if (scrollsStat[i] != null)
+                value++;
+        }
+        return value;
+    }
+    public StatBonus[] scrollsStat = new StatBonus[2];
 
     [Header("Jewelry")]
     public Grade chaosGrade;
-
-    public static readonly int MAX_NORMAL_GRADE = 20;
-    public static readonly int MAX_EXTREME_GRADE = 15;
-    public static readonly int MAX_DIVINE_GRADE = 15;
-    public static readonly int MAX_CHAOS_GRADE = 15;
 
     public override Item GetCopy()
     {
@@ -39,18 +74,18 @@ public class Equipment : Item
 
     public void AddStats(PlayerData data)
     {
-        if(canBeUpgraded)
+        if(normalGrade.level >= 0)
             foreach (ItemStat stat in normalGrade.stats)
                 data.AddStat(stat.stat, stat.values[normalGrade.level]);
-        if (canBeExtremeUpgraded)
+        if (canBeExtremeUpgraded && extremeGrade.level > 0)
             foreach (ItemStat stat in extremeGrade.stats)
-                data.AddStat(stat.stat, stat.values[extremeGrade.level]);
-        if (canBeDivineUpgraded)
+                data.AddStat(stat.stat, stat.values[extremeGrade.level - 1]);
+        if (canBeDivineUpgraded && divineGrade.level > 0)
             foreach (ItemStat stat in divineGrade.stats)
-                data.AddStat(stat.stat, stat.values[divineGrade.level]);
-        if (canBeChaosUpgraded)
+                data.AddStat(stat.stat, stat.values[divineGrade.level - 1]);
+        if (canBeChaosUpgraded && chaosGrade.level > 0)
             foreach (ItemStat stat in chaosGrade.stats)
-                data.AddStat(stat.stat, stat.values[chaosGrade.level]);
+                data.AddStat(stat.stat, stat.values[chaosGrade.level - 1]);
 
         //add stats from rarity bonus
         if (rarity != EquipmentRarity.Common)
@@ -60,24 +95,27 @@ public class Equipment : Item
         foreach (StatBonus stat in scrollsStat)
         {
             if (stat != null)
-                data.AddStat(stat.stat, stat.values[0]);
+                if(is2HWeapon)
+                    data.AddStat(stat.stat, stat.values[1]);
+                else
+                    data.AddStat(stat.stat, stat.values[0]);
         }
     }
 
     public void RemoveStats(PlayerData data)
     {
-        if (canBeUpgraded)
+        if (normalGrade.level >= 0)
             foreach (ItemStat stat in normalGrade.stats)
                 data.RemoveStat(stat.stat, stat.values[normalGrade.level]);
-        if (canBeExtremeUpgraded)
+        if (canBeExtremeUpgraded && extremeGrade.level > 0)
             foreach (ItemStat stat in extremeGrade.stats)
-                data.RemoveStat(stat.stat, stat.values[extremeGrade.level]);
-        if (canBeDivineUpgraded)
+                data.RemoveStat(stat.stat, stat.values[extremeGrade.level - 1]);
+        if (canBeDivineUpgraded && divineGrade.level > 0)
             foreach (ItemStat stat in divineGrade.stats)
-                data.RemoveStat(stat.stat, stat.values[divineGrade.level]);
-        if (canBeChaosUpgraded)
+                data.RemoveStat(stat.stat, stat.values[divineGrade.level - 1]);
+        if (canBeChaosUpgraded && chaosGrade.level > 0)
             foreach (ItemStat stat in chaosGrade.stats)
-                data.RemoveStat(stat.stat, stat.values[chaosGrade.level]);
+                data.RemoveStat(stat.stat, stat.values[chaosGrade.level - 1]); ;
 
         //remove stats from rarity bonus
         if (rarity != EquipmentRarity.Common)
@@ -87,7 +125,10 @@ public class Equipment : Item
         foreach (StatBonus stat in scrollsStat)
         {
             if (stat != null)
-                data.RemoveStat(stat.stat, stat.values[0]);
+                if (is2HWeapon)
+                    data.RemoveStat(stat.stat, stat.values[1]);
+                else
+                    data.RemoveStat(stat.stat, stat.values[0]);
         }
     }
 
@@ -95,61 +136,26 @@ public class Equipment : Item
     {
         int sellPrice;
         sellPrice = price;
-        for (int i = 0; i < normalGrade.level; i++)
-        {
-            sellPrice += upgradePrices[i];
-        }
-        sellPrice /= 2;
+        if (normalGrade.level > 0)
+            sellPrice += normalGrade.prices[normalGrade.level - 1] / 2;
+        if (extremeGrade.level > 0)
+            sellPrice += extremeGrade.prices[extremeGrade.level - 1] / 2;
+        if (divineGrade.level > 0)
+            sellPrice += divineGrade.prices[divineGrade.level - 1] / 2;
+        if (chaosGrade.level > 0)
+            sellPrice += chaosGrade.prices[chaosGrade.level - 1] / 2;
         return sellPrice;
     }
 
-    public void Upgrade()
+    public void AddScroll(StatBonus stat)
     {
-        normalGrade.level++;
-        if (normalGrade.level == MAX_NORMAL_GRADE)
-            canBeUpgraded = false;       
-    }
-
-    public void ExtremeUpgrade()
-    {
-        extremeGrade.level++;
-        if (extremeGrade.level == MAX_EXTREME_GRADE)
-            canBeExtremeUpgraded = false;
-    }
-
-    public void DivineUpgrade()
-    {
-        divineGrade.level++;
-        if (divineGrade.level == MAX_DIVINE_GRADE)
-            canBeDivineUpgraded = false;
-    }
-
-    public void ChaosUpgrade()
-    {
-        chaosGrade.level++;
-        if (chaosGrade.level == MAX_CHAOS_GRADE)
-            canBeChaosUpgraded = false;
-    }
-
-    public void CheckOptions()
-    {
-        if (canBeUpgraded && normalGrade.level == MAX_NORMAL_GRADE)
-            canBeUpgraded = false;
-        if (canBeExtremeUpgraded && extremeGrade.level == MAX_EXTREME_GRADE)
-            canBeExtremeUpgraded = false;
-        if (canBeDivineUpgraded && divineGrade.level == MAX_DIVINE_GRADE)
-            canBeDivineUpgraded = false;
-        if (canBeChaosUpgraded && chaosGrade.level == MAX_CHAOS_GRADE)
-            canBeChaosUpgraded = false;
-        for (int i = 0; i < scrollSlots; i++)
+        for (int i = 0; i < scrollsStat.Length; i++)
         {
-            if (scrollsStat[i] != null)
-                continue;
-            else
+            if (scrollsStat[i] == null)
             {
-                scrollsCanBeAdded = false;
+                scrollsStat[i] = stat;
                 break;
-            }              
+            }               
         }
     }
 }
@@ -188,5 +194,7 @@ public class ItemStat
 public class Grade
 {
     public int level;
-    public ItemStat[] stats;  
+    public int maxLevel;
+    public ItemStat[] stats;
+    public int[] prices;
 }

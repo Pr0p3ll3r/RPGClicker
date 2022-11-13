@@ -53,7 +53,7 @@ public class PlayerUI : MonoBehaviour
 
     public void UpdateHealthBar(int currentHealth, int maxHealth)
     {
-        healthBar.fillAmount = currentHealth / maxHealth;
+        healthBar.fillAmount = (float)currentHealth / maxHealth;
         healthText.text = $"{currentHealth}/{maxHealth}";
     }
 

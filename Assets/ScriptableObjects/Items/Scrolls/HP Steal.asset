@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: HP Steal
   m_EditorClassIdentifier: 
   ID: 105
-  itemName: Option Scroll HP Steal
+  itemName: Scroll HP Steal
   icon: {fileID: 2607994691028543399, guid: 4f994cdb05a8a484f9665f1ce9d29a74, type: 3}
   itemType: 2
-  description: Scroll used to fill a slot in the equipment
+  description: A Scroll used to fill a slot in the gloves or pet
   maxInStack: 999
   stackable: 1
   price: 0
   scrollStat: {fileID: 11400000, guid: ed3e73e3d02a25e46b77b4730df78308, type: 2}
   inHelmet: 0
-  inChest: 0
+  inChestplate: 0
   inGloves: 1
   inBoots: 0
   inWeapon: 0
+  inPet: 1

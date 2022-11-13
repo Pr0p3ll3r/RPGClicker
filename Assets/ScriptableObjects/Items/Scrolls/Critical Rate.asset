@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: Critical Rate
   m_EditorClassIdentifier: 
   ID: 100
-  itemName: Option Scroll Critical Rate
+  itemName: Scroll Critical Rate
   icon: {fileID: 2607994691028543399, guid: 4f994cdb05a8a484f9665f1ce9d29a74, type: 3}
   itemType: 2
-  description: Scroll used to fill a slot in the weapon/helmet
+  description: A Scroll used to fill a slot in the weapon/helmet or pet
   maxInStack: 999
   stackable: 1
   price: 0
   scrollStat: {fileID: 11400000, guid: 35aa4a20386acc44f9a2bb9c802d1468, type: 2}
   inHelmet: 1
-  inChest: 0
+  inChestplate: 0
   inGloves: 0
   inBoots: 0
   inWeapon: 1
+  inPet: 1

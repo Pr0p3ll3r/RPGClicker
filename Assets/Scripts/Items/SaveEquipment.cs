@@ -8,8 +8,7 @@ public class SaveEquipment
     public int extremeGradeLevel;
     public int divineGradeLevel;
     public int chaosGradeLevel;
-    public int scrollSlots = 2;
-    public int[] statsIds = new int[3];
+    public int[] statsIds;
     public SaveEquipment()
     {
         ID = -1;
@@ -19,10 +18,9 @@ public class SaveEquipment
         extremeGradeLevel = 0;
         divineGradeLevel = 0;
         chaosGradeLevel = 0;
-        scrollSlots = 0;
         statsIds = null;
     }
-    public SaveEquipment(int _ID, EquipmentRarity _rarity, StatBonus _rarityBonus, int _normalGradeLevel, int _extremeGradeLevel, int _divineGradeLevel, int _chaosGradeLevel, int _scrollSlots, StatBonus[] _stats)
+    public SaveEquipment(int _ID, EquipmentRarity _rarity, StatBonus _rarityBonus, int _normalGradeLevel, int _extremeGradeLevel, int _divineGradeLevel, int _chaosGradeLevel, StatBonus[] _stats)
     {
         ID = _ID;
         rarity = _rarity;
@@ -34,7 +32,7 @@ public class SaveEquipment
         extremeGradeLevel = _extremeGradeLevel;
         divineGradeLevel = _divineGradeLevel;
         chaosGradeLevel = _chaosGradeLevel;
-        scrollSlots = _scrollSlots;
+        statsIds = new int[_stats.Length];
         for (int i = 0; i < _stats.Length; i++)
         {
             if (_stats[i] != null)

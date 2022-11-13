@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class SlotHandler : MonoBehaviour, IPointerClickHandler
 {
@@ -14,6 +11,8 @@ public class SlotHandler : MonoBehaviour, IPointerClickHandler
             PlayerInventory.Instance.DisplayItemInfo(GetComponentInParent<InventorySlot>().item, inventory); 
         else
             PlayerInventory.Instance.DisplayItemInfo(GetComponentInParent<EquipmentSlot>().item, inventory);
+
+        SoundManager.Instance.PlayOneShot("Click");
     }
 }
 

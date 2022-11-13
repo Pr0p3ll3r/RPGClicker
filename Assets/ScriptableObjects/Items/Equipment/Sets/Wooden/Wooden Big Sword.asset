@@ -19,35 +19,40 @@ MonoBehaviour:
   description: Can be worn by a warrior
   maxInStack: 1
   stackable: 0
-  price: 5
+  price: 1
   equipmentTypeSlot: 0
   rarity: 0
   lvlRequired: 1
   rarityBonus: {fileID: 0}
   normalGrade:
     level: 0
+    maxLevel: 2
     stats:
     - stat: 0
       values: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000120000001300000014000000
+    prices: 010000000200000003000000
   canBeUpgraded: 1
   canBeExtremeUpgraded: 0
   canBeDivineUpgraded: 0
   canBeChaosUpgraded: 0
-  scrollsCanBeAdded: 0
-  upgradePrices: 
+  scrollsCanBeAdded: 1
   is2HWeapon: 1
   extremeGrade:
     level: 0
+    maxLevel: 0
     stats: []
+    prices: 010000000200000003000000
   divineGrade:
     level: 0
+    maxLevel: 0
     stats: []
-  scrollSlots: 2
-  maxScrollSlots: 3
+    prices: 010000000200000003000000
+  usedScrollsSlot: 0
   scrollsStat:
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   chaosGrade:
     level: 0
+    maxLevel: 0
     stats: []
+    prices: 

@@ -12,42 +12,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc3e9056b2f44744dad1f2b9d3b9b02f, type: 3}
   m_Name: Ruby Sword
   m_EditorClassIdentifier: 
-  ID: 6
+  ID: 68
   itemName: Ruby Sword
   icon: {fileID: -1910758391, guid: eff6633938febe54d8ee653b4bbc1199, type: 3}
   itemType: 0
   description: Can be worn by a blader and shielder
   maxInStack: 1
   stackable: 0
-  price: 123
+  price: 100000
   equipmentTypeSlot: 0
   rarity: 0
   lvlRequired: 75
   rarityBonus: {fileID: 0}
   normalGrade:
     level: 0
+    maxLevel: 0
     stats:
     - stat: 0
       values: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000120000001300000014000000
+    prices: 
   canBeUpgraded: 1
   canBeExtremeUpgraded: 1
   canBeDivineUpgraded: 1
   canBeChaosUpgraded: 0
   scrollsCanBeAdded: 1
-  startPrice: 0
-  upgradePrices: 
+  is2HWeapon: 0
   extremeGrade:
     level: 0
-    stats: []
+    maxLevel: 0
+    stats:
+    - stat: 0
+      values: 14000000280000003c000000500000006400000078000000
+    - stat: 6
+      values: 00000000320000006400000096000000c8000000fa000000
+    - stat: 3
+      values: 0000000000000000050000000a0000000f00000014000000
+    prices: 40420f0080841e00c0c62d0000093d00404b4c00808d5b00
   divineGrade:
     level: 0
+    maxLevel: 0
     stats: []
+    prices: 
   scrollSlots: 2
   maxScrollSlots: 3
-  scrolls:
+  scrollsStat:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   chaosGrade:
     level: 0
+    maxLevel: 0
     stats: []
+    prices: 

@@ -98,7 +98,6 @@ public class PlayerInventory : MonoBehaviour
             if (slot.item == _item)
             {
                 int itemAmount = slot.amount;
-                itemAmount = Mathf.Min(itemAmount, amount);
                 amount -= itemAmount;
                 slot.amount -= itemAmount;
 
@@ -114,7 +113,6 @@ public class PlayerInventory : MonoBehaviour
         {
             if (slots[i].item == _item)
             {
-                data.gold += slots[i].item.price * slots[i].amount;
                 slots[i].item = null;
             }
         }
@@ -189,39 +187,20 @@ public class PlayerInventory : MonoBehaviour
         else return false;
     }
 
-    //public bool CheckResources(Blueprint b)
-    //{
-    //    foreach(NeededItem item in b.neededItems)
-    //    {
-    //        if (!info.CheckItem(item)) return false;
-    //    }
+    public bool CheckResources(Blueprint b)
+    {
+        foreach (NeedItem item in b.needItems)
+        {
+            if (!HaveItem(item.item, item.amount)) 
+                return false;
+        }
 
-    //    foreach (NeededItem item in b.neededItems)
-    //    {
-    //        info.Remove(item.item, item.quantity);
-    //    }
+        foreach (NeedItem item in b.needItems)
+        {
+            RemoveItem(item.item, item.amount);
+        }
 
-    //    UpdateUI();
-
-    //    return true;
-    //}
-
-    //public bool CheckResources(EquipmentUpgrade upgrade, int level)
-    //{
-    //    for (int i = 0; i < upgrade.upgradeLevels[level].neededItems.Length; i++)
-    //    {
-    //        NeededItem item = upgrade.upgradeLevels[level].neededItems[i];
-    //        if (!info.CheckItem(item)) return false;
-    //    }
-
-    //    for (int i = 0; i < upgrade.upgradeLevels[level].neededItems.Length; i++)
-    //    {
-    //        NeededItem item = upgrade.upgradeLevels[level].neededItems[i];
-    //        info.Remove(item.item, item.quantity);
-    //    }
-
-    //    RefreshUI();
-
-    //    return true;
-    //}
+        RefreshUI();
+        return true;
+    }
 }

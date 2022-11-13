@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: Health
   m_EditorClassIdentifier: 
   ID: 107
-  itemName: Option Scroll HP
+  itemName: Scroll HP
   icon: {fileID: 2607994691028543399, guid: 4f994cdb05a8a484f9665f1ce9d29a74, type: 3}
   itemType: 2
-  description: Scroll used to fill a slot in the equipment
+  description: A Scroll used to fill a slot in the chestplate/boots or pet
   maxInStack: 999
   stackable: 1
   price: 0
   scrollStat: {fileID: 11400000, guid: 1f7d9dc5bcd72a149870b65510016191, type: 2}
   inHelmet: 0
-  inChest: 1
+  inChestplate: 1
   inGloves: 0
   inBoots: 1
   inWeapon: 0
+  inPet: 1

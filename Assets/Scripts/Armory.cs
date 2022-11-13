@@ -1,207 +1,331 @@
-//using System.Collections;
-//using System.Collections.Generic;
-//using TMPro;
-//using UnityEngine;
-//using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
-//public class Armory : MonoBehaviour
-//{
-//    [SerializeField] private GameObject mainButtons;
+public class Armory : MonoBehaviour
+{
+    [Header("Upgrading")]
+    [SerializeField] private GameObject upgradingPanel;
+    [SerializeField] private GameObject currentItemInfo;
+    [SerializeField] private GameObject afterUpgradeItemInfo;
+    [SerializeField] private GameObject upgradeButtons;
+    [SerializeField] private Button normalUpgradeButton;
+    [SerializeField] private Button extremeUpgradeButton;
+    [SerializeField] private Button divineUpgradeButton;
+    [SerializeField] private Button chaosUpgradeButton;
+    [SerializeField] private GameObject upgradeOptions;
+    [SerializeField] private Button upgradeButton;
+    [SerializeField] private TextMeshProUGUI upgradeChance;
+    [SerializeField] private int[] normalUpgradeChances = new int[20];
+    [SerializeField] private int[] extremeUpgradeChances = new int[6];
+    [SerializeField] private int[] divineUpgradeChances = new int[15];
+    [SerializeField] private int[] chaosUpgradeChances = new int[15];
 
-//    [SerializeField] private GameObject craftingPanel;
-//    [SerializeField] private GameObject blueprintListItem;
-//    [SerializeField] private GameObject warningBlueprintText;
-//    [SerializeField] private Transform listOfBlueprint;
+    [Header("Enhancing")]
+    [SerializeField] private GameObject enhancingPanel;
+    [SerializeField] private GameObject chooseScrollPanel;
+    [SerializeField] private Transform listOfScrolls;
+    [SerializeField] private GameObject scrollPrefab;
+    [SerializeField] private GameObject noScrollsText;
+    [SerializeField] private GameObject enhanceOptions;
+    [SerializeField] private Button enhanceButton;
+    [SerializeField] private TextMeshProUGUI enhanceChance;
 
-//    [SerializeField] private GameObject upgradePanel;
-//    [SerializeField] private GameObject warningUpgradeText;
-//    [SerializeField] private GameObject upgradeListItem;
-//    [SerializeField] private Animation infoAnimation;
-//    [SerializeField] private Transform listOfItems;
+    [Header("Crafting")]
+    [SerializeField] private GameObject craftingPanel;
+    [SerializeField] private GameObject blueprintListItem;
+    [SerializeField] private GameObject warningBlueprintText;
+    [SerializeField] private Transform listOfBlueprint;
 
-//    private void OnEnable()
-//    {
-//        mainButtons.SetActive(true);
-//        craftingPanel.SetActive(false);
-//        upgradePanel.SetActive(false);
-//    }
+    private PlayerInventory Inventory => PlayerInventory.Instance;
+    private GameManager GameManager => GameManager.Instance;
 
-//    public void Return()
-//    {
-//        mainButtons.SetActive(true);
-//        craftingPanel.SetActive(false);
-//        upgradePanel.SetActive(false);
-//    }
+    private void Start()
+    {
+        currentItemInfo.SetActive(false);
+        afterUpgradeItemInfo.SetActive(false);
+        upgradingPanel.SetActive(false);
+        enhancingPanel.SetActive(false);
+    }
 
-//    public void OpenCraftingPanel()
-//    {
-//        warningBlueprintText.SetActive(false);
+    public void OpenCraftingPanel()
+    {
+        warningBlueprintText.SetActive(false);
 
-//        int i;
-//        for (i = 0; i < listOfBlueprint.childCount; i++)
-//        {
-//            Destroy(listOfBlueprint.GetChild(i).gameObject);
-//        }
+        int i;
+        for (i = 0; i < listOfBlueprint.childCount; i++)
+        {
+            Destroy(listOfBlueprint.GetChild(i).gameObject);
+        }
 
-//        i = 0;
-//        foreach (Item item in Inventory.Instance.info.items)
-//        {
-//            if (item.GetType() == typeof(Blueprint))
-//            {
-//                Blueprint b = (Blueprint)item;
-//                i++;
-//                GameObject newRecipe = Instantiate(blueprintListItem, listOfBlueprint);
-//                newRecipe.GetComponent<BlueprintInfo>().SetUp(b);
-//                newRecipe.transform.Find("ButtonCraft").GetComponent<Button>().onClick.AddListener(delegate { Craft(b); });
-//            }
-//        }
+        i = 0;
+        //foreach (Item item in Inventory.slots)
+        //{
+        //    if (item.GetType() == typeof(Blueprint))
+        //    {
+        //        Blueprint b = (Blueprint)item;
+        //        i++;
+        //        GameObject newRecipe = Instantiate(blueprintListItem, listOfBlueprint);
+        //        newRecipe.GetComponent<BlueprintInfo>().SetUp(b);
+        //        newRecipe.transform.Find("ButtonCraft").GetComponent<Button>().onClick.AddListener(delegate { Craft(b); });
+        //    }
+        //}
 
-//        if (i == 0)
-//        {
-//            warningBlueprintText.SetActive(true);
-//        }
+        if (i == 0)
+        {
+            warningBlueprintText.SetActive(true);
+        }
 
-//        mainButtons.SetActive(false);
-//        craftingPanel.SetActive(true);
-//    }
+        craftingPanel.SetActive(true);
+    }
 
-//    public void Craft(Blueprint b)
-//    {
-//        if (!Inventory.Instance.CheckResources(b))
-//        {
-//            GameController.Instance.ShowText("You don't have enough materials", new Color32(255, 65, 52, 255));
-//            return;
-//        }
-//        Equipment resultItem = Loot.Craft(b.resultItem);
-//        ShowText("Crafted " + resultItem.itemName, true);
-//        Inventory.Instance.RemoveItem(b, 1);
-//        Inventory.Instance.AddItem(resultItem);
-//        OpenCraftingPanel();
-//    }
+    public void Craft(Blueprint b)
+    {
+        if (!Inventory.CheckResources(b))
+        {
+            GameManager.ShowText("You don't have enough materials", Color.red);
+            return;
+        }
+        Item resultItem = b.resultItem.GetCopy();
+        GameManager.ShowText("Crafted " + resultItem.itemName, Color.green);
+        Inventory.RemoveItem(b, 1);
+        Inventory.AddItem(resultItem, 1);
+        OpenCraftingPanel();
+    }
 
-//    public void OpenUpgradePanel()
-//    {
-//        warningUpgradeText.SetActive(false);
+    public void OpenUpgradePanel(Equipment eq)
+    {
+        SoundManager.Instance.PlayOneShot("Click");
+        normalUpgradeButton.interactable = eq.CanStillBeUpgraded();
+        extremeUpgradeButton.interactable = eq.CanStillBeExtremeUpgraded();
+        divineUpgradeButton.interactable = eq.CanStillBeDivineUpgraded();
+        chaosUpgradeButton.interactable = eq.CanStillBeChaosUpgraded();
+        upgradingPanel.SetActive(true);
+        currentItemInfo.SetActive(true);
+        upgradeButtons.SetActive(true);
+        upgradeOptions.SetActive(false);
+        currentItemInfo.GetComponent<ItemInfo>().SetUp(eq, true);
 
-//        int i;
-//        for (i = 0; i < listOfItems.childCount; i++)
-//        {
-//            Destroy(listOfItems.GetChild(i).gameObject);
-//        }
+        normalUpgradeButton.onClick.RemoveAllListeners();
+        extremeUpgradeButton.onClick.RemoveAllListeners();
+        divineUpgradeButton.onClick.RemoveAllListeners();
+        chaosUpgradeButton.onClick.RemoveAllListeners();
+        enhanceButton.onClick.RemoveAllListeners();
 
-//        i = 0;
-//        foreach (InventorySlot slot in Inventory.Instance.slots)
-//        {
-//            Equipment eq;
-//            if (slot.item.itemType == ItemType.Equipment)
-//            {
-//                eq = (Equipment)slot.item;
-//            }               
-//            else continue;
+        normalUpgradeButton.onClick.AddListener(delegate { OpenUpgrade(eq, 0); });
+        extremeUpgradeButton.onClick.AddListener(delegate { OpenUpgrade(eq, 1); });
+        divineUpgradeButton.onClick.AddListener(delegate { OpenUpgrade(eq, 2); });
+        chaosUpgradeButton.onClick.AddListener(delegate { OpenUpgrade(eq, 3); });
+    }
 
-//            if (eq.rarity == EquipmentRarity.Legendary)
-//            {
-//                if (eq.level == 9) continue;
+    /// <summary>
+    /// UpgradeMode: 0-normal, 1-extreme, 2-divine, 3-chaos
+    /// </summary>
+    /// <param name="eq"></param>
+    /// <param name="grade"></param>
+    /// <param name="upgradeMode"></param>
+    private void OpenUpgrade(Equipment eq, int upgradeMode)
+    {
+        SoundManager.Instance.PlayOneShot("Click");
+        upgradeButtons.SetActive(false);
+        afterUpgradeItemInfo.SetActive(true);
+        upgradeOptions.SetActive(true);
+        Equipment eqAfter = (Equipment)eq.GetCopy();
+        upgradeButton.onClick.RemoveAllListeners();
+        int chance = 0;
+        switch (upgradeMode)
+        {
+            case 0:
+                chance = normalUpgradeChances[eq.normalGrade.level];
+                eqAfter.normalGrade.level++;
+                break;
+            case 1:
+                chance = extremeUpgradeChances[eq.extremeGrade.level];
+                eqAfter.extremeGrade.level++;
+                break;
+            case 2:
+                chance = divineUpgradeChances[eq.divineGrade.level];
+                eqAfter.divineGrade.level++;
+                break;
+            case 3:
+                chance = chaosUpgradeChances[eq.chaosGrade.level];
+                eqAfter.chaosGrade.level++;
+                break;
+        }
+        afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUp(eqAfter, true);
+        Destroy(eqAfter);
+        upgradeChance.text = $"{chance}%";
+        upgradeButton.onClick.AddListener(delegate {Upgrade(eq, chance, upgradeMode); });
+    }
 
-//                i++;
-//                GameObject itemToUpgrade = Instantiate(upgradeListItem, listOfItems);
-//                itemToUpgrade.GetComponent<UpgradeInfo>().SetUp(eq);
-//                EquipmentUpgrade upgradeItem = Library.FindItem(eq);
-//                itemToUpgrade.transform.Find("ButtonUpgrade").GetComponent<Button>().onClick.AddListener(delegate { Upgrade(eq, upgradeItem); });
-//            }
-//        }
-//        foreach (Equipment eq in Player.Instance.player.equipment)
-//        {
-//            if (eq == null) continue;
+    private void Upgrade(Equipment eq, int chance, int upgradeMode)
+    {
+        if (Chance(chance))
+        {
+            GameManager.ShowText("Success", Color.green);
+            switch (upgradeMode)
+            {
+                case 0:
+                    eq.normalGrade.level++;
+                    break;
+                case 1:
+                    eq.extremeGrade.level++;
+                    break;
+                case 2:
+                    eq.divineGrade.level++;
+                    break;
+                case 3:
+                    eq.chaosGrade.level++;
+                    break;
+            }
+            Inventory.DisplayItemInfo(eq, true);
+            SoundManager.Instance.PlayOneShot("Success");
+        }
+        else
+        {
+            GameManager.ShowText("Failed", Color.red);
+            SoundManager.Instance.PlayOneShot("Failed");
+        }
+        OpenUpgradePanel(eq);
+    }
 
-//            if (eq.rarity == EquipmentRarity.Legendary)
-//            {
-//                if (eq.level == 9) continue;
+    public void OpenEnhancePanel(Item item)
+    {
+        foreach (Transform child in listOfScrolls.transform)
+            Destroy(child.gameObject);
 
-//                i++;
-//                GameObject itemToUpgrade = Instantiate(upgradeListItem, listOfItems);
-//                itemToUpgrade.GetComponent<UpgradeInfo>().SetUp(eq);
-//                EquipmentUpgrade upgradeItem = Library.FindItem(eq);
-//                itemToUpgrade.transform.Find("ButtonUpgrade").GetComponent<Button>().onClick.AddListener(delegate { Upgrade(eq, upgradeItem); });
-//            }
-//        }
+        int i = 0;
+        foreach (InventorySlot slot in Inventory.slots)
+        {
+            if (slot.item == null) continue;
 
-//        if (i == 0)
-//        {
-//            warningUpgradeText.SetActive(true);
-//        }
+            if (slot.item.itemType == ItemType.Scroll)
+            {
+                Scroll scroll = (Scroll)slot.item;
 
-//        mainButtons.SetActive(false);
-//        upgradePanel.SetActive(true);
-//    }
+                if (item.itemType == ItemType.Equipment)
+                {
+                    Equipment eq = (Equipment)item;
+                    switch (eq.equipmentTypeSlot)
+                    { 
+                        case EquipmentType.MainHand:
+                            if (!scroll.inWeapon)
+                                continue;
+                            break;
+                        case EquipmentType.OffHand:
+                            if (!scroll.inWeapon)
+                                continue;
+                            break;
+                        case EquipmentType.Helmet:
+                            if (!scroll.inHelmet)
+                                continue;
+                            break;
+                        case EquipmentType.Chest:
+                            if (!scroll.inChestplate)
+                                continue;
+                            break;
+                        case EquipmentType.Boots:
+                            if (!scroll.inBoots)
+                                continue;
+                            break;
+                        case EquipmentType.Gloves:
+                            if (!scroll.inGloves)
+                                continue;
+                            break;               
+                    }
+                }
 
-//    public void Upgrade(Equipment eq, EquipmentUpgrade upgrade)
-//    {
-//        if (!Inventory.Instance.CheckResources(upgrade, eq.level))
-//        {
-//            GameController.Instance.ShowText("You don't have enough materials", new Color32(255, 65, 52, 255));
-//            return;
-//        }
+                GameObject scrollObject = Instantiate(scrollPrefab, listOfScrolls);
+                scrollObject.GetComponent<InventorySlot>().FillSlot(slot.item);
+                scrollObject.GetComponent<Button>().onClick.AddListener(delegate { OpenEnhance(item, scroll); });
+                i++;
+            }
+        }
 
-//        float chance = 1 - eq.level * 0.1f;
+        if (i == 0)
+            noScrollsText.SetActive(true);
+        else
+            noScrollsText.SetActive(false);
+     
+        currentItemInfo.GetComponent<ItemInfo>().SetUp(item, true);
+        currentItemInfo.SetActive(true);
+        enhanceOptions.SetActive(false);
+        chooseScrollPanel.SetActive(true);
+        enhancingPanel.SetActive(true);
+    }
 
-//        if (Chance(chance))
-//        {
-//            ShowText("Upgrade successful", true);
-//            Upgrade(eq);
-//        }
-//        else
-//        {
-//            ShowText("Upgrade failed", false);
-//        }     
-//        OpenUpgradePanel();
-//    }
+    private void OpenEnhance(Item item, Scroll scroll)
+    {
+        SoundManager.Instance.PlayOneShot("Click");
+        enhanceOptions.SetActive(true);
+        chooseScrollPanel.SetActive(false);
+        afterUpgradeItemInfo.SetActive(true);    
+        enhanceButton.onClick.RemoveAllListeners();
+        int chance = 100;
+        switch (item.itemType)
+        {
+            case ItemType.Equipment:
+                Equipment eqAfter = (Equipment)item.GetCopy();
+                eqAfter.AddScroll(scroll.scrollStat);
+                afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUp(eqAfter, true);
+                Destroy(eqAfter);
+                break;
+            case ItemType.Pet:
+                Pet petAfter = (Pet)item.GetCopy();
+                petAfter.AddScroll(scroll.scrollStat);
+                afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUp(petAfter, true);
+                Destroy(petAfter);
+                break;
+        }
+        enhanceChance.text = $"{chance}%";
+        enhanceButton.onClick.AddListener(delegate { Enchance(item, scroll, chance); });
+    }
 
-//    void Upgrade(Equipment eq)
-//    {
-//        switch(eq.equipSlot)
-//        {
-//            case EquipmentSlot.Weapon:
-//                eq.damageMin = (int)(eq.damageMin * 1.1f);
-//                eq.damageMax = (int)(eq.damageMax * 1.1f);
-//                break;
-//            case EquipmentSlot.Helmet:
-//            case EquipmentSlot.Chestplate:
-//            case EquipmentSlot.Hands:
-//            case EquipmentSlot.Leggins:
-//            case EquipmentSlot.Feet:
-//            case EquipmentSlot.Shield:
-//                eq.defenseModifier = (int)(eq.defenseModifier * 1.1f);
-//                break;
-//            case EquipmentSlot.Necklace:
-//            case EquipmentSlot.Ring:
-//                eq.strengthModifier = (int)(eq.strengthModifier * 1.1f);
-//                eq.criticalDamageModifier = (int)(eq.criticalDamageModifier * 1.1f);
-//                eq.vitalityModifier = (int)(eq.vitalityModifier * 1.1f);
-//                eq.criticalChanceModifier = (int)(eq.criticalChanceModifier * 1.1f);
-//                break;
-//        }
-//        eq.level++;
-//    }
+    private void Enchance(Item item, Scroll scroll, int chance)
+    {
+        Inventory.RemoveItem(scroll, 1);
+        if (Chance(chance))
+        {
+            GameManager.ShowText("Success", Color.green);
+            switch (item.itemType)
+            {
+                case ItemType.Equipment:
+                    Equipment eq = (Equipment)item;
+                    eq.AddScroll(scroll.scrollStat);
+                    break;
+                case ItemType.Pet:
+                    Pet pet = (Pet)item;
+                    pet.AddScroll(scroll.scrollStat);
+                    break;
+            }
+            Inventory.DisplayItemInfo(item, true);
+            SoundManager.Instance.PlayOneShot("Success");
+        }
+        else
+        {
+            GameManager.ShowText("Failed", Color.red);
+            SoundManager.Instance.PlayOneShot("Failed");
+        }
+        OpenEnhancePanel(item);
+    }
 
-//    bool Chance(float chance)
-//    {
-//        float random = Random.value;
-//        if (random <= chance)
-//        {
-//            return true;
-//        }
-//        else return false;
-//    }
+    //private void ChangeNumberOfCores()
+    //{
+    //    int chance = 100;
+    //    int amount = 0;
+    //    enhanceChance.text = $"{chance}%";
 
-//    void ShowText(string text, bool success)
-//    {
-//        infoAnimation.GetComponent<TextMeshProUGUI>().text = text;
-//        if(success)
-//            infoAnimation.GetComponent<TextMeshProUGUI>().color = Color.green;
-//        else
-//            infoAnimation.GetComponent<TextMeshProUGUI>().color = Color.red;
-//        infoAnimation.Stop();
-//        infoAnimation.Play();
-//    }
-//}
+    //}
+
+    bool Chance(int chance)
+    {
+        int random = Random.Range(0, 100);
+        if (random <= chance)
+        {
+            return true;
+        }
+        else return false;
+    }
+}

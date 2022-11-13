@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     [Header("Player")]
     [SerializeField] private TMP_InputField nameInput;
     [SerializeField] private Button setNameButton;
+    [SerializeField] private TMP_Dropdown classDropdown;
 
     [Header("Panels")]
     [SerializeField] private GameObject startPanel;
@@ -119,14 +121,17 @@ public class GameManager : MonoBehaviour
 
     private void StartNewGame()
     {
-        if (string.IsNullOrEmpty(nameInput.text)) return;
-
-        setNameButton.interactable = false;
-        nameInput.interactable = false;
-
+        if (string.IsNullOrEmpty(nameInput.text))
+        {
+            setNameButton.Select();
+            return;
+        }
+        
         PlayerData newPlayer = new PlayerData();
         newPlayer.nickname = nameInput.text;
-        Player.Instance.data = newPlayer;
+        newPlayer.playerClass = (PlayerClass)classDropdown.value;
+        Player.data = newPlayer;
+        Player.GetComponent<PlayerInfo>().RefreshStats();
         PlayerPrefs.SetInt("NewGame", 0);
         mainPanel.SetActive(true);
         ChangeLocation(Database.data.locations[0]);
@@ -211,8 +216,6 @@ public class GameManager : MonoBehaviour
             bossGO.transform.Find("Unlock").gameObject.SetActive(true);
             bossGO.transform.Find("Unlock/ButtonUnlock").gameObject.SetActive(false);
         }
-
-        RefreshLocationList();
     }
 
     private void RefreshLocationList()
@@ -266,6 +269,7 @@ public class GameManager : MonoBehaviour
         currentLocation = newLocation;
         locationName.text = currentLocation.name;
         adventurePanel.SetActive(false);
+        RefreshLocationList();
 
         if (newLocation.bossDefeated)
             Enemy.SetUp(NextEnemy());
@@ -275,7 +279,7 @@ public class GameManager : MonoBehaviour
 
     public EnemyData NextEnemy()
     {
-        int randomEnemy = Random.Range(0, currentLocation.enemies.Length);
+        int randomEnemy = UnityEngine.Random.Range(0, currentLocation.enemies.Length);
         return currentLocation.enemies[randomEnemy];
     }
 

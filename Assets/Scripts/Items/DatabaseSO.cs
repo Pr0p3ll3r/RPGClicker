@@ -11,7 +11,6 @@ public class DatabaseSO : ScriptableObject, ISerializationCallbackReceiver
     public StatBonus[] rarityBonuses;
     public StatBonus[] scrollBonuses;
     public EnemyInfo[] towerEnemies;
-    public EquipmentUpgrade[] allUpgradeInfos;
 
     public void OnBeforeSerialize()
     {     

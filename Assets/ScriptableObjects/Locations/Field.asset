@@ -16,6 +16,7 @@ MonoBehaviour:
   price: 0
   unlocked: 1
   bossDefeated: 1
+  isDungeon: 0
   enemies:
   - {fileID: 11400000, guid: f47c552f4b3f6454ba68fe8923494b30, type: 2}
   boss: {fileID: 0}

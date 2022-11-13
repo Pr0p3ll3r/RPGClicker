@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: Damage
   m_EditorClassIdentifier: 
   ID: 101
-  itemName: Option Scroll Damage
+  itemName: Scroll Damage
   icon: {fileID: 2607994691028543399, guid: 4f994cdb05a8a484f9665f1ce9d29a74, type: 3}
   itemType: 2
-  description: Scroll used to fill a slot in the equipment
+  description: A Scroll used to fill a slot in the weapon/gloves or pet
   maxInStack: 999
   stackable: 1
   price: 0
   scrollStat: {fileID: 11400000, guid: 08a7ed28e7f3ef847bb682521e3496a2, type: 2}
   inHelmet: 0
-  inChest: 0
+  inChestplate: 0
   inGloves: 1
   inBoots: 0
   inWeapon: 1
+  inPet: 1

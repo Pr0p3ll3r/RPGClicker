@@ -21,28 +21,32 @@ MonoBehaviour:
 '
   maxInStack: 1
   stackable: 0
-  price: 0
+  price: 1000000
   equipmentTypeSlot: 4
   rarity: 0
   lvlRequired: 100
   rarityBonus: {fileID: 0}
   normalGrade:
     level: 0
+    maxLevel: 0
     stats: []
+    prices: 
   canBeUpgraded: 1
   canBeExtremeUpgraded: 1
   canBeDivineUpgraded: 1
   canBeChaosUpgraded: 0
   scrollsCanBeAdded: 1
-  startPrice: 0
-  upgradePrices: 
   is2HWeapon: 0
   extremeGrade:
     level: 0
+    maxLevel: 0
     stats: []
+    prices: 
   divineGrade:
     level: 0
+    maxLevel: 0
     stats: []
+    prices: 
   scrollSlots: 2
   maxScrollSlots: 3
   scrollsStat:
@@ -51,4 +55,6 @@ MonoBehaviour:
   - {fileID: 0}
   chaosGrade:
     level: 0
+    maxLevel: 0
     stats: []
+    prices: 

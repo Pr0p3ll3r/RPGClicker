@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -16,7 +14,7 @@ public class Player : MonoBehaviour
 
     private PlayerUI hud;
     private LevelSystem ls;
-    private GameManager gameManager => GameManager.Instance;
+    private GameManager GameManager => GameManager.Instance;
     private PlayerEquipment Equipment => PlayerEquipment.Instance;
     private PlayerInventory Inventory => PlayerInventory.Instance;
 
@@ -27,7 +25,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform popupPosition;
 
     private PlayerInfo playerInfo;
-    private Enemy enemy;
+    private Enemy Enemy => Enemy.Instance;
     public bool IsDead { get; private set; }
 
     private void Start()
@@ -35,9 +33,8 @@ public class Player : MonoBehaviour
         hud = GetComponent<PlayerUI>();
         playerInfo = GetComponent<PlayerInfo>();
         ls = GetComponent<LevelSystem>();
-        data.currentHealth = data.maxHealth.GetValue();
-        hud.UpdateHealthBar(data.currentHealth, data.maxHealth.GetValue());
-        enemy = Enemy.Instance;
+        data.currentHealth = data.health.GetValue();
+        hud.UpdateHealthBar(data.currentHealth, data.health.GetValue());
         petsInfo = petList.GetComponentsInChildren<PetInfo>();
         RefreshPetList();
     }
@@ -54,12 +51,12 @@ public class Player : MonoBehaviour
 
     public void Attack()
     {
-        if (IsDead || enemy.IsDead) return;
+        if (IsDead || Enemy.IsDead) return;
 
         int damage = data.damage.GetValue();
-        int enemyDefense = enemy.data.defense;
+        int enemyDefense = Enemy.data.defense;
         Debug.Log("Your Damage: " + damage + " Enemy Defense: " + enemyDefense);
-        DamagePopup damagePopup = gameManager.damagePopupPooler.Get().GetComponent<DamagePopup>();
+        DamagePopup damagePopup = GameManager.damagePopupPooler.Get().GetComponent<DamagePopup>();
         damagePopup.transform.position = popupPosition.position;
         bool crit = Utils.Critical(data.criticalRate.GetValue(), data.criticalDamage.GetValue(), ref damage);
         damage -= enemyDefense;
@@ -67,7 +64,7 @@ public class Player : MonoBehaviour
         Debug.Log($"Damage: {damage} Crit: {crit}");
         damagePopup.Setup(damage, crit);
         damagePopup.gameObject.SetActive(true);
-        enemy.TakeDamage(damage);
+        Enemy.TakeDamage(damage);
         SoundManager.Instance.PlayOneShot("Hit");
     }
 
@@ -78,7 +75,7 @@ public class Player : MonoBehaviour
         SoundManager.Instance.Play("PlayerHurt");
         data.currentHealth -= damage;
         hud.ShowVignette();      
-        hud.UpdateHealthBar(data.currentHealth, data.maxHealth.GetValue());
+        hud.UpdateHealthBar(data.currentHealth, data.health.GetValue());
 
         if (data.currentHealth <= 0)
         {
@@ -109,8 +106,8 @@ public class Player : MonoBehaviour
     public void Revive()
     {
         IsDead = false;
-        data.currentHealth = data.maxHealth.GetValue();
-        hud.UpdateHealthBar(data.currentHealth, data.maxHealth.GetValue());
+        data.currentHealth = data.health.GetValue();
+        hud.UpdateHealthBar(data.currentHealth, data.health.GetValue());
     }
 
     public bool Equip(Equipment item)
@@ -137,18 +134,20 @@ public class Player : MonoBehaviour
         return true;
     }
 
-    public bool Unequip(Item item)
+    public bool Unequip(Equipment item)
     {
         if (!Inventory.IsFull())
         {
             Equipment.UnequipItem(item);
             Inventory.AddItem(item, 1);
+            item.RemoveStats(data);
         }
         else
         {
             GameManager.Instance.ShowText("Inventory is full", new Color32(255, 65, 52, 255));
             return false;
         }
+        playerInfo.RefreshStats();
         Equipment.RefreshUI();
         return true;
     }

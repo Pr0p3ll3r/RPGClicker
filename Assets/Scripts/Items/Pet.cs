@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "Pet", menuName = "RPG/Items/Pet")]
 public class Pet : Item
@@ -10,7 +11,26 @@ public class Pet : Item
     public int exp;
     public StatBonus[] scrollsStat = new StatBonus[10];
     public int statsUnlocked = 1;
+    public bool LevelMaxed()
+    {
+        if (level == maxLevel)
+            return true;
+        return false;
+    }
+    public bool CanAddScroll()
+    {
+        int freeSlots = 0;
+        for (int i = 0; i < statsUnlocked; i++)
+        {
+            if (scrollsStat[i] == null)
+                freeSlots++;
+        }
 
+        if (freeSlots > 0)
+            return true;
+
+        return false;
+    }
     private int maxLevel = 10;
     public static int BASE_REQUIRE_EXP = 1000;
 
@@ -49,11 +69,16 @@ public class Pet : Item
         CheckLevelUp(petInfo);
     }
 
-    public bool LevelMaxed()
+    public void AddScroll(StatBonus stat)
     {
-        if (level == maxLevel)
-            return true;
-        return false;
+        for (int i = 0; i < statsUnlocked; i++)
+        {
+            if (scrollsStat[i] == null)
+            {
+                scrollsStat[i] = stat;
+                break;
+            }
+        }
     }
 
     public void AddStats(PlayerData data)

@@ -48,7 +48,7 @@ MonoBehaviour:
   - name: Hit
     clip: {fileID: 8300000, guid: 37c9133889e2bfc4296ead93a281acc2, type: 3}
     mixer: {fileID: -6519579120896787049, guid: 562f33b73e73c5a4d906e62d245f849e, type: 2}
-    volume: 0.5
+    volume: 0.3
     pitch: 1
     loop: 0
     audioSource: {fileID: 0}
@@ -61,6 +61,27 @@ MonoBehaviour:
     audioSource: {fileID: 0}
   - name: Click
     clip: {fileID: 8300000, guid: 1e7a587164fcbef45b40536469e6c432, type: 3}
+    mixer: {fileID: -6519579120896787049, guid: 562f33b73e73c5a4d906e62d245f849e, type: 2}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: Sell
+    clip: {fileID: 8300000, guid: 79cd91a0c17e4e74e976bfe74ee79a06, type: 3}
+    mixer: {fileID: -6519579120896787049, guid: 562f33b73e73c5a4d906e62d245f849e, type: 2}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: Failed
+    clip: {fileID: 8300000, guid: 1f0f32762ecc6b548aaadfd06dd4cf37, type: 3}
+    mixer: {fileID: -6519579120896787049, guid: 562f33b73e73c5a4d906e62d245f849e, type: 2}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    audioSource: {fileID: 0}
+  - name: Success
+    clip: {fileID: 8300000, guid: 0bb6efa526e505e4fa7d0d9150fb1701, type: 3}
     mixer: {fileID: -6519579120896787049, guid: 562f33b73e73c5a4d906e62d245f849e, type: 2}
     volume: 0.5
     pitch: 1

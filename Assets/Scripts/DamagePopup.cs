@@ -21,11 +21,11 @@ public class DamagePopup : MonoBehaviour, IPooledObject
         text.SetText(damage.ToString());
         if(crit)
         {
-            text.color = new Color32(255, 170, 20, 255);
+            text.color = Color.red;
         }
         else
         {
-            text.color = new Color32(255, 170, 10, 255);
+            text.color = Color.white;
         }
         textColor = text.color;
         disappearTime = 1f;

@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: Critical Damage
   m_EditorClassIdentifier: 
   ID: 99
-  itemName: Option Scroll Critical Damage
+  itemName: Scroll Critical Damage
   icon: {fileID: 2607994691028543399, guid: 4f994cdb05a8a484f9665f1ce9d29a74, type: 3}
   itemType: 2
-  description: Scroll used to fill a slot in weapon/helmet
+  description: A Scroll used to fill a slot in weapon/helmet or pet
   maxInStack: 999
   stackable: 1
   price: 0
   scrollStat: {fileID: 11400000, guid: e8a50e09d4ed6d04b9cc7a80688a935a, type: 2}
   inHelmet: 1
-  inChest: 0
+  inChestplate: 0
   inGloves: 0
   inBoots: 0
   inWeapon: 1
+  inPet: 1
