@@ -31,11 +31,11 @@ public enum ItemType
 public class Loot
 {
 	public Item item;
-	public float dropChance;
+	public float weight;
 }
 
 [System.Serializable]
-public class NeedItem
+public class RequiredItem
 {
 	public Item item;
 	public int amount;

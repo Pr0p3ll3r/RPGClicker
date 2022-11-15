@@ -6,6 +6,7 @@ public class Equipment : Item
     [Header("Equipment")]
     public EquipmentType equipmentTypeSlot;
     public EquipmentRarity rarity;
+    public PlayerClass[] canBeUsedBy;
     public int lvlRequired = 1;
     public bool canBeUpgraded;
     public bool canBeExtremeUpgraded;
@@ -14,36 +15,60 @@ public class Equipment : Item
     public bool scrollsCanBeAdded;
     public bool CanStillBeUpgraded()
     {
+        if(!canBeUpgraded) return false;
+
         if (normalGrade.level == normalGrade.maxLevel)
             return false;
         return true;
     }
     public bool CanStillBeExtremeUpgraded()
     {
+        if (!canBeExtremeUpgraded) return false;
+
         if (extremeGrade.level == extremeGrade.maxLevel)
             return false;
         return true;
     }
     public bool CanStillBeDivineUpgraded()
     {
+        if(!canBeDivineUpgraded) return false;
+
         if (divineGrade.level == divineGrade.maxLevel)
             return false;
         return true;
     }
     public bool CanStillBeChaosUpgraded()
     {
+        if (!canBeChaosUpgraded) return false;
+
         if (chaosGrade.level == chaosGrade.maxLevel)
             return false;
         return true;
     }
     public bool ScrollsCanStillBeAdded()
     {
+        if (!scrollsCanBeAdded) return false;
+
         for (int i = 0; i < scrollsStat.Length; i++)
         {
             if (scrollsStat[i] == null)
                 return true;
         }
         return false;
+    }
+    public int GetSellPrice()
+    {
+        int sellPrice;
+        sellPrice = price;
+        if (normalGrade.level > 0)
+            sellPrice += normalGrade.prices[normalGrade.level - 1] / 2;
+        if (extremeGrade.level > 0)
+            sellPrice += extremeGrade.prices[extremeGrade.level - 1] / 2;
+        if (divineGrade.level > 0)
+            sellPrice += divineGrade.prices[divineGrade.level - 1] / 2;
+        if (chaosGrade.level > 0)
+            sellPrice += chaosGrade.prices[chaosGrade.level - 1] / 2;
+        return sellPrice;
     }
 
     [Header("Armor and Weapon")]
@@ -130,21 +155,6 @@ public class Equipment : Item
                 else
                     data.RemoveStat(stat.stat, stat.values[0]);
         }
-    }
-
-    public int GetSellPrice()
-    {
-        int sellPrice;
-        sellPrice = price;
-        if (normalGrade.level > 0)
-            sellPrice += normalGrade.prices[normalGrade.level - 1] / 2;
-        if (extremeGrade.level > 0)
-            sellPrice += extremeGrade.prices[extremeGrade.level - 1] / 2;
-        if (divineGrade.level > 0)
-            sellPrice += divineGrade.prices[divineGrade.level - 1] / 2;
-        if (chaosGrade.level > 0)
-            sellPrice += chaosGrade.prices[chaosGrade.level - 1] / 2;
-        return sellPrice;
     }
 
     public void AddScroll(StatBonus stat)

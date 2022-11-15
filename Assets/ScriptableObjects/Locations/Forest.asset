@@ -13,14 +13,11 @@ MonoBehaviour:
   m_Name: Forest
   m_EditorClassIdentifier: 
   name: Forest
-  index: 0
-  level: 5
-  expToGain: 5
-  expeditionTime: 100
-  items:
-  - item: {fileID: 11400000, guid: 6541df9c91fd5364fb567745a172460c, type: 2}
-    chanceToDrop: 0.2
-  - item: {fileID: 11400000, guid: 19b8dc9699d543048b7418a7064cf9f6, type: 2}
-    chanceToDrop: 0.2
-  - item: {fileID: 11400000, guid: 31404f7845d173b49a971669590a0c57, type: 2}
-    chanceToDrop: 0.2
+  price: 200
+  unlocked: 0
+  bossDefeated: 0
+  isDungeon: 0
+  enemies:
+  - {fileID: 11400000, guid: 7c9b004c6aa20874c85f38cab42781fc, type: 2}
+  - {fileID: 0}
+  boss: {fileID: 0}

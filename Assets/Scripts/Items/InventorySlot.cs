@@ -12,11 +12,6 @@ public class InventorySlot : MonoBehaviour
     public Item item;
     public int amount;
 
-    public void AddAmount(int _amount)
-    {
-        amount += _amount;
-    }
-
     public void FillSlot(Item _item)
     {
         item = _item;

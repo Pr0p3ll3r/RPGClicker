@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 [System.Serializable]
 public class InventoryData
@@ -65,9 +66,11 @@ public class PlayerInventory : MonoBehaviour
         {
             foreach (InventorySlot slot in slots)
             {
-                if (slot.item == item)
+                if (slot.item == null) continue;
+
+                if (slot.item.ID == item.ID)
                 {
-                    slot.AddAmount(amount);
+                    slot.amount += amount;
                     RefreshUI();
                     return true;
                 }
@@ -78,6 +81,7 @@ public class PlayerInventory : MonoBehaviour
             if (slots[i].item == null)
             {
                 slots[i].item = item;
+                slots[i].amount = amount;
                 RefreshUI();
                 return true;
             }
@@ -95,7 +99,9 @@ public class PlayerInventory : MonoBehaviour
     {
         foreach (InventorySlot slot in slots)
         {
-            if (slot.item == _item)
+            if (slot.item == null) continue;
+
+            if (slot.item.ID == _item.ID)
             {
                 int itemAmount = slot.amount;
                 amount -= itemAmount;
@@ -109,14 +115,39 @@ public class PlayerInventory : MonoBehaviour
 
     public void RemoveItem(Item _item)
     {
-        for (int i = 0; i < slots.Length; i++)
+        int i;
+        for (i = 0; i < slots.Length; i++)
         {
-            if (slots[i].item == _item)
+            if (slots[i].item.ID == _item.ID)
             {
                 slots[i].item = null;
+                slots[i].amount = 0;
+                break;
             }
         }
+
+        // Shifting elements
+        for (; i < slots.Length - 1; i++)
+        {
+            slots[i].item = slots[i + 1].item;
+            slots[i].amount = slots[i + 1].amount;
+        }
         RefreshUI();
+    }
+
+    public void SellItem(Item _item)
+    {
+        foreach (InventorySlot slot in slots)
+        {
+            if (slot.item == _item)
+            {
+                int price = slot.item.price * slot.amount;
+                AddGold(price);
+                GameManager.Instance.ShowText($"+{price} Gold", Color.yellow);
+                RemoveItem(slot.item);
+                break;
+            }
+        }
     }
 
     public bool IsFull()
@@ -135,7 +166,9 @@ public class PlayerInventory : MonoBehaviour
     {
         foreach (InventorySlot slot in slots)
         {
-            if (slot.item == item)
+            if (slot.item == null) continue;
+
+            if (slot.item.ID == item.ID)
             {
                 amount -= slot.amount;
             }
@@ -147,60 +180,86 @@ public class PlayerInventory : MonoBehaviour
 
     public void DisplayItemInfo(Item item, bool inventory)
     {
+        PlayerEquipment equipment = PlayerEquipment.Instance;
         selectedItemInfo.SetActive(false);
         equippedItemInfo.SetActive(false);
         if (inventory)
         {
             if (item.itemType == ItemType.Equipment)
             {
-                Equipment selectedEq = (Equipment)item; 
-                selectedItemInfo.GetComponent<ItemInfo>().SetUp(selectedEq, false);
+                Equipment selectedEq = (Equipment)item;
+                int index = Utils.GetRightSlot(selectedEq);
+                Equipment equippedEq = null;
+                if (index > -1)
+                    equippedEq = equipment.slots[index].item;
+                selectedItemInfo.GetComponent<ItemInfo>().SetUp(selectedEq, false, equippedEq);
                 selectedItemInfo.SetActive(true);
-                Equipment equippedEq = PlayerEquipment.Instance.slots[(int)selectedEq.equipmentTypeSlot].item;
+                //compare with a first empty one or the first one            
                 if (equippedEq != null)
                 {
-                    equippedItemInfo.GetComponent<ItemInfo>().SetUp(equippedEq, true);
+                    equippedItemInfo.GetComponent<ItemInfo>().SetUp(equippedEq, true, selectedEq);
                     equippedItemInfo.SetActive(true);
                 }               
             }
             else
             {
-                selectedItemInfo.GetComponent<ItemInfo>().SetUp(item, false);
+                selectedItemInfo.GetComponent<ItemInfo>().SetUp(item, false, null);
                 selectedItemInfo.SetActive(true);
             }
         }
         else
         {
             Equipment equippedEq = (Equipment)item;
-            equippedItemInfo.GetComponent<ItemInfo>().SetUp(equippedEq, true);
+            equippedItemInfo.GetComponent<ItemInfo>().SetUp(equippedEq, true, null);
             equippedItemInfo.SetActive(true);
         }           
     }
 
-    public bool CheckGold(int neededGold)
+    public void CloseItemsInfo()
     {
-        if (data.gold >= neededGold)
-        {
-            data.gold -= neededGold;
-            return true;
-        }
-        else return false;
+        equippedItemInfo.SetActive(false);
+        selectedItemInfo.SetActive(false);
     }
 
-    public bool CheckResources(Blueprint b)
+    public bool HaveEnoughGold(int neededGold)
     {
-        foreach (NeedItem item in b.needItems)
+        if (data.gold >= neededGold)
+            return true;
+        return false;
+    }
+
+    public bool HaveAllMaterials(Blueprint b)
+    {
+        foreach (RequiredItem item in b.requiredItems)
         {
             if (!HaveItem(item.item, item.amount)) 
                 return false;
         }
+     
+        return true;
+    }
 
-        foreach (NeedItem item in b.needItems)
+    public void RemoveMaterials(Blueprint b)
+    {
+        foreach (RequiredItem item in b.requiredItems)
         {
             RemoveItem(item.item, item.amount);
         }
-
         RefreshUI();
-        return true;
+    }
+
+    public int HaveMany(Item item)
+    {
+        int amount = 0;
+        foreach (InventorySlot slot in slots)
+        {
+            if (slot.item == null) continue;
+
+            if (slot.item.ID == item.ID)
+            {
+                amount += slot.amount;
+            }
+        }
+        return amount;
     }
 }

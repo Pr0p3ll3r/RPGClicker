@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f47222897a906df4f87f1f02fc026303, type: 3}
-  m_Name: Ruby
+  m_Name: Bone
   m_EditorClassIdentifier: 
-  ID: 0
-  itemName: 
-  icon: {fileID: 0}
+  ID: 110
+  itemName: Bone
+  icon: {fileID: 86598323324594538, guid: 4f994cdb05a8a484f9665f1ce9d29a74, type: 3}
   itemType: 4
   description: 
   maxInStack: 999
-  stackable: 0
-  price: 0
+  stackable: 1
+  price: 1

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Blueprint : Item
 {
     public Equipment resultItem;
-    public List<NeedItem> needItems;
+    public List<RequiredItem> requiredItems;
 
     public override Item GetCopy()
     {

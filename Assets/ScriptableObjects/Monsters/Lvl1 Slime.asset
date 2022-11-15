@@ -24,7 +24,13 @@ MonoBehaviour:
   gold: 1
   loot:
   - item: {fileID: 11400000, guid: c4728fb92f682f44bae3b2218310323e, type: 2}
-    dropChance: 0
+    weight: 0
+  - item: {fileID: 11400000, guid: c4728fb92f682f44bae3b2218310323e, type: 2}
+    weight: 0
+  - item: {fileID: 11400000, guid: c4728fb92f682f44bae3b2218310323e, type: 2}
+    weight: 0
+  - item: {fileID: 11400000, guid: c4728fb92f682f44bae3b2218310323e, type: 2}
+    weight: 0
   possibleRarity: 1
   isTowerEnemy: 0
   isBoss: 0

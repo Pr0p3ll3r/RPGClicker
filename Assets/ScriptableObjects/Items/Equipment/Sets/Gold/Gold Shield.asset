@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc3e9056b2f44744dad1f2b9d3b9b02f, type: 3}
   m_Name: Gold Shield
   m_EditorClassIdentifier: 
-  ID: 7
+  ID: 39
   itemName: Gold Shield
   icon: {fileID: -1544638469, guid: eff6633938febe54d8ee653b4bbc1199, type: 3}
   itemType: 0
@@ -22,18 +22,21 @@ MonoBehaviour:
   price: 1000
   equipmentTypeSlot: 1
   rarity: 0
-  lvlRequired: 30
-  rarityBonus: {fileID: 0}
-  normalGrade:
-    level: 0
-    maxLevel: 0
-    stats: []
-    prices: 
+  canBeUsedBy: 04000000
+  lvlRequired: 40
   canBeUpgraded: 1
   canBeExtremeUpgraded: 1
   canBeDivineUpgraded: 0
   canBeChaosUpgraded: 0
   scrollsCanBeAdded: 1
+  rarityBonus: {fileID: 0}
+  normalGrade:
+    level: 0
+    maxLevel: 20
+    stats:
+    - stat: 1
+      values: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    prices: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   is2HWeapon: 0
   extremeGrade:
     level: 0
@@ -51,10 +54,7 @@ MonoBehaviour:
     maxLevel: 0
     stats: []
     prices: 
-  scrollSlots: 2
-  maxScrollSlots: 3
   scrollsStat:
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   chaosGrade:

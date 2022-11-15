@@ -85,8 +85,12 @@ public class Player : MonoBehaviour
 
     public void Reward(int exp, int gold)
     {
-        ls.GetExp(exp);
-        Inventory.AddGold(gold);
+        int expBonus = data.expBonus.GetValue();
+        expBonus += expBonus * exp;
+        int goldBonus = data.goldBonus.GetValue();
+        goldBonus += goldBonus * gold;
+        ls.GetExp(expBonus);
+        Inventory.AddGold(goldBonus);
 
         for (int i = 0; i < myPets.Length; i++)
         {
@@ -203,5 +207,19 @@ public class Player : MonoBehaviour
             if (myPets[i] != null)
                 petsInfo[i].SetUp(myPets[i]);
         }
+    }
+
+    public bool CanUseIt(Equipment eq)
+    {
+        if (data.level < eq.lvlRequired) return false;
+
+        for (int i = 0; i < eq.canBeUsedBy.Length; i++)
+        {
+            if (data.playerClass == eq.canBeUsedBy[i])
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

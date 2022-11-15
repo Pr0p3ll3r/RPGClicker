@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class Armory : MonoBehaviour
 {
@@ -35,9 +36,9 @@ public class Armory : MonoBehaviour
 
     [Header("Crafting")]
     [SerializeField] private GameObject craftingPanel;
-    [SerializeField] private GameObject blueprintListItem;
-    [SerializeField] private GameObject warningBlueprintText;
-    [SerializeField] private Transform listOfBlueprint;
+    [SerializeField] private Button craftButton;
+    [SerializeField] private TextMeshProUGUI craftChanceText;
+    [SerializeField] private int craftChance;
 
     private PlayerInventory Inventory => PlayerInventory.Instance;
     private GameManager GameManager => GameManager.Instance;
@@ -48,51 +49,43 @@ public class Armory : MonoBehaviour
         afterUpgradeItemInfo.SetActive(false);
         upgradingPanel.SetActive(false);
         enhancingPanel.SetActive(false);
+        craftingPanel.SetActive(false);
     }
 
-    public void OpenCraftingPanel()
+    public void OpenCraftingPanel(Blueprint b)
     {
-        warningBlueprintText.SetActive(false);
-
-        int i;
-        for (i = 0; i < listOfBlueprint.childCount; i++)
-        {
-            Destroy(listOfBlueprint.GetChild(i).gameObject);
-        }
-
-        i = 0;
-        //foreach (Item item in Inventory.slots)
-        //{
-        //    if (item.GetType() == typeof(Blueprint))
-        //    {
-        //        Blueprint b = (Blueprint)item;
-        //        i++;
-        //        GameObject newRecipe = Instantiate(blueprintListItem, listOfBlueprint);
-        //        newRecipe.GetComponent<BlueprintInfo>().SetUp(b);
-        //        newRecipe.transform.Find("ButtonCraft").GetComponent<Button>().onClick.AddListener(delegate { Craft(b); });
-        //    }
-        //}
-
-        if (i == 0)
-        {
-            warningBlueprintText.SetActive(true);
-        }
-
+        SoundManager.Instance.PlayOneShot("Click");
         craftingPanel.SetActive(true);
+        currentItemInfo.GetComponent<ItemInfo>().SetUp(b, false, null);
+        afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUpCraft(b.resultItem);
+        currentItemInfo.SetActive(true);
+        afterUpgradeItemInfo.SetActive(true);
+        craftChanceText.text = $"{craftChance}%";
+        craftButton.interactable = Inventory.HaveAllMaterials(b) && !Inventory.IsFull();
+        craftButton.onClick.RemoveAllListeners();
+        craftButton.onClick.AddListener(delegate { Craft(b, craftChance); });
     }
 
-    public void Craft(Blueprint b)
-    {
-        if (!Inventory.CheckResources(b))
-        {
-            GameManager.ShowText("You don't have enough materials", Color.red);
-            return;
-        }
-        Item resultItem = b.resultItem.GetCopy();
-        GameManager.ShowText("Crafted " + resultItem.itemName, Color.green);
+    public void Craft(Blueprint b, int chance)
+    {     
+        Inventory.RemoveMaterials(b);
         Inventory.RemoveItem(b, 1);
-        Inventory.AddItem(resultItem, 1);
-        OpenCraftingPanel();
+        if (Chance(chance))
+        {
+            Item resultItem = b.resultItem.GetCopy();
+            GameManager.ShowText("Success", Color.green);
+            Inventory.AddItem(resultItem, 1);
+            SoundManager.Instance.PlayOneShot("Success");
+        }
+        else
+        {
+            GameManager.ShowText("Failed", Color.red);
+            SoundManager.Instance.PlayOneShot("Failed");
+        }
+        craftingPanel.SetActive(false);
+        currentItemInfo.SetActive(false);
+        afterUpgradeItemInfo.SetActive(false);
+        Inventory.CloseItemsInfo();
     }
 
     public void OpenUpgradePanel(Equipment eq)
@@ -106,7 +99,7 @@ public class Armory : MonoBehaviour
         currentItemInfo.SetActive(true);
         upgradeButtons.SetActive(true);
         upgradeOptions.SetActive(false);
-        currentItemInfo.GetComponent<ItemInfo>().SetUp(eq, true);
+        currentItemInfo.GetComponent<ItemInfo>().SetUp(eq, true, null);
 
         normalUpgradeButton.onClick.RemoveAllListeners();
         extremeUpgradeButton.onClick.RemoveAllListeners();
@@ -154,7 +147,7 @@ public class Armory : MonoBehaviour
                 eqAfter.chaosGrade.level++;
                 break;
         }
-        afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUp(eqAfter, true);
+        afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUp(eqAfter, true, eq);
         Destroy(eqAfter);
         upgradeChance.text = $"{chance}%";
         upgradeButton.onClick.AddListener(delegate {Upgrade(eq, chance, upgradeMode); });
@@ -193,6 +186,8 @@ public class Armory : MonoBehaviour
 
     public void OpenEnhancePanel(Item item)
     {
+        SoundManager.Instance.PlayOneShot("Click");
+
         foreach (Transform child in listOfScrolls.transform)
             Destroy(child.gameObject);
 
@@ -249,7 +244,7 @@ public class Armory : MonoBehaviour
         else
             noScrollsText.SetActive(false);
      
-        currentItemInfo.GetComponent<ItemInfo>().SetUp(item, true);
+        currentItemInfo.GetComponent<ItemInfo>().SetUp(item, true, null);
         currentItemInfo.SetActive(true);
         enhanceOptions.SetActive(false);
         chooseScrollPanel.SetActive(true);
@@ -269,13 +264,13 @@ public class Armory : MonoBehaviour
             case ItemType.Equipment:
                 Equipment eqAfter = (Equipment)item.GetCopy();
                 eqAfter.AddScroll(scroll.scrollStat);
-                afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUp(eqAfter, true);
+                afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUp(eqAfter, true, (Equipment)item);
                 Destroy(eqAfter);
                 break;
             case ItemType.Pet:
                 Pet petAfter = (Pet)item.GetCopy();
                 petAfter.AddScroll(scroll.scrollStat);
-                afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUp(petAfter, true);
+                afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUp(petAfter, true, null);
                 Destroy(petAfter);
                 break;
         }
@@ -321,7 +316,7 @@ public class Armory : MonoBehaviour
 
     bool Chance(int chance)
     {
-        int random = Random.Range(0, 100);
+        int random = Random.Range(1, 101);
         if (random <= chance)
         {
             return true;

@@ -3,7 +3,16 @@ guid: 1ee7646d5414e4f489099466f831ccff
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - icon: {instanceID: 0}
+  - placeholderIcon: {instanceID: 0}
+  - placeholderSwordIcon: {fileID: 3962844023694093373, guid: af34396fe96446a49b7003f113be1aad, type: 3}
+  - placeholderShieldIcon: {fileID: -6840818254216528329, guid: af34396fe96446a49b7003f113be1aad, type: 3}
+  - placeholderBigSwordIcon: {fileID: 9210549316457371427, guid: af34396fe96446a49b7003f113be1aad, type: 3}
+  - placeholderWandIcon: {fileID: 1654626463139755186, guid: af34396fe96446a49b7003f113be1aad, type: 3}
+  - placeholderBowIcon: {fileID: -2151825540320254309, guid: af34396fe96446a49b7003f113be1aad, type: 3}
+  - placeholderBlockedIcon: {fileID: -530209079, guid: af34396fe96446a49b7003f113be1aad, type: 3}
+  - item: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -45,4 +45,22 @@ public static class Utils
             name = name.Insert(index, " ");
         return name;
     }
+
+    public static int GetRightSlot(Equipment eq)
+    {
+        EquipmentSlot[] slots = PlayerEquipment.Instance.slots;
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (eq.equipmentTypeSlot == slots[i].equipmentType && slots[i] == null)
+                return i;
+        }
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (eq.equipmentTypeSlot == slots[i].equipmentType)
+                return i;
+        }
+
+        return -1;
+    }
 }

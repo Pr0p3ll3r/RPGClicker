@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
+using static UnityEditor.Progress;
 
 public class ItemInfo : MonoBehaviour
 {
@@ -14,6 +14,7 @@ public class ItemInfo : MonoBehaviour
     [SerializeField] private Transform statParent;
     [SerializeField] private GameObject statPrefab;
 
+    [SerializeField] private Button useButton;
     [SerializeField] private Button equipButton;
     [SerializeField] private Button unequipButton;
     [SerializeField] private Button upgradeButton;
@@ -23,8 +24,15 @@ public class ItemInfo : MonoBehaviour
 
     [SerializeField] private Armory armory;
 
-    public void SetUp(Item item, bool equipped)
+    private Equipment itemToCompare;
+    private PlayerInventory Inventory => PlayerInventory.Instance;
+    private Player Player => Player.Instance;
+
+    public void SetUp(Item item, bool equipped, Equipment toCompare)
     {
+        if (toCompare != null)
+            itemToCompare = toCompare;
+
         Clear();
         itemName.text = item.itemName;
         itemName.color = Color.white;
@@ -105,23 +113,7 @@ public class ItemInfo : MonoBehaviour
             normalStats.SetUp($"Normal Stats {eq.normalGrade.level}/{eq.normalGrade.maxLevel}", "");
             foreach (ItemStat itemStat in eq.normalGrade.stats)
             {
-                ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-                int statValue = itemStat.values[eq.normalGrade.level];
-                statInfo.SetUp($"{Utils.GetNiceName(itemStat.stat)}:", $"{statValue}");
-               
-                Equipment currentEq = PlayerEquipment.Instance.slots[(int)eq.equipmentTypeSlot].item;
-                if (currentEq != eq && currentEq != null)
-                {
-                    int currentStat = Utils.GetStat(itemStat.stat, currentEq.normalGrade.stats, currentEq.normalGrade.level);
-                    if (currentStat > statValue)
-                        statInfo.SetColor(Color.green);
-                    else
-                        statInfo.SetColor(Color.red);
-                }
-                else if (currentEq != eq)
-                {
-                    statInfo.SetColor(Color.green);
-                }
+                SetStat(itemStat, eq.normalGrade, 0);
             }
 
             if (eq.scrollsCanBeAdded)
@@ -141,11 +133,6 @@ public class ItemInfo : MonoBehaviour
                     statInfo.SetUp($"{Utils.GetNiceName(stat.stat)}:", $"{value}");
                 }
             }
-            else
-            {
-                ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-                statInfo.SetUp($"Cannot add scrolls", "");
-            }
 
             if (eq.canBeExtremeUpgraded)
             {
@@ -153,29 +140,8 @@ public class ItemInfo : MonoBehaviour
                 extremeStats.SetUp($"Extreme Stats {eq.extremeGrade.level}/{eq.extremeGrade.maxLevel}", "");
                 foreach (ItemStat itemStat in eq.extremeGrade.stats)
                 {
-                    ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-                    int statValue = itemStat.values[eq.extremeGrade.level];
-                    statInfo.SetUp($"{Utils.GetNiceName(itemStat.stat)}:", $"{statValue}");
-
-                    Equipment currentEq = PlayerEquipment.Instance.slots[(int)eq.equipmentTypeSlot].item;
-                    if (currentEq != eq && currentEq != null)
-                    {
-                        int currentStat = Utils.GetStat(itemStat.stat, currentEq.extremeGrade.stats, currentEq.extremeGrade.level);
-                        if (currentStat > statValue)
-                            statInfo.SetColor(Color.green);
-                        else
-                            statInfo.SetColor(Color.red);
-                    }
-                    else if (currentEq != eq)
-                    {
-                        statInfo.SetColor(Color.green);
-                    }
+                    SetStat(itemStat, eq.extremeGrade, 1);
                 }
-            }
-            else
-            {
-                ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-                statInfo.SetUp($"Cannot extreme upgraded", "");
             }
 
             if (eq.canBeDivineUpgraded)
@@ -184,29 +150,8 @@ public class ItemInfo : MonoBehaviour
                 divineStats.SetUp($"Divine Stats {eq.divineGrade.level}/{eq.divineGrade.maxLevel}", "");
                 foreach (ItemStat itemStat in eq.divineGrade.stats)
                 {
-                    ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-                    int statValue = itemStat.values[eq.divineGrade.level];
-                    statInfo.SetUp($"{Utils.GetNiceName(itemStat.stat)}:", $"{statValue}");
-
-                    Equipment currentEq = PlayerEquipment.Instance.slots[(int)eq.equipmentTypeSlot].item;
-                    if (currentEq != eq && currentEq != null)
-                    {
-                        int currentStat = Utils.GetStat(itemStat.stat, currentEq.divineGrade.stats, currentEq.divineGrade.level);
-                        if (currentStat > statValue)
-                            statInfo.SetColor(Color.green);
-                        else
-                            statInfo.SetColor(Color.red);
-                    }
-                    else if (currentEq != eq)
-                    {
-                        statInfo.SetColor(Color.green);
-                    }
+                    SetStat(itemStat, eq.divineGrade, 2);
                 }
-            }
-            else
-            {
-                ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-                statInfo.SetUp($"Cannot divine upgraded", "");
             }
 
             if (eq.canBeChaosUpgraded)
@@ -215,43 +160,23 @@ public class ItemInfo : MonoBehaviour
                 chaosStats.SetUp($"Chaos Stats {eq.chaosGrade.level}/{eq.chaosGrade.maxLevel}", "");
                 foreach (ItemStat itemStat in eq.chaosGrade.stats)
                 {
-                    ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-                    int statValue = itemStat.values[eq.chaosGrade.level];
-                    statInfo.SetUp($"{Utils.GetNiceName(itemStat.stat)}:", $"{statValue}");
-
-                    Equipment currentEq = PlayerEquipment.Instance.slots[(int)eq.equipmentTypeSlot].item;
-                    if (currentEq != eq && currentEq != null)
-                    {
-                        int currentStat = Utils.GetStat(itemStat.stat, currentEq.chaosGrade.stats, currentEq.chaosGrade.level);
-                        if (currentStat > statValue)
-                            statInfo.SetColor(Color.green);
-                        else
-                            statInfo.SetColor(Color.red);
-                    }
-                    else if (currentEq != eq)
-                    {
-                        statInfo.SetColor(Color.green);
-                    }
+                    SetStat(itemStat, eq.chaosGrade, 3);
                 }
-            }
-            else
-            {
-                ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-                statInfo.SetUp($"Cannot chaos upgraded", "");
             }
 
             if (!equipped)
             {
                 equipButton.onClick.AddListener(delegate { EquipItem(eq); });
                 equipButton.gameObject.SetActive(true);
+                equipButton.interactable = Player.Instance.CanUseIt(eq);
+
                 upgradeButton.onClick.AddListener(delegate { armory.OpenUpgradePanel(eq); });
                 upgradeButton.gameObject.SetActive(true);
+                upgradeButton.interactable = eq.CanStillBeUpgraded() || eq.CanStillBeExtremeUpgraded() || eq.CanStillBeDivineUpgraded() ||eq.CanStillBeChaosUpgraded();
 
-                if(eq.scrollsCanBeAdded && eq.ScrollsCanStillBeAdded())
-                {
-                    enhanceButton.onClick.AddListener(delegate { armory.OpenEnhancePanel(eq); });
-                    enhanceButton.gameObject.SetActive(true);
-                }            
+                enhanceButton.onClick.AddListener(delegate { armory.OpenEnhancePanel(eq); });
+                enhanceButton.gameObject.SetActive(true);
+                enhanceButton.interactable = eq.ScrollsCanStillBeAdded();          
             }
             else
             {
@@ -259,22 +184,88 @@ public class ItemInfo : MonoBehaviour
                 unequipButton.gameObject.SetActive(true);
             }
         }
+        else if (item.itemType == ItemType.Blueprint)
+        {
+            Blueprint blueprint = (Blueprint)item;
+            ItemStatInfo requiredItems = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
+            requiredItems.SetUp("Required Items", "");
+            foreach (RequiredItem requiredItem in blueprint.requiredItems)
+            {
+                int howManyYouHave = PlayerInventory.Instance.HaveMany(requiredItem.item);
+                ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
+                statInfo.SetUp($"{requiredItem.item.name}:", $"{howManyYouHave}/{requiredItem.amount}", requiredItem.item);
+
+                if (howManyYouHave >= requiredItem.amount)
+                    statInfo.SetColor(Color.green);
+                else
+                    statInfo.SetColor(Color.red);
+
+                useButton.onClick.AddListener(delegate { armory.OpenCraftingPanel(blueprint); });
+                useButton.gameObject.SetActive(true);
+            }
+        }
+    }
+
+    public void SetUpCraft(Item item)
+    {
+        Equipment eq = (Equipment)item;
+        itemIcon.sprite = item.icon;
+        price.SetUp("Price:", $"{eq.GetSellPrice()}");
+        itemName.text = $"{eq.itemName} +{eq.normalGrade.level}";
+        ItemStatInfo rarity = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
+        rarity.SetUp("Rarity Bonus:", $"RANDOM");
+        ItemStatInfo reqLvl = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
+        reqLvl.SetUp("Lvl Required:", $"{eq.lvlRequired}");
+        if (Player.Instance.data.level < eq.lvlRequired)
+        {
+            reqLvl.SetColor(Color.red);
+        }
+
+        ItemStatInfo normalStats = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
+        normalStats.SetUp($"Normal Stats {eq.normalGrade.level}/{eq.normalGrade.maxLevel}", "");
+        foreach (ItemStat itemStat in eq.normalGrade.stats)
+        {
+            SetStat(itemStat, eq.normalGrade, 0);
+        }
+
+        if (eq.scrollsCanBeAdded)
+        {
+            ItemStatInfo scrollsStats = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
+            scrollsStats.SetUp($"Scroll Slots 0-3", "");
+        }
+
+        if (eq.canBeExtremeUpgraded)
+        {
+            ItemStatInfo extremeStats = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
+            extremeStats.SetUp($"Extreme Stats {eq.extremeGrade.level}/{eq.extremeGrade.maxLevel}", "");
+        }
+
+        if (eq.canBeDivineUpgraded)
+        {
+            ItemStatInfo divineStats = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
+            divineStats.SetUp($"Divine Stats {eq.divineGrade.level}/{eq.divineGrade.maxLevel}", "");
+        }     
     }
 
     private void Clear()
     {
+        useButton.onClick.RemoveAllListeners();
         equipButton.onClick.RemoveAllListeners();
         unequipButton.onClick.RemoveAllListeners();
         sellButton.onClick.RemoveAllListeners();
         upgradeButton.onClick.RemoveAllListeners();
         closeButton.onClick.RemoveAllListeners();
         enhanceButton.onClick.RemoveAllListeners();
+        useButton.gameObject.SetActive(false);
         equipButton.gameObject.SetActive(false);
         unequipButton.gameObject.SetActive(false);
         upgradeButton.gameObject.SetActive(false);
         description.gameObject.SetActive(false);
         sellButton.gameObject.SetActive(false);
         enhanceButton.gameObject.SetActive(false);
+        equipButton.interactable = true;
+        enhanceButton.interactable = true;
+        upgradeButton.interactable = true;
         foreach (Transform stat in statParent)
             Destroy(stat.gameObject);
         itemIcon.sprite = null;
@@ -285,33 +276,72 @@ public class ItemInfo : MonoBehaviour
 
     private void SellItem(Item item)
     {
-        PlayerInventory.Instance.RemoveItem(item);
+        Inventory.SellItem(item);
         SoundManager.Instance.PlayOneShot("Sell");
-        PlayerInventory.Instance.AddGold(item.price);
         CloseItemInfo();
     }
 
     private void EquipItem(Equipment item)
     {
-        Player.Instance.Equip(item);
+        Player.Equip(item);
         CloseItemInfo();
     }
 
     private void EquipPet(Pet pet)
     {
-        Player.Instance.EquipPet(pet);
+        Player.EquipPet(pet);
         CloseItemInfo();
     }
 
     private void UnequipItem(Equipment item)
     {
-        Player.Instance.Unequip(item);
+        Player.Unequip(item);
         CloseItemInfo();
     }
 
     private void CloseItemInfo()
     {
         SoundManager.Instance.PlayOneShot("Click");
-        gameObject.SetActive(false);
+        Inventory.CloseItemsInfo();
+    }
+
+    /// <summary>
+    /// GradeType: 0-normal, 1-extreme, 2-divine, 3-chaos
+    /// </summary>
+    /// <param name="itemStat"></param>
+    /// <param name="grade"></param>
+    /// <param name="gradeType"></param>
+    private void SetStat(ItemStat itemStat, Grade grade, int gradeType)
+    {
+        ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
+        int statValue = itemStat.values[grade.level];
+        statInfo.SetUp($"{Utils.GetNiceName(itemStat.stat)}:", $"{statValue}");
+
+        if (itemToCompare != null)
+        {
+            Grade currentEqGrade = null;
+            switch (gradeType)
+            {
+                case 0:
+                    currentEqGrade = itemToCompare.normalGrade;
+                    break;
+                case 1:
+                    currentEqGrade = itemToCompare.extremeGrade;
+                    break;
+                case 2:
+                    currentEqGrade = itemToCompare.divineGrade;
+                    break;
+                case 3:
+                    currentEqGrade = itemToCompare.chaosGrade;
+                    break;
+            }
+
+            int currentStat = Utils.GetStat(itemStat.stat, currentEqGrade.stats, currentEqGrade.level);
+            Debug.Log(currentStat + " " + statValue);
+            if (currentStat > statValue)
+                statInfo.SetColor(Color.red);
+            else if (currentStat < statValue)
+                statInfo.SetColor(Color.green);
+        }
     }
 }

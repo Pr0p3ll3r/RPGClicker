@@ -22,20 +22,21 @@ MonoBehaviour:
   price: 100
   equipmentTypeSlot: 0
   rarity: 0
-  lvlRequired: 15
-  rarityBonus: {fileID: 0}
-  normalGrade:
-    level: 0
-    maxLevel: 0
-    stats:
-    - stat: 0
-      values: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000120000001300000014000000
-    prices: 
+  canBeUsedBy: 00000000
+  lvlRequired: 20
   canBeUpgraded: 1
   canBeExtremeUpgraded: 0
   canBeDivineUpgraded: 0
   canBeChaosUpgraded: 0
   scrollsCanBeAdded: 1
+  rarityBonus: {fileID: 0}
+  normalGrade:
+    level: 0
+    maxLevel: 20
+    stats:
+    - stat: 0
+      values: 0100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000014000000
+    prices: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   is2HWeapon: 1
   extremeGrade:
     level: 0
@@ -47,10 +48,7 @@ MonoBehaviour:
     maxLevel: 0
     stats: []
     prices: 
-  scrollSlots: 2
-  maxScrollSlots: 3
   scrollsStat:
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   chaosGrade:

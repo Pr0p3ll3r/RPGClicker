@@ -94,6 +94,8 @@ public class GameManager : MonoBehaviour
             Data.Load();
             mainPanel.SetActive(true);
             ChangeLocation(Database.data.locations[0]);
+            foreach (EquipmentSlot slot in PlayerEquipment.Instance.slots)
+                slot.GetRightPlaceholder();
         }
     }
 
@@ -135,6 +137,8 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("NewGame", 0);
         mainPanel.SetActive(true);
         ChangeLocation(Database.data.locations[0]);
+        foreach (EquipmentSlot slot in PlayerEquipment.Instance.slots)
+            slot.GetRightPlaceholder();
     }
 
     public void Reward(EnemyData enemy)
@@ -240,7 +244,7 @@ public class GameManager : MonoBehaviour
 
     private void UnlockLocation(Location location)
     {
-        if(!PlayerInventory.Instance.CheckGold(location.price))
+        if(!PlayerInventory.Instance.HaveEnoughGold(location.price))
         {
             ShowText("Not enough gold!", Color.red);
         }
@@ -253,7 +257,7 @@ public class GameManager : MonoBehaviour
 
     private void EnterDungeon(Location dungeon)
     {
-        if (!PlayerInventory.Instance.CheckGold(dungeon.price))
+        if (!PlayerInventory.Instance.HaveEnoughGold(dungeon.price))
         {
             ShowText("Not enough gold!", Color.red);
         }

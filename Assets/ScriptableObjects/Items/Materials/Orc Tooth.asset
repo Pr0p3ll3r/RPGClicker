@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Orc Tooth
   m_EditorClassIdentifier: 
   ID: 0
-  itemName: 
+  itemName: Orc's Tooth
   icon: {fileID: 0}
   itemType: 4
   description: 
   maxInStack: 999
-  stackable: 0
-  price: 0
+  stackable: 1
+  price: 1

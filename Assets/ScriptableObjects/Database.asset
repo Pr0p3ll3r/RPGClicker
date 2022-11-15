@@ -123,6 +123,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 26547befadaa162428746066afc59410, type: 2}
   - {fileID: 11400000, guid: 882655d1fe12ffd4ea9d3d2233f285c7, type: 2}
   - {fileID: 11400000, guid: e891c9996b3aa654a99cee474cb49caa, type: 2}
+  - {fileID: 11400000, guid: 6541df9c91fd5364fb567745a172460c, type: 2}
   locations:
   - {fileID: 11400000, guid: 7c29b70c824fac14894c3a5e518f657f, type: 2}
   dungeons:
@@ -150,4 +151,3 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f71126b4a5982da448e528bc398fc573, type: 2}
   - {fileID: 11400000, guid: 674e31d1011f0c64eab4e7c9fadf6865, type: 2}
   towerEnemies: []
-  allUpgradeInfos: []

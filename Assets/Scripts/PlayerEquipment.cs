@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerEquipment : MonoBehaviour
 {
@@ -19,11 +16,23 @@ public class PlayerEquipment : MonoBehaviour
 
     private void Start()
     {       
-        RefreshUI();
+        RefreshUI();   
     }
 
     public void EquipItem(Equipment item, out Equipment previousItem)
     {
+        //if there is an empty slot
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (slots[i].equipmentType == item.equipmentTypeSlot && slots[i].item == null)
+            {
+                previousItem = null;
+                slots[i].item = item;
+                Debug.Log("Equipped Item: " + item.itemName);
+                return;
+            }
+        }
+        //if not swap with first one
         for (int i = 0; i < slots.Length; i++)
         {
             if (slots[i].equipmentType == item.equipmentTypeSlot)

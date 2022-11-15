@@ -452,6 +452,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Blocked Placeholder
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32ca47029759a874bb66ed300ba6142e
+      internalID: -530209079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -473,6 +494,7 @@ TextureImporter:
       Ring Placeholder: -505731750
       Shield Placeholder: -6840818254216528329
       Bow Placeholder: -2151825540320254309
+      Blocked Placeholder: -530209079
       Boots Placeholder: -1875717895940933529
       Belt Placeholder: -608902418
       Gloves Placeholder: -4128298073260568701

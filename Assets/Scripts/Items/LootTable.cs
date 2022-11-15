@@ -1,21 +1,32 @@
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
 public static class LootTable 
 {
     public static Item Drop(Loot[] enemyLoot)
     {
         Item droppedItem = null;
-        int roll = UnityEngine.Random.Range(0, 100);
+        float totalWeight = enemyLoot.Sum(item => item.weight);
+        float roll = Random.Range(0f, totalWeight);
         foreach (Loot loot in enemyLoot)
         {
-            if (roll <= loot.dropChance)
+            if (loot.weight >= roll)
             {
                 Item item = loot.item.GetCopy();
                 if(item.itemType == ItemType.Equipment)
                 {
                     Equipment eq = (Equipment)item;
-                    int randomRarity = UnityEngine.Random.Range(0, 100);
-                    eq.rarity = RandomRarity(randomRarity);
-                    int randomBonus = UnityEngine.Random.Range(0, Database.data.rarityBonuses.Length);
-                    eq.rarityBonus = Database.data.rarityBonuses[randomBonus];
+                    if (!eq.canBeChaosUpgraded)
+                    {
+                        eq.rarity = RandomRarity();
+
+                        int randomBonus = Random.Range(0, Database.data.rarityBonuses.Length);
+                        eq.rarityBonus = Database.data.rarityBonuses[randomBonus];
+
+                        eq.scrollsStat = new StatBonus[RandomNumberOfSlots()];
+                    }
+                                
                     droppedItem = eq;
                 }
                 else
@@ -24,22 +35,59 @@ public static class LootTable
                 }
                 break;
             }
+            roll -= loot.weight;
         }
         return droppedItem;
     }
 
-    public static EquipmentRarity RandomRarity(int roll)
+    public static EquipmentRarity RandomRarity()
     {
-        switch (roll)
+        var weights = new (float weight, EquipmentRarity rarity)[]
+        {               
+              (50, EquipmentRarity.Common),
+              (30, EquipmentRarity.Uncommon),
+              (10, EquipmentRarity.Epic),
+              (1, EquipmentRarity.Legendary)
+        };
+        float total = weights.Sum(item => item.weight);
+        float random = Random.Range(0f, total);
+        foreach (var item in weights)
         {
-            case 0:
-                return EquipmentRarity.Legendary;
-            case <= 5:
-                return EquipmentRarity.Epic;
-            case <= 30:
-                return EquipmentRarity.Uncommon;
-            default:
-                return EquipmentRarity.Common;
+            if(item.weight >= random)
+            {
+                return item.rarity;
+            }
+
+            random -= item.weight;
         }
+        return EquipmentRarity.Common;
+    }
+
+    public static int RandomNumberOfSlots()
+    {
+        float twoSlotDrop = Player.Instance.data.twoSlotDropBonus.GetValue();
+        twoSlotDrop += twoSlotDrop * 10;
+        var weights = new (float weight, int number)[]
+        {
+              (50, 0),
+              (30, 1),
+              (twoSlotDrop, 2),
+        };
+        float total = 0;
+        foreach (var item in weights)
+        {
+            total += item.weight;
+        }
+        float random = Random.Range(0f, total);
+        foreach (var item in weights)
+        {
+            if (item.weight >= random)
+            {
+                return item.number;
+            }
+
+            random -= item.weight;
+        }
+        return 0;
     }
 }
