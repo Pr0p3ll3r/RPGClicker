@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Bat's Wing
   m_EditorClassIdentifier: 
   ID: 0
-  itemName: 
-  icon: {fileID: 0}
+  itemName: Bat's Wing
+  icon: {fileID: -3715238569899461397, guid: b7fff23f234fd9346978fef62c10f4f2, type: 3}
   itemType: 4
   description: 
   maxInStack: 999

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Database", menuName = "RPG/Database")]
@@ -13,7 +11,7 @@ public class DatabaseSO : ScriptableObject, ISerializationCallbackReceiver
     public EnemyInfo[] towerEnemies;
 
     public void OnBeforeSerialize()
-    {     
+    {
     }
 
     public void OnAfterDeserialize()
@@ -31,6 +29,15 @@ public class DatabaseSO : ScriptableObject, ISerializationCallbackReceiver
         for (int i = 0; i < scrollBonuses.Length; i++)
         {
             scrollBonuses[i].ID = i;
+        }
+    }
+
+    public void ResetLocations()
+    {
+        for (int i = 1; i < locations.Length; i++)
+        {
+            locations[i].unlocked = false;
+            locations[i].bossDefeated = false;
         }
     }
 

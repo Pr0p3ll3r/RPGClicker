@@ -40,7 +40,7 @@ MonoBehaviour:
   is2HWeapon: 0
   extremeGrade:
     level: 0
-    maxLevel: 0
+    maxLevel: 3
     stats:
     - stat: 0
       values: 14000000280000003c000000500000006400000078000000

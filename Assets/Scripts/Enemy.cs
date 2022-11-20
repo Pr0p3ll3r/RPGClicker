@@ -20,7 +20,6 @@ public class Enemy : MonoBehaviour
 
     private Player player;
     private bool triggered;
-    private bool spawned;
     private float attackRate;
     private int currentHealth;
     public bool IsDead { get; private set; }
@@ -29,21 +28,19 @@ public class Enemy : MonoBehaviour
     {
         player = Player.Instance;
         attackRate = 5f;
-        //UpdateHealthBar();
     }
 
     public void SetUp(EnemyData newEnemy)
     {
-        StopAllCoroutines();
+        data = newEnemy;
+        
         animator.Play("EnemyIn");
         triggered = false;
-        data = newEnemy;
-        currentHealth = data.health;
-        look.sprite = data.look;
+        currentHealth = data.health;    
         enemyName.text = data.enemyName;
-        look.enabled = true;
         attackRate = 5f;
         UpdateHealthBar();
+        animator.Play(data.enemyName);
     }
 
     void Update()
@@ -60,7 +57,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (!spawned && IsDead) return;
+        if (IsDead) return;
 
         currentHealth -= damage;
         animator.Play("EnemyHit", -1, 0f);
@@ -72,7 +69,6 @@ public class Enemy : MonoBehaviour
             IsDead = true;
             GameManager.Instance.Reward(data);
             triggered = false;
-            spawned = false;
             animator.Play("EnemyOut");
         }
     }
@@ -84,7 +80,6 @@ public class Enemy : MonoBehaviour
 
     public void Spawned()
     {
-        spawned = true;
         IsDead = false;
     }
 

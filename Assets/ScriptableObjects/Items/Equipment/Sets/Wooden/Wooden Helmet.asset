@@ -28,7 +28,7 @@ MonoBehaviour:
   canBeExtremeUpgraded: 0
   canBeDivineUpgraded: 0
   canBeChaosUpgraded: 0
-  scrollsCanBeAdded: 0
+  scrollsCanBeAdded: 1
   rarityBonus: {fileID: 0}
   normalGrade:
     level: 0

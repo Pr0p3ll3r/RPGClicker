@@ -18,7 +18,6 @@ public class EnemyData : ScriptableObject
     public int exp;
     public int gold;
     public Loot[] loot;
-    public int possibleRarity;
     public bool isTowerEnemy = false;
     public bool isBoss = false;
 

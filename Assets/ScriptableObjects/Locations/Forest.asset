@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfaa4bb3e2346e44db6183006e316bc4, type: 3}
   m_Name: Forest
   m_EditorClassIdentifier: 
-  name: Forest
-  price: 200
+  locationName: Forest
+  price: 1
+  lvlMin: 10
   unlocked: 0
   bossDefeated: 0
   isDungeon: 0
   enemies:
-  - {fileID: 11400000, guid: 7c9b004c6aa20874c85f38cab42781fc, type: 2}
-  - {fileID: 0}
-  boss: {fileID: 0}
+  - {fileID: 11400000, guid: f47c552f4b3f6454ba68fe8923494b30, type: 2}
+  boss: {fileID: 11400000, guid: eed58d539323dd5408db6cf5c576a232, type: 2}

@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfaa4bb3e2346e44db6183006e316bc4, type: 3}
   m_Name: FieldShelter
   m_EditorClassIdentifier: 
-  name: Field Shelter
+  locationName: Field Shelter
   price: 100
+  lvlMin: 1
   unlocked: 0
   bossDefeated: 0
-  isDungeon: 0
+  isDungeon: 1
   enemies:
   - {fileID: 11400000, guid: f47c552f4b3f6454ba68fe8923494b30, type: 2}
   boss: {fileID: 11400000, guid: eed58d539323dd5408db6cf5c576a232, type: 2}

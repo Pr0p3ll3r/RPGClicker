@@ -85,12 +85,10 @@ public class Player : MonoBehaviour
 
     public void Reward(int exp, int gold)
     {
-        int expBonus = data.expBonus.GetValue();
-        expBonus += expBonus * exp;
-        int goldBonus = data.goldBonus.GetValue();
-        goldBonus += goldBonus * gold;
-        ls.GetExp(expBonus);
-        Inventory.AddGold(goldBonus);
+        exp += data.expBonus.GetValue() * exp;
+        gold += data.goldBonus.GetValue() * gold;
+        ls.GetExp(exp);
+        Inventory.AddGold(gold);
 
         for (int i = 0; i < myPets.Length; i++)
         {

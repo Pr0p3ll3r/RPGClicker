@@ -26,7 +26,7 @@ MonoBehaviour:
   lvlRequired: 60
   canBeUpgraded: 1
   canBeExtremeUpgraded: 1
-  canBeDivineUpgraded: 1
+  canBeDivineUpgraded: 0
   canBeChaosUpgraded: 0
   scrollsCanBeAdded: 1
   rarityBonus: {fileID: 0}
@@ -40,7 +40,7 @@ MonoBehaviour:
   is2HWeapon: 0
   extremeGrade:
     level: 0
-    maxLevel: 0
+    maxLevel: 4
     stats:
     - stat: 0
       values: 14000000280000003c000000500000006400000078000000

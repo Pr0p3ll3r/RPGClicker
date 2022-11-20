@@ -26,7 +26,7 @@ MonoBehaviour:
   lvlRequired: 80
   canBeUpgraded: 1
   canBeExtremeUpgraded: 1
-  canBeDivineUpgraded: 1
+  canBeDivineUpgraded: 0
   canBeChaosUpgraded: 0
   scrollsCanBeAdded: 1
   rarityBonus: {fileID: 0}
@@ -39,8 +39,8 @@ MonoBehaviour:
     prices: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   is2HWeapon: 1
   extremeGrade:
-    level: 6
-    maxLevel: 0
+    level: 0
+    maxLevel: 5
     stats:
     - stat: 0
       values: 280000005000000078000000a0000000c8000000f0000000

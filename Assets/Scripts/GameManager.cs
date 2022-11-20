@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.FilePathAttribute;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
 
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = Screen.currentResolution.refreshRate;
+
+        database.ResetLocations();
     }
 
     [Header("Main")]
@@ -42,7 +45,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject locationPrefab;
     [SerializeField] private Transform locationList;
     [SerializeField] private Transform dungeonsList;
-    [SerializeField] private GameObject dropInfo;
 
     [SerializeField] private GameObject locationPanel;
     [SerializeField] private GameObject dungeonPanel;
@@ -187,9 +189,10 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void ShowArmory()
-    {
-        armoryPanel.SetActive(true);
+    public void OpenAdventurePanel()
+    {       
+        RefreshLocationList();
+        adventurePanel.SetActive(true);
     }
 
     private void CloseAdventurePanels()
@@ -203,8 +206,7 @@ public class GameManager : MonoBehaviour
         foreach (Location location in Database.data.locations)
         {
             GameObject locationGO = Instantiate(locationPrefab, locationList);
-            locationGO.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = location.name;
-            locationGO.transform.Find("Unlock/Price").GetComponent<TextMeshProUGUI>().text = $"{location.price}";
+            locationGO.GetComponent<LocationInfo>().SetUp(location);
             locationGO.GetComponent<Button>().onClick.AddListener(delegate { ChangeLocation(location); });
             locationGO.transform.Find("Unlock").gameObject.SetActive(false);
             locationGO.transform.Find("Unlock/ButtonUnlock").GetComponent<Button>().onClick.AddListener(delegate { UnlockLocation(location); });
@@ -214,8 +216,7 @@ public class GameManager : MonoBehaviour
         foreach (Location dungeon in Database.data.dungeons)
         {
             GameObject bossGO = Instantiate(locationPrefab, dungeonsList);
-            bossGO.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = dungeon.name;
-            bossGO.transform.Find("Unlock/Price").GetComponent<TextMeshProUGUI>().text = $"{dungeon.price}";
+            bossGO.GetComponent<LocationInfo>().SetUp(dungeon);
             bossGO.GetComponent<Button>().onClick.AddListener(delegate { EnterDungeon(dungeon); });
             bossGO.transform.Find("Unlock").gameObject.SetActive(true);
             bossGO.transform.Find("Unlock/ButtonUnlock").gameObject.SetActive(false);
@@ -226,17 +227,34 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < locationList.childCount; i++)
         {
-            if (Database.data.locations[i].unlocked)
-                locationList.GetChild(i).GetComponent<Button>().interactable = true;
-            else
+            if (Player.data.level < Database.data.locations[i].lvlMin)
+            {
+                locationList.GetChild(i).GetComponent<Button>().interactable = false;
                 locationList.GetChild(i).transform.Find("Unlock").gameObject.SetActive(true);
-
+                locationList.GetChild(i).transform.Find("Unlock/ButtonUnlock").GetComponent<Button>().interactable = false;
+            }
+            else if (Database.data.locations[i].unlocked)
+            {
+                locationList.GetChild(i).GetComponent<Button>().interactable = true;
+                locationList.GetChild(i).transform.Find("Unlock").gameObject.SetActive(false);
+            }         
+            else
+            {
+                locationList.GetChild(i).transform.Find("Unlock").gameObject.SetActive(true);
+                locationList.GetChild(i).transform.Find("Unlock/ButtonUnlock").GetComponent<Button>().interactable = true;
+            }
+               
             if(currentLocation == Database.data.locations[i])
                 locationList.GetChild(i).GetComponent<Button>().interactable = false;
         }
 
         for (int i = 0; i < dungeonsList.childCount; i++)
         {
+            if (Player.data.level < Database.data.locations[i].lvlMin)
+                locationList.GetChild(i).GetComponent<Button>().interactable = false;
+            else
+                locationList.GetChild(i).GetComponent<Button>().interactable = true;
+            
             if (currentLocation == Database.data.dungeons[i])
                 dungeonsList.GetChild(i).GetComponent<Button>().interactable = false;
         }
@@ -271,7 +289,7 @@ public class GameManager : MonoBehaviour
     {
         previousLocation = currentLocation;
         currentLocation = newLocation;
-        locationName.text = currentLocation.name;
+        locationName.text = currentLocation.locationName;
         adventurePanel.SetActive(false);
         RefreshLocationList();
 
@@ -306,11 +324,6 @@ public class GameManager : MonoBehaviour
         //towerEnemy.GetComponent<EnemyInfo>().SetUp(enemy);
         //towerEnemy.transform.Find("FightButton").GetComponent<Button>().onClick.RemoveAllListeners();
         //towerEnemy.transform.Find("FightButton").GetComponent<Button>().onClick.AddListener(delegate { StartBattle(enemy); });
-    }
-
-    public void DisplayDropInfo(EnemyData enemy)
-    {
-        dropInfo.GetComponent<DropInfo>().SetUpInfo(enemy);
     }
 
     private void OnApplicationQuit()

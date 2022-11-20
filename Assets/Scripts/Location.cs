@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Location", menuName = "RPG/Location")]
 public class Location : ScriptableObject
 {
-    public new string name;
+    public string locationName;
     public int price = 1;
+    public int lvlMin = 1;
     public bool unlocked = false;
     public bool bossDefeated = false;
     public bool isDungeon = false;

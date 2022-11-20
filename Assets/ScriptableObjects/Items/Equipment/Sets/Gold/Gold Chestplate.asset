@@ -42,8 +42,14 @@ MonoBehaviour:
   is2HWeapon: 0
   extremeGrade:
     level: 0
-    maxLevel: 0
-    stats: []
+    maxLevel: 3
+    stats:
+    - stat: 1
+      values: 14000000280000003c000000500000006400000078000000
+    - stat: 6
+      values: 00000000320000006400000096000000c8000000fa000000
+    - stat: 3
+      values: 0000000000000000050000000a0000000f00000014000000
     prices: 
   divineGrade:
     level: 0

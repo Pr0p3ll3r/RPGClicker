@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f4d05af8e2b28e458d358be48badf59, type: 3}
   m_Name: Lvl1 Slime
   m_EditorClassIdentifier: 
-  look: {fileID: 21300000, guid: 9e2b81db9b1f9d5419e0dd36e9dfb563, type: 3}
+  look: {fileID: 613377355, guid: 3b376616b8d38184caf962366b9d1ad6, type: 3}
   enemyName: Slime
   level: 1
   health: 10
@@ -24,13 +24,8 @@ MonoBehaviour:
   gold: 1
   loot:
   - item: {fileID: 11400000, guid: c4728fb92f682f44bae3b2218310323e, type: 2}
-    weight: 0
-  - item: {fileID: 11400000, guid: c4728fb92f682f44bae3b2218310323e, type: 2}
-    weight: 0
-  - item: {fileID: 11400000, guid: c4728fb92f682f44bae3b2218310323e, type: 2}
-    weight: 0
-  - item: {fileID: 11400000, guid: c4728fb92f682f44bae3b2218310323e, type: 2}
-    weight: 0
-  possibleRarity: 1
+    weight: 1
+  - item: {fileID: 11400000, guid: ab97ae27abacdb647b1b25376cb5be58, type: 2}
+    weight: 2
   isTowerEnemy: 0
   isBoss: 0

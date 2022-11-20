@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Bear's Tongue
   m_EditorClassIdentifier: 
   ID: 0
-  itemName: 
-  icon: {fileID: 0}
+  itemName: Bear's Tongue
+  icon: {fileID: 6816387792455608864, guid: b7fff23f234fd9346978fef62c10f4f2, type: 3}
   itemType: 4
   description: 
   maxInStack: 999

@@ -88,6 +88,17 @@ public static class Data
             data = JsonUtility.ToJson(saveEq);
             bf.Serialize(file, data);
         }
+        
+        //Save locations
+        for (int i = 0; i < Database.data.locations.Length; i++)
+        {
+            SaveLocation saveLoc;
+            Location loc = Database.data.locations[i];
+            saveLoc = new SaveLocation(loc.unlocked, loc.bossDefeated);
+            data = JsonUtility.ToJson(saveLoc);
+            bf.Serialize(file, data);
+        }
+
         file.Close();
     }
 
@@ -221,6 +232,14 @@ public static class Data
                 }
                 slot.item = eq;
             }
+        }
+
+        for (int i = 0; i < Database.data.locations.Length; i++)
+        {
+            SaveLocation saveLoc = new SaveLocation();
+            JsonUtility.FromJsonOverwrite(bf.Deserialize(file).ToString(), saveLoc);
+            Database.data.locations[i].unlocked = saveLoc.unlocked;
+            Database.data.locations[i].bossDefeated = saveLoc.bossDefeated;
         }
         file.Close();
     }

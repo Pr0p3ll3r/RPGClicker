@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Slime Glob
   m_EditorClassIdentifier: 
   ID: 0
-  itemName: 
-  icon: {fileID: 0}
+  itemName: Slime Glob
+  icon: {fileID: -1332050499322439770, guid: b7fff23f234fd9346978fef62c10f4f2, type: 3}
   itemType: 4
   description: 
   maxInStack: 999
-  stackable: 0
-  price: 0
+  stackable: 1
+  price: 1
