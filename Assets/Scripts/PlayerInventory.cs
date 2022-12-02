@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using static UnityEditor.PlayerSettings;
@@ -118,7 +119,7 @@ public class PlayerInventory : MonoBehaviour
         int i;
         for (i = 0; i < slots.Length; i++)
         {
-            if (slots[i].item.ID == _item.ID)
+            if (slots[i].item == _item)
             {
                 slots[i].item = null;
                 slots[i].amount = 0;
@@ -127,11 +128,17 @@ public class PlayerInventory : MonoBehaviour
         }
 
         // Shifting elements
-        for (; i < slots.Length - 1; i++)
+        for (; i < slots.Length - 1; ++i)
         {
             slots[i].item = slots[i + 1].item;
             slots[i].amount = slots[i + 1].amount;
         }
+        if (slots[slots.Length-1] != null)
+        {
+            slots[slots.Length - 1].item = null;
+            slots[slots.Length - 1].amount = 0;
+        }
+
         RefreshUI();
     }
 
@@ -159,6 +166,7 @@ public class PlayerInventory : MonoBehaviour
                 return false;
             }
         }
+        GameManager.Instance.ShowText($"Inventory is full", Color.red);
         return true;
     }
 

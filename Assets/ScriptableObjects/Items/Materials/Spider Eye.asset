@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Spider Eye
   m_EditorClassIdentifier: 
   ID: 0
-  itemName: 
+  itemName: Spider's Eye
   icon: {fileID: -3293396588010426162, guid: 4f994cdb05a8a484f9665f1ce9d29a74, type: 3}
   itemType: 4
   description: 
   maxInStack: 999
-  stackable: 0
-  price: 0
+  stackable: 1
+  price: 1

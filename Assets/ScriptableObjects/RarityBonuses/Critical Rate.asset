@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5a16ed72bbdf14bba16cab447a666b, type: 3}
   m_Name: Critical Rate
   m_EditorClassIdentifier: 
+  ID: 1
   stat: 4
-  value: 1
-  values: 020000000400000006000000
+  values: 00000000020000000400000006000000

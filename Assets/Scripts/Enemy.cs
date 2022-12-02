@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +10,6 @@ public class Enemy : MonoBehaviour
         Instance = this;
     }
 
-    [SerializeField] private Image look;
     [SerializeField] private TextMeshProUGUI enemyName;
     [SerializeField] private Animator animator;
     public EnemyData data;
@@ -32,12 +29,12 @@ public class Enemy : MonoBehaviour
 
     public void SetUp(EnemyData newEnemy)
     {
+      
         data = newEnemy;
-        
         animator.Play("EnemyIn");
         triggered = false;
-        currentHealth = data.health;    
-        enemyName.text = data.enemyName;
+        currentHealth = data.health;
+        enemyName.text = $"Lvl{data.level} {data.enemyName}";
         attackRate = 5f;
         UpdateHealthBar();
         animator.Play(data.enemyName);
@@ -73,14 +70,14 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void NextEnemy()
-    {
-        SetUp(GameManager.Instance.NextEnemy());
-    }
-
     public void Spawned()
     {
         IsDead = false;
+    }
+
+    public void SpawnNextEnemy()
+    {
+        GameManager.Instance.NextEnemy();
     }
 
     void Attack()

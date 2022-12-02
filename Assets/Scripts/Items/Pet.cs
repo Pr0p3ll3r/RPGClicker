@@ -86,7 +86,7 @@ public class Pet : Item
         foreach (StatBonus stat in scrollsStat)
         {
             if (stat != null)
-                data.AddStat(stat.stat, stat.values[2]);
+                data.AddStat(stat.stat, stat.values[1]);
         }
     }
 
@@ -95,7 +95,7 @@ public class Pet : Item
         foreach (StatBonus stat in scrollsStat)
         {
             if (stat != null)
-                data.RemoveStat(stat.stat, stat.values[2]);
+                data.RemoveStat(stat.stat, stat.values[1]);
         }
     }
 }

@@ -11858,19 +11858,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 603541585}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &603541585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28419,7 +28407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3cbc7fde30932141af00899108cdc85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  look: {fileID: 1903366096}
   enemyName: {fileID: 119131818}
   animator: {fileID: 1471734467}
   data: {fileID: 0}
@@ -36387,7 +36374,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 35834e06d68ba1542b4d82c106ef6eba, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -42962,19 +42949,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5863179956130775246}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!222 &5863179956398272515
 CanvasRenderer:
   m_ObjectHideFlags: 0

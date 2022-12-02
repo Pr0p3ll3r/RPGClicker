@@ -38,7 +38,7 @@ public class PetInfo : MonoBehaviour
             if (stat == null) continue;
 
             ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-            statInfo.SetUp($"{Utils.GetNiceName(stat.stat)}:", $"{stat.values[0]}");
+            statInfo.SetUp($"{Utils.GetNiceName(stat.stat)}:", $"{stat.values[1]}");
         }
 
         UpdateExpBar();

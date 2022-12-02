@@ -66,6 +66,8 @@ public class GameManager : MonoBehaviour
     private Location currentLocation;
     private Location previousLocation;
 
+    private int dungeonEnemyCount = 10;
+
     private void Start()
     {
         Database.data = database;
@@ -159,6 +161,9 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        if (enemy.isBoss)
+            currentLocation.bossDefeated = true;
+
         Player.Reward(enemy.exp, enemy.gold);
     }
 
@@ -237,23 +242,23 @@ public class GameManager : MonoBehaviour
             {
                 locationList.GetChild(i).GetComponent<Button>().interactable = true;
                 locationList.GetChild(i).transform.Find("Unlock").gameObject.SetActive(false);
-            }         
+            }
             else
             {
                 locationList.GetChild(i).transform.Find("Unlock").gameObject.SetActive(true);
                 locationList.GetChild(i).transform.Find("Unlock/ButtonUnlock").GetComponent<Button>().interactable = true;
             }
-               
-            if(currentLocation == Database.data.locations[i])
+
+            if (currentLocation == Database.data.locations[i])
                 locationList.GetChild(i).GetComponent<Button>().interactable = false;
         }
 
         for (int i = 0; i < dungeonsList.childCount; i++)
         {
             if (Player.data.level < Database.data.locations[i].lvlMin)
-                locationList.GetChild(i).GetComponent<Button>().interactable = false;
+                dungeonsList.GetChild(i).GetComponent<Button>().interactable = false;
             else
-                locationList.GetChild(i).GetComponent<Button>().interactable = true;
+                dungeonsList.GetChild(i).GetComponent<Button>().interactable = true;
             
             if (currentLocation == Database.data.dungeons[i])
                 dungeonsList.GetChild(i).GetComponent<Button>().interactable = false;
@@ -291,26 +296,34 @@ public class GameManager : MonoBehaviour
         currentLocation = newLocation;
         locationName.text = currentLocation.locationName;
         adventurePanel.SetActive(false);
-        RefreshLocationList();
 
-        if (newLocation.bossDefeated)
-            Enemy.SetUp(NextEnemy());
-        else
-            Enemy.SetUp(newLocation.boss);
+        if (newLocation.isDungeon)
+            dungeonEnemyCount = 10;
+
+        NextEnemy();
     }
 
-    public EnemyData NextEnemy()
+    public void NextEnemy()
     {
-        int randomEnemy = UnityEngine.Random.Range(0, currentLocation.enemies.Length);
-        return currentLocation.enemies[randomEnemy];
+        if (currentLocation.isDungeon)
+        {
+            if (dungeonEnemyCount > 0)
+                Enemy.SetUp(currentLocation.enemies[UnityEngine.Random.Range(0, currentLocation.enemies.Length)]);
+            else if (!currentLocation.bossDefeated)
+                Enemy.SetUp(currentLocation.boss);
+            else
+                ChangeLocation(previousLocation);
+        }
+
+        Enemy.SetUp(currentLocation.enemies[UnityEngine.Random.Range(0, currentLocation.enemies.Length)]);
     }
 
     public void PlayerDeath()
     {
-        if(currentLocation.isDungeon)
+        if (currentLocation.isDungeon)
             ChangeLocation(previousLocation);
         else
-            Enemy.SetUp(NextEnemy());
+            NextEnemy();
     }
 
     public void ShowTower()

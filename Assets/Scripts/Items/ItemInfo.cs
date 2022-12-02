@@ -1,5 +1,8 @@
+using System;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 using static UnityEditor.Experimental.GraphView.GraphView;
 using static UnityEditor.Progress;
@@ -65,7 +68,7 @@ public class ItemInfo : MonoBehaviour
                 if (stat == null) break;
 
                 ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-                statInfo.SetUp($"{Utils.GetNiceName(stat.stat)}:", $"{stat.values[2]}");
+                statInfo.SetUp($"{Utils.GetNiceName(stat.stat)}:", $"{stat.values[1]}");
             }
 
             equipButton.onClick.AddListener(delegate { EquipPet(pet); });
@@ -82,8 +85,14 @@ public class ItemInfo : MonoBehaviour
             Equipment eq = (Equipment)item;
             price.SetUp("Price:", $"{eq.GetSellPrice()}");
             itemName.text = $"{eq.itemName} +{eq.normalGrade.level}";
+            ItemStatInfo reqLvl = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
+            reqLvl.SetUp("Lvl Required:", $"{eq.lvlRequired}");
+            if (Player.Instance.data.level < eq.lvlRequired)
+            {
+                reqLvl.SetColor(Color.red);
+            }
             ItemStatInfo rarity = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-            rarity.SetUp("Rarity Bonus:", $"{eq.rarity}");
+            rarity.SetUp("Rarity:", $"{eq.rarity}");
             switch (eq.rarity)
             {
                 case EquipmentRarity.Common:
@@ -102,13 +111,18 @@ public class ItemInfo : MonoBehaviour
                     itemName.color = new Color32(255, 165, 0, 255);
                     break;
             }
-            ItemStatInfo reqLvl = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-            reqLvl.SetUp("Lvl Required:", $"{eq.lvlRequired}");
-            if (Player.Instance.data.level < eq.lvlRequired)
+            ItemStatInfo rarityBonus = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
+            rarityBonus.SetUp($"Rarity Bonus {(int)eq.rarity}/{Enum.GetNames(typeof(EquipmentRarity)).Length}", $"");
+            if (eq.rarityBonus != null)
             {
-                reqLvl.SetColor(Color.red);
+                int value;
+                if (eq.is2HWeapon)
+                    value = eq.rarityBonus.values[(int)eq.rarity] * 2;
+                else
+                    value = eq.rarityBonus.values[(int)eq.rarity];
+                ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
+                statInfo.SetUp($"{Utils.GetNiceName(eq.rarityBonus.stat)}:", $"{value}");
             }
-
             ItemStatInfo normalStats = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
             normalStats.SetUp($"Normal Stats {eq.normalGrade.level}/{eq.normalGrade.maxLevel}", "");
             foreach (ItemStat itemStat in eq.normalGrade.stats)
@@ -126,7 +140,7 @@ public class ItemInfo : MonoBehaviour
 
                     int value;
                     if (eq.is2HWeapon)
-                        value = stat.values[1];
+                        value = stat.values[0] * 2;
                     else
                         value = stat.values[0];
                     ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
@@ -337,7 +351,6 @@ public class ItemInfo : MonoBehaviour
             }
 
             int currentStat = Utils.GetStat(itemStat.stat, currentEqGrade.stats, currentEqGrade.level);
-            Debug.Log(currentStat + " " + statValue);
             if (currentStat > statValue)
                 statInfo.SetColor(Color.red);
             else if (currentStat < statValue)

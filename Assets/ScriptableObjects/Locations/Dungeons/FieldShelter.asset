@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locationName: Field Shelter
   price: 100
-  lvlMin: 1
+  lvlMin: 3
   unlocked: 0
   bossDefeated: 0
   isDungeon: 1

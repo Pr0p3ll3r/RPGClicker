@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5a16ed72bbdf14bba16cab447a666b, type: 3}
   m_Name: Critical Damage
   m_EditorClassIdentifier: 
+  ID: 0
   stat: 3
-  value: 2
-  values: 04000000080000000c000000
+  values: 0000000004000000080000000c000000

@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Enemy", menuName = "RPG/Enemy")]
 public class EnemyData : ScriptableObject
 {
-    public Sprite look;
     public string enemyName;
     public int level = 1;
 

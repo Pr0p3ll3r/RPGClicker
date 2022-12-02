@@ -85,8 +85,8 @@ public class Player : MonoBehaviour
 
     public void Reward(int exp, int gold)
     {
-        exp += data.expBonus.GetValue() * exp;
-        gold += data.goldBonus.GetValue() * gold;
+        exp += Mathf.FloorToInt((float)data.expBonus.GetValue()/100 * exp);
+        gold += Mathf.FloorToInt((float)data.goldBonus.GetValue()/100 * gold);
         ls.GetExp(exp);
         Inventory.AddGold(gold);
 

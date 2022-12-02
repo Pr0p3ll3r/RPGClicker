@@ -114,14 +114,17 @@ public class Equipment : Item
 
         //add stats from rarity bonus
         if (rarity != EquipmentRarity.Common)
-            data.AddStat(rarityBonus.stat, rarityBonus.values[(int)rarity]);
+            if (is2HWeapon)
+                data.AddStat(rarityBonus.stat, rarityBonus.values[(int)rarity] * 2);
+            else
+                data.AddStat(rarityBonus.stat, rarityBonus.values[(int)rarity]);
 
         //add stats from scrolls
         foreach (StatBonus stat in scrollsStat)
         {
             if (stat != null)
                 if(is2HWeapon)
-                    data.AddStat(stat.stat, stat.values[1]);
+                    data.AddStat(stat.stat, stat.values[0] * 2);
                 else
                     data.AddStat(stat.stat, stat.values[0]);
         }
@@ -144,14 +147,17 @@ public class Equipment : Item
 
         //remove stats from rarity bonus
         if (rarity != EquipmentRarity.Common)
-            data.RemoveStat(rarityBonus.stat, rarityBonus.values[(int)rarity]);
+            if (is2HWeapon)
+                data.RemoveStat(rarityBonus.stat, rarityBonus.values[(int)rarity] * 2);
+            else
+                data.RemoveStat(rarityBonus.stat, rarityBonus.values[(int)rarity]);
 
         //remove stats from scrolls
         foreach (StatBonus stat in scrollsStat)
         {
             if (stat != null)
                 if (is2HWeapon)
-                    data.RemoveStat(stat.stat, stat.values[1]);
+                    data.RemoveStat(stat.stat, stat.values[0] * 2);
                 else
                     data.RemoveStat(stat.stat, stat.values[0]);
         }

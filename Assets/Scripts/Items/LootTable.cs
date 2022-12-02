@@ -11,8 +11,11 @@ public static class LootTable
         float roll = Random.Range(0f, totalWeight);
         foreach (Loot loot in enemyLoot)
         {
+            //Debug.Log(roll);
             if (loot.weight >= roll)
             {
+                if (loot.item == null) return null;
+
                 Item item = loot.item.GetCopy();
                 if(item.itemType == ItemType.Equipment)
                 {
@@ -20,10 +23,10 @@ public static class LootTable
                     if (!eq.canBeChaosUpgraded)
                     {
                         eq.rarity = RandomRarity();
-
-                        int randomBonus = Random.Range(0, Database.data.rarityBonuses.Length);
-                        eq.rarityBonus = Database.data.rarityBonuses[randomBonus];
-
+                        if(eq.rarity != EquipmentRarity.Common)
+                        {
+                            eq.rarityBonus = Database.data.rarityBonuses[Random.Range(0, Database.data.rarityBonuses.Length)];
+                        }                    
                         eq.scrollsStat = new StatBonus[RandomNumberOfSlots()];
                     }
                                 
@@ -65,11 +68,12 @@ public static class LootTable
 
     public static int RandomNumberOfSlots()
     {
-        float twoSlotDrop = Player.Instance.data.twoSlotDropBonus.GetValue();
-        twoSlotDrop += twoSlotDrop * 10;
+        float twoSlotDrop = 10;
+        float twoSlotDropBonus = Player.Instance.data.twoSlotDropBonus.GetValue() / 100;
+        twoSlotDrop += twoSlotDropBonus * twoSlotDrop;
         var weights = new (float weight, int number)[]
         {
-              (50, 0),
+              (60, 0),
               (30, 1),
               (twoSlotDrop, 2),
         };

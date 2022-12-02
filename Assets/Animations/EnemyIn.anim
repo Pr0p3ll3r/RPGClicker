@@ -558,7 +558,7 @@ AnimationClip:
   - time: 0.5
     functionName: Spawned
     data: 
-    objectReferenceParameter: {fileID: 11500000, guid: b3cbc7fde30932141af00899108cdc85, type: 3}
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
