@@ -14,28 +14,29 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Animator animator;
     public EnemyData data;
     [SerializeField] private Image healthBar;
+    [SerializeField] private TextMeshProUGUI health;
+    [SerializeField] private float attackRate;
 
     private Player player;
     private bool triggered;
-    private float attackRate;
+    private float currentAttackRate;
     private int currentHealth;
     public bool IsDead { get; private set; }
 
     private void Start()
     {
         player = Player.Instance;
-        attackRate = 5f;
+        currentAttackRate = attackRate;
     }
 
     public void SetUp(EnemyData newEnemy)
-    {
-      
+    {      
         data = newEnemy;
         animator.Play("EnemyIn");
         triggered = false;
         currentHealth = data.health;
         enemyName.text = $"Lvl{data.level} {data.enemyName}";
-        attackRate = 5f;
+        currentAttackRate = attackRate;
         UpdateHealthBar();
         animator.Play(data.enemyName);
     }
@@ -44,8 +45,8 @@ public class Enemy : MonoBehaviour
     {     
         if(triggered)
         {
-            attackRate -= Time.deltaTime;
-            if (attackRate <= 0)
+            currentAttackRate -= Time.deltaTime;
+            if (currentAttackRate <= 0)
             {
                 Attack();
             }
@@ -89,12 +90,13 @@ public class Enemy : MonoBehaviour
         damage -= player.data.defense.GetValue();
         damage = Mathf.Clamp(damage, 1, int.MaxValue);
         player.TakeDamage(damage);
-        attackRate = 5f;
+        currentAttackRate = attackRate;
     }
 
     public void UpdateHealthBar()
     {
         float ratio = (float)currentHealth / data.health;
+        health.text = $"{currentHealth}/{data.health}";
         healthBar.fillAmount = ratio;
     }
 }

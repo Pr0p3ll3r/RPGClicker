@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class LevelSystem : MonoBehaviour
 {
-    private static int BASE_REQUIRE_EXP = 60; 
-    private int requireExp = 60;
+    private static int BASE_REQUIRE_EXP = 10; 
+    private int requireExp = 10;
     private int maxLevel = 100;
 
     private PlayerUI hud;

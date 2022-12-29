@@ -21,6 +21,9 @@ public class PlayerInfo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI intelligence;
     [SerializeField] private TextMeshProUGUI dexterity;
     [SerializeField] private Button[] statsButtons;
+    [SerializeField] private TextMeshProUGUI strengthBonuses;
+    [SerializeField] private TextMeshProUGUI intelligenceBonuses;
+    [SerializeField] private TextMeshProUGUI dexterityBonuses;
 
     [Header("More Stats")]
     [SerializeField] private TextMeshProUGUI expBonus;
@@ -53,6 +56,38 @@ public class PlayerInfo : MonoBehaviour
             {
                 b.interactable = false;
             }
+        }
+    }
+
+    public void SetStatsDescription()
+    {
+        switch (Player.data.playerClass)
+        {
+            case PlayerClass.Warrior:
+                strengthBonuses.text = "+1 HP +1 DMG";
+                intelligenceBonuses.text = "";
+                dexterityBonuses.text = "+1 DEF";
+                break;
+            case PlayerClass.Blader:
+                strengthBonuses.text = "+1 DEF";
+                intelligenceBonuses.text = "";
+                dexterityBonuses.text = "+1 DMG";           
+                break;
+            case PlayerClass.Archer:
+                strengthBonuses.text = "+1 DEF";
+                intelligenceBonuses.text = "";
+                dexterityBonuses.text = "+1 DMG";
+                break;
+            case PlayerClass.Wizard:
+                strengthBonuses.text = "";
+                intelligenceBonuses.text = "+1 DMG";
+                dexterityBonuses.text = "+1 DEF";
+                break;
+            case PlayerClass.Shielder:
+                strengthBonuses.text = "+1 DMG";
+                intelligenceBonuses.text = "";
+                dexterityBonuses.text = "+1 DEF";
+                break;
         }
     }
 

@@ -26,6 +26,12 @@ public class PlayerData
 
     public int maxPets;
     public int currentTowerLevel;
+    public bool IsFullHP()
+    {
+        if (currentHealth == health.GetValue())
+            return true;
+        return false; 
+    }
 
     public PlayerData()
     {
@@ -231,7 +237,8 @@ public class PlayerData
 
     public void AddStrength(bool points, int amount)
     {
-        if(points)
+        strength.AddModifier(amount);
+        if (points)
             remainingPoints--;
         switch (playerClass)
         {
@@ -255,6 +262,7 @@ public class PlayerData
 
     public void AddIntelligence(bool points, int amount)
     {
+        intelligence.AddModifier(amount);
         if(points)
             remainingPoints--;
          switch (playerClass)
@@ -275,6 +283,7 @@ public class PlayerData
 
     public void AddDexterity(bool points, int amount)
     {
+        dexterity.AddModifier(amount);
         if (points)
             remainingPoints--;
         switch (playerClass)
@@ -299,6 +308,7 @@ public class PlayerData
 
     public void RemoveStrength(int amount)
     {
+        strength.RemoveModifier(amount);
         switch (playerClass)
         {
             case PlayerClass.Warrior:
@@ -321,6 +331,7 @@ public class PlayerData
 
     public void RemoveIntelligence(int amount)
     {
+        intelligence.RemoveModifier(amount);
         switch (playerClass)
         {
             case PlayerClass.Warrior:
@@ -339,6 +350,7 @@ public class PlayerData
 
     public void RemoveDexterity(int amount)
     {
+        dexterity.RemoveModifier(amount);
         switch (playerClass)
         {
             case PlayerClass.Warrior:

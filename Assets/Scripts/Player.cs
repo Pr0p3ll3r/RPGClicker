@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -24,19 +25,23 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Transform popupPosition;
 
+    [SerializeField] private TextMeshProUGUI healthRegenerationTimer;
+    private float healthRegeneration = 60;
+
     private PlayerInfo playerInfo;
     private Enemy Enemy => Enemy.Instance;
     public bool IsDead { get; private set; }
-
+ 
     private void Start()
     {
         hud = GetComponent<PlayerUI>();
         playerInfo = GetComponent<PlayerInfo>();
         ls = GetComponent<LevelSystem>();
-        data.currentHealth = data.health.GetValue();
         hud.UpdateHealthBar(data.currentHealth, data.health.GetValue());
         petsInfo = petList.GetComponentsInChildren<PetInfo>();
         RefreshPetList();
+
+        healthRegeneration = PlayerPrefs.GetFloat("HealthRegeneration", 0);
     }
 
     void Update()
@@ -46,7 +51,29 @@ public class Player : MonoBehaviour
         {
             TakeDamage(1);
         }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Attack();
+        }
 #endif
+        RegenerateHealth();
+    }
+
+    private void RegenerateHealth()
+    {
+        if (data.IsFullHP()) return;
+
+        healthRegenerationTimer.text = $"Regenerate in {healthRegeneration.ToString("00")}s";
+
+        if (healthRegeneration <= 0)
+        {
+            data.currentHealth++;
+            hud.UpdateHealthBar(data.currentHealth, data.health.GetValue());
+            healthRegeneration = 60;
+            healthRegenerationTimer.text = "";
+        }
+        else           
+            healthRegeneration -= Time.deltaTime;
     }
 
     public void Attack()
@@ -76,6 +103,8 @@ public class Player : MonoBehaviour
         data.currentHealth -= damage;
         hud.ShowVignette();      
         hud.UpdateHealthBar(data.currentHealth, data.health.GetValue());
+        if(healthRegeneration == 0)
+            healthRegeneration = 60;
 
         if (data.currentHealth <= 0)
         {
@@ -219,5 +248,10 @@ public class Player : MonoBehaviour
             }
         }
         return false;
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.SetFloat("HealthRegeneration", healthRegeneration);
     }
 }

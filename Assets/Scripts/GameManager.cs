@@ -43,13 +43,13 @@ public class GameManager : MonoBehaviour
 
     [Header("Adventure")]
     [SerializeField] private GameObject locationPrefab;
-    [SerializeField] private Transform locationList;
-    [SerializeField] private Transform dungeonsList;
-
     [SerializeField] private GameObject locationPanel;
-    [SerializeField] private GameObject dungeonPanel;
+    [SerializeField] private Transform locationList;
     [SerializeField] private Button locationButton;
+    [SerializeField] private GameObject dungeonPanel;
+    [SerializeField] private Transform dungeonsList;
     [SerializeField] private Button dungeonButton;
+    [SerializeField] private TextMeshProUGUI dungeonEnemy;
 
     [Header("Poolers")]
     public ObjectPooler damagePopupPooler;
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
     private Location currentLocation;
     private Location previousLocation;
 
-    private int dungeonEnemyCount = 10;
+    private int dungeonEnemyCount;
 
     private void Start()
     {
@@ -96,10 +96,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Data.Load();
-            mainPanel.SetActive(true);
-            ChangeLocation(Database.data.locations[0]);
-            foreach (EquipmentSlot slot in PlayerEquipment.Instance.slots)
-                slot.GetRightPlaceholder();
+            SetGame();
         }
     }
 
@@ -137,8 +134,14 @@ public class GameManager : MonoBehaviour
         newPlayer.nickname = nameInput.text;
         newPlayer.playerClass = (PlayerClass)classDropdown.value;
         Player.data = newPlayer;
-        Player.GetComponent<PlayerInfo>().RefreshStats();
         PlayerPrefs.SetInt("NewGame", 0);
+        SetGame();
+    }
+
+    private void SetGame()
+    {
+        Player.GetComponent<PlayerInfo>().RefreshStats();
+        Player.GetComponent<PlayerInfo>().SetStatsDescription();
         mainPanel.SetActive(true);
         ChangeLocation(Database.data.locations[0]);
         foreach (EquipmentSlot slot in PlayerEquipment.Instance.slots)
@@ -225,6 +228,7 @@ public class GameManager : MonoBehaviour
             bossGO.GetComponent<Button>().onClick.AddListener(delegate { EnterDungeon(dungeon); });
             bossGO.transform.Find("Unlock").gameObject.SetActive(true);
             bossGO.transform.Find("Unlock/ButtonUnlock").gameObject.SetActive(false);
+            bossGO.GetComponent<Button>().interactable = false;
         }
     }
 
@@ -255,7 +259,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < dungeonsList.childCount; i++)
         {
-            if (Player.data.level < Database.data.locations[i].lvlMin)
+            if (Player.data.level < Database.data.dungeons[i].lvlMin)
                 dungeonsList.GetChild(i).GetComponent<Button>().interactable = false;
             else
                 dungeonsList.GetChild(i).GetComponent<Button>().interactable = true;
@@ -286,7 +290,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            ChangeLocation(dungeon);
+            ChangeLocation(dungeon.GetCopy());
         }
     }
 
@@ -298,7 +302,7 @@ public class GameManager : MonoBehaviour
         adventurePanel.SetActive(false);
 
         if (newLocation.isDungeon)
-            dungeonEnemyCount = 10;
+            dungeonEnemyCount = 0;
 
         NextEnemy();
     }
@@ -307,15 +311,29 @@ public class GameManager : MonoBehaviour
     {
         if (currentLocation.isDungeon)
         {
-            if (dungeonEnemyCount > 0)
+            if (Enemy.data.isBoss)
+                currentLocation.bossDefeated = true;
+            else
+                dungeonEnemyCount++;
+
+            if (dungeonEnemyCount <= 10)
+            {
                 Enemy.SetUp(currentLocation.enemies[UnityEngine.Random.Range(0, currentLocation.enemies.Length)]);
+                dungeonEnemy.text = $"{dungeonEnemyCount}/10";
+            }
             else if (!currentLocation.bossDefeated)
+            {
                 Enemy.SetUp(currentLocation.boss);
+                dungeonEnemy.text = $"BOSS";
+            }           
             else
                 ChangeLocation(previousLocation);
         }
-
-        Enemy.SetUp(currentLocation.enemies[UnityEngine.Random.Range(0, currentLocation.enemies.Length)]);
+        else
+        {          
+            Enemy.SetUp(currentLocation.enemies[UnityEngine.Random.Range(0, currentLocation.enemies.Length)]);
+            dungeonEnemy.text = "";
+        }
     }
 
     public void PlayerDeath()

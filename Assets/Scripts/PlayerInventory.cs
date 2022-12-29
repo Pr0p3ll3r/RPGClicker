@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using TMPro;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 [System.Serializable]
 public class InventoryData
