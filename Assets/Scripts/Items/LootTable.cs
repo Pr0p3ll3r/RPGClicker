@@ -18,19 +18,8 @@ public static class LootTable
 
                 Item item = loot.item.GetCopy();
                 if(item.itemType == ItemType.Equipment)
-                {
-                    Equipment eq = (Equipment)item;
-                    if (!eq.canBeChaosUpgraded)
-                    {
-                        eq.rarity = RandomRarity();
-                        if(eq.rarity != EquipmentRarity.Common)
-                        {
-                            eq.rarityBonus = Database.data.rarityBonuses[Random.Range(0, Database.data.rarityBonuses.Length)];
-                        }                    
-                        eq.scrollsStat = new StatBonus[RandomNumberOfSlots()];
-                    }
-                                
-                    droppedItem = eq;
+                {                         
+                    droppedItem = MakeEquipment(item);
                 }
                 else
                 {
@@ -43,7 +32,53 @@ public static class LootTable
         return droppedItem;
     }
 
-    public static EquipmentRarity RandomRarity()
+    public static ItemStack[] QuestReward(ItemStack[] rewards)
+    {
+        for (int i = 0; i < rewards.Length; i++)
+        {
+            Item item = rewards[i].item.GetCopy();
+            if (item.itemType == ItemType.Equipment)
+            {
+                rewards[i].item = MakeEquipment(item);
+            }
+            else
+            {
+                rewards[i].item = item;
+            }
+        }
+        return rewards;
+    }
+
+    public static ItemStack QuestRewardRandom(ItemStack[] rewards)
+    {
+        ItemStack reward = rewards[Random.Range(0, rewards.Length)];
+        if (reward.item.itemType == ItemType.Equipment)
+        {
+            reward.item = MakeEquipment(reward.item.GetCopy());
+        }
+        else
+        {
+            reward.item = reward.item.GetCopy();
+        }
+        return reward;
+    }
+
+    private static Equipment MakeEquipment(Item item)
+    {
+        Equipment eq = (Equipment)item;
+        if (!eq.canBeChaosUpgraded)
+        {
+            eq.rarity = RandomRarity();
+            if (eq.rarity != EquipmentRarity.Common)
+            {
+                eq.rarityBonus = Database.data.rarityBonuses[Random.Range(0, Database.data.rarityBonuses.Length)];
+            }
+            eq.scrollsStat = new StatBonus[RandomNumberOfSlots()];
+        }
+        return eq;
+    }
+
+    private static EquipmentRarity RandomRarity()
     {
         var weights = new (float weight, EquipmentRarity rarity)[]
         {               
@@ -66,7 +101,7 @@ public static class LootTable
         return EquipmentRarity.Common;
     }
 
-    public static int RandomNumberOfSlots()
+    private static int RandomNumberOfSlots()
     {
         float twoSlotDrop = 10;
         float twoSlotDropBonus = Player.Instance.data.twoSlotDropBonus.GetValue() / 100;

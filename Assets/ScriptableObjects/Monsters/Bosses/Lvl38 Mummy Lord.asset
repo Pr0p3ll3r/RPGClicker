@@ -21,6 +21,20 @@ MonoBehaviour:
   criticalChance: 0
   exp: 0
   gold: 0
-  loot: []
+  loot:
+  - item: {fileID: 0}
+    weight: 100
+  - item: {fileID: 11400000, guid: 4d682e1bb210d614c9ea60a93a3442ac, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 31543798dbdd04d4bb59f78af575ced8, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 7745473fe744da84aaf3f00ec464b31f, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: c732189504678d042abef9970123f87a, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: eeec6d3e285abac4daeffc33fc4cc497, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: ab97ae27abacdb647b1b25376cb5be58, type: 2}
+    weight: 0.01
   isTowerEnemy: 0
   isBoss: 1

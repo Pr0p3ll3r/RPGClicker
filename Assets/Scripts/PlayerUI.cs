@@ -25,11 +25,10 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private Button petsButton;
     [SerializeField] private Button equipmentButton;
 
-    private Player player;
+    private Player Player => Player.Instance;
 
     private void Start()
     {
-        player = GetComponent<Player>();
         ClosePanels();
         statsPanel.SetActive(true);
         revivePanel.SetActive(false);
@@ -51,10 +50,10 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
-    public void UpdateHealthBar(int currentHealth, int maxHealth)
+    public void UpdateHealthBar()
     {
-        healthBar.fillAmount = (float)currentHealth / maxHealth;
-        healthText.text = $"{currentHealth}/{maxHealth}";
+        healthBar.fillAmount = (float)Player.data.currentHealth / Player.data.health.GetValue();
+        healthText.text = $"{Player.data.currentHealth}/{Player.data.health.GetValue()}";
     }
 
     public void UpdateLevel(int level, int exp, int requireExp)
@@ -94,7 +93,7 @@ public class PlayerUI : MonoBehaviour
         else
         {
             revivePanel.SetActive(false);
-            player.Revive();
+            Player.Revive();
         }           
     }
 

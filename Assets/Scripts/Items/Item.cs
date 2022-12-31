@@ -35,8 +35,8 @@ public class Loot
 }
 
 [System.Serializable]
-public class RequiredItem
+public class ItemStack
 {
 	public Item item;
-	public int amount;
+    public int amount;
 }

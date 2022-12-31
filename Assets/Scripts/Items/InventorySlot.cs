@@ -23,6 +23,17 @@ public class InventorySlot : MonoBehaviour
         else quantity.gameObject.SetActive(true);
     }
 
+    public void FillSlot(Item _item, int amount)
+    {
+        item = _item;
+        quantity.text = amount.ToString();
+        icon.sprite = Database.data.items[item.ID].icon;
+        icon.enabled = true;
+
+        if (amount <= 1) quantity.gameObject.SetActive(false);
+        else quantity.gameObject.SetActive(true);
+    }
+
     public void ClearSlot()
     {
         item = null;

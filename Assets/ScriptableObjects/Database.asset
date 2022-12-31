@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e9aa1f4b67c3b84bacb258f900e7a7d, type: 3}
   m_Name: Database
   m_EditorClassIdentifier: 
+  emptySlot: {fileID: 21300000, guid: 35834e06d68ba1542b4d82c106ef6eba, type: 3}
   items:
   - {fileID: 11400000, guid: 21e7e1a11153fff4b9f66b2ff1ae2269, type: 2}
   - {fileID: 11400000, guid: 9af2c961499841d46bb8d2b248486ba5, type: 2}
@@ -152,3 +153,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f71126b4a5982da448e528bc398fc573, type: 2}
   - {fileID: 11400000, guid: 674e31d1011f0c64eab4e7c9fadf6865, type: 2}
   towerEnemies: []
+  quests:
+  - {fileID: 11400000, guid: c5c5fdb10afc95246a1bcce005732fec, type: 2}
+  - {fileID: 11400000, guid: ee523eebd0c93f6479210242fc9f3fe4, type: 2}

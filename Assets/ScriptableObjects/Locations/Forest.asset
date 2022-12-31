@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Forest
   m_EditorClassIdentifier: 
   locationName: Forest
-  price: 1
-  lvlMin: 10
+  price: 100
+  lvlMin: 5
   unlocked: 0
   bossDefeated: 0
   isDungeon: 0
   enemies:
-  - {fileID: 11400000, guid: f47c552f4b3f6454ba68fe8923494b30, type: 2}
-  boss: {fileID: 11400000, guid: eed58d539323dd5408db6cf5c576a232, type: 2}
+  - {fileID: 11400000, guid: 52c610e00afd94c42af53bc3f142a122, type: 2}
+  - {fileID: 11400000, guid: 48b8c9baf863221429de0f3c2e80ea75, type: 2}
+  boss: {fileID: 0}

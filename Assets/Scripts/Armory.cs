@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class Armory : MonoBehaviour
 {
@@ -19,6 +18,7 @@ public class Armory : MonoBehaviour
     [SerializeField] private GameObject upgradeOptions;
     [SerializeField] private Button upgradeButton;
     [SerializeField] private TextMeshProUGUI upgradeChance;
+    [SerializeField] private TextMeshProUGUI upgradePrice;
     [SerializeField] private int[] normalUpgradeChances = new int[20];
     [SerializeField] private int[] extremeUpgradeChances = new int[6];
     [SerializeField] private int[] divineUpgradeChances = new int[15];
@@ -33,6 +33,8 @@ public class Armory : MonoBehaviour
     [SerializeField] private GameObject enhanceOptions;
     [SerializeField] private Button enhanceButton;
     [SerializeField] private TextMeshProUGUI enhanceChance;
+    [SerializeField] private TextMeshProUGUI enhancePrice;
+    [SerializeField] private int[] enhancePrices = new int[2];
 
     [Header("Crafting")]
     [SerializeField] private GameObject craftingPanel;
@@ -117,43 +119,59 @@ public class Armory : MonoBehaviour
     /// UpgradeMode: 0-normal, 1-extreme, 2-divine, 3-chaos
     /// </summary>
     /// <param name="eq"></param>
-    /// <param name="grade"></param>
     /// <param name="upgradeMode"></param>
     private void OpenUpgrade(Equipment eq, int upgradeMode)
     {
         SoundManager.Instance.PlayOneShot("Click");
-        upgradeButtons.SetActive(false);
-        afterUpgradeItemInfo.SetActive(true);
-        upgradeOptions.SetActive(true);
         Equipment eqAfter = (Equipment)eq.GetCopy();
         upgradeButton.onClick.RemoveAllListeners();
         int chance = 0;
+        int price = 0;
         switch (upgradeMode)
         {
             case 0:
                 chance = normalUpgradeChances[eq.normalGrade.level];
                 eqAfter.normalGrade.level++;
+                price = eq.normalGrade.prices[eq.normalGrade.level];
                 break;
             case 1:
                 chance = extremeUpgradeChances[eq.extremeGrade.level];
                 eqAfter.extremeGrade.level++;
+                price = eq.extremeGrade.prices[eq.extremeGrade.level];
                 break;
             case 2:
                 chance = divineUpgradeChances[eq.divineGrade.level];
                 eqAfter.divineGrade.level++;
+                price = eq.divineGrade.prices[eq.divineGrade.level];
                 break;
             case 3:
                 chance = chaosUpgradeChances[eq.chaosGrade.level];
                 eqAfter.chaosGrade.level++;
+                price = eq.chaosGrade.prices[eq.chaosGrade.level];
                 break;
         }
         afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUp(eqAfter, true, eq);
         Destroy(eqAfter);
+        upgradePrice.text = $"{price}";
         upgradeChance.text = $"{chance}%";
-        upgradeButton.onClick.AddListener(delegate {Upgrade(eq, chance, upgradeMode); });
+        upgradeButton.onClick.AddListener(delegate {Upgrade(eq, chance, upgradeMode, price); });
+
+        if (Inventory.HaveEnoughGold(price))
+        {
+            upgradeButton.interactable = true;
+            upgradePrice.color = Color.green;
+        }           
+        else
+        {
+            upgradeButton.interactable = false;
+            upgradePrice.color = Color.red;
+        }
+        upgradeButtons.SetActive(false);
+        afterUpgradeItemInfo.SetActive(true);
+        upgradeOptions.SetActive(true);
     }
 
-    private void Upgrade(Equipment eq, int chance, int upgradeMode)
+    private void Upgrade(Equipment eq, int chance, int upgradeMode, int price)
     {
         if (Chance(chance))
         {
@@ -181,6 +199,7 @@ public class Armory : MonoBehaviour
             GameManager.ShowText("Failed", Color.red);
             SoundManager.Instance.PlayOneShot("Failed");
         }
+        Inventory.ChangeGoldAmount(-price);
         OpenUpgradePanel(eq);
     }
 
@@ -253,18 +272,17 @@ public class Armory : MonoBehaviour
 
     private void OpenEnhance(Item item, Scroll scroll)
     {
-        SoundManager.Instance.PlayOneShot("Click");
-        enhanceOptions.SetActive(true);
-        chooseScrollPanel.SetActive(false);
-        afterUpgradeItemInfo.SetActive(true);    
+        SoundManager.Instance.PlayOneShot("Click");  
         enhanceButton.onClick.RemoveAllListeners();
         int chance = 100;
+        int price = 0;
         switch (item.itemType)
         {
             case ItemType.Equipment:
                 Equipment eqAfter = (Equipment)item.GetCopy();
                 eqAfter.AddScroll(scroll.scrollStat);
-                afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUp(eqAfter, true, (Equipment)item);
+                afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUp(eqAfter, true, (Equipment)item);              
+                price = enhancePrices[eqAfter.UsedScrollsSlot() - 1];
                 Destroy(eqAfter);
                 break;
             case ItemType.Pet:
@@ -272,13 +290,33 @@ public class Armory : MonoBehaviour
                 petAfter.AddScroll(scroll.scrollStat);
                 afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUp(petAfter, true, null);
                 Destroy(petAfter);
+                if(petAfter.UsedScrollsSlot() - 1 <= 5)
+                    price = enhancePrices[0];
+                else
+                    price = enhancePrices[1];
                 break;
         }
         enhanceChance.text = $"{chance}%";
-        enhanceButton.onClick.AddListener(delegate { Enchance(item, scroll, chance); });
+        enhancePrice.text = $"{price}";
+        enhanceButton.onClick.AddListener(delegate { Enchance(item, scroll, chance, price); });
+
+        if (Inventory.HaveEnoughGold(price))
+        {
+            enhanceButton.interactable = true;
+            enhancePrice.color = Color.green;
+        }           
+        else
+        {
+            enhanceButton.interactable = false;
+            enhancePrice.color = Color.red;
+        }
+
+        enhanceOptions.SetActive(true);
+        chooseScrollPanel.SetActive(false);
+        afterUpgradeItemInfo.SetActive(true);
     }
 
-    private void Enchance(Item item, Scroll scroll, int chance)
+    private void Enchance(Item item, Scroll scroll, int chance, int price)
     {
         Inventory.RemoveItem(scroll, 1);
         if (Chance(chance))
@@ -303,6 +341,7 @@ public class Armory : MonoBehaviour
             GameManager.ShowText("Failed", Color.red);
             SoundManager.Instance.PlayOneShot("Failed");
         }
+        Inventory.ChangeGoldAmount(-price);
         OpenEnhancePanel(item);
     }
 
@@ -311,7 +350,6 @@ public class Armory : MonoBehaviour
     //    int chance = 100;
     //    int amount = 0;
     //    enhanceChance.text = $"{chance}%";
-
     //}
 
     bool Chance(int chance)

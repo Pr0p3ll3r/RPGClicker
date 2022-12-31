@@ -12,16 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f4d05af8e2b28e458d358be48badf59, type: 3}
   m_Name: Lvl7 Bear
   m_EditorClassIdentifier: 
-  look: {fileID: 0}
   enemyName: Bear
-  level: 10
-  health: 10
-  damage: 0
+  icon: {fileID: -1419361746, guid: e200028a484cb1b49b7c856659559241, type: 3}
+  level: 7
+  health: 300
+  damage: 4
   defense: 0
   criticalDamage: 0
   criticalChance: 0
-  exp: 0
-  gold: 0
-  loot: []
+  exp: 10
+  gold: 15
+  loot:
+  - item: {fileID: 0}
+    weight: 100
+  - item: {fileID: 11400000, guid: 7fb5fcd40603b3b47b606752e1505429, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 14447488517e3c844b819eea0f762896, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 1f8bf76e9fc221247a528a193b357c08, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 8f9b4cac39e41f4499e5d5399b3d845f, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: c4728fb92f682f44bae3b2218310323e, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: dbbe3bd8154837444b355292c97fa349, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 4784816ef8df8e442949be68dc571441, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 46100280d0a8e3c44991394140734bc7, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 865452143c6376f4f8d0b98a1011caac, type: 2}
+    weight: 5
   isTowerEnemy: 0
   isBoss: 0

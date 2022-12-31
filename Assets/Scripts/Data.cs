@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
 using System.IO;
-using System;
-using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
-using static UnityEditor.Progress;
 
 public static class Data
 {
@@ -123,7 +120,7 @@ public static class Data
             }
             else
             {
-                Pet pet = (Pet)Database.data.GetItemById(savePet.ID).GetCopy();
+                Pet pet = (Pet)Database.data.items[savePet.ID].GetCopy();
                 pet.level = savePet.level;
                 pet.exp = savePet.exp;
                 pet.statsUnlocked = savePet.statsUnlocked;
@@ -131,7 +128,7 @@ public static class Data
                 {
                     if (savePet.statsIds[j] == -1)
                         break;
-                    pet.scrollsStat[j] = Database.data.GetScrollBonusById(savePet.ID);
+                    pet.scrollsStat[j] = Database.data.scrollBonuses[savePet.statsIds[j]];
                 }
                 Player.Instance.myPets[i] = pet;
             }
@@ -154,17 +151,17 @@ public static class Data
             }
             else
             {
-                Item item = Database.data.GetItemById(saveItem.ID).GetCopy();
+                Item item = Database.data.items[saveItem.ID].GetCopy();
                 switch (item.itemType)
                 {
                     case ItemType.Equipment:
                         SaveEquipment saveEquipment = new SaveEquipment();
-                        Equipment eq = (Equipment)Database.data.GetItemById(saveItem.ID).GetCopy();
+                        Equipment eq = (Equipment)Database.data.items[saveItem.ID].GetCopy();
                         slot.amount = 1;
                         JsonUtility.FromJsonOverwrite(data, saveEquipment);
                         eq.rarity = saveEquipment.rarity;
                         if (saveEquipment.rarityBonusID != -1)
-                            eq.rarityBonus = Database.data.GetRarityBonusById(saveEquipment.rarityBonusID);
+                            eq.rarityBonus = Database.data.rarityBonuses[saveEquipment.rarityBonusID];
                         eq.normalGrade.level = saveEquipment.normalGradeLevel;
                         eq.extremeGrade.level = saveEquipment.extremeGradeLevel;
                         eq.divineGrade.level = saveEquipment.divineGradeLevel;
@@ -174,13 +171,13 @@ public static class Data
                         {
                             if (saveEquipment.statsIds[j] == -1)
                                 break;
-                            eq.scrollsStat[j] = Database.data.GetScrollBonusById(saveEquipment.statsIds[j]);
+                            eq.scrollsStat[j] = Database.data.scrollBonuses[saveEquipment.statsIds[j]];
                         }
                         slot.item = eq;
                         break;
                     case ItemType.Pet:
                         SavePet savePet = new SavePet();
-                        Pet pet = (Pet)Database.data.GetItemById(saveItem.ID).GetCopy();
+                        Pet pet = (Pet)Database.data.items[saveItem.ID].GetCopy();
                         slot.amount = 1;
                         JsonUtility.FromJsonOverwrite(data, savePet);
                         pet.level = savePet.level;
@@ -190,7 +187,7 @@ public static class Data
                         {
                             if (savePet.statsIds[j] == -1)
                                 break;
-                            pet.scrollsStat[j] = Database.data.GetScrollBonusById(savePet.ID);
+                            pet.scrollsStat[j] = Database.data.scrollBonuses[savePet.statsIds[j]];
                         }
                         slot.item = pet;
                         break;
@@ -215,10 +212,10 @@ public static class Data
             }
             else
             {
-                Equipment eq = (Equipment)Database.data.GetItemById(saveEquipment.ID).GetCopy();
+                Equipment eq = (Equipment)Database.data.items[saveEquipment.ID].GetCopy();
                 eq.rarity = saveEquipment.rarity;
                 if (saveEquipment.rarityBonusID != -1)
-                    eq.rarityBonus = Database.data.GetRarityBonusById(saveEquipment.rarityBonusID);
+                    eq.rarityBonus = Database.data.rarityBonuses[saveEquipment.rarityBonusID];
                 eq.normalGrade.level = saveEquipment.normalGradeLevel;
                 eq.extremeGrade.level = saveEquipment.extremeGradeLevel;
                 eq.divineGrade.level = saveEquipment.divineGradeLevel;
@@ -228,7 +225,7 @@ public static class Data
                 {
                     if (saveEquipment.statsIds[j] == -1)
                         break;
-                    eq.scrollsStat[j] = Database.data.GetScrollBonusById(saveEquipment.statsIds[j]);
+                    eq.scrollsStat[j] = Database.data.scrollBonuses[saveEquipment.statsIds[j]];
                 }
                 slot.item = eq;
             }

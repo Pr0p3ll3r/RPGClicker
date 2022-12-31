@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FieldShelter
   m_EditorClassIdentifier: 
   locationName: Field Shelter
-  price: 100
+  price: 10
   lvlMin: 3
   unlocked: 0
   bossDefeated: 0

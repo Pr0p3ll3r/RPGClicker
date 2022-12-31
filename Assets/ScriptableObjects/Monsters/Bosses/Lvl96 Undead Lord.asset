@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f4d05af8e2b28e458d358be48badf59, type: 3}
   m_Name: Lvl96 Undead Lord
   m_EditorClassIdentifier: 
-  look: {fileID: 0}
   enemyName: 
   level: 1
   health: 10
@@ -22,7 +21,20 @@ MonoBehaviour:
   criticalChance: 0
   exp: 0
   gold: 0
-  loot: []
-  possibleRarity: 0
+  loot:
+  - item: {fileID: 0}
+    weight: 100
+  - item: {fileID: 11400000, guid: 21e7e1a11153fff4b9f66b2ff1ae2269, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 9af2c961499841d46bb8d2b248486ba5, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 504db45f9f97fa240a45dc28b9e46847, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 2fcff351c1525cf40a4a98388c9091b6, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 97b65123bff327549ad43ee913f0af73, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: ab97ae27abacdb647b1b25376cb5be58, type: 2}
+    weight: 0.01
   isTowerEnemy: 0
   isBoss: 1

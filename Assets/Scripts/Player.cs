@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,7 +12,7 @@ public class Player : MonoBehaviour
         Instance = this;
     }
 
-    public PlayerData data = new PlayerData();
+    public PlayerData data;
 
     private PlayerUI hud;
     private LevelSystem ls;
@@ -26,8 +27,9 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform popupPosition;
 
     [SerializeField] private TextMeshProUGUI healthRegenerationTimer;
-    private float healthRegeneration = 60;
+    [SerializeField] private float healthRegenerationTime = 30;
 
+    private float regeneration;
     private PlayerInfo playerInfo;
     private Enemy Enemy => Enemy.Instance;
     public bool IsDead { get; private set; }
@@ -37,11 +39,10 @@ public class Player : MonoBehaviour
         hud = GetComponent<PlayerUI>();
         playerInfo = GetComponent<PlayerInfo>();
         ls = GetComponent<LevelSystem>();
-        hud.UpdateHealthBar(data.currentHealth, data.health.GetValue());
+        hud.UpdateHealthBar();
         petsInfo = petList.GetComponentsInChildren<PetInfo>();
         RefreshPetList();
-
-        healthRegeneration = PlayerPrefs.GetFloat("HealthRegeneration", 0);
+        regeneration = PlayerPrefs.GetFloat("HealthRegeneration", healthRegenerationTime);
     }
 
     void Update()
@@ -61,19 +62,20 @@ public class Player : MonoBehaviour
 
     private void RegenerateHealth()
     {
-        if (data.IsFullHP()) return;
+        if (data.IsFullHP() || IsDead) return;
 
-        healthRegenerationTimer.text = $"Regenerate in {healthRegeneration.ToString("00")}s";
-
-        if (healthRegeneration <= 0)
+        if (regeneration > 0)
+        {
+            regeneration -= Time.deltaTime;
+            healthRegenerationTimer.text = $"Regenerate in {Mathf.FloorToInt(regeneration + 1)}s";
+        }
+        else
         {
             data.currentHealth++;
-            hud.UpdateHealthBar(data.currentHealth, data.health.GetValue());
-            healthRegeneration = 60;
+            hud.UpdateHealthBar();
+            regeneration = healthRegenerationTime;
             healthRegenerationTimer.text = "";
-        }
-        else           
-            healthRegeneration -= Time.deltaTime;
+        }          
     }
 
     public void Attack()
@@ -102,9 +104,9 @@ public class Player : MonoBehaviour
         SoundManager.Instance.Play("PlayerHurt");
         data.currentHealth -= damage;
         hud.ShowVignette();      
-        hud.UpdateHealthBar(data.currentHealth, data.health.GetValue());
-        if(healthRegeneration == 0)
-            healthRegeneration = 60;
+        hud.UpdateHealthBar();
+        if(regeneration == 0)
+            regeneration = healthRegenerationTime;
 
         if (data.currentHealth <= 0)
         {
@@ -117,13 +119,13 @@ public class Player : MonoBehaviour
         exp += Mathf.FloorToInt((float)data.expBonus.GetValue()/100 * exp);
         gold += Mathf.FloorToInt((float)data.goldBonus.GetValue()/100 * gold);
         ls.GetExp(exp);
-        Inventory.AddGold(gold);
-
+        Inventory.ChangeGoldAmount(gold);
         for (int i = 0; i < myPets.Length; i++)
         {
             if (myPets[i] != null)
                 myPets[i].GetExp(exp / 2, petsInfo[i]);
         }
+        data.killedMonsters++;
     }
 
     public void Die()
@@ -132,13 +134,16 @@ public class Player : MonoBehaviour
         IsDead = true;
         hud.ShowRevivePanel();
         GameManager.Instance.PlayerDeath();
+        regeneration = healthRegenerationTime;
+        healthRegenerationTimer.text = "";
+        Inventory.ChangeGoldAmount(-Inventory.data.gold / 2);
     }
 
     public void Revive()
     {
         IsDead = false;
         data.currentHealth = data.health.GetValue();
-        hud.UpdateHealthBar(data.currentHealth, data.health.GetValue());
+        hud.UpdateHealthBar();
     }
 
     public bool Equip(Equipment item)
@@ -157,7 +162,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            GameManager.Instance.ShowText("Level is too low", new Color32(255, 65, 52, 255));
+            GameManager.Instance.ShowText("Level is too low", Color.red);
             return false;
         }
         playerInfo.RefreshStats();
@@ -175,7 +180,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            GameManager.Instance.ShowText("Inventory is full", new Color32(255, 65, 52, 255));
+            GameManager.Instance.ShowText("Inventory is full", Color.red);
             return false;
         }
         playerInfo.RefreshStats();
@@ -202,7 +207,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            GameManager.Instance.ShowText("Pet slots are full", new Color32(255, 65, 52, 255));
+            GameManager.Instance.ShowText("Pet slots are full", Color.red);
         }
     }
 
@@ -223,7 +228,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            GameManager.Instance.ShowText("Inventory is full", new Color32(255, 65, 52, 255));
+            GameManager.Instance.ShowText("Inventory is full", Color.red);
         }
     }
 
@@ -252,6 +257,6 @@ public class Player : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        PlayerPrefs.SetFloat("HealthRegeneration", healthRegeneration);
+        PlayerPrefs.SetFloat("HealthRegeneration", regeneration);
     }
 }

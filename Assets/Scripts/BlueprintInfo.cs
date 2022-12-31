@@ -15,7 +15,7 @@ public class BlueprintInfo : MonoBehaviour
     {
         resultItem.FillSlot(b.resultItem);
 
-        foreach (RequiredItem needItem in b.requiredItems)
+        foreach (ItemStack needItem in b.requiredItems)
         {
             GameObject item = Instantiate(neededItemPrefab, itemList);
             item.transform.Find("Icon").GetComponent<Image>().sprite = needItem.item.icon;

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -21,7 +21,6 @@ public class PlayerInventory : MonoBehaviour
     public InventorySlot[] slots;
     [SerializeField] private Transform itemList;
     public InventoryData data = new InventoryData();
-    [SerializeField] private List<Item> startingItems = new List<Item>();
     [SerializeField] private TextMeshProUGUI goldText;
     [SerializeField] private GameObject equippedItemInfo;
     [SerializeField] private GameObject selectedItemInfo;
@@ -34,12 +33,6 @@ public class PlayerInventory : MonoBehaviour
 
     private void Start()
     {     
-        if (PlayerPrefs.GetInt("NewGame", 1) == 1)
-            foreach (Item item in startingItems)
-            {
-                AddItem(item.GetCopy(), 1);
-            }
-
         equippedItemInfo.SetActive(false);
         selectedItemInfo.SetActive(false);
         RefreshUI();
@@ -68,9 +61,17 @@ public class PlayerInventory : MonoBehaviour
             {
                 if (slot.item == null) continue;
 
-                if (slot.item.ID == item.ID)
+                if (slot.item.ID == item.ID && slot.amount < slot.item.maxInStack)
                 {
-                    slot.amount += amount;
+                    int toFullStack = item.maxInStack - slot.amount;
+                    if(toFullStack < amount)
+                    {
+                        amount -= toFullStack;
+                        slot.amount += amount;
+                        AddItem(item, amount);
+                    }
+                    else
+                        slot.amount += amount;
                     RefreshUI();
                     return true;
                 }
@@ -89,7 +90,7 @@ public class PlayerInventory : MonoBehaviour
         return false;
     }
 
-    public void AddGold(int amount)
+    public void ChangeGoldAmount(int amount)
     {
         data.gold += amount;
         goldText.text = data.gold.ToString();
@@ -148,7 +149,7 @@ public class PlayerInventory : MonoBehaviour
             if (slot.item == _item)
             {
                 int price = slot.item.price * slot.amount;
-                AddGold(price);
+                ChangeGoldAmount(price);
                 GameManager.Instance.ShowText($"+{price} Gold", Color.yellow);
                 RemoveItem(slot.item);
                 break;
@@ -237,7 +238,7 @@ public class PlayerInventory : MonoBehaviour
 
     public bool HaveAllMaterials(Blueprint b)
     {
-        foreach (RequiredItem item in b.requiredItems)
+        foreach (ItemStack item in b.requiredItems)
         {
             if (!HaveItem(item.item, item.amount)) 
                 return false;
@@ -248,14 +249,14 @@ public class PlayerInventory : MonoBehaviour
 
     public void RemoveMaterials(Blueprint b)
     {
-        foreach (RequiredItem item in b.requiredItems)
+        foreach (ItemStack item in b.requiredItems)
         {
             RemoveItem(item.item, item.amount);
         }
         RefreshUI();
     }
 
-    public int HaveMany(Item item)
+    public int HowMany(Item item)
     {
         int amount = 0;
         foreach (InventorySlot slot in slots)
@@ -268,5 +269,42 @@ public class PlayerInventory : MonoBehaviour
             }
         }
         return amount;
+    }
+
+    public bool HaveEnoughSlots(ItemStack[] items)
+    {
+        int neededSlots = items.Length;
+        int emptySlots = 0;
+        foreach (InventorySlot slot in slots)
+        {
+            if (slot.item == null) emptySlots++;
+        }
+        foreach (ItemStack itemStack in items)
+        {
+            if(itemStack.item.stackable)
+            {
+                foreach (InventorySlot slot in slots)
+                {
+                    if (slot.item == null) continue;
+
+                    if (slot.item.ID == itemStack.item.ID)
+                    {
+                        int toFullStack = slot.item.maxInStack - slot.amount;
+                        itemStack.amount -= toFullStack;
+                        if (itemStack.amount <= 0)
+                        {
+                            neededSlots--;
+                            break;                         
+                        }                         
+                    }
+                }
+            }
+        }
+        if (emptySlots < neededSlots)
+        {
+            GameManager.Instance.ShowText($"Inventory is full", Color.red);
+            return false;
+        }    
+        return true;
     }
 }

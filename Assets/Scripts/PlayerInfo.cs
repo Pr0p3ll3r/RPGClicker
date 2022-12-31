@@ -29,6 +29,9 @@ public class PlayerInfo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI expBonus;
     [SerializeField] private TextMeshProUGUI goldBonus;
     [SerializeField] private TextMeshProUGUI twoslotDropBonus;
+    [SerializeField] private TextMeshProUGUI killedMonsters;
+    [SerializeField] private TextMeshProUGUI completedQuests;
+    [SerializeField] private TextMeshProUGUI earnedAchievements;
 
     private Player Player => Player.Instance;
 
@@ -64,28 +67,28 @@ public class PlayerInfo : MonoBehaviour
         switch (Player.data.playerClass)
         {
             case PlayerClass.Warrior:
-                strengthBonuses.text = "+1 HP +1 DMG";
-                intelligenceBonuses.text = "";
+                strengthBonuses.text = "+1 DMG";
+                intelligenceBonuses.text = "+2 HP";
                 dexterityBonuses.text = "+1 DEF";
                 break;
             case PlayerClass.Blader:
                 strengthBonuses.text = "+1 DEF";
-                intelligenceBonuses.text = "";
+                intelligenceBonuses.text = "+2 HP";
                 dexterityBonuses.text = "+1 DMG";           
                 break;
             case PlayerClass.Archer:
                 strengthBonuses.text = "+1 DEF";
-                intelligenceBonuses.text = "";
+                intelligenceBonuses.text = "+2 HP";
                 dexterityBonuses.text = "+1 DMG";
                 break;
             case PlayerClass.Wizard:
-                strengthBonuses.text = "";
+                strengthBonuses.text = "+2 HP";
                 intelligenceBonuses.text = "+1 DMG";
                 dexterityBonuses.text = "+1 DEF";
                 break;
             case PlayerClass.Shielder:
                 strengthBonuses.text = "+1 DMG";
-                intelligenceBonuses.text = "";
+                intelligenceBonuses.text = "+2 HP";
                 dexterityBonuses.text = "+1 DEF";
                 break;
         }
@@ -110,6 +113,9 @@ public class PlayerInfo : MonoBehaviour
         expBonus.text = $"{Player.data.expBonus.GetValue()}";
         goldBonus.text = $"{Player.data.goldBonus.GetValue()}";
         twoslotDropBonus.text = $"{Player.data.twoSlotDropBonus.GetValue()}";
+        killedMonsters.text = $"{Player.data.killedMonsters}";
+        completedQuests.text = $"{Player.data.completedQuests}";
+        earnedAchievements.text = $"{Player.data.earnedAchievements}";
         CheckPoints();
     }
 }

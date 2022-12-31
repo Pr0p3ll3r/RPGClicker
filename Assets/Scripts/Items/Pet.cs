@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "Pet", menuName = "RPG/Items/Pet")]
 public class Pet : Item
@@ -19,20 +18,26 @@ public class Pet : Item
     }
     public bool CanAddScroll()
     {
-        int freeSlots = 0;
         for (int i = 0; i < statsUnlocked; i++)
         {
             if (scrollsStat[i] == null)
-                freeSlots++;
+                return true;
         }
-
-        if (freeSlots > 0)
-            return true;
 
         return false;
     }
     private int maxLevel = 10;
     public static int BASE_REQUIRE_EXP = 1000;
+    public int UsedScrollsSlot()
+    {
+        int value = 0;
+        for (int i = 0; i < scrollsStat.Length; i++)
+        {
+            if (scrollsStat[i] != null)
+                value++;
+        }
+        return value;
+    }
 
     public override Item GetCopy()
     {

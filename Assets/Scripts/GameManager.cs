@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.FilePathAttribute;
 
 public class GameManager : MonoBehaviour
 {
@@ -36,10 +35,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject startPanel;
     [SerializeField] private GameObject mainPanel;
     [SerializeField] private GameObject playerPanel;
-    [SerializeField] private GameObject townPanel;
     [SerializeField] private GameObject adventurePanel;
-    [SerializeField] private GameObject armoryPanel;
     [SerializeField] private GameObject towerPanel;
+    [SerializeField] private GameObject questPanel;
 
     [Header("Adventure")]
     [SerializeField] private GameObject locationPrefab;
@@ -55,7 +53,9 @@ public class GameManager : MonoBehaviour
     public ObjectPooler damagePopupPooler;
 
     private Player Player => Player.Instance;
+    private PlayerInventory Inventory => PlayerInventory.Instance;
     private Enemy Enemy => Enemy.Instance;
+    private QuestManager questManager;
 
     int fingerCount;
     bool screenPressed = false;
@@ -71,16 +71,16 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Database.data = database;
+        questManager = GetComponent<QuestManager>();
 
         ClearLootList();
 
         startPanel.SetActive(false);
         mainPanel.SetActive(false);
         playerPanel.SetActive(false);
-        townPanel.SetActive(false);
         adventurePanel.SetActive(false);
-        armoryPanel.SetActive(false);
         towerPanel.SetActive(false);
+        questPanel.SetActive(false);
 
         CreateLocationList();
         CloseAdventurePanels();
@@ -130,9 +130,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         
-        PlayerData newPlayer = new PlayerData();
-        newPlayer.nickname = nameInput.text;
-        newPlayer.playerClass = (PlayerClass)classDropdown.value;
+        PlayerData newPlayer = new PlayerData(nameInput.text, (PlayerClass)classDropdown.value);
         Player.data = newPlayer;
         PlayerPrefs.SetInt("NewGame", 0);
         SetGame();
@@ -140,12 +138,17 @@ public class GameManager : MonoBehaviour
 
     private void SetGame()
     {
+        Player.GetComponent<PlayerUI>().UpdateHealthBar();
         Player.GetComponent<PlayerInfo>().RefreshStats();
         Player.GetComponent<PlayerInfo>().SetStatsDescription();
         mainPanel.SetActive(true);
         ChangeLocation(Database.data.locations[0]);
         foreach (EquipmentSlot slot in PlayerEquipment.Instance.slots)
-            slot.GetRightPlaceholder();
+            slot.SetRightPlaceholder();
+        if(Player.data.completedQuests < Database.data.quests.Length)
+            questManager.SetQuest(Database.data.quests[Player.data.completedQuests]);
+        else
+            questManager.SetQuest(null);
     }
 
     public void Reward(EnemyData enemy)
@@ -168,6 +171,7 @@ public class GameManager : MonoBehaviour
             currentLocation.bossDefeated = true;
 
         Player.Reward(enemy.exp, enemy.gold);
+        questManager.QuestProgress(enemy);
     }
 
     private void ClearLootList()
@@ -277,6 +281,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            Inventory.ChangeGoldAmount(location.price);
             location.unlocked = true;
             RefreshLocationList();
         }
@@ -290,6 +295,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            Inventory.ChangeGoldAmount(dungeon.price);
             ChangeLocation(dungeon.GetCopy());
         }
     }

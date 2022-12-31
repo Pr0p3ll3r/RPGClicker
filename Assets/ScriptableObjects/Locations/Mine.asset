@@ -12,17 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfaa4bb3e2346e44db6183006e316bc4, type: 3}
   m_Name: Mine
   m_EditorClassIdentifier: 
-  name: Mine
-  index: 0
-  level: 20
-  expToGain: 20
-  expeditionTime: 10000
-  items:
-  - item: {fileID: 11400000, guid: 8391b88a1e5a7ec4a913a1d02dc40f7d, type: 2}
-    chanceToDrop: 0.2
-  - item: {fileID: 11400000, guid: 21df5af7a939ce24995ec116e39b8f6d, type: 2}
-    chanceToDrop: 0.2
-  - item: {fileID: 11400000, guid: e1d325485406d12428a9e8782a00745b, type: 2}
-    chanceToDrop: 0.2
-  - item: {fileID: 11400000, guid: b08a984afb839474090eaa52be5b6b71, type: 2}
-    chanceToDrop: 0.2
+  locationName: Mine
+  price: 100
+  lvlMin: 11
+  unlocked: 0
+  bossDefeated: 0
+  isDungeon: 0
+  enemies:
+  - {fileID: 11400000, guid: d1221f400581a60479964229e41c7449, type: 2}
+  boss: {fileID: 0}

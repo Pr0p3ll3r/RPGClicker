@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bbe7c88c025c944b64fa8aacc779c9, type: 3}
+  m_Name: Kill Slimes
+  m_EditorClassIdentifier: 
+  ID: 0
+  goal: {fileID: 11400000, guid: f47c552f4b3f6454ba68fe8923494b30, type: 2}
+  amount: 5
+  randomReward: 0
+  rewardWarrior:
+  - item: {fileID: 11400000, guid: 7fb5fcd40603b3b47b606752e1505429, type: 2}
+    amount: 1
+  rewardBlader:
+  - item: {fileID: 11400000, guid: 46100280d0a8e3c44991394140734bc7, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 46100280d0a8e3c44991394140734bc7, type: 2}
+    amount: 1
+  rewardArcher:
+  - item: {fileID: 11400000, guid: 1f8bf76e9fc221247a528a193b357c08, type: 2}
+    amount: 1
+  rewardWizard:
+  - item: {fileID: 11400000, guid: 865452143c6376f4f8d0b98a1011caac, type: 2}
+    amount: 1
+  rewardShielder:
+  - item: {fileID: 11400000, guid: 46100280d0a8e3c44991394140734bc7, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 4784816ef8df8e442949be68dc571441, type: 2}
+    amount: 1

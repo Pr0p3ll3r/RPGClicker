@@ -3,12 +3,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Database", menuName = "RPG/Database")]
 public class DatabaseSO : ScriptableObject, ISerializationCallbackReceiver
 {
+    public Sprite emptySlot;
     public Item[] items;
     public Location[] locations;
     public Location[] dungeons;
     public StatBonus[] rarityBonuses;
     public StatBonus[] scrollBonuses;
     public EnemyInfo[] towerEnemies;
+    public Quest[] quests;
 
     public void OnBeforeSerialize()
     {
@@ -30,6 +32,11 @@ public class DatabaseSO : ScriptableObject, ISerializationCallbackReceiver
         {
             scrollBonuses[i].ID = i;
         }
+
+        for (int i = 0; i < quests.Length; i++)
+        {
+            quests[i].ID = i;
+        }
     }
 
     public void ResetLocations()
@@ -39,29 +46,5 @@ public class DatabaseSO : ScriptableObject, ISerializationCallbackReceiver
             locations[i].unlocked = false;
             locations[i].bossDefeated = false;
         }
-    }
-
-    public Item GetItemById(int _id)
-    {
-        if (_id >= items.Length)
-            return null;
-
-        return items[_id];
-    }
-
-    public StatBonus GetRarityBonusById(int _id)
-    {
-        if (_id >= rarityBonuses.Length)
-            return null;
-
-        return rarityBonuses[_id];
-    }
-
-    public StatBonus GetScrollBonusById(int _id)
-    {
-        if (_id >= scrollBonuses.Length)
-            return null;
-
-        return scrollBonuses[_id];
     }
 }

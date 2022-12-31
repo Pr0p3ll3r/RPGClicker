@@ -24,40 +24,17 @@ public class PlayerData
     public Stat hpStealLimit;
     public Stat twoSlotDropBonus;
 
+    public int killedMonsters;
+    public int completedQuests;
+    public int earnedAchievements;
+
     public int maxPets;
     public int currentTowerLevel;
     public bool IsFullHP()
     {
-        if (currentHealth == health.GetValue())
+        if (currentHealth >= health.GetValue())
             return true;
         return false; 
-    }
-
-    public PlayerData()
-    {
-        nickname = "BOB";
-        playerClass = (PlayerClass)1;
-        level = 1;
-        exp = 0;
-        remainingPoints = 0;
-        maxPets = 1;
-        currentTowerLevel = 0;
-        strength = new Stat(0);
-        intelligence = new Stat(0);
-        dexterity = new Stat(0);
-        damage = new Stat(1);
-        defense = new Stat(0);
-        health = new Stat(10);
-        currentHealth = health.GetValue();
-        criticalDamage = new Stat(20);
-        criticalRate = new Stat(5);
-        maxCriticalRate = new Stat(50);
-        accuracy = new Stat(6);
-        goldBonus = new Stat(0);
-        expBonus = new Stat(0);
-        hpSteal = new Stat(0);
-        hpStealLimit = new Stat(0);
-        twoSlotDropBonus = new Stat(0);     
     }
 
     public PlayerData(string _nickname, PlayerClass _playerClass)
@@ -71,52 +48,40 @@ public class PlayerData
         currentTowerLevel = 0;
         damage = new Stat(0);
         defense = new Stat(0);
+        health = new Stat(20);
+        strength = new Stat(0);
+        intelligence = new Stat(0);
+        dexterity = new Stat(0);
         switch (playerClass)
         {
             case PlayerClass.Warrior:
-                strength = new Stat(24);
-                intelligence = new Stat(3);
-                dexterity = new Stat(8);
-                damage.AddModifier(24);
-                defense.AddModifier(8);
-                health = new Stat(56);
-                health.AddModifier(24);
+                AddStrength(false, 12);
+                AddIntelligence(false, 4);
+                AddDexterity(false, 4);
                 accuracy = new Stat(4);
                 break;
             case PlayerClass.Blader:
-                strength = new Stat(16);
-                intelligence = new Stat(3);
-                dexterity = new Stat(16);
-                damage.AddModifier(16);
-                defense.AddModifier(16);
-                health = new Stat(50);
+                AddStrength(false, 8);
+                AddIntelligence(false, 3);
+                AddDexterity(false, 8);
                 accuracy = new Stat(6);
                 break;
             case PlayerClass.Archer:
-                strength = new Stat(6);
-                intelligence = new Stat(3);
-                dexterity = new Stat(17);
-                damage.AddModifier(17);
-                defense.AddModifier(6);
-                health = new Stat(40);
+                AddStrength(false, 6);
+                AddIntelligence(false, 1);
+                AddDexterity(false, 10);
                 accuracy = new Stat(5);
                 break;
             case PlayerClass.Wizard:
-                strength = new Stat(3);
-                intelligence = new Stat(26);
-                dexterity = new Stat(6);
-                damage.AddModifier(26);
-                defense.AddModifier(6);
-                health = new Stat(40);
+                AddStrength(false, 1);
+                AddIntelligence(false, 10);
+                AddDexterity(false, 6);
                 accuracy = new Stat(5);
                 break;
             case PlayerClass.Shielder:
-                strength = new Stat(15);
-                intelligence = new Stat(3);
-                dexterity = new Stat(9);
-                damage.AddModifier(15);
-                defense.AddModifier(9);
-                health = new Stat(45);
+                AddStrength(false, 6);
+                AddIntelligence(false, 2);
+                AddDexterity(false, 10);
                 accuracy = new Stat(3);
                 break;
         }
@@ -129,6 +94,9 @@ public class PlayerData
         hpSteal = new Stat(0);
         hpStealLimit = new Stat(0);
         twoSlotDropBonus = new Stat(0);
+        killedMonsters = 0;
+        completedQuests = 0;
+        earnedAchievements = 0;
     }
 
     public void AddStat(Stats stat, int amount)
@@ -244,7 +212,6 @@ public class PlayerData
         {
             case PlayerClass.Warrior:
                 damage.AddModifier(amount);
-                health.AddModifier(amount);
                 break;
             case PlayerClass.Blader:
                 defense.AddModifier(amount);
@@ -253,6 +220,7 @@ public class PlayerData
                 defense.AddModifier(amount);
                 break;
             case PlayerClass.Wizard:
+                health.AddModifier(amount * 2);
                 break;
             case PlayerClass.Shielder:
                 damage.AddModifier(amount);
@@ -268,15 +236,19 @@ public class PlayerData
          switch (playerClass)
          {
             case PlayerClass.Warrior:
+                health.AddModifier(amount * 2);
                 break;
             case PlayerClass.Blader:
+                health.AddModifier(amount * 2);
                 break;
             case PlayerClass.Archer:
+                health.AddModifier(amount * 2);
                 break;
             case PlayerClass.Wizard:
                 damage.AddModifier(amount);
                 break;
             case PlayerClass.Shielder:
+                health.AddModifier(amount * 2); 
                 break;
          }
     }
@@ -313,7 +285,6 @@ public class PlayerData
         {
             case PlayerClass.Warrior:
                 damage.RemoveModifier(amount);
-                health.RemoveModifier(amount);
                 break;
             case PlayerClass.Blader:
                 defense.RemoveModifier(amount);
@@ -322,6 +293,8 @@ public class PlayerData
                 defense.RemoveModifier(amount);
                 break;
             case PlayerClass.Wizard:
+                health.RemoveModifier(amount * 2);
+                currentHealth -= amount * 2;
                 break;
             case PlayerClass.Shielder:
                 damage.RemoveModifier(amount);
@@ -335,15 +308,23 @@ public class PlayerData
         switch (playerClass)
         {
             case PlayerClass.Warrior:
+                health.RemoveModifier(amount * 2);
+                currentHealth -= amount * 2;
                 break;
             case PlayerClass.Blader:
+                health.RemoveModifier(amount * 2);
+                currentHealth -= amount * 2;
                 break;
             case PlayerClass.Archer:
+                health.RemoveModifier(amount * 2);
+                currentHealth -= amount * 2;
                 break;
             case PlayerClass.Wizard:
                 damage.RemoveModifier(amount);
                 break;
             case PlayerClass.Shielder:
+                health.RemoveModifier(amount * 2);
+                currentHealth -= amount * 2;
                 break;
         }
     }

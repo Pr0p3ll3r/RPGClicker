@@ -22,7 +22,7 @@ public class EquipmentSlot : MonoBehaviour
         item = _item;
         icon.enabled = true;   
         icon.raycastTarget = true;
-        icon.sprite = Database.data.GetItemById(_item.ID).icon;                 
+        icon.sprite = Database.data.items[_item.ID].icon;                 
     }
 
     public void ClearSlot()
@@ -32,7 +32,7 @@ public class EquipmentSlot : MonoBehaviour
         icon.raycastTarget = false;
     }
 
-    public void GetRightPlaceholder()
+    public void SetRightPlaceholder()
     {
         if (equipmentType == EquipmentType.MainHand)
         {

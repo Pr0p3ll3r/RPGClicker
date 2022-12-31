@@ -4,8 +4,6 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
-using static UnityEditor.Experimental.GraphView.GraphView;
-using static UnityEditor.Progress;
 
 public class ItemInfo : MonoBehaviour
 {
@@ -112,7 +110,7 @@ public class ItemInfo : MonoBehaviour
                     break;
             }
             ItemStatInfo rarityBonus = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-            rarityBonus.SetUp($"Rarity Bonus {(int)eq.rarity}/{Enum.GetNames(typeof(EquipmentRarity)).Length}", $"");
+            rarityBonus.SetUp($"Rarity Bonus {(int)eq.rarity}/{Enum.GetNames(typeof(EquipmentRarity)).Length - 1}", $"");
             if (eq.rarityBonus != null)
             {
                 int value;
@@ -203,9 +201,9 @@ public class ItemInfo : MonoBehaviour
             Blueprint blueprint = (Blueprint)item;
             ItemStatInfo requiredItems = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
             requiredItems.SetUp("Required Items", "");
-            foreach (RequiredItem requiredItem in blueprint.requiredItems)
+            foreach (ItemStack requiredItem in blueprint.requiredItems)
             {
-                int howManyYouHave = PlayerInventory.Instance.HaveMany(requiredItem.item);
+                int howManyYouHave = PlayerInventory.Instance.HowMany(requiredItem.item);
                 ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
                 statInfo.SetUp($"{requiredItem.item.name}:", $"{howManyYouHave}/{requiredItem.amount}", requiredItem.item);
 
