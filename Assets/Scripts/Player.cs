@@ -95,6 +95,21 @@ public class Player : MonoBehaviour
         damagePopup.gameObject.SetActive(true);
         Enemy.TakeDamage(damage);
         SoundManager.Instance.PlayOneShot("Hit");
+        HealthSteal(damage);
+    }
+
+    private void HealthSteal(int damage)
+    {
+        int hpSteal = Mathf.CeilToInt(damage * (float)data.hpSteal.GetValue()/100);
+        hpSteal = Mathf.Clamp(hpSteal, 0, data.hpStealLimit.GetValue());
+        data.currentHealth += hpSteal;
+        data.currentHealth = Mathf.Clamp(data.currentHealth, 0, data.health.GetValue());
+        hud.UpdateHealthBar();
+        if(data.IsFullHP())
+        {
+            healthRegenerationTimer.text = "";
+            regeneration = healthRegenerationTime;
+        }           
     }
 
     public void TakeDamage(int damage)
