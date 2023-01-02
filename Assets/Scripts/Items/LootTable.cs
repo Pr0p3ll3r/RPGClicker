@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public static class LootTable 
 {
@@ -32,18 +33,18 @@ public static class LootTable
         return droppedItem;
     }
 
-    public static ItemStack[] QuestReward(ItemStack[] rewards)
+    public static ItemStack[] QuestReward(ItemStack[] rewardList)
     {
+        ItemStack[] rewards = new ItemStack[rewardList.Length];
         for (int i = 0; i < rewards.Length; i++)
         {
-            Item item = rewards[i].item.GetCopy();
-            if (item.itemType == ItemType.Equipment)
+            if (rewardList[i].item.itemType == ItemType.Equipment)
             {
-                rewards[i].item = MakeEquipment(item);
+                rewards[i] = new ItemStack(MakeEquipment(rewardList[i].item.GetCopy()), rewardList[i].amount);
             }
             else
             {
-                rewards[i].item = item;
+                rewards[i] = new ItemStack(rewardList[i].item.GetCopy(), rewardList[i].amount);
             }
         }
         return rewards;
@@ -51,14 +52,11 @@ public static class LootTable
 
     public static ItemStack QuestRewardRandom(ItemStack[] rewards)
     {
-        ItemStack reward = rewards[Random.Range(0, rewards.Length)];
+        ItemStack random = rewards[Random.Range(0, rewards.Length)];
+        ItemStack reward = new ItemStack(random.item.GetCopy(), random.amount);
         if (reward.item.itemType == ItemType.Equipment)
         {
-            reward.item = MakeEquipment(reward.item.GetCopy());
-        }
-        else
-        {
-            reward.item = reward.item.GetCopy();
+            reward.item = MakeEquipment(reward.item);
         }
         return reward;
     }
