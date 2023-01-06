@@ -86,6 +86,9 @@ public class QuestManager : MonoBehaviour
 
     public void QuestProgress(EnemyData enemy)
     {
+        if (currentQuest == null)
+            return;
+
         if (enemy.enemyName != currentQuest.goal.enemyName)
             return;
 
