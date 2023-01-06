@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = Screen.currentResolution.refreshRate;
 
+        Database.data = database;
         database.ResetLocations();
     }
 
@@ -70,7 +71,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Database.data = database;
         questManager = GetComponent<QuestManager>();
 
         ClearLootList();
@@ -81,12 +81,13 @@ public class GameManager : MonoBehaviour
         adventurePanel.SetActive(false);
         towerPanel.SetActive(false);
         questPanel.SetActive(false);
-
+   
         CreateLocationList();
         CloseAdventurePanels();
         locationPanel.SetActive(true);
         locationButton.onClick.AddListener(delegate { CloseAdventurePanels(); locationPanel.SetActive(true); });
         dungeonButton.onClick.AddListener(delegate { CloseAdventurePanels(); dungeonPanel.SetActive(true); });
+        dungeonEnemy.text = "";
 
         if (PlayerPrefs.GetInt("NewGame", 1) == 1)
         {
@@ -296,7 +297,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Inventory.ChangeGoldAmount(dungeon.price);
-            ChangeLocation(dungeon.GetCopy());
+            ChangeLocation(dungeon);
         }
     }
 
@@ -308,8 +309,11 @@ public class GameManager : MonoBehaviour
         adventurePanel.SetActive(false);
 
         if (newLocation.isDungeon)
+        {
             dungeonEnemyCount = 0;
-
+            newLocation.bossDefeated = false;
+        }
+            
         NextEnemy();
     }
 
@@ -317,10 +321,7 @@ public class GameManager : MonoBehaviour
     {
         if (currentLocation.isDungeon)
         {
-            if (Enemy.data.isBoss)
-                currentLocation.bossDefeated = true;
-            else
-                dungeonEnemyCount++;
+            dungeonEnemyCount++;
 
             if (dungeonEnemyCount <= 10)
             {
@@ -333,12 +334,17 @@ public class GameManager : MonoBehaviour
                 dungeonEnemy.text = $"BOSS";
             }           
             else
+            {
+                dungeonEnemy.text = "";
                 ChangeLocation(previousLocation);
+            }
         }
         else
-        {          
-            Enemy.SetUp(currentLocation.enemies[UnityEngine.Random.Range(0, currentLocation.enemies.Length)]);
-            dungeonEnemy.text = "";
+        {   
+            if(currentLocation.bossDefeated)
+                Enemy.SetUp(currentLocation.enemies[UnityEngine.Random.Range(0, currentLocation.enemies.Length)]);
+            else
+                Enemy.SetUp(currentLocation.boss);
         }
     }
 

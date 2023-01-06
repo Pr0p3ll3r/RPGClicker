@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: Slime
   icon: {fileID: 613377355, guid: 3b376616b8d38184caf962366b9d1ad6, type: 3}
   level: 1
-  health: 100
+  health: 50
   damage: 10
   defense: 0
   criticalDamage: 0

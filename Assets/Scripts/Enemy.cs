@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI enemyName;
     [SerializeField] private Animator animator;
-    public EnemyData data;
+    public EnemyData Data { get; private set; }
     [SerializeField] private Image healthBar;
     [SerializeField] private TextMeshProUGUI health;
     [SerializeField] private float attackRate;
@@ -31,14 +31,14 @@ public class Enemy : MonoBehaviour
 
     public void SetUp(EnemyData newEnemy)
     {      
-        data = newEnemy;
+        Data = newEnemy;
         animator.Play("EnemyIn");
         triggered = false;
-        currentHealth = data.health;
-        enemyName.text = $"Lvl{data.level} {data.enemyName}";
+        currentHealth = Data.health;
+        enemyName.text = $"Lvl{Data.level} {Data.enemyName}";
         currentAttackRate = attackRate;
         UpdateHealthBar();
-        animator.Play(data.enemyName);
+        animator.Play(Data.enemyName);
     }
 
     void Update()
@@ -65,17 +65,19 @@ public class Enemy : MonoBehaviour
         if (currentHealth <= 0)
         {
             IsDead = true;
-            GameManager.Instance.Reward(data);
+            GameManager.Instance.Reward(Data);
             triggered = false;
             animator.Play("EnemyOut");
         }
     }
 
+    //Used after animation 'EnemyIn'
     public void Spawned()
     {
         IsDead = false;
     }
 
+    //Used after animation 'EnemyOut'
     public void SpawnNextEnemy()
     {
         GameManager.Instance.NextEnemy();
@@ -85,8 +87,8 @@ public class Enemy : MonoBehaviour
     {
         if (IsDead) return;
 
-        int damage = data.damage;
-        Utils.Critical(data.criticalChance, data.criticalDamage, ref damage);
+        int damage = Data.damage;
+        Utils.Critical(Data.criticalChance, Data.criticalDamage, ref damage);
         damage -= player.data.defense.GetValue();
         damage = Mathf.Clamp(damage, 1, int.MaxValue);
         player.TakeDamage(damage);
@@ -95,8 +97,8 @@ public class Enemy : MonoBehaviour
 
     public void UpdateHealthBar()
     {
-        float ratio = (float)currentHealth / data.health;
-        health.text = $"{currentHealth}/{data.health}";
+        float ratio = (float)currentHealth / Data.health;
+        health.text = $"{currentHealth}/{Data.health}";
         healthBar.fillAmount = ratio;
     }
 }

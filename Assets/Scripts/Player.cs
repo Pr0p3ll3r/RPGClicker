@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
         if (IsDead || Enemy.IsDead) return;
 
         int damage = data.damage.GetValue();
-        int enemyDefense = Enemy.data.defense;
+        int enemyDefense = Enemy.Data.defense;
         Debug.Log("Your Damage: " + damage + " Enemy Defense: " + enemyDefense);
         DamagePopup damagePopup = GameManager.damagePopupPooler.Get().GetComponent<DamagePopup>();
         damagePopup.transform.position = popupPosition.position;

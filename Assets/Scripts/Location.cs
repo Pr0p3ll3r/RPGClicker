@@ -11,9 +11,4 @@ public class Location : ScriptableObject
     public bool isDungeon = false;
     public EnemyData[] enemies;
     public EnemyData boss;
-
-    public Location GetCopy()
-    {
-        return Instantiate(this);
-    }
 }
