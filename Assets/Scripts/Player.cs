@@ -87,7 +87,7 @@ public class Player : MonoBehaviour
         Debug.Log("Your Damage: " + damage + " Enemy Defense: " + enemyDefense);
         DamagePopup damagePopup = GameManager.damagePopupPooler.Get().GetComponent<DamagePopup>();
         damagePopup.transform.position = popupPosition.position;
-        bool crit = Utils.Critical(data.criticalRate.GetValue(), data.criticalDamage.GetValue(), ref damage);
+        bool crit = Utils.Critical(data.criticalDamage.GetValue(), data.criticalRate.GetValue(), ref damage, data.maxCriticalRate.GetValue());
         damage -= enemyDefense;
         damage = Mathf.Clamp(damage, 1, int.MaxValue);
         Debug.Log($"Damage: {damage} Crit: {crit}");

@@ -14,9 +14,10 @@ public static class Utils
         return 0;
     }
 
-    public static bool Critical(int critRate, int critDmg, ref int damage)
+    public static bool Critical(int critDmg, int critRate, ref int damage, int maxCritRate = 100)
     {
         int random = Random.Range(0, 100);
+        critRate = Mathf.Clamp(critRate, 0, maxCritRate);
         if (random <= critRate)
         {
             float critDamageFloat = (float)critDmg / 100 * damage;
