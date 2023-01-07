@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = Screen.currentResolution.refreshRate;
 
         Database.data = database;
-        database.ResetLocations();
     }
 
     [Header("Main")]
@@ -147,6 +146,8 @@ public class GameManager : MonoBehaviour
         Player.GetComponent<PlayerInfo>().RefreshStats();
         Player.GetComponent<PlayerInfo>().SetStatsDescription();
         mainPanel.SetActive(true);
+        Database.data.locations[0].bossDefeated = true;
+        UnlockLocation(Database.data.locations[0]);
         ChangeLocation(Database.data.locations[0]);
         foreach (EquipmentSlot slot in PlayerEquipment.Instance.Slots)
             slot.SetRightPlaceholder();
