@@ -110,9 +110,9 @@ public class PlayerInfo : MonoBehaviour
         strength.text = $"{Player.data.strength.GetValue()}";
         intelligence.text = $"{Player.data.intelligence.GetValue()}";
         dexterity.text = $"{Player.data.dexterity.GetValue()}";
-        expBonus.text = $"{Player.data.expBonus.GetValue()}";
-        goldBonus.text = $"{Player.data.goldBonus.GetValue()}";
-        twoslotDropBonus.text = $"{Player.data.twoSlotDropBonus.GetValue()}";
+        expBonus.text = $"{Player.data.expBonus.GetValue()}%";
+        goldBonus.text = $"{Player.data.goldBonus.GetValue()}%";
+        twoslotDropBonus.text = $"{Player.data.twoSlotDropBonus.GetValue()}%";
         killedMonsters.text = $"{Player.data.killedMonsters}";
         completedQuests.text = $"{Player.data.completedQuests}";
         earnedAchievements.text = $"{Player.data.earnedAchievements}";

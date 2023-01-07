@@ -44,7 +44,7 @@ public static class Utils
 
     public static int GetRightSlot(Equipment eq)
     {
-        EquipmentSlot[] slots = PlayerEquipment.Instance.slots;
+        EquipmentSlot[] slots = PlayerEquipment.Instance.Slots;
         for (int i = 0; i < slots.Length; i++)
         {
             if (eq.equipmentTypeSlot == slots[i].equipmentType && slots[i] == null)

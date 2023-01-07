@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject adventurePanel;
     [SerializeField] private GameObject towerPanel;
     [SerializeField] private GameObject questPanel;
+    [SerializeField] private GameObject achievementsPanel;
 
     [Header("Adventure")]
     [SerializeField] private GameObject locationPrefab;
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
     private PlayerInventory Inventory => PlayerInventory.Instance;
     private Enemy Enemy => Enemy.Instance;
     private QuestManager questManager;
+    private AchievementManager achievementManager;
 
     int fingerCount;
     bool screenPressed = false;
@@ -72,6 +74,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         questManager = GetComponent<QuestManager>();
+        achievementManager = GetComponent<AchievementManager>();
 
         ClearLootList();
 
@@ -81,7 +84,8 @@ public class GameManager : MonoBehaviour
         adventurePanel.SetActive(false);
         towerPanel.SetActive(false);
         questPanel.SetActive(false);
-   
+        achievementsPanel.SetActive(false);
+
         CreateLocationList();
         CloseAdventurePanels();
         locationPanel.SetActive(true);
@@ -144,7 +148,7 @@ public class GameManager : MonoBehaviour
         Player.GetComponent<PlayerInfo>().SetStatsDescription();
         mainPanel.SetActive(true);
         ChangeLocation(Database.data.locations[0]);
-        foreach (EquipmentSlot slot in PlayerEquipment.Instance.slots)
+        foreach (EquipmentSlot slot in PlayerEquipment.Instance.Slots)
             slot.SetRightPlaceholder();
         if(Player.data.completedQuests < Database.data.quests.Length)
             questManager.SetQuest(Database.data.quests[Player.data.completedQuests]);
@@ -154,7 +158,7 @@ public class GameManager : MonoBehaviour
 
     public void Reward(EnemyData enemy)
     {  
-        if(!PlayerInventory.Instance.IsFull())
+        if(!Inventory.IsFull())
         {
             Item drop = LootTable.Drop(enemy.loot);
             if (drop != null)
@@ -162,7 +166,7 @@ public class GameManager : MonoBehaviour
                 if (lastlootSlot == lootSlots)
                     ClearLootList();
                 Debug.Log("Dropped: " + drop.itemName);
-                PlayerInventory.Instance.AddItem(drop, 1);
+                Inventory.AddItem(drop, 1);
                 lootList.GetChild(lastlootSlot).GetComponent<InventorySlot>().FillSlot(drop);
                 lastlootSlot++;
             }
@@ -173,6 +177,7 @@ public class GameManager : MonoBehaviour
 
         Player.Reward(enemy.exp, enemy.gold);
         questManager.QuestProgress(enemy);
+        achievementManager.AchievementProgress(enemy.achievements);
     }
 
     private void ClearLootList()
@@ -307,6 +312,7 @@ public class GameManager : MonoBehaviour
         currentLocation = newLocation;
         locationName.text = currentLocation.locationName;
         adventurePanel.SetActive(false);
+        dungeonEnemy.text = "";
 
         if (newLocation.isDungeon)
         {
@@ -334,10 +340,7 @@ public class GameManager : MonoBehaviour
                 dungeonEnemy.text = $"BOSS";
             }           
             else
-            {
-                dungeonEnemy.text = "";
                 ChangeLocation(previousLocation);
-            }
         }
         else
         {   
@@ -371,6 +374,6 @@ public class GameManager : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        Data.Save(Player.Instance, PlayerInventory.Instance, PlayerEquipment.Instance.slots);
+        Data.Save(Player.Instance, PlayerInventory.Instance, PlayerEquipment.Instance.Slots);
     }
 }

@@ -4,14 +4,14 @@ public class PlayerEquipment : MonoBehaviour
 {
     public static PlayerEquipment Instance { get; private set; }
 
-    public EquipmentSlot[] slots;
+    public EquipmentSlot[] Slots { get; private set; }
     [SerializeField] private Transform equipmentParent;
     [SerializeField] private PlayerUI hud;
 
     void Awake()
     {
         Instance = this;
-        slots = equipmentParent.GetComponentsInChildren<EquipmentSlot>();
+        Slots = equipmentParent.GetComponentsInChildren<EquipmentSlot>();
     }
 
     private void Start()
@@ -22,23 +22,23 @@ public class PlayerEquipment : MonoBehaviour
     public void EquipItem(Equipment item, out Equipment previousItem)
     {
         //if there is an empty slot
-        for (int i = 0; i < slots.Length; i++)
+        for (int i = 0; i < Slots.Length; i++)
         {
-            if (slots[i].equipmentType == item.equipmentTypeSlot && slots[i].item == null)
+            if (Slots[i].equipmentType == item.equipmentTypeSlot && Slots[i].item == null)
             {
                 previousItem = null;
-                slots[i].item = item;
+                Slots[i].item = item;
                 Debug.Log("Equipped Item: " + item.itemName);
                 return;
             }
         }
         //if not swap with first one
-        for (int i = 0; i < slots.Length; i++)
+        for (int i = 0; i < Slots.Length; i++)
         {
-            if (slots[i].equipmentType == item.equipmentTypeSlot)
+            if (Slots[i].equipmentType == item.equipmentTypeSlot)
             {
-                previousItem = slots[i].item;
-                slots[i].item = item;
+                previousItem = Slots[i].item;
+                Slots[i].item = item;
                 Debug.Log("Equipped Item: " + item.itemName);
                 return;
             }
@@ -48,11 +48,11 @@ public class PlayerEquipment : MonoBehaviour
 
     public void UnequipItem(Item item)
     {
-        for (int i = 0; i < slots.Length; i++)
+        for (int i = 0; i < Slots.Length; i++)
         {
-            if (slots[i].item == item)
+            if (Slots[i].item == item)
             {
-                slots[i].item = null;
+                Slots[i].item = null;
                 Debug.Log("Unequipped Item: " + item.itemName);
             }
         }
@@ -60,12 +60,12 @@ public class PlayerEquipment : MonoBehaviour
 
     public void RefreshUI()
     {
-        for (int i = 0; i < slots.Length; i++)
+        for (int i = 0; i < Slots.Length; i++)
         {
-            if (slots[i].item == null)
-                slots[i].ClearSlot();
+            if (Slots[i].item == null)
+                Slots[i].ClearSlot();
             else
-                slots[i].FillSlot(slots[i].item);
+                Slots[i].FillSlot(Slots[i].item);
         }
     }
 }

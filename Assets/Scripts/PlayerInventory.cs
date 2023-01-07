@@ -199,7 +199,7 @@ public class PlayerInventory : MonoBehaviour
                 int index = Utils.GetRightSlot(selectedEq);
                 Equipment equippedEq = null;
                 if (index > -1)
-                    equippedEq = equipment.slots[index].item;
+                    equippedEq = equipment.Slots[index].item;
                 selectedItemInfo.GetComponent<ItemInfo>().SetUp(selectedEq, false, equippedEq);
                 selectedItemInfo.SetActive(true);
                 //compare with a first empty one or the first one            

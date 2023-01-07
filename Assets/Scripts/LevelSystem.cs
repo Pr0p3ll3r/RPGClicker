@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LevelSystem : MonoBehaviour
 {
@@ -9,13 +8,12 @@ public class LevelSystem : MonoBehaviour
 
     private PlayerUI hud;
     private PlayerInfo playerInfo;
-    private PlayerData data;
+    private PlayerData data => Player.Instance.data;
 
     private void Start()
     {
         hud = GetComponent<PlayerUI>();
         playerInfo = GetComponent<PlayerInfo>();
-        data = Player.Instance.data;
         requireExp = BASE_REQUIRE_EXP * data.level;
         hud.UpdateLevel(data.level, data.exp, requireExp);
     }

@@ -96,6 +96,16 @@ public static class Data
             bf.Serialize(file, data);
         }
 
+        //Save achievements
+        for (int i = 0; i < Database.data.achievements.Length; i++)
+        {
+            SaveAchievement saveAch;
+            Achievement ach = Database.data.achievements[i];
+            saveAch = new SaveAchievement(ach.GetCurrentAmount(), ach.GetEarned());
+            data = JsonUtility.ToJson(saveAch);
+            bf.Serialize(file, data);
+        }
+
         file.Close();
     }
 
@@ -200,7 +210,7 @@ public static class Data
         }
 
         //Debug.Log("Loading equipment data...");
-        EquipmentSlot[] equipment = PlayerEquipment.Instance.slots;
+        EquipmentSlot[] equipment = PlayerEquipment.Instance.Slots;
         for (int i = 0; i < equipment.Length; i++)
         {
             EquipmentSlot slot = equipment[i];
@@ -231,12 +241,21 @@ public static class Data
             }
         }
 
+        //Debug.Log("Loading locations...");
         for (int i = 0; i < Database.data.locations.Length; i++)
         {
             SaveLocation saveLoc = new SaveLocation();
             JsonUtility.FromJsonOverwrite(bf.Deserialize(file).ToString(), saveLoc);
             Database.data.locations[i].unlocked = saveLoc.unlocked;
             Database.data.locations[i].bossDefeated = saveLoc.bossDefeated;
+        }
+
+        //Debug.Log("Loading achievements...");
+        for (int i = 0; i < Database.data.achievements.Length; i++)
+        {
+            SaveAchievement saveAch = new SaveAchievement();
+            JsonUtility.FromJsonOverwrite(bf.Deserialize(file).ToString(), saveAch);
+            Database.data.achievements[i].Load(saveAch.amount, saveAch.earned);
         }
         file.Close();
     }

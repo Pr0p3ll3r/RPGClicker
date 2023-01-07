@@ -98,8 +98,7 @@ public class QuestManager : MonoBehaviour
             questProgress.text = $"{currentQuestProgress}/{currentQuest.amount}";
             PlayerPrefs.SetInt("QuestProgress", currentQuestProgress);
         }
-
-        if (currentQuestProgress == currentQuest.amount)
+        else
         {
             getRewardButton.interactable = true;
             GameManager.Instance.ShowText("Quest completed!", Color.green);
