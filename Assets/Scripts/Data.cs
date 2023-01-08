@@ -101,7 +101,7 @@ public static class Data
         {
             SaveAchievement saveAch;
             Achievement ach = Database.data.achievements[i];
-            saveAch = new SaveAchievement(ach.GetCurrentAmount(), ach.GetEarned());
+            saveAch = new SaveAchievement(ach.GetCurrentAmount(), ach.GetEarned(), ach.GetTier());
             data = JsonUtility.ToJson(saveAch);
             bf.Serialize(file, data);
         }
@@ -255,7 +255,7 @@ public static class Data
         {
             SaveAchievement saveAch = new SaveAchievement();
             JsonUtility.FromJsonOverwrite(bf.Deserialize(file).ToString(), saveAch);
-            Database.data.achievements[i].Load(saveAch.amount, saveAch.earned);
+            Database.data.achievements[i].Load(saveAch.amount, saveAch.earned,saveAch.tier);
         }
         file.Close();
     }

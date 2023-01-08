@@ -14,15 +14,15 @@ public class AchievementManager : MonoBehaviour
         }
     }
 
-    public void AchievementProgress(Achievement[] achievements)
+    public void AchievementProgress(Achievement achievement)
     {
-        foreach(Achievement ach in achievements) 
-        {
-            if (ach.GetEarned())
-                return;
+        if (achievement == null)
+            return;
 
-            ach.IncreaseCurrentAmount();
-            achievementList.GetChild(ach.ID).GetComponent<AchievementListItem>().RefreshProgress();
-        }     
+        if (achievement.GetEarned())
+            return;
+
+        achievement.IncreaseCurrentAmount();
+        achievementList.GetChild(achievement.ID).GetComponent<AchievementListItem>().RefreshProgress();
     }
 }

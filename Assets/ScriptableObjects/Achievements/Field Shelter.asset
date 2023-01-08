@@ -10,12 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91d6633374216784ab984303c5c21304, type: 3}
-  m_Name: 5 Field Shelter Grandmaster
+  m_Name: Field Shelter
   m_EditorClassIdentifier: 
-  ID: 4
-  achievementName: Field Shelter Grandmaster
+  ID: 0
+  achievementName: Field Shelter
   goal: {fileID: 11400000, guid: eed58d539323dd5408db6cf5c576a232, type: 2}
-  amount: 500
-  rewards:
-  - stat: 0
-    value: 11
+  amountForNextTier: 0a0000003200000064000000c8000000f4010000e8030000
+  tierRewards:
+  - rewards:
+    - stat: 0
+      value: 2
+  - rewards:
+    - stat: 0
+      value: 4
+  - rewards:
+    - stat: 0
+      value: 6
+  - rewards:
+    - stat: 0
+      value: 8
+  - rewards:
+    - stat: 0
+      value: 10
+  - rewards:
+    - stat: 0
+      value: 12

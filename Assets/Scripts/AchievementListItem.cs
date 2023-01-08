@@ -15,13 +15,22 @@ public class AchievementListItem : MonoBehaviour
     public void SetAchievement(Achievement ach)
     {
         achievement = ach;
-        achievementName.text = ach.achievementName;
+        achievementName.text = ach.GetAchievementName();
         achievementGoal.text = ach.goal.enemyName;
-        achievementProgress.text = $"{ach.GetCurrentAmount()}/{ach.amount}";
-        foreach(RewardBonus r in ach.rewards) 
+        achievementProgress.text = $"{ach.GetCurrentAmount()}/{ach.amountForNextTier[ach.GetTier()]}";
+        for (int i = 0; i < rewardList.childCount; i++)
         {
-            GameObject reward = Instantiate(achievementRewardPrefab, rewardList);
-            reward.GetComponent<TextMeshProUGUI>().text = $"+{r.value} {Utils.GetNiceName(r.stat)}";
+            TextMeshProUGUI reward = rewardList.GetChild(i).gameObject.GetComponent<TextMeshProUGUI>();
+            reward.text = "";
+            foreach (RewardBonus r in ach.tierRewards[ach.GetTier()].rewards)
+            {              
+                reward.text += $"+{r.value} {Utils.GetShortName(r.stat)}\n";
+            }
+            reward.text = reward.GetComponent<TextMeshProUGUI>().text.TrimEnd();
+            if(ach.GetCurrentAmount() < ach.amountForNextTier[i])
+                reward.color = Color.red;
+            else
+                reward.color = Color.green;
         }
         if (ach.GetEarned())
             gameObject.GetComponent<Image>().color = new Color32(0, 255, 44, 255);
@@ -29,7 +38,16 @@ public class AchievementListItem : MonoBehaviour
 
     public void RefreshProgress()      
     {
-        achievementProgress.text = $"{achievement.GetCurrentAmount()}/{achievement.amount}";
+        achievementName.text = achievement.GetAchievementName();
+        achievementProgress.text = $"{achievement.GetCurrentAmount()}/{achievement.amountForNextTier[achievement.GetTier()]}";
+        for (int i = 0; i < rewardList.childCount; i++)
+        {
+            TextMeshProUGUI reward = rewardList.GetChild(i).gameObject.GetComponent<TextMeshProUGUI>();
+            if (achievement.GetCurrentAmount() < achievement.amountForNextTier[i])
+                reward.color = Color.red;
+            else
+                reward.color = Color.green;
+        }
         if (achievement.GetEarned())
             gameObject.GetComponent<Image>().color = new Color32(0, 255, 44, 255);
     }

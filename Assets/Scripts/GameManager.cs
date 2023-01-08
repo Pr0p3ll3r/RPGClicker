@@ -178,7 +178,7 @@ public class GameManager : MonoBehaviour
 
         Player.Reward(enemy.exp, enemy.gold);
         questManager.QuestProgress(enemy);
-        achievementManager.AchievementProgress(enemy.achievements);
+        achievementManager.AchievementProgress(enemy.achievement);
     }
 
     private void ClearLootList()

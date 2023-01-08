@@ -20,7 +20,7 @@ public class EnemyData : ScriptableObject
     public Loot[] loot;
     public bool isTowerEnemy = false;
     public bool isBoss = false;
-    public Achievement[] achievements;
+    public Achievement achievement;
 
     public EnemyData GetCopy()
     {
