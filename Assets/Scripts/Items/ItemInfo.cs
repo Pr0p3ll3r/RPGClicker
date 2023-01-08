@@ -101,8 +101,8 @@ public class ItemInfo : MonoBehaviour
                     itemName.color = Color.green;
                     break;
                 case EquipmentRarity.Epic:
-                    rarity.SetColor(new Color(30, 115, 232, 255));
-                    itemName.color = new Color(30, 115, 232, 255);
+                    rarity.SetColor(new Color32(163, 53, 238, 255));
+                    itemName.color = new Color32(163, 53, 238, 255);
                     break;
                 case EquipmentRarity.Legendary:
                     rarity.SetColor(new Color32(255, 165, 0, 255));
