@@ -8,7 +8,7 @@ public class LevelSystem : MonoBehaviour
 
     private PlayerUI hud;
     private PlayerInfo playerInfo;
-    private PlayerData data => Player.Instance.data;
+    private PlayerData data => Player.Instance.Data;
 
     private void Start()
     {

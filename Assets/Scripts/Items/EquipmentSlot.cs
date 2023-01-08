@@ -36,7 +36,7 @@ public class EquipmentSlot : MonoBehaviour
     {
         if (equipmentType == EquipmentType.MainHand)
         {
-            switch (Player.Instance.data.playerClass)
+            switch (Player.Instance.Data.playerClass)
             {
                 case PlayerClass.Warrior:
                     placeholderIcon = placeholderBigSwordIcon;
@@ -57,7 +57,7 @@ public class EquipmentSlot : MonoBehaviour
         }
         else if (equipmentType == EquipmentType.OffHand)
         {
-            switch (Player.Instance.data.playerClass)
+            switch (Player.Instance.Data.playerClass)
             {
                 case PlayerClass.Warrior:
                     placeholderIcon = placeholderBlockedIcon;

@@ -19,7 +19,7 @@ public class AchievementManager : MonoBehaviour
         if (achievement == null)
             return;
 
-        if (achievement.GetEarned())
+        if (achievement.Earned)
             return;
 
         achievement.IncreaseCurrentAmount();

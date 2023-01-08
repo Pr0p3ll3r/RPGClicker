@@ -13,14 +13,14 @@ public static class Data
         FileStream file;
         //Save player
         file = File.Create(savePath);
-        data = JsonUtility.ToJson(player.data);
+        data = JsonUtility.ToJson(player.Data);
         bf.Serialize(file, data);
 
         //Save pets
-        for (int i = 0; i < player.myPets.Length; i++)
+        for (int i = 0; i < player.MyPets.Length; i++)
         {
             SavePet savePet;
-            Pet pet = player.myPets[i];
+            Pet pet = player.MyPets[i];
             if (pet == null)
             {
                 savePet = new SavePet();
@@ -91,7 +91,7 @@ public static class Data
         {
             SaveLocation saveLoc;
             Location loc = Database.data.locations[i];
-            saveLoc = new SaveLocation(loc.unlocked, loc.bossDefeated);
+            saveLoc = new SaveLocation(loc.Unlocked, loc.BossDefeated);
             data = JsonUtility.ToJson(saveLoc);
             bf.Serialize(file, data);
         }
@@ -101,7 +101,7 @@ public static class Data
         {
             SaveAchievement saveAch;
             Achievement ach = Database.data.achievements[i];
-            saveAch = new SaveAchievement(ach.GetCurrentAmount(), ach.GetEarned(), ach.GetTier());
+            saveAch = new SaveAchievement(ach.CurrentAmount, ach.Earned, ach.Tier);
             data = JsonUtility.ToJson(saveAch);
             bf.Serialize(file, data);
         }
@@ -117,16 +117,16 @@ public static class Data
         FileStream file;
         //Debug.Log("Loading player data...");
         file = File.Open(savePath, FileMode.Open);
-        JsonUtility.FromJsonOverwrite(bf.Deserialize(file).ToString(), Player.Instance.data);
+        JsonUtility.FromJsonOverwrite(bf.Deserialize(file).ToString(), Player.Instance.Data);
 
         //Debug.Log("Loading pets data...");
-        for (int i = 0; i < Player.Instance.myPets.Length; i++)
+        for (int i = 0; i < Player.Instance.MyPets.Length; i++)
         {
             SavePet savePet = new SavePet();
             JsonUtility.FromJsonOverwrite(bf.Deserialize(file).ToString(), savePet);
             if (savePet.ID == -1)
             {
-                Player.Instance.myPets[i] = null;
+                Player.Instance.MyPets[i] = null;
             }
             else
             {
@@ -140,7 +140,7 @@ public static class Data
                         break;
                     pet.scrollsStat[j] = Database.data.scrollBonuses[savePet.statsIds[j]];
                 }
-                Player.Instance.myPets[i] = pet;
+                Player.Instance.MyPets[i] = pet;
             }
         }
 
@@ -246,8 +246,8 @@ public static class Data
         {
             SaveLocation saveLoc = new SaveLocation();
             JsonUtility.FromJsonOverwrite(bf.Deserialize(file).ToString(), saveLoc);
-            Database.data.locations[i].unlocked = saveLoc.unlocked;
-            Database.data.locations[i].bossDefeated = saveLoc.bossDefeated;
+            Database.data.locations[i].Unlocked = saveLoc.unlocked;
+            Database.data.locations[i].BossDefeated = saveLoc.bossDefeated;
         }
 
         //Debug.Log("Loading achievements...");

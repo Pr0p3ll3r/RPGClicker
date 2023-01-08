@@ -23,13 +23,15 @@ public class PlayerData
     public Stat hpSteal;
     public Stat hpStealLimit;
     public Stat twoSlotDropBonus;
+    public Stat maxPets;
 
     public int killedMonsters;
+    public int completedDungeons;
     public int completedQuests;
     public int earnedAchievements;
 
-    public int maxPets;
     public int currentTowerLevel;
+
     public bool IsFullHP()
     {
         if (currentHealth >= health.GetValue())
@@ -44,7 +46,7 @@ public class PlayerData
         level = 1;
         exp = 0;
         remainingPoints = 0;
-        maxPets = 1;
+        maxPets = new Stat(1);
         currentTowerLevel = 0;
         damage = new Stat(0);
         defense = new Stat(0);

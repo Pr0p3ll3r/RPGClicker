@@ -44,13 +44,4 @@ public class DatabaseSO : ScriptableObject, ISerializationCallbackReceiver
             achievements[i].ID = i;
         }
     }
-
-    public void ResetLocations()
-    {
-        for (int i = 1; i < locations.Length; i++)
-        {
-            locations[i].unlocked = false;
-            locations[i].bossDefeated = false;
-        }
-    }
 }

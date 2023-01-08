@@ -85,7 +85,7 @@ public class ItemInfo : MonoBehaviour
             itemName.text = $"{eq.itemName} +{eq.normalGrade.level}";
             ItemStatInfo reqLvl = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
             reqLvl.SetUp("Lvl Required:", $"{eq.lvlRequired}");
-            if (Player.Instance.data.level < eq.lvlRequired)
+            if (Player.Instance.Data.level < eq.lvlRequired)
             {
                 reqLvl.SetColor(Color.red);
             }
@@ -228,7 +228,7 @@ public class ItemInfo : MonoBehaviour
         rarity.SetUp("Rarity Bonus:", $"RANDOM");
         ItemStatInfo reqLvl = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
         reqLvl.SetUp("Lvl Required:", $"{eq.lvlRequired}");
-        if (Player.Instance.data.level < eq.lvlRequired)
+        if (Player.Instance.Data.level < eq.lvlRequired)
         {
             reqLvl.SetColor(Color.red);
         }

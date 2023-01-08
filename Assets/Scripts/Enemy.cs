@@ -89,7 +89,7 @@ public class Enemy : MonoBehaviour
 
         int damage = Data.damage;
         Utils.Critical(Data.criticalChance, Data.criticalDamage, ref damage);
-        damage -= player.data.defense.GetValue();
+        damage -= player.Data.defense.GetValue();
         damage = Mathf.Clamp(damage, 1, int.MaxValue);
         player.TakeDamage(damage);
         currentAttackRate = attackRate;

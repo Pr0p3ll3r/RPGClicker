@@ -134,8 +134,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         
-        PlayerData newPlayer = new PlayerData(nameInput.text, (PlayerClass)classDropdown.value);
-        Player.data = newPlayer;
+        Player.Data = new PlayerData(nameInput.text, (PlayerClass)classDropdown.value);
         PlayerPrefs.SetInt("NewGame", 0);
         SetGame();
     }
@@ -146,13 +145,13 @@ public class GameManager : MonoBehaviour
         Player.GetComponent<PlayerInfo>().RefreshStats();
         Player.GetComponent<PlayerInfo>().SetStatsDescription();
         mainPanel.SetActive(true);
-        Database.data.locations[0].bossDefeated = true;
+        Database.data.locations[0].BossDefeated = true;
         UnlockLocation(Database.data.locations[0]);
         ChangeLocation(Database.data.locations[0]);
         foreach (EquipmentSlot slot in PlayerEquipment.Instance.Slots)
             slot.SetRightPlaceholder();
-        if(Player.data.completedQuests < Database.data.quests.Length)
-            questManager.SetQuest(Database.data.quests[Player.data.completedQuests]);
+        if(Player.Data.completedQuests < Database.data.quests.Length)
+            questManager.SetQuest(Database.data.quests[Player.Data.completedQuests]);
         else
             questManager.SetQuest(null);
     }
@@ -174,8 +173,12 @@ public class GameManager : MonoBehaviour
         }
 
         if (enemy.isBoss)
-            currentLocation.bossDefeated = true;
-
+        {
+            currentLocation.BossDefeated = true;
+            if (currentLocation.isDungeon)
+                Player.Data.completedDungeons++;
+        }
+          
         Player.Reward(enemy.exp, enemy.gold);
         questManager.QuestProgress(enemy);
         achievementManager.AchievementProgress(enemy.achievement);
@@ -247,13 +250,13 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < locationList.childCount; i++)
         {
-            if (Player.data.level < Database.data.locations[i].lvlMin)
+            if (Player.Data.level < Database.data.locations[i].lvlMin)
             {
                 locationList.GetChild(i).GetComponent<Button>().interactable = false;
                 locationList.GetChild(i).transform.Find("Unlock").gameObject.SetActive(true);
                 locationList.GetChild(i).transform.Find("Unlock/ButtonUnlock").GetComponent<Button>().interactable = false;
             }
-            else if (Database.data.locations[i].unlocked)
+            else if (Database.data.locations[i].Unlocked)
             {
                 locationList.GetChild(i).GetComponent<Button>().interactable = true;
                 locationList.GetChild(i).transform.Find("Unlock").gameObject.SetActive(false);
@@ -270,7 +273,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < dungeonsList.childCount; i++)
         {
-            if (Player.data.level < Database.data.dungeons[i].lvlMin)
+            if (Player.Data.level < Database.data.dungeons[i].lvlMin)
                 dungeonsList.GetChild(i).GetComponent<Button>().interactable = false;
             else
                 dungeonsList.GetChild(i).GetComponent<Button>().interactable = true;
@@ -289,7 +292,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Inventory.ChangeGoldAmount(location.price);
-            location.unlocked = true;
+            location.Unlocked = true;
             RefreshLocationList();
         }
     }
@@ -318,7 +321,7 @@ public class GameManager : MonoBehaviour
         if (newLocation.isDungeon)
         {
             dungeonEnemyCount = 0;
-            newLocation.bossDefeated = false;
+            newLocation.BossDefeated = false;
         }
             
         NextEnemy();
@@ -335,7 +338,7 @@ public class GameManager : MonoBehaviour
                 Enemy.SetUp(currentLocation.enemies[UnityEngine.Random.Range(0, currentLocation.enemies.Length)]);
                 dungeonEnemy.text = $"{dungeonEnemyCount}/10";
             }
-            else if (!currentLocation.bossDefeated)
+            else if (!currentLocation.BossDefeated)
             {
                 Enemy.SetUp(currentLocation.boss);
                 dungeonEnemy.text = $"BOSS";
@@ -345,7 +348,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {   
-            if(currentLocation.bossDefeated)
+            if(currentLocation.BossDefeated)
                 Enemy.SetUp(currentLocation.enemies[UnityEngine.Random.Range(0, currentLocation.enemies.Length)]);
             else
                 Enemy.SetUp(currentLocation.boss);

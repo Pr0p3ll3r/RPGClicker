@@ -39,14 +39,14 @@ public class PlayerInfo : MonoBehaviour
     {
         RefreshStats();
 
-        statsButtons[0].onClick.AddListener(delegate { Player.data.AddStrength(true, 1); RefreshStats(); });
-        statsButtons[1].onClick.AddListener(delegate { Player.data.AddIntelligence(true, 1); RefreshStats(); });
-        statsButtons[2].onClick.AddListener(delegate { Player.data.AddDexterity(true, 1); RefreshStats(); });
+        statsButtons[0].onClick.AddListener(delegate { Player.Data.AddStrength(true, 1); RefreshStats(); });
+        statsButtons[1].onClick.AddListener(delegate { Player.Data.AddIntelligence(true, 1); RefreshStats(); });
+        statsButtons[2].onClick.AddListener(delegate { Player.Data.AddDexterity(true, 1); RefreshStats(); });
     }
 
     private void CheckPoints()
     {
-        if (Player.data.remainingPoints > 0)
+        if (Player.Data.remainingPoints > 0)
         {
             foreach (Button b in statsButtons)
             {
@@ -64,7 +64,7 @@ public class PlayerInfo : MonoBehaviour
 
     public void SetStatsDescription()
     {
-        switch (Player.data.playerClass)
+        switch (Player.Data.playerClass)
         {
             case PlayerClass.Warrior:
                 strengthBonuses.text = "+1 DMG";
@@ -96,26 +96,26 @@ public class PlayerInfo : MonoBehaviour
 
     public void RefreshStats()
     {
-        playerName.text = Player.data.nickname;
-        lvl.text = $"{Player.data.level}";
-        damage.text = $"{Player.data.damage.GetValue()}";
-        defense.text = $"{Player.data.defense.GetValue()}";
-        health.text = $"{Player.data.health.GetValue()}";
-        critDamage.text = $"{Player.data.criticalDamage.GetValue()}%";
-        critRate.text = $"{Player.data.criticalRate.GetValue()}%";
-        maxCritRate.text = $"{Player.data.maxCriticalRate.GetValue()}%";
-        accuracy.text = $"{Player.data.accuracy.GetValue()}";
-        hpSteal.text = $"{Player.data.hpSteal.GetValue()}%";
-        hpStealLimit.text = $"{Player.data.hpStealLimit.GetValue()}";
-        strength.text = $"{Player.data.strength.GetValue()}";
-        intelligence.text = $"{Player.data.intelligence.GetValue()}";
-        dexterity.text = $"{Player.data.dexterity.GetValue()}";
-        expBonus.text = $"{Player.data.expBonus.GetValue()}%";
-        goldBonus.text = $"{Player.data.goldBonus.GetValue()}%";
-        twoslotDropBonus.text = $"{Player.data.twoSlotDropBonus.GetValue()}%";
-        killedMonsters.text = $"{Player.data.killedMonsters}";
-        completedQuests.text = $"{Player.data.completedQuests}";
-        earnedAchievements.text = $"{Player.data.earnedAchievements}";
+        playerName.text = Player.Data.nickname;
+        lvl.text = $"{Player.Data.level}";
+        damage.text = $"{Player.Data.damage.GetValue()}";
+        defense.text = $"{Player.Data.defense.GetValue()}";
+        health.text = $"{Player.Data.health.GetValue()}";
+        critDamage.text = $"{Player.Data.criticalDamage.GetValue()}%";
+        critRate.text = $"{Player.Data.criticalRate.GetValue()}%";
+        maxCritRate.text = $"{Player.Data.maxCriticalRate.GetValue()}%";
+        accuracy.text = $"{Player.Data.accuracy.GetValue()}";
+        hpSteal.text = $"{Player.Data.hpSteal.GetValue()}%";
+        hpStealLimit.text = $"{Player.Data.hpStealLimit.GetValue()}";
+        strength.text = $"{Player.Data.strength.GetValue()}";
+        intelligence.text = $"{Player.Data.intelligence.GetValue()}";
+        dexterity.text = $"{Player.Data.dexterity.GetValue()}";
+        expBonus.text = $"{Player.Data.expBonus.GetValue()}%";
+        goldBonus.text = $"{Player.Data.goldBonus.GetValue()}%";
+        twoslotDropBonus.text = $"{Player.Data.twoSlotDropBonus.GetValue()}%";
+        killedMonsters.text = $"{Player.Data.killedMonsters}";
+        completedQuests.text = $"{Player.Data.completedQuests}";
+        earnedAchievements.text = $"{Player.Data.earnedAchievements}";
         CheckPoints();
     }
 }

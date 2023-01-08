@@ -8,12 +8,9 @@ public class Achievement : ScriptableObject, ISerializationCallbackReceiver
     public EnemyData goal;
     public int[] amountForNextTier = new int[6];
     public RewardBonusList[] tierRewards = new RewardBonusList[6];
-    private int currentAmount;
-    private bool earned;
-    public int GetCurrentAmount() { return currentAmount; }
-    public bool GetEarned() { return earned; }
-    private int tier;
-    public int GetTier() { return tier; }
+    public int CurrentAmount { get; private set; }
+    public bool Earned { get; private set; }
+    public int Tier { get; private set; }
 
     private readonly string[] tiers = new string[6]
     {
@@ -27,43 +24,43 @@ public class Achievement : ScriptableObject, ISerializationCallbackReceiver
 
     public string GetAchievementName()
     {
-        return $"{achievementName} {tiers[tier]}";
+        return $"{achievementName} {tiers[Tier]}";
     }
 
     public void IncreaseCurrentAmount() 
     { 
-        if(currentAmount < amountForNextTier[tier]) 
-            currentAmount++;
+        if(CurrentAmount < amountForNextTier[Tier]) 
+            CurrentAmount++;
 
-        if (currentAmount == amountForNextTier[tier])
+        if (CurrentAmount == amountForNextTier[Tier])
             GetRewards();
     }
 
     private void GetRewards()
     {
-        Player.Instance.data.earnedAchievements++;
-        foreach (var reward in tierRewards[tier].rewards)
+        Player.Instance.Data.earnedAchievements++;
+        foreach (var reward in tierRewards[Tier].rewards)
         {
-            Player.Instance.data.AddStat(reward.stat, reward.value);
+            Player.Instance.Data.AddStat(reward.stat, reward.value);
         }
-        if(tier < tiers.Length - 1)
-            tier++;
+        if(Tier < tiers.Length - 1)
+            Tier++;
         else
-            earned = true;
+            Earned = true;
     }
 
     public void Load(int currentAmount, bool earned, int tier)
     {
-        this.currentAmount = currentAmount;
-        this.earned = earned;
-        this.tier = tier;
+        CurrentAmount = currentAmount;
+        Earned = earned;
+        Tier = tier;
     }
 
     public void OnAfterDeserialize()
     {
-        currentAmount = 0;
-        earned = false;
-        tier = 0;
+        CurrentAmount = 0;
+        Earned = false;
+        Tier = 0;
     }
 
     public void OnBeforeSerialize() { }

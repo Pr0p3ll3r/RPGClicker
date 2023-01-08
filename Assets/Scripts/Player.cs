@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
         Instance = this;
     }
 
-    public PlayerData data;
+    public PlayerData Data { get; set; }
 
     private PlayerUI hud;
     private LevelSystem ls;
@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     private PlayerEquipment Equipment => PlayerEquipment.Instance;
     private PlayerInventory Inventory => PlayerInventory.Instance;
 
-    public Pet[] myPets = new Pet[2];
+    public Pet[] MyPets { get; private set; } = new Pet[2];
     [SerializeField] private Transform petList;
     private PetInfo[] petsInfo;
 
@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     private PlayerInfo playerInfo;
     private Enemy Enemy => Enemy.Instance;
     public bool IsDead { get; private set; }
- 
+
     private void Start()
     {
         hud = GetComponent<PlayerUI>();
@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
 
     private void RegenerateHealth()
     {
-        if (data.IsFullHP() || IsDead) return;
+        if (Data.IsFullHP() || IsDead) return;
 
         if (regeneration > 0)
         {
@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            data.currentHealth++;
+            Data.currentHealth++;
             hud.UpdateHealthBar();
             regeneration = healthRegenerationTime;
             healthRegenerationTimer.text = "";
@@ -82,12 +82,12 @@ public class Player : MonoBehaviour
     {
         if (IsDead || Enemy.IsDead) return;
 
-        int damage = data.damage.GetValue();
+        int damage = Data.damage.GetValue();
         int enemyDefense = Enemy.Data.defense;
         Debug.Log("Your Damage: " + damage + " Enemy Defense: " + enemyDefense);
         DamagePopup damagePopup = GameManager.damagePopupPooler.Get().GetComponent<DamagePopup>();
         damagePopup.transform.position = popupPosition.position;
-        bool crit = Utils.Critical(data.criticalDamage.GetValue(), data.criticalRate.GetValue(), ref damage, data.maxCriticalRate.GetValue());
+        bool crit = Utils.Critical(Data.criticalDamage.GetValue(), Data.criticalRate.GetValue(), ref damage, Data.maxCriticalRate.GetValue());
         damage -= enemyDefense;
         damage = Mathf.Clamp(damage, 1, int.MaxValue);
         Debug.Log($"Damage: {damage} Crit: {crit}");
@@ -100,12 +100,12 @@ public class Player : MonoBehaviour
 
     private void HealthSteal(int damage)
     {
-        int hpSteal = Mathf.CeilToInt(damage * (float)data.hpSteal.GetValue()/100);
-        hpSteal = Mathf.Clamp(hpSteal, 0, data.hpStealLimit.GetValue());
-        data.currentHealth += hpSteal;
-        data.currentHealth = Mathf.Clamp(data.currentHealth, 0, data.health.GetValue());
+        int hpSteal = Mathf.CeilToInt(damage * (float)Data.hpSteal.GetValue()/100);
+        hpSteal = Mathf.Clamp(hpSteal, 0, Data.hpStealLimit.GetValue());
+        Data.currentHealth += hpSteal;
+        Data.currentHealth = Mathf.Clamp(Data.currentHealth, 0, Data.health.GetValue());
         hud.UpdateHealthBar();
-        if(data.IsFullHP())
+        if(Data.IsFullHP())
         {
             healthRegenerationTimer.text = "";
             regeneration = healthRegenerationTime;
@@ -117,13 +117,13 @@ public class Player : MonoBehaviour
         if (IsDead) return;
 
         SoundManager.Instance.Play("PlayerHurt");
-        data.currentHealth -= damage;
+        Data.currentHealth -= damage;
         hud.ShowVignette();      
         hud.UpdateHealthBar();
         if(regeneration == 0)
             regeneration = healthRegenerationTime;
 
-        if (data.currentHealth <= 0)
+        if (Data.currentHealth <= 0)
         {
             Die();
         }
@@ -131,16 +131,16 @@ public class Player : MonoBehaviour
 
     public void Reward(int exp, int gold)
     {
-        exp += Mathf.FloorToInt((float)data.expBonus.GetValue()/100 * exp);
-        gold += Mathf.FloorToInt((float)data.goldBonus.GetValue()/100 * gold);
+        exp += Mathf.FloorToInt((float)Data.expBonus.GetValue()/100 * exp);
+        gold += Mathf.FloorToInt((float)Data.goldBonus.GetValue()/100 * gold);
         ls.GetExp(exp);
         Inventory.ChangeGoldAmount(gold);
-        for (int i = 0; i < myPets.Length; i++)
+        for (int i = 0; i < MyPets.Length; i++)
         {
-            if (myPets[i] != null)
-                myPets[i].GetExp(exp / 2, petsInfo[i]);
+            if (MyPets[i] != null)
+                MyPets[i].GetExp(exp / 2, petsInfo[i]);
         }
-        data.killedMonsters++;
+        Data.killedMonsters++;
     }
 
     public void Die()
@@ -157,22 +157,22 @@ public class Player : MonoBehaviour
     public void Revive()
     {
         IsDead = false;
-        data.currentHealth = data.health.GetValue();
+        Data.currentHealth = Data.health.GetValue();
         hud.UpdateHealthBar();
     }
 
     public bool Equip(Equipment item)
     {
         Equipment previousItem;
-        if (item.lvlRequired <= data.level)
+        if (item.lvlRequired <= Data.level)
         {
             Inventory.RemoveItem(item);
             Equipment.EquipItem(item, out previousItem);
-            item.AddStats(data);
+            item.AddStats(Data);
             if (previousItem != null)
             {
                 Inventory.AddItem(previousItem, 1);
-                previousItem.RemoveStats(data);
+                previousItem.RemoveStats(Data);
             }
         }
         else
@@ -191,7 +191,7 @@ public class Player : MonoBehaviour
         {
             Equipment.UnequipItem(item);
             Inventory.AddItem(item, 1);
-            item.RemoveStats(data);
+            item.RemoveStats(Data);
         }
         else
         {
@@ -205,20 +205,20 @@ public class Player : MonoBehaviour
 
     public void EquipPet(Pet pet)
     {
-        if (myPets.Length != data.maxPets)
+        if (MyPets.Length != Data.maxPets.GetValue())
         {
-            for (int i = 0; i < data.maxPets; i++)
+            for (int i = 0; i < Data.maxPets.GetValue(); i++)
             {
-                if (myPets[i] == null)
+                if (MyPets[i] == null)
                 {
-                    myPets[i] = pet;
+                    MyPets[i] = pet;
                     break;
                 }
             }
             Inventory.RemoveItem(pet);
             Inventory.RefreshUI();
             RefreshPetList();
-            pet.AddStats(data);
+            pet.AddStats(Data);
         }
         else
         {
@@ -230,16 +230,16 @@ public class Player : MonoBehaviour
     {
         if (!Inventory.IsFull())
         {
-            for (int i = 0; i < myPets.Length; i++)
+            for (int i = 0; i < MyPets.Length; i++)
             {
-                if (myPets[i] == pet)
+                if (MyPets[i] == pet)
                 {
-                    myPets[i] = null;
+                    MyPets[i] = null;
                     break;
                 }
             }
             Inventory.AddItem(pet, 1);
-            pet.RemoveStats(data);
+            pet.RemoveStats(Data);
         }
         else
         {
@@ -249,20 +249,20 @@ public class Player : MonoBehaviour
 
     public void RefreshPetList()
     {
-        for (int i = 0; i < myPets.Length; i++)
+        for (int i = 0; i < MyPets.Length; i++)
         {
-            if (myPets[i] != null)
-                petsInfo[i].SetUp(myPets[i]);
+            if (MyPets[i] != null)
+                petsInfo[i].SetUp(MyPets[i]);
         }
     }
 
     public bool CanUseIt(Equipment eq)
     {
-        if (data.level < eq.lvlRequired) return false;
+        if (Data.level < eq.lvlRequired) return false;
 
         for (int i = 0; i < eq.canBeUsedBy.Length; i++)
         {
-            if (data.playerClass == eq.canBeUsedBy[i])
+            if (Data.playerClass == eq.canBeUsedBy[i])
             {
                 return true;
             }

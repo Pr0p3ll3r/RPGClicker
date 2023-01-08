@@ -35,7 +35,7 @@ public class QuestManager : MonoBehaviour
                 randomReward.SetActive(true);
             else
                 randomReward.SetActive(false);
-            switch (Player.data.playerClass)
+            switch (Player.Data.playerClass)
             {
                 case PlayerClass.Warrior:
                     foreach (ItemStack itemStack in quest.rewardWarrior)
@@ -113,7 +113,7 @@ public class QuestManager : MonoBehaviour
                 return;
 
             ItemStack reward = null;
-            switch (Player.data.playerClass)
+            switch (Player.Data.playerClass)
             {
                 case PlayerClass.Warrior:
                     reward = LootTable.QuestRewardRandom(currentQuest.rewardWarrior);
@@ -138,7 +138,7 @@ public class QuestManager : MonoBehaviour
         }
         else
         {
-            switch (Player.data.playerClass)
+            switch (Player.Data.playerClass)
             {
                 case PlayerClass.Warrior:
                     if (!Inventory.HaveEnoughSlots(currentQuest.rewardWarrior))
@@ -192,7 +192,7 @@ public class QuestManager : MonoBehaviour
         //Set next quest
         currentQuestProgress = 0;
         PlayerPrefs.SetInt("QuestProgress", currentQuestProgress);
-        Player.data.completedQuests++;
+        Player.Data.completedQuests++;
         if (currentQuest.ID == Database.data.quests.Length - 1) //no more quests
             SetQuest(null);
         else

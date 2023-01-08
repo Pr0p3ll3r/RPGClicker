@@ -52,8 +52,8 @@ public class PlayerUI : MonoBehaviour
 
     public void UpdateHealthBar()
     {
-        healthBar.fillAmount = (float)Player.data.currentHealth / Player.data.health.GetValue();
-        healthText.text = $"{Player.data.currentHealth}/{Player.data.health.GetValue()}";
+        healthBar.fillAmount = (float)Player.Data.currentHealth / Player.Data.health.GetValue();
+        healthText.text = $"{Player.Data.currentHealth}/{Player.Data.health.GetValue()}";
     }
 
     public void UpdateLevel(int level, int exp, int requireExp)

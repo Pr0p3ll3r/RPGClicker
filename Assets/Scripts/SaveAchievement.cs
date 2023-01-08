@@ -10,9 +10,9 @@ public class SaveAchievement
         earned = false;
         tier = 0;
     }
-    public SaveAchievement(int progress, bool earned, int tier)
+    public SaveAchievement(int amount, bool earned, int tier)
     {
-        this.amount = progress;
+        this.amount = amount;
         this.earned = earned;
         this.tier = tier;
     }

@@ -102,7 +102,7 @@ public static class LootTable
     private static int RandomNumberOfSlots()
     {
         float twoSlotDrop = 10;
-        float twoSlotDropBonus = Player.Instance.data.twoSlotDropBonus.GetValue() / 100;
+        float twoSlotDropBonus = Player.Instance.Data.twoSlotDropBonus.GetValue() / 100;
         twoSlotDrop += twoSlotDropBonus * twoSlotDrop;
         var weights = new (float weight, int number)[]
         {
