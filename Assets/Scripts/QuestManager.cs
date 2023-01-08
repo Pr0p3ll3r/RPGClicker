@@ -17,20 +17,21 @@ public class QuestManager : MonoBehaviour
     private Player Player => Player.Instance;
     private PlayerInventory Inventory => PlayerInventory.Instance;
 
-    private void Start()
-    {
-        getRewardButton.interactable = false;
-    }
-
     public void SetQuest(Quest quest)
     {
         currentQuestProgress = PlayerPrefs.GetInt("QuestProgress", 0);
+        getRewardButton.interactable = false;
+        getRewardButton.onClick.RemoveAllListeners();
+        foreach (Transform child in questReward)
+        {
+            Destroy(child.gameObject);
+        }
         if (quest != null)
         {
             currentQuest = quest;
             questName.text = currentQuest.name;
             questGoal.sprite = currentQuest.goal.icon;
-            questProgress.text = $"{currentQuestProgress}/{quest.amount}";
+            questProgress.text = $"{currentQuestProgress}/{currentQuest.amount}";
             if(currentQuest.randomReward)
                 randomReward.SetActive(true);
             else
@@ -38,35 +39,35 @@ public class QuestManager : MonoBehaviour
             switch (Player.Data.playerClass)
             {
                 case PlayerClass.Warrior:
-                    foreach (ItemStack itemStack in quest.rewardWarrior)
+                    foreach (ItemStack itemStack in currentQuest.rewardWarrior)
                     {
                         GameObject reward = Instantiate(itemRewardPrefab, questReward);
                         reward.GetComponent<InventorySlot>().FillSlot(itemStack.item, itemStack.amount);
                     }
                     break;
                 case PlayerClass.Blader:
-                    foreach (ItemStack itemStack in quest.rewardBlader)
+                    foreach (ItemStack itemStack in currentQuest.rewardBlader)
                     {
                         GameObject reward = Instantiate(itemRewardPrefab, questReward);
                         reward.GetComponent<InventorySlot>().FillSlot(itemStack.item, itemStack.amount);
                     }
                     break;
                 case PlayerClass.Archer:
-                    foreach (ItemStack itemStack in quest.rewardArcher)
+                    foreach (ItemStack itemStack in currentQuest.rewardArcher)
                     {
                         GameObject reward = Instantiate(itemRewardPrefab, questReward);
                         reward.GetComponent<InventorySlot>().FillSlot(itemStack.item, itemStack.amount);
                     }
                     break;
                 case PlayerClass.Wizard:
-                    foreach (ItemStack itemStack in quest.rewardWizard)
+                    foreach (ItemStack itemStack in currentQuest.rewardWizard)
                     {
                         GameObject reward = Instantiate(itemRewardPrefab, questReward);
                         reward.GetComponent<InventorySlot>().FillSlot(itemStack.item, itemStack.amount);
                     }
                     break;
                 case PlayerClass.Shielder:
-                    foreach (ItemStack itemStack in quest.rewardShielder)
+                    foreach (ItemStack itemStack in currentQuest.rewardShielder)
                     {
                         GameObject reward = Instantiate(itemRewardPrefab, questReward);
                         reward.GetComponent<InventorySlot>().FillSlot(itemStack.item, itemStack.amount);
@@ -74,6 +75,8 @@ public class QuestManager : MonoBehaviour
                     break;
             }
             getRewardButton.onClick.AddListener(delegate { GetRewards(); });
+            if (currentQuestProgress == currentQuest.amount)
+                getRewardButton.interactable = true;
         }
         else
         {
@@ -97,12 +100,13 @@ public class QuestManager : MonoBehaviour
             currentQuestProgress++;
             questProgress.text = $"{currentQuestProgress}/{currentQuest.amount}";
             PlayerPrefs.SetInt("QuestProgress", currentQuestProgress);
-        }
-        else
-        {
-            getRewardButton.interactable = true;
-            GameManager.Instance.ShowText("Quest completed!", Color.green);
-        }          
+
+            if(currentQuestProgress == currentQuest.amount) 
+            {
+                getRewardButton.interactable = true;
+                GameManager.Instance.ShowText("Quest completed!", Color.green);
+            }
+        }    
     }
 
     private void GetRewards()
@@ -183,12 +187,6 @@ public class QuestManager : MonoBehaviour
             }
         }
 
-        getRewardButton.interactable = false;
-        getRewardButton.onClick.RemoveAllListeners();
-        foreach (Transform child in questReward)
-        {
-            Destroy(child.gameObject);
-        }
         //Set next quest
         currentQuestProgress = 0;
         PlayerPrefs.SetInt("QuestProgress", currentQuestProgress);
