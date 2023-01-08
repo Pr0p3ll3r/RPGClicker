@@ -127,16 +127,16 @@ public class PlayerData
             case Stats.HPStealLimit:
                 hpStealLimit.AddModifier(amount);
                 break;
-            case Stats.HPStealPercent:
+            case Stats.HPSteal:
                 hpSteal.AddModifier(amount);
                 break;
-            case Stats.GoldBonusPercent:
+            case Stats.GoldBonus:
                 goldBonus.AddModifier(amount);
                 break;
-            case Stats.ExpBonusPercent:
+            case Stats.ExpBonus:
                 expBonus.AddModifier(amount);
                 break;
-            case Stats.TwoSlotItemDropPercent:
+            case Stats.TwoSlotItemDrop:
                 twoSlotDropBonus.AddModifier(amount);
                 break;
             case Stats.Strength:
@@ -179,16 +179,16 @@ public class PlayerData
             case Stats.HPStealLimit:
                 hpStealLimit.RemoveModifier(amount);
                 break;
-            case Stats.HPStealPercent:
+            case Stats.HPSteal:
                 hpSteal.RemoveModifier(amount);
                 break;
-            case Stats.GoldBonusPercent:
+            case Stats.GoldBonus:
                 goldBonus.RemoveModifier(amount);
                 break;
-            case Stats.ExpBonusPercent:
+            case Stats.ExpBonus:
                 expBonus.RemoveModifier(amount);
                 break;
-            case Stats.TwoSlotItemDropPercent:
+            case Stats.TwoSlotItemDrop:
                 twoSlotDropBonus.RemoveModifier(amount);
                 break;
             case Stats.Strength:

@@ -42,6 +42,45 @@ public static class Utils
         return name;
     }
 
+    public static string GetShortName(Stats stat)
+    {
+        switch (stat)
+        {
+            case Stats.Damage:
+                return "DMG";
+            case Stats.Defense:
+                return "DEF";
+            case Stats.Health:
+                return "HP";
+            case Stats.CriticalDamage:
+                return "CRIT DMG";
+            case Stats.CriticalRate:
+                return "CRIT RT";
+            case Stats.MaxCriticalRate:
+                return "MAX CRIT RT";
+            case Stats.Accuracy:
+                return "ACC";
+            case Stats.HPSteal:
+                return "HP STEAL%";
+            case Stats.HPStealLimit:
+                return "HP STEAL LIMIT";
+            case Stats.GoldBonus:
+                return "GOLD DROP%";
+            case Stats.TwoSlotItemDrop:
+                return "TWO-SLOT DROP%";
+            case Stats.ExpBonus:
+                return "EXP%";
+            case Stats.Strength:
+                return "STR";
+            case Stats.Intelligence:
+                return "INT";
+            case Stats.Dexterity:
+                return "DEX";
+            default:
+                return "";
+        }
+    }
+
     public static int GetRightSlot(Equipment eq)
     {
         EquipmentSlot[] slots = PlayerEquipment.Instance.Slots;
