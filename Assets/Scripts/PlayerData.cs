@@ -39,6 +39,68 @@ public class PlayerData
         return false; 
     }
 
+    public PlayerData() 
+    {
+        nickname = "BOB";
+        playerClass = PlayerClass.Warrior;
+        level = 1;
+        exp = 0;
+        remainingPoints = 0;
+        maxPets = new Stat(1);
+        currentTowerLevel = 0;
+        damage = new Stat(0);
+        defense = new Stat(0);
+        health = new Stat(20);
+        strength = new Stat(0);
+        intelligence = new Stat(0);
+        dexterity = new Stat(0);
+        switch (playerClass)
+        {
+            case PlayerClass.Warrior:
+                AddStrength(false, 12);
+                AddIntelligence(false, 4);
+                AddDexterity(false, 4);
+                accuracy = new Stat(4);
+                break;
+            case PlayerClass.Blader:
+                AddStrength(false, 8);
+                AddIntelligence(false, 3);
+                AddDexterity(false, 8);
+                accuracy = new Stat(6);
+                break;
+            case PlayerClass.Archer:
+                AddStrength(false, 6);
+                AddIntelligence(false, 1);
+                AddDexterity(false, 10);
+                accuracy = new Stat(5);
+                break;
+            case PlayerClass.Wizard:
+                AddStrength(false, 1);
+                AddIntelligence(false, 10);
+                AddDexterity(false, 6);
+                accuracy = new Stat(5);
+                break;
+            case PlayerClass.Shielder:
+                AddStrength(false, 6);
+                AddIntelligence(false, 2);
+                AddDexterity(false, 10);
+                accuracy = new Stat(3);
+                break;
+        }
+        currentHealth = health.GetValue();
+        criticalDamage = new Stat(20);
+        criticalRate = new Stat(5);
+        maxCriticalRate = new Stat(50);
+        goldBonus = new Stat(0);
+        expBonus = new Stat(0);
+        hpSteal = new Stat(0);
+        hpStealLimit = new Stat(0);
+        twoSlotDropBonus = new Stat(0);
+        killedMonsters = 0;
+        completedQuests = 0;
+        earnedAchievements = 0;
+    }
+
     public PlayerData(string _nickname, PlayerClass _playerClass)
     {
         nickname = _nickname;
@@ -90,7 +152,7 @@ public class PlayerData
         currentHealth = health.GetValue();
         criticalDamage = new Stat(20);
         criticalRate = new Stat(5);
-        maxCriticalRate = new Stat(50);        
+        maxCriticalRate = new Stat(50);
         goldBonus = new Stat(0);
         expBonus = new Stat(0);
         hpSteal = new Stat(0);
