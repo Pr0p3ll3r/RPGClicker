@@ -18,7 +18,8 @@ public enum Stats
     ExpBonus,
     Strength,
     Intelligence,
-    Dexterity
+    Dexterity,
+    MaxPets
 }
 
 [System.Serializable]

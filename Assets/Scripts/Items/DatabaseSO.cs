@@ -12,6 +12,7 @@ public class DatabaseSO : ScriptableObject, ISerializationCallbackReceiver
     public EnemyInfo[] towerEnemies;
     public Quest[] quests;
     public Achievement[] achievements;
+    public RebirthBonus[] rebirthBonuses;
 
     public void OnBeforeSerialize()
     {
@@ -42,6 +43,11 @@ public class DatabaseSO : ScriptableObject, ISerializationCallbackReceiver
         for (int i = 0; i < achievements.Length; i++)
         {
             achievements[i].ID = i;
+        }
+
+        for (int i = 0; i < rebirthBonuses.Length; i++)
+        {
+            rebirthBonuses[i].ID = i;
         }
     }
 }

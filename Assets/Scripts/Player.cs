@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -12,7 +9,8 @@ public class Player : MonoBehaviour
         Instance = this;
     }
 
-    public PlayerData Data { get; set; }
+    [field: SerializeField]
+    public PlayerData Data { get; set; } = new PlayerData();
 
     private PlayerUI hud;
     private LevelSystem ls;
@@ -43,6 +41,16 @@ public class Player : MonoBehaviour
         petsInfo = petList.GetComponentsInChildren<PetInfo>();
         RefreshPetList();
         regeneration = PlayerPrefs.GetFloat("HealthRegeneration", healthRegenerationTime);
+    }
+
+    private void OnEnable()
+    {
+        RebirthSystem.OnRebirth += Reborn;
+    }
+
+    private void OnDisable()
+    {
+        RebirthSystem.OnRebirth -= Reborn;
     }
 
     void Update()
@@ -159,6 +167,43 @@ public class Player : MonoBehaviour
         IsDead = false;
         Data.currentHealth = Data.health.GetValue();
         hud.UpdateHealthBar();
+    }
+
+    private void Reborn()
+    {
+        IsDead = false;
+        Data = Data.Reborn(Data);
+        //Clear pets
+        for (int i = 0; i < MyPets.Length; i++)
+        {
+            if (MyPets[i] == null) continue;
+
+            MyPets[i].RemoveStats(Data);
+            MyPets[i] = null;
+        }
+        //Clear Inventory
+        Inventory.ChangeGoldAmount(-Inventory.data.gold);
+        for (int i = 0; i < Inventory.slots.Length; i++)
+        {
+            Inventory.slots[i].item = null;
+            Inventory.slots[i].amount = 0;
+        }
+        Inventory.RefreshUI();
+        //Clear Equipment
+        for (int i = 0; i < Equipment.Slots.Length; i++)
+        {
+            if (Equipment.Slots[i].item == null) continue;
+
+            Equipment.Slots[i].item.RemoveStats(Data);
+            Equipment.Slots[i].item = null;
+        }
+        Equipment.RefreshUI();
+        Data.currentHealth = Data.health.GetValue();
+        hud.UpdateLevel();
+        hud.UpdateHealthBar();
+        playerInfo.RefreshStats();
+        regeneration = healthRegenerationTime;
+        healthRegenerationTimer.text = "";
     }
 
     public bool Equip(Equipment item)

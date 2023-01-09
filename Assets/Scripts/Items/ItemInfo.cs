@@ -1,8 +1,6 @@
 using System;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class ItemInfo : MonoBehaviour

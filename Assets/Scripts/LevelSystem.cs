@@ -2,51 +2,52 @@
 
 public class LevelSystem : MonoBehaviour
 {
-    private static int BASE_REQUIRE_EXP = 10; 
+    public static int BASE_REQUIRE_EXP = 10; 
     private int requireExp = 10;
-    private int maxLevel = 100;
+    public static int MaxLevel { get; private set; }
 
     private PlayerUI hud;
     private PlayerInfo playerInfo;
-    private PlayerData data => Player.Instance.Data;
+    private PlayerData Data => Player.Instance.Data;
 
     private void Start()
     {
+        MaxLevel = 100;
         hud = GetComponent<PlayerUI>();
         playerInfo = GetComponent<PlayerInfo>();
-        requireExp = BASE_REQUIRE_EXP * data.level;
-        hud.UpdateLevel(data.level, data.exp, requireExp);
+        requireExp = BASE_REQUIRE_EXP * Data.level;
+        hud.UpdateLevel();
     }
 
     public void GetExp(int amount)
     {
-        if (data.level == maxLevel) return;
+        if (Data.level == MaxLevel) return;
 
-        data.exp += amount;
-        hud.UpdateLevel(data.level, data.exp, requireExp);
+        Data.exp += amount;
+        hud.UpdateLevel();
 
         CheckLevelUp();
     }
 
     private void CheckLevelUp()
     {
-        if (data.level == maxLevel)
+        if (Data.level == MaxLevel)
         {
-            data.exp = 0;
-            hud.UpdateLevel(data.level, data.exp, requireExp);
+            Data.exp = 0;
+            hud.UpdateLevel();
             return;
         }
 
-        if (data.exp < requireExp)
+        if (Data.exp < requireExp)
             return;
         
-        data.exp -= requireExp;
-        data.level++;
-        data.remainingPoints++;
+        Data.exp -= requireExp;
+        Data.level++;
+        Data.remainingPoints++;
         GameManager.Instance.ShowText("Level Up!", Color.green);
-        requireExp = BASE_REQUIRE_EXP * data.level;
+        requireExp = BASE_REQUIRE_EXP * Data.level;
         playerInfo.RefreshStats();
-        hud.UpdateLevel(data.level, data.exp, requireExp);
+        hud.UpdateLevel();
         //Debug.Log("Level Up! Current level: " + data.level);
         CheckLevelUp();
     }

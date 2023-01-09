@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Collections;
 
 public static class Data
 {
@@ -103,6 +104,16 @@ public static class Data
             Achievement ach = Database.data.achievements[i];
             saveAch = new SaveAchievement(ach.CurrentAmount, ach.Earned, ach.Tier);
             data = JsonUtility.ToJson(saveAch);
+            bf.Serialize(file, data);
+        }
+
+        //Save rebirth system
+        for (int i = 0; i < Database.data.rebirthBonuses.Length; i++)
+        {
+            SaveRebirthBonus saveBonus;
+            RebirthBonus bonus = Database.data.rebirthBonuses[i];
+            saveBonus = new SaveRebirthBonus(bonus.CurrentLevel, bonus.CurrentValue);
+            data = JsonUtility.ToJson(saveBonus);
             bf.Serialize(file, data);
         }
 
@@ -255,8 +266,18 @@ public static class Data
         {
             SaveAchievement saveAch = new SaveAchievement();
             JsonUtility.FromJsonOverwrite(bf.Deserialize(file).ToString(), saveAch);
-            Database.data.achievements[i].Load(saveAch.amount, saveAch.earned,saveAch.tier);
+            Database.data.achievements[i].Load(saveAch.amount, saveAch.earned, saveAch.tier);
         }
+
+        //Debug.Log("Loading rebirth system...");
+        for (int i = 0; i < Database.data.rebirthBonuses.Length; i++)
+        {
+            SaveRebirthBonus saveBonus = new SaveRebirthBonus();
+            JsonUtility.FromJsonOverwrite(bf.Deserialize(file).ToString(), saveBonus);
+            Database.data.rebirthBonuses[i].CurrentLevel = saveBonus.level;
+            Database.data.rebirthBonuses[i].CurrentValue = saveBonus.value;
+        }
+
         file.Close();
     }
 }

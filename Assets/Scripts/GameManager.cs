@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -38,7 +35,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject adventurePanel;
     [SerializeField] private GameObject towerPanel;
     [SerializeField] private GameObject questPanel;
-    [SerializeField] private GameObject achievementsPanel;
+    [SerializeField] private GameObject rebirthPanel;
 
     [Header("Adventure")]
     [SerializeField] private GameObject locationPrefab;
@@ -83,7 +80,7 @@ public class GameManager : MonoBehaviour
         adventurePanel.SetActive(false);
         towerPanel.SetActive(false);
         questPanel.SetActive(false);
-        achievementsPanel.SetActive(false);
+        rebirthPanel.SetActive(false);
 
         CreateLocationList();
         CloseAdventurePanels();
@@ -126,6 +123,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        RebirthSystem.OnRebirth += Reborn;
+    }
+
+    private void OnDisable()
+    {
+        RebirthSystem.OnRebirth -= Reborn;
+    }
+
     private void StartNewGame()
     {
         if (string.IsNullOrEmpty(nameInput.text))
@@ -154,6 +161,20 @@ public class GameManager : MonoBehaviour
             questManager.SetQuest(Database.data.quests[Player.Data.completedQuests]);
         else
             questManager.SetQuest(null);
+    }
+
+    private void Reborn()
+    {
+        Database.data.locations[0].BossDefeated = true;
+        foreach(Location location in Database.data.locations)
+        {
+            location.OnAfterDeserialize();
+        }
+        Database.data.locations[0].BossDefeated = true;
+        UnlockLocation(Database.data.locations[0]);
+        ChangeLocation(Database.data.locations[0]);
+        PlayerPrefs.SetInt("QuestProgress", 0);
+        questManager.SetQuest(Database.data.quests[0]);
     }
 
     public void Reward(EnemyData enemy)

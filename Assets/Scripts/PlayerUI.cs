@@ -2,7 +2,6 @@
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
-using System.Collections.Generic;
 
 public class PlayerUI : MonoBehaviour
 {
@@ -20,10 +19,12 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private GameObject moreStatsPanel;
     [SerializeField] private GameObject petsPanel;
     [SerializeField] private GameObject equipmentPanel;
+    [SerializeField] private GameObject achievementsPanel;
     [SerializeField] private Button statsButton;
     [SerializeField] private Button moreStatsButton;
     [SerializeField] private Button petsButton;
     [SerializeField] private Button equipmentButton;
+    [SerializeField] private Button achievementsButton;
 
     private Player Player => Player.Instance;
 
@@ -37,6 +38,7 @@ public class PlayerUI : MonoBehaviour
         moreStatsButton.onClick.AddListener(delegate { ClosePanels(); moreStatsPanel.SetActive(true); });
         petsButton.onClick.AddListener(delegate { ClosePanels(); petsPanel.SetActive(true); });
         equipmentButton.onClick.AddListener(delegate { ClosePanels(); equipmentPanel.SetActive(true); });
+        achievementsButton.onClick.AddListener(delegate { ClosePanels(); achievementsPanel.SetActive(true); });
     }
 
     private IEnumerator FadeToZeroAlpha()
@@ -56,19 +58,20 @@ public class PlayerUI : MonoBehaviour
         healthText.text = $"{Player.Data.currentHealth}/{Player.Data.health.GetValue()}";
     }
 
-    public void UpdateLevel(int level, int exp, int requireExp)
+    public void UpdateLevel()
     {
-        if(level == 100)
+        int requireExp = LevelSystem.BASE_REQUIRE_EXP * Player.Data.level;
+        if (Player.Data.level == 100)
         {
             expText.text = $"MAXED";
             expBar.fillAmount = 1;
         }
         else
         {
-            expText.text = $"{exp}/{requireExp}";
-            expBar.fillAmount = (float)exp / requireExp;
+            expText.text = $"{Player.Data.exp}/{requireExp}";
+            expBar.fillAmount = (float)Player.Data.exp / requireExp;
         }
-        levelText.text = $"{level} ";
+        levelText.text = $"{Player.Data.level} ";
     }
 
     public void ShowVignette()
@@ -103,5 +106,6 @@ public class PlayerUI : MonoBehaviour
         moreStatsPanel.SetActive(false);
         petsPanel.SetActive(false);
         equipmentPanel.SetActive(false);
+        achievementsPanel.SetActive(false);
     }
 }

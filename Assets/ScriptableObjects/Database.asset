@@ -160,3 +160,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ee523eebd0c93f6479210242fc9f3fe4, type: 2}
   achievements:
   - {fileID: 11400000, guid: 90e26040367190b429725641284f508e, type: 2}
+  rebirthBonuses:
+  - {fileID: 11400000, guid: 78fa1a2bb66289546a665ed88fcae4de, type: 2}
+  - {fileID: 11400000, guid: 843fe7709390ca544a26d346b5e648a2, type: 2}
