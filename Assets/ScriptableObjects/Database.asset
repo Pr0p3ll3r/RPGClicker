@@ -163,3 +163,4 @@ MonoBehaviour:
   rebirthBonuses:
   - {fileID: 11400000, guid: 78fa1a2bb66289546a665ed88fcae4de, type: 2}
   - {fileID: 11400000, guid: 843fe7709390ca544a26d346b5e648a2, type: 2}
+  - {fileID: 11400000, guid: c82e686230450d84ba3db97805d29c47, type: 2}

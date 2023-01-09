@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79f74738d4a56d4bb876cedcb688cac, type: 3}
   m_Name: Power
   m_EditorClassIdentifier: 
-  bonusName: Gold Bonus
-  icon: {fileID: -3282236179042937268, guid: 4d6cfa3da87ee404784dddcb70aee7de, type: 3}
-  stat: 9
+  ID: 2
+  bonusName: Power
+  icon: {fileID: 21300000, guid: a9f04f2f65ed34f45ac6889dfdbd6096, type: 3}
+  stat: 0
   levels:
   - value: 0
     cost: 0
