@@ -53,26 +53,26 @@ Material:
     - _ColorMask: 15
     - _CullMode: 0
     - _Diffuse: 0.5
-    - _FaceDilate: 0.569
+    - _FaceDilate: 0
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
-    - _GlowInner: 0
-    - _GlowOffset: -1
-    - _GlowOuter: 0.478
-    - _GlowPower: 0.377
+    - _GlowInner: 0.05
+    - _GlowOffset: 0
+    - _GlowOuter: 0.05
+    - _GlowPower: 0.75
     - _GradientScale: 6
     - _LightAngle: 3.1416
     - _MaskSoftnessX: 0
     - _MaskSoftnessY: 0
-    - _OutlineSoftness: 1
+    - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.55
+    - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 0.3612978
-    - _ScaleRatioB: 0.20291667
-    - _ScaleRatioC: 0.10145833
+    - _ScaleRatioA: 0.8333333
+    - _ScaleRatioB: 0.6770833
+    - _ScaleRatioC: 0.6770833
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -85,9 +85,9 @@ Material:
     - _StencilWriteMask: 255
     - _TextureHeight: 512
     - _TextureWidth: 512
-    - _UnderlayDilate: 1
-    - _UnderlayOffsetX: -0.866
-    - _UnderlayOffsetY: -1
+    - _UnderlayDilate: 0
+    - _UnderlayOffsetX: 0
+    - _UnderlayOffsetY: 0
     - _UnderlaySoftness: 0
     - _VertexOffsetX: 0
     - _VertexOffsetY: 0
@@ -97,13 +97,13 @@ Material:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
     - _EnvMatrixRotation: {r: 0, g: 0, b: 0, a: 0}
     - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
-    - _GlowColor: {r: 1, g: 0.25899845, b: 0, a: 0.5}
+    - _GlowColor: {r: 0, g: 1, b: 0, a: 0.5}
     - _MaskCoord: {r: 0, g: 0, b: 32767, a: 32767}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectOutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
-    - _UnderlayColor: {r: 1, g: 0.18161494, b: 0, a: 0.5}
+    - _UnderlayColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_BuildTextureStacks: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -115,11 +115,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: Pixelnauts SDF Outline
+  m_Name: Pixelnauts Bigger SDF
   m_EditorClassIdentifier: 
-  hashCode: -882106780
+  hashCode: -1252916648
   material: {fileID: -8709763942859980820}
-  materialHashCode: 573658436
+  materialHashCode: 394370936
   m_Version: 1.1.0
   m_SourceFontFileGUID: 810eae3ac5e0d4444a7eb4576a501aa3
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 810eae3ac5e0d4444a7eb4576a501aa3, type: 3}
@@ -130,7 +130,7 @@ MonoBehaviour:
     m_FamilyName: Pixelnauts
     m_StyleName: Medium
     m_PointSize: 105
-    m_Scale: 1
+    m_Scale: 1.25
     m_LineHeight: 92.490234
     m_AscentLine: 69.93164
     m_CapLine: 46
@@ -303,10 +303,10 @@ MonoBehaviour:
     m_AtlasIndex: 0
   - m_Index: 14
     m_Metrics:
-      m_Width: 39.375
-      m_Height: 32.8125
+      m_Width: 29
+      m_Height: 29
       m_HorizontalBearingX: 0
-      m_HorizontalBearingY: 39.375
+      m_HorizontalBearingY: 35
       m_HorizontalAdvance: 45.9375
     m_GlyphRect:
       m_X: 336
@@ -933,11 +933,11 @@ MonoBehaviour:
     m_AtlasIndex: 0
   - m_Index: 59
     m_Metrics:
-      m_Width: 45.9375
+      m_Width: 35
       m_Height: 45.9375
       m_HorizontalBearingX: 0
       m_HorizontalBearingY: 45.9375
-      m_HorizontalAdvance: 52.5
+      m_HorizontalAdvance: 40
     m_GlyphRect:
       m_X: 247
       m_Y: 120

@@ -62,7 +62,7 @@ public class Armory : MonoBehaviour
         afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUpCraft(b.resultItem);
         currentItemInfo.SetActive(true);
         afterUpgradeItemInfo.SetActive(true);
-        craftChanceText.text = $"{craftChance}%";
+        craftChanceText.text = $"Chance: {craftChance}%";
         craftButton.interactable = Inventory.HaveAllMaterials(b) && !Inventory.IsFull();
         craftButton.onClick.RemoveAllListeners();
         craftButton.onClick.AddListener(delegate { Craft(b, craftChance); });
@@ -152,8 +152,8 @@ public class Armory : MonoBehaviour
         }
         afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUp(eqAfter, true, eq);
         Destroy(eqAfter);
-        upgradePrice.text = $"{price}";
-        upgradeChance.text = $"{chance}%";
+        upgradePrice.text = $"Price: {price}";
+        upgradeChance.text = $"Chance: {chance}%";
         upgradeButton.onClick.AddListener(delegate {Upgrade(eq, chance, upgradeMode, price); });
 
         if (Inventory.HaveEnoughGold(price))
@@ -296,8 +296,8 @@ public class Armory : MonoBehaviour
                     price = enhancePrices[1];
                 break;
         }
-        enhanceChance.text = $"{chance}%";
-        enhancePrice.text = $"{price}";
+        enhanceChance.text = $"Chance: {chance}%";
+        enhancePrice.text = $"Price: {price}";
         enhanceButton.onClick.AddListener(delegate { Enchance(item, scroll, chance, price); });
 
         if (Inventory.HaveEnoughGold(price))
@@ -349,7 +349,7 @@ public class Armory : MonoBehaviour
     //{
     //    int chance = 100;
     //    int amount = 0;
-    //    enhanceChance.text = $"{chance}%";
+    //    enhanceChance.text =  $"Chance: {chance}%";
     //}
 
     bool Chance(int chance)

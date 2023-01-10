@@ -71,7 +71,7 @@ public class PlayerUI : MonoBehaviour
             expText.text = $"{Player.Data.exp}/{requireExp}";
             expBar.fillAmount = (float)Player.Data.exp / requireExp;
         }
-        levelText.text = $"{Player.Data.level} ";
+        levelText.text = $"Level {Player.Data.level}";
     }
 
     public void ShowVignette()

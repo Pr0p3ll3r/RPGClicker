@@ -65,29 +65,29 @@ public class PlayerInfo : MonoBehaviour
         switch (Player.Data.playerClass)
         {
             case PlayerClass.Warrior:
-                strengthBonuses.text = "+1 DMG";
-                intelligenceBonuses.text = "+2 HP";
-                dexterityBonuses.text = "+1 DEF";
+                strengthBonuses.text = "(+1 DMG)";
+                intelligenceBonuses.text = "(+2 HP)";
+                dexterityBonuses.text = "(+1 DEF)";
                 break;
             case PlayerClass.Blader:
-                strengthBonuses.text = "+1 DEF";
-                intelligenceBonuses.text = "+2 HP";
-                dexterityBonuses.text = "+1 DMG";           
+                strengthBonuses.text = "(+1 DEF)";
+                intelligenceBonuses.text = "(+2 HP)";
+                dexterityBonuses.text = "(+1 DMG)";           
                 break;
             case PlayerClass.Archer:
-                strengthBonuses.text = "+1 DEF";
-                intelligenceBonuses.text = "+2 HP";
-                dexterityBonuses.text = "+1 DMG";
+                strengthBonuses.text = "(+1 DEF)";
+                intelligenceBonuses.text = "(+2 HP)";
+                dexterityBonuses.text = "(+1 DMG)";
                 break;
             case PlayerClass.Wizard:
-                strengthBonuses.text = "+2 HP";
-                intelligenceBonuses.text = "+1 DMG";
-                dexterityBonuses.text = "+1 DEF";
+                strengthBonuses.text = "(+2 HP)";
+                intelligenceBonuses.text = "(+1 DMG)";
+                dexterityBonuses.text = "(+1 DEF)";
                 break;
             case PlayerClass.Shielder:
-                strengthBonuses.text = "+1 DMG";
-                intelligenceBonuses.text = "+2 HP";
-                dexterityBonuses.text = "+1 DEF";
+                strengthBonuses.text = "(+1 DMG)";
+                intelligenceBonuses.text = "(+2 HP)";
+                dexterityBonuses.text = "(+1 DEF)";
                 break;
         }
     }

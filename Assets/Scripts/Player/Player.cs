@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
         if (regeneration > 0)
         {
             regeneration -= Time.deltaTime;
-            healthRegenerationTimer.text = $"Regenerate in {Mathf.FloorToInt(regeneration + 1)}s";
+            healthRegenerationTimer.text = $"Regenerate in {Mathf.FloorToInt(regeneration + 1):00}";
         }
         else
         {

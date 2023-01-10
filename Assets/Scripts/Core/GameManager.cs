@@ -175,6 +175,7 @@ public class GameManager : MonoBehaviour
         ChangeLocation(Database.data.locations[0]);
         PlayerPrefs.SetInt("QuestProgress", 0);
         questManager.SetQuest(Database.data.quests[0]);
+        ClearLootList();
     }
 
     public void Reward(EnemyData enemy)

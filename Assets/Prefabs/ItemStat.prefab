@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 040466a75f433ff4b85b163cc52852f3, type: 2}
-  m_sharedMaterial: {fileID: -8709763942859980820, guid: 040466a75f433ff4b85b163cc52852f3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a4e4b478631d9a44d805adfb5863c72e, type: 2}
+  m_sharedMaterial: {fileID: 1539115049030319989, guid: a4e4b478631d9a44d805adfb5863c72e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 32
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -267,7 +267,6 @@ MonoBehaviour:
   titleText: {fileID: 3174827906021554036}
   valueText: {fileID: 8195654754996971798}
   image: {fileID: 1422190924791883274}
-  slot: {fileID: 0}
 --- !u!114 &7006238001421564911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,8 +361,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Price:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 040466a75f433ff4b85b163cc52852f3, type: 2}
-  m_sharedMaterial: {fileID: -8709763942859980820, guid: 040466a75f433ff4b85b163cc52852f3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a4e4b478631d9a44d805adfb5863c72e, type: 2}
+  m_sharedMaterial: {fileID: 1539115049030319989, guid: a4e4b478631d9a44d805adfb5863c72e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -395,7 +394,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 32
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0

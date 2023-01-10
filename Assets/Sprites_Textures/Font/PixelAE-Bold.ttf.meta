@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 585188cdc4600544eb408bee749e4b3a
+guid: 5ecf92f5b7159104285aa65f88f25461
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,14 +8,15 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: ThaleahFat
   fontNames:
-  - ThaleahFat
-  fallbackFontReferences: []
+  - Pixel AE
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1dd257ec3f3b42e4fb0b4625f8bb6504, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
   useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 
