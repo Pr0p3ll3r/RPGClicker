@@ -14,12 +14,14 @@ public class AchievementManager : MonoBehaviour
         }
     }
 
-    public void AchievementProgress(Achievement achievement)
+    public void AchievementProgress(EnemyData enemy)
     {
+        Achievement achievement = enemy.achievement;
+
         if (achievement == null)
             return;
 
-        if (achievement.Earned)
+        if (achievement.Earned || enemy.achievement.tiers[enemy.achievement.Tier].goal != enemy)
             return;
 
         achievement.IncreaseCurrentAmount();

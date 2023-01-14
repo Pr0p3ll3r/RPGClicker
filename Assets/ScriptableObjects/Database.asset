@@ -154,12 +154,22 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ed3e73e3d02a25e46b77b4730df78308, type: 2}
   - {fileID: 11400000, guid: f71126b4a5982da448e528bc398fc573, type: 2}
   - {fileID: 11400000, guid: 674e31d1011f0c64eab4e7c9fadf6865, type: 2}
-  towerEnemies: []
+  towerEnemies:
+  - {fileID: 11400000, guid: 9233407c1bc58f2408c184f1367ca253, type: 2}
+  - {fileID: 11400000, guid: b641786970984404988a0f2199868256, type: 2}
+  - {fileID: 11400000, guid: f85da9351d77e73428e173bee019479e, type: 2}
+  - {fileID: 11400000, guid: 6f847d1833aede84f83de17489f4595c, type: 2}
+  - {fileID: 11400000, guid: 771ced2c428599043af195990cc69fef, type: 2}
+  - {fileID: 11400000, guid: 577693d6cb1189e47a9a2f8cf8315967, type: 2}
+  - {fileID: 11400000, guid: ce3b2bdd7b345e44598be7d0b8d0e604, type: 2}
+  - {fileID: 0}
   quests:
   - {fileID: 11400000, guid: c5c5fdb10afc95246a1bcce005732fec, type: 2}
   - {fileID: 11400000, guid: ee523eebd0c93f6479210242fc9f3fe4, type: 2}
   achievements:
   - {fileID: 11400000, guid: 90e26040367190b429725641284f508e, type: 2}
+  - {fileID: 11400000, guid: e152fd085b6366d4d88a9d941ef07426, type: 2}
+  - {fileID: 11400000, guid: 4b2f4baa5c7677d47a6cc2b88ffbe8f8, type: 2}
   rebirthBonuses:
   - {fileID: 11400000, guid: 78fa1a2bb66289546a665ed88fcae4de, type: 2}
   - {fileID: 11400000, guid: 843fe7709390ca544a26d346b5e648a2, type: 2}

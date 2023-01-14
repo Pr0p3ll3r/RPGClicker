@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f4d05af8e2b28e458d358be48badf59, type: 3}
   m_Name: Lvl5 Ruby Master
   m_EditorClassIdentifier: 
-  enemyName: 
-  level: 1
+  enemyName: Ruby Master
+  icon: {fileID: 1265354102, guid: 625964c3175290c458f3a40e8f690313, type: 3}
+  level: 100
   health: 10
   damage: 0
   defense: 0
@@ -22,5 +23,23 @@ MonoBehaviour:
   exp: 0
   gold: 0
   loot: []
-  isTowerEnemy: 0
+  isTowerMaster: 1
   isBoss: 0
+  achievement: {fileID: 11400000, guid: e152fd085b6366d4d88a9d941ef07426, type: 2}
+  equipment:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

@@ -47,6 +47,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button dungeonButton;
     [SerializeField] private TextMeshProUGUI dungeonEnemy;
 
+    [Header("Tower")]
+    [SerializeField] private TowerInfo towerInfo;
+    [SerializeField] private Button fightButton;
+    [SerializeField] private Location tower;
+
     [Header("Poolers")]
     public ObjectPooler damagePopupPooler;
 
@@ -88,6 +93,7 @@ public class GameManager : MonoBehaviour
         locationButton.onClick.AddListener(delegate { CloseAdventurePanels(); locationPanel.SetActive(true); });
         dungeonButton.onClick.AddListener(delegate { CloseAdventurePanels(); dungeonPanel.SetActive(true); });
         dungeonEnemy.text = "";
+        fightButton.onClick.AddListener(delegate { towerPanel.SetActive(false); ChangeLocation(tower); });
 
         if (PlayerPrefs.GetInt("NewGame", 1) == 1)
         {
@@ -161,6 +167,7 @@ public class GameManager : MonoBehaviour
             questManager.SetQuest(Database.data.quests[Player.Data.completedQuests]);
         else
             questManager.SetQuest(null);
+        SetTower();
     }
 
     private void Reborn()
@@ -201,10 +208,15 @@ public class GameManager : MonoBehaviour
                 Player.Data.completedDungeons++;
         }
 
+        if (enemy.isTowerMaster)
+        {
+            Player.Data.currentTowerLevel++;
+            SetTower();
+        }
+
         Player.Reward(enemy.exp, enemy.gold);
         questManager.QuestProgress(enemy);
-        if (enemy.achievement.tiers[enemy.achievement.Tier].goal == enemy)
-            achievementManager.AchievementProgress(enemy.achievement);
+        achievementManager.AchievementProgress(enemy);
     }
 
     private void ClearLootList()
@@ -346,7 +358,7 @@ public class GameManager : MonoBehaviour
             dungeonEnemyCount = 0;
             newLocation.BossDefeated = false;
         }
-        
+
         NextEnemy();
     }
 
@@ -358,7 +370,7 @@ public class GameManager : MonoBehaviour
 
             if (dungeonEnemyCount <= 10)
             {
-                Enemy.SetUp(currentLocation.enemies[UnityEngine.Random.Range(0, currentLocation.enemies.Length)]);
+                Enemy.SetUp(currentLocation.enemies[Random.Range(0, currentLocation.enemies.Length)]);
                 dungeonEnemy.text = $"{dungeonEnemyCount}/10";
             }
             else if (!currentLocation.BossDefeated)
@@ -369,34 +381,50 @@ public class GameManager : MonoBehaviour
             else
                 ChangeLocation(previousLocation);
         }
+        else if (currentLocation.enemies[0].isTowerMaster)
+        {
+            if (Enemy.Data.isTowerMaster)
+            {
+                ChangeLocation(previousLocation);
+            }
+            else
+            {
+                Enemy.SetUp(currentLocation.enemies[Player.Data.currentTowerLevel]);
+                dungeonEnemy.text = $"BOSS";
+            }
+        }
         else
         {
             if (currentLocation.BossDefeated)
-                Enemy.SetUp(currentLocation.enemies[UnityEngine.Random.Range(0, currentLocation.enemies.Length)]);
+            {
+                Enemy.SetUp(currentLocation.enemies[Random.Range(0, currentLocation.enemies.Length)]);
+                dungeonEnemy.text = "";
+            }
             else
+            {
                 Enemy.SetUp(currentLocation.boss);
+                dungeonEnemy.text = $"BOSS";
+            }
         }
     }
 
     public void PlayerDeath()
     {
-        if (currentLocation.isDungeon)
+        if (currentLocation.isDungeon || Enemy.Data.isTowerMaster)
             ChangeLocation(previousLocation);
         else
             NextEnemy();
     }
 
-    public void ShowTower()
+    private void SetTower()
     {
-        towerPanel.SetActive(!towerPanel.activeSelf);
-        bool active = towerPanel.activeSelf;
-        towerPanel.SetActive(active);
-
-        GameObject towerEnemy = towerPanel.transform.GetChild(0).gameObject;
-        //EnemyData enemy = Database.Instance.TowerEnemies[Player.Instance.data.currentTowerLevel];
-        //towerEnemy.GetComponent<EnemyInfo>().SetUp(enemy);
-        //towerEnemy.transform.Find("FightButton").GetComponent<Button>().onClick.RemoveAllListeners();
-        //towerEnemy.transform.Find("FightButton").GetComponent<Button>().onClick.AddListener(delegate { StartBattle(enemy); });
+        if (Player.Data.currentTowerLevel != Database.data.towerEnemies.Length - 1)
+            towerInfo.SetUp(Database.data.towerEnemies[Player.Data.currentTowerLevel]);
+        else
+        {
+            fightButton.interactable = false;
+            towerInfo.SetUp(null);
+        }
     }
 
     private void OnApplicationQuit()

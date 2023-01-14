@@ -9,7 +9,7 @@ public class DatabaseSO : ScriptableObject, ISerializationCallbackReceiver
     public Location[] dungeons;
     public StatBonus[] rarityBonuses;
     public StatBonus[] scrollBonuses;
-    public EnemyInfo[] towerEnemies;
+    public EnemyData[] towerEnemies;
     public Quest[] quests;
     public Achievement[] achievements;
     public RebirthBonus[] rebirthBonuses;

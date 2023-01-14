@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Enemy", menuName = "RPG/Enemy")]
@@ -18,9 +16,11 @@ public class EnemyData : ScriptableObject
     public int exp;
     public int gold;
     public Loot[] loot;
-    public bool isTowerEnemy = false;
+    public bool isTowerMaster = false;
     public bool isBoss = false;
     public Achievement achievement;
+
+    public Equipment[] equipment = new Equipment[16];
 
     public EnemyData GetCopy()
     {

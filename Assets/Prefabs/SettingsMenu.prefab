@@ -854,10 +854,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6999049440431632114}
-        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
-        m_MethodName: ChangeVibration
-        m_Mode: 1
+      - m_Target: {fileID: 6047943965508085497}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1228,12 +1228,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundOn: {fileID: 21300000, guid: c246432a50bee0143a707384a1fba035, type: 3}
   soundOff: {fileID: 21300000, guid: d6d923a8675a16440adad13bce7ead5f, type: 3}
-  vibrationOn: {fileID: 21300000, guid: 01077c9b8a8932a488691456989afde1, type: 3}
-  vibrationOff: {fileID: 21300000, guid: ffef87a4cca8dd1459169050f984619a, type: 3}
   musicOn: {fileID: 21300000, guid: 6efb8cbdcef819f4c954c430c6c1c2dd, type: 3}
   musicOff: {fileID: 21300000, guid: b6baae7e85a66094e9d85c6ceed15374, type: 3}
   soundImage: {fileID: 1250193338}
-  vibrationImage: {fileID: 0}
   musicImage: {fileID: 479123126}
   audioMixer: {fileID: 24100000, guid: 562f33b73e73c5a4d906e62d245f849e, type: 2}
 --- !u!1 &9145093936873454940
