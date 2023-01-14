@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 3611486795658131804}
   - component: {fileID: 4341035550259695047}
   - component: {fileID: 7421009525811149395}
-  - component: {fileID: 4522198883881658064}
-  - component: {fileID: 4004415490079289462}
   m_Layer: 5
   m_Name: Icon
   m_TagString: Untagged
@@ -92,45 +90,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: 0
-  offset: {x: 0, y: 0}
---- !u!223 &4522198883881658064
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2499981211695783498}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 1
-  m_TargetDisplay: 0
---- !u!114 &4004415490079289462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2499981211695783498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!1 &5096360743406812206
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,5 +182,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 4341035550259695047}
   placeholderIcon: {fileID: 0}
+  placeholderSwordIcon: {fileID: 0}
+  placeholderShieldIcon: {fileID: 0}
+  placeholderBigSwordIcon: {fileID: 0}
+  placeholderWandIcon: {fileID: 0}
+  placeholderBowIcon: {fileID: 0}
+  placeholderBlockedIcon: {fileID: 0}
   item: {fileID: 0}
   equipmentType: 0

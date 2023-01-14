@@ -5,14 +5,13 @@ public class Achievement : ScriptableObject, ISerializationCallbackReceiver
 {
     public int ID;
     [SerializeField] private string achievementName;
-    public EnemyData goal;
-    public int[] amountForNextTier = new int[6];
-    public RewardBonusList[] tierRewards = new RewardBonusList[6];
+    public Tier[] tiers = new Tier[6];
+    public bool differentEnemies = false;
     public int CurrentAmount { get; private set; }
     public bool Earned { get; private set; }
     public int Tier { get; private set; }
 
-    private readonly string[] tiers = new string[6]
+    private readonly string[] tierNames = new string[6]
     {
         "Newbie",
         "Specialist",
@@ -24,27 +23,33 @@ public class Achievement : ScriptableObject, ISerializationCallbackReceiver
 
     public string GetAchievementName()
     {
-        return $"{achievementName} {tiers[Tier]}";
+        if (tiers.Length == 1)
+            return $"{achievementName}";
+        return $"{achievementName} {tierNames[Tier]}";
     }
 
     public void IncreaseCurrentAmount() 
     { 
-        if(CurrentAmount < amountForNextTier[Tier]) 
+        if(CurrentAmount < tiers[Tier].amount) 
             CurrentAmount++;
 
-        if (CurrentAmount == amountForNextTier[Tier])
+        if (CurrentAmount == tiers[Tier].amount)
             GetRewards();
     }
 
     private void GetRewards()
     {
         Player.Instance.Data.earnedAchievements++;
-        foreach (var reward in tierRewards[Tier].rewards)
+        foreach (var reward in tiers[Tier].rewards)
         {
             Player.Instance.Data.AddStat(reward.stat, reward.value);
         }
         if(Tier < tiers.Length - 1)
+        {
             Tier++;
+            if (differentEnemies)
+                CurrentAmount = 0;
+        }         
         else
             Earned = true;
     }
@@ -74,7 +79,9 @@ public class RewardBonus
 }
 
 [System.Serializable]
-public class RewardBonusList
+public class Tier
 {
+    public EnemyData goal;
+    public int amount;
     public RewardBonus[] rewards;
 }

@@ -140,7 +140,7 @@ public class GameManager : MonoBehaviour
             setNameButton.Select();
             return;
         }
-        
+
         Player.Data = new PlayerData(nameInput.text, (PlayerClass)classDropdown.value);
         PlayerPrefs.SetInt("NewGame", 0);
         SetGame();
@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour
         ChangeLocation(Database.data.locations[0]);
         foreach (EquipmentSlot slot in PlayerEquipment.Instance.Slots)
             slot.SetRightPlaceholder();
-        if(Player.Data.completedQuests < Database.data.quests.Length)
+        if (Player.Data.completedQuests < Database.data.quests.Length)
             questManager.SetQuest(Database.data.quests[Player.Data.completedQuests]);
         else
             questManager.SetQuest(null);
@@ -166,7 +166,7 @@ public class GameManager : MonoBehaviour
     private void Reborn()
     {
         Database.data.locations[0].BossDefeated = true;
-        foreach(Location location in Database.data.locations)
+        foreach (Location location in Database.data.locations)
         {
             location.OnAfterDeserialize();
         }
@@ -179,8 +179,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void Reward(EnemyData enemy)
-    {  
-        if(!Inventory.IsFull())
+    {
+        if (!Inventory.IsFull())
         {
             Item drop = LootTable.Drop(enemy.loot);
             if (drop != null)
@@ -200,10 +200,11 @@ public class GameManager : MonoBehaviour
             if (currentLocation.isDungeon)
                 Player.Data.completedDungeons++;
         }
-          
+
         Player.Reward(enemy.exp, enemy.gold);
         questManager.QuestProgress(enemy);
-        achievementManager.AchievementProgress(enemy.achievement);
+        if (enemy.achievement.tiers[enemy.achievement.Tier].goal == enemy)
+            achievementManager.AchievementProgress(enemy.achievement);
     }
 
     private void ClearLootList()
@@ -234,7 +235,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void OpenAdventurePanel()
-    {       
+    {
         RefreshLocationList();
         adventurePanel.SetActive(true);
     }
@@ -299,7 +300,7 @@ public class GameManager : MonoBehaviour
                 dungeonsList.GetChild(i).GetComponent<Button>().interactable = false;
             else
                 dungeonsList.GetChild(i).GetComponent<Button>().interactable = true;
-            
+
             if (currentLocation == Database.data.dungeons[i])
                 dungeonsList.GetChild(i).GetComponent<Button>().interactable = false;
         }
@@ -307,7 +308,7 @@ public class GameManager : MonoBehaviour
 
     private void UnlockLocation(Location location)
     {
-        if(!PlayerInventory.Instance.HaveEnoughGold(location.price))
+        if (!PlayerInventory.Instance.HaveEnoughGold(location.price))
         {
             ShowText("Not enough gold!", Color.red);
         }
@@ -345,7 +346,7 @@ public class GameManager : MonoBehaviour
             dungeonEnemyCount = 0;
             newLocation.BossDefeated = false;
         }
-            
+        
         NextEnemy();
     }
 
@@ -364,13 +365,13 @@ public class GameManager : MonoBehaviour
             {
                 Enemy.SetUp(currentLocation.boss);
                 dungeonEnemy.text = $"BOSS";
-            }           
+            }
             else
                 ChangeLocation(previousLocation);
         }
         else
-        {   
-            if(currentLocation.BossDefeated)
+        {
+            if (currentLocation.BossDefeated)
                 Enemy.SetUp(currentLocation.enemies[UnityEngine.Random.Range(0, currentLocation.enemies.Length)]);
             else
                 Enemy.SetUp(currentLocation.boss);

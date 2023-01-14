@@ -37,7 +37,23 @@ MonoBehaviour:
     weight: 5
   - item: {fileID: 11400000, guid: ab97ae27abacdb647b1b25376cb5be58, type: 2}
     weight: 0.01
-  isTowerEnemy: 0
+  isTowerMaster: 0
   isBoss: 1
-  achievements:
-  - {fileID: 11400000, guid: 90e26040367190b429725641284f508e, type: 2}
+  achievement: {fileID: 11400000, guid: 90e26040367190b429725641284f508e, type: 2}
+  equipment:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

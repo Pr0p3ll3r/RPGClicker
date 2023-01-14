@@ -14,24 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   achievementName: Field Shelter
-  goal: {fileID: 11400000, guid: eed58d539323dd5408db6cf5c576a232, type: 2}
-  amountForNextTier: 0a0000003200000064000000c8000000f4010000e8030000
-  tierRewards:
-  - rewards:
+  tiers:
+  - goal: {fileID: 11400000, guid: eed58d539323dd5408db6cf5c576a232, type: 2}
+    amount: 10
+    rewards:
     - stat: 0
       value: 2
-  - rewards:
+  - goal: {fileID: 11400000, guid: eed58d539323dd5408db6cf5c576a232, type: 2}
+    amount: 50
+    rewards:
     - stat: 0
       value: 4
-  - rewards:
+  - goal: {fileID: 11400000, guid: eed58d539323dd5408db6cf5c576a232, type: 2}
+    amount: 100
+    rewards:
     - stat: 0
       value: 6
-  - rewards:
+  - goal: {fileID: 11400000, guid: eed58d539323dd5408db6cf5c576a232, type: 2}
+    amount: 200
+    rewards:
     - stat: 0
       value: 8
-  - rewards:
+  - goal: {fileID: 11400000, guid: eed58d539323dd5408db6cf5c576a232, type: 2}
+    amount: 500
+    rewards:
     - stat: 0
       value: 10
-  - rewards:
+  - goal: {fileID: 11400000, guid: eed58d539323dd5408db6cf5c576a232, type: 2}
+    amount: 1000
+    rewards:
     - stat: 0
       value: 12

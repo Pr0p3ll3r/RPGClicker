@@ -1,19 +1,17 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
 {
-    [SerializeField] private Sprite soundOn, soundOff, vibrationOn, vibrationOff, musicOn, musicOff;
-    [SerializeField] private Image soundImage, vibrationImage, musicImage;
+    [SerializeField] private Sprite soundOn, soundOff, musicOn, musicOff;
+    [SerializeField] private Image soundImage, musicImage;
     [SerializeField] private AudioMixer audioMixer;
 
     void Start()
     {
         SetSounds();
         SetMusic();
-        SetVibration();
     }
 
     public void ChangeSounds()
@@ -49,22 +47,6 @@ public class Settings : MonoBehaviour
             musicImage.sprite = musicOn;
             audioMixer.SetFloat("musicVolume", 0);
             ChangeSetting("Music", 1);
-        }
-    }
-
-    public void ChangeVibration()
-    {
-        bool active = GetSetting("vibration");
-        
-        if(active)
-        {
-            vibrationImage.sprite = vibrationOff;
-            ChangeSetting("vibration", 0);
-        }
-        else
-        {
-            vibrationImage.sprite = vibrationOn;
-            ChangeSetting("vibration", 1);
         }
     }
 
@@ -107,20 +89,6 @@ public class Settings : MonoBehaviour
         {
             musicImage.sprite = musicOff;
             audioMixer.SetFloat("musicVolume", -80);
-        }
-    }
-
-    private void SetVibration()
-    {
-        bool active = GetSetting("vibration");
-
-        if (active)
-        {
-            vibrationImage.sprite = vibrationOn;
-        }
-        else
-        {
-            vibrationImage.sprite = vibrationOff;
         }
     }
 }
