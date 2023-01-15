@@ -28,7 +28,10 @@ public class AchievementListItem : MonoBehaviour
             reward.text = "";
             foreach (RewardBonus r in ach.tiers[i].rewards)
             {              
-                reward.text += $"+{r.value} {Utils.GetShortName(r.stat)}\n";
+                if(r.stat.ToString().Contains("Percent"))
+                    reward.text += $"+{r.value}% {Utils.GetShortName(r.stat)}\n";
+                else
+                    reward.text += $"+{r.value} {Utils.GetShortName(r.stat)}\n";
             }
             reward.text = reward.GetComponent<TextMeshProUGUI>().text.TrimEnd();
             if(ach.Tier <= i && ach.CurrentAmount != ach.tiers[ach.Tier].amount)

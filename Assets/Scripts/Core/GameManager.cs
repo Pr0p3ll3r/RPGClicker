@@ -326,7 +326,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Inventory.ChangeGoldAmount(location.price);
+            Inventory.ChangeGoldAmount(-location.price);
             location.Unlocked = true;
             RefreshLocationList();
         }
@@ -340,7 +340,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Inventory.ChangeGoldAmount(dungeon.price);
+            Inventory.ChangeGoldAmount(-dungeon.price);
             ChangeLocation(dungeon);
         }
     }

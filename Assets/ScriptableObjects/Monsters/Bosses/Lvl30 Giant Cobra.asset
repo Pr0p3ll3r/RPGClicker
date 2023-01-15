@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Lvl30 Giant Cobra
   m_EditorClassIdentifier: 
   enemyName: Giant Cobra
+  icon: {fileID: -1607304301, guid: bdcbc9c7d1c9a9d499fc33f7fdeeb9a8, type: 3}
   level: 30
   health: 70
   damage: 15
@@ -36,5 +37,23 @@ MonoBehaviour:
     weight: 5
   - item: {fileID: 11400000, guid: ab97ae27abacdb647b1b25376cb5be58, type: 2}
     weight: 0.01
-  isTowerEnemy: 0
+  isTowerMaster: 0
   isBoss: 1
+  achievement: {fileID: 0}
+  equipment:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

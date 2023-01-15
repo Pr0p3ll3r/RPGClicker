@@ -20,7 +20,6 @@ public class PlayerData
     public Stat criticalDamage;
     public Stat criticalRate;
     public Stat maxCriticalRate;
-    public Stat accuracy;
     public Stat goldBonus;
     public Stat expBonus;
     public Stat hpSteal;
@@ -65,31 +64,26 @@ public class PlayerData
                 AddStrength(false, 12);
                 AddIntelligence(false, 4);
                 AddDexterity(false, 4);
-                accuracy = new Stat(4);
                 break;
             case PlayerClass.Blader:
                 AddStrength(false, 8);
                 AddIntelligence(false, 3);
                 AddDexterity(false, 8);
-                accuracy = new Stat(6);
                 break;
             case PlayerClass.Archer:
                 AddStrength(false, 6);
                 AddIntelligence(false, 1);
                 AddDexterity(false, 10);
-                accuracy = new Stat(5);
                 break;
             case PlayerClass.Wizard:
                 AddStrength(false, 1);
                 AddIntelligence(false, 10);
                 AddDexterity(false, 6);
-                accuracy = new Stat(5);
                 break;
             case PlayerClass.Shielder:
                 AddStrength(false, 6);
                 AddIntelligence(false, 2);
                 AddDexterity(false, 10);
-                accuracy = new Stat(3);
                 break;
         }
         currentHealth = health.GetValue();
@@ -129,31 +123,26 @@ public class PlayerData
                 AddStrength(false, 12);
                 AddIntelligence(false, 4);
                 AddDexterity(false, 4);
-                accuracy = new Stat(4);
                 break;
             case PlayerClass.Blader:
                 AddStrength(false, 8);
                 AddIntelligence(false, 3);
                 AddDexterity(false, 8);
-                accuracy = new Stat(6);
                 break;
             case PlayerClass.Archer:
                 AddStrength(false, 6);
                 AddIntelligence(false, 1);
                 AddDexterity(false, 10);
-                accuracy = new Stat(5);
                 break;
             case PlayerClass.Wizard:
                 AddStrength(false, 1);
                 AddIntelligence(false, 10);
                 AddDexterity(false, 6);
-                accuracy = new Stat(5);
                 break;
             case PlayerClass.Shielder:
                 AddStrength(false, 6);
                 AddIntelligence(false, 2);
                 AddDexterity(false, 10);
-                accuracy = new Stat(3);
                 break;
         }
         currentHealth = health.GetValue();
@@ -193,31 +182,26 @@ public class PlayerData
                 AddStrength(false, 12);
                 AddIntelligence(false, 4);
                 AddDexterity(false, 4);
-                accuracy = new Stat(4);
                 break;
             case PlayerClass.Blader:
                 AddStrength(false, 8);
                 AddIntelligence(false, 3);
                 AddDexterity(false, 8);
-                accuracy = new Stat(6);
                 break;
             case PlayerClass.Archer:
                 AddStrength(false, 6);
                 AddIntelligence(false, 1);
                 AddDexterity(false, 10);
-                accuracy = new Stat(5);
                 break;
             case PlayerClass.Wizard:
                 AddStrength(false, 1);
                 AddIntelligence(false, 10);
                 AddDexterity(false, 6);
-                accuracy = new Stat(5);
                 break;
             case PlayerClass.Shielder:
                 AddStrength(false, 6);
                 AddIntelligence(false, 2);
                 AddDexterity(false, 10);
-                accuracy = new Stat(3);
                 break;
         }
         currentHealth = health.GetValue();
@@ -251,28 +235,25 @@ public class PlayerData
             case Stats.CriticalDamage:
                 criticalDamage.AddModifier(amount);
                 break;
-            case Stats.CriticalRate:
+            case Stats.CriticalRatePercent:
                 criticalRate.AddModifier(amount);
                 break;
-            case Stats.MaxCriticalRate:
+            case Stats.MaxCriticalRatePercent:
                 maxCriticalRate.AddModifier(amount);
-                break;
-            case Stats.Accuracy:
-                accuracy.AddModifier(amount);
                 break;
             case Stats.HPStealLimit:
                 hpStealLimit.AddModifier(amount);
                 break;
-            case Stats.HPSteal:
+            case Stats.HPStealPercent:
                 hpSteal.AddModifier(amount);
                 break;
-            case Stats.GoldBonus:
+            case Stats.GoldBonusPercent:
                 goldBonus.AddModifier(amount);
                 break;
-            case Stats.ExpBonus:
+            case Stats.ExpBonusPercent:
                 expBonus.AddModifier(amount);
                 break;
-            case Stats.TwoSlotItemDrop:
+            case Stats.TwoSlotItemDropPercent:
                 twoSlotDropBonus.AddModifier(amount);
                 break;
             case Stats.Strength:
@@ -306,28 +287,25 @@ public class PlayerData
             case Stats.CriticalDamage:
                 criticalDamage.RemoveModifier(amount);
                 break;
-            case Stats.CriticalRate:
+            case Stats.CriticalRatePercent:
                 criticalRate.RemoveModifier(amount);
                 break;
-            case Stats.MaxCriticalRate:
+            case Stats.MaxCriticalRatePercent:
                 maxCriticalRate.RemoveModifier(amount);
-                break;
-            case Stats.Accuracy:
-                accuracy.RemoveModifier(amount);
                 break;
             case Stats.HPStealLimit:
                 hpStealLimit.RemoveModifier(amount);
                 break;
-            case Stats.HPSteal:
+            case Stats.HPStealPercent:
                 hpSteal.RemoveModifier(amount);
                 break;
-            case Stats.GoldBonus:
+            case Stats.GoldBonusPercent:
                 goldBonus.RemoveModifier(amount);
                 break;
-            case Stats.ExpBonus:
+            case Stats.ExpBonusPercent:
                 expBonus.RemoveModifier(amount);
                 break;
-            case Stats.TwoSlotItemDrop:
+            case Stats.TwoSlotItemDropPercent:
                 twoSlotDropBonus.RemoveModifier(amount);
                 break;
             case Stats.Strength:

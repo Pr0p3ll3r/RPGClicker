@@ -637,9 +637,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
-        width: 16
-        height: 16
+        y: 65
+        width: 15
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -658,9 +658,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 64
-        width: 16
-        height: 16
+        y: 65
+        width: 15
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -679,9 +679,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 64
-        width: 16
-        height: 16
+        y: 65
+        width: 15
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -700,9 +700,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 64
-        width: 16
-        height: 16
+        y: 65
+        width: 15
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -721,9 +721,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 64
-        width: 16
-        height: 16
+        y: 65
+        width: 15
+        height: 15
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1276,7 +1276,7 @@ TextureImporter:
       Diamond Big Sword: -1830253658
       Iron Sword: 694304000
       Diamond Boots: -1394325846
-      Iron Bow: -1704254720
+      Golden Boots: 1660032523
       Iron Gloves: 277460568
       Lava Shield: -803546302
       Diamond Bow: -443196026
@@ -1326,7 +1326,7 @@ TextureImporter:
       Wooden Helmet: -378339712
       Lava Boots: 1347980682
       Lava Sword: -2135137103
-      Golden Boots: 1660032523
+      Iron Bow: -1704254720
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

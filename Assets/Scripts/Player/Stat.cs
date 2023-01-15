@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public enum Stats
@@ -8,14 +7,13 @@ public enum Stats
     Defense,
     Health,
     CriticalDamage,
-    CriticalRate,
-    MaxCriticalRate,
-    Accuracy,
-    HPSteal,
+    CriticalRatePercent,
+    MaxCriticalRatePercent,
+    HPStealPercent,
     HPStealLimit,
-    GoldBonus,
-    TwoSlotItemDrop,
-    ExpBonus,
+    GoldBonusPercent,
+    TwoSlotItemDropPercent,
+    ExpBonusPercent,
     Strength,
     Intelligence,
     Dexterity,

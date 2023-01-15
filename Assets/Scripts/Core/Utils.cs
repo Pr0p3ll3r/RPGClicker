@@ -30,16 +30,39 @@ public static class Utils
 
     public static string GetNiceName(Stats stat)
     {
-        string name = stat.ToString();
-        for (int i = 1; i < name.Length; i++)
+        switch (stat)
         {
-            if (char.IsUpper(name[i]))
-            {
-                name = name.Insert(i, " ");
-                i++;
-            }
+            case Stats.Damage:
+                return "Damage";
+            case Stats.Defense:
+                return "Defense";
+            case Stats.Health:
+                return "Health";
+            case Stats.CriticalDamage:
+                return "Critical Damage";
+            case Stats.CriticalRatePercent:
+                return "Critical Rate";
+            case Stats.MaxCriticalRatePercent:
+                return "Max Critical Rate";
+            case Stats.HPStealPercent:
+                return "Health Steal";
+            case Stats.HPStealLimit:
+                return "Health Steal Limit";
+            case Stats.GoldBonusPercent:
+                return "Gold Bonus";
+            case Stats.TwoSlotItemDropPercent:
+                return "Two-Slot Item Drop";
+            case Stats.ExpBonusPercent:
+                return "Exp Bonus";
+            case Stats.Strength:
+                return "Strength";
+            case Stats.Intelligence:
+                return "Intelligence";
+            case Stats.Dexterity:
+                return "Dexterity";
+            default:
+                return "";
         }
-        return name;
     }
 
     public static string GetShortName(Stats stat)
@@ -54,22 +77,20 @@ public static class Utils
                 return "HP";
             case Stats.CriticalDamage:
                 return "CRIT DMG";
-            case Stats.CriticalRate:
+            case Stats.CriticalRatePercent:
                 return "CRIT RT";
-            case Stats.MaxCriticalRate:
+            case Stats.MaxCriticalRatePercent:
                 return "MAX CRIT RT";
-            case Stats.Accuracy:
-                return "ACC";
-            case Stats.HPSteal:
-                return "HP STEAL%";
+            case Stats.HPStealPercent:
+                return "HP ST";
             case Stats.HPStealLimit:
-                return "HP STEAL LIMIT";
-            case Stats.GoldBonus:
-                return "GOLD DROP%";
-            case Stats.TwoSlotItemDrop:
-                return "TWO-SLOT DROP%";
-            case Stats.ExpBonus:
-                return "EXP%";
+                return "HP ST LMT";
+            case Stats.GoldBonusPercent:
+                return "GOLD BONUS";
+            case Stats.TwoSlotItemDropPercent:
+                return "TWO-SLOT DROP";
+            case Stats.ExpBonusPercent:
+                return "EXP BONUS";
             case Stats.Strength:
                 return "STR";
             case Stats.Intelligence:

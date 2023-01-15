@@ -38,7 +38,10 @@ public class PetInfo : MonoBehaviour
             if (stat == null) continue;
 
             ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-            statInfo.SetUp($"{Utils.GetNiceName(stat.stat)}:", $"{stat.values[1]}");
+            if(stat.stat.ToString().Contains("Percent"))
+                statInfo.SetUp($"{Utils.GetNiceName(stat.stat)}:", $"{stat.values[1]}%");
+            else
+                statInfo.SetUp($"{Utils.GetNiceName(stat.stat)}:", $"{stat.values[1]}");
         }
 
         UpdateExpBar();

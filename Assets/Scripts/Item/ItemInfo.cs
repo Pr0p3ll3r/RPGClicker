@@ -64,7 +64,10 @@ public class ItemInfo : MonoBehaviour
                 if (stat == null) break;
 
                 ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
-                statInfo.SetUp($"{Utils.GetNiceName(stat.stat)}:", $"{stat.values[1]}");
+                if (stat.stat.ToString().Contains("Percent"))
+                    statInfo.SetUp($"{Utils.GetNiceName(stat.stat)}:", $"{stat.values[1]}%");
+                else
+                    statInfo.SetUp($"{Utils.GetNiceName(stat.stat)}:", $"{stat.values[1]}");
             }
 
             equipButton.onClick.AddListener(delegate { EquipPet(pet); });
@@ -325,7 +328,10 @@ public class ItemInfo : MonoBehaviour
     {
         ItemStatInfo statInfo = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
         int statValue = itemStat.values[grade.level];
-        statInfo.SetUp($"{Utils.GetNiceName(itemStat.stat)}:", $"{statValue}");
+        if (itemStat.stat.ToString().Contains("Percent"))
+            statInfo.SetUp($"{Utils.GetNiceName(itemStat.stat)}:", $"{statValue}%");
+        else
+            statInfo.SetUp($"{Utils.GetNiceName(itemStat.stat)}:", $"{statValue}");
 
         if (itemToCompare != null)
         {

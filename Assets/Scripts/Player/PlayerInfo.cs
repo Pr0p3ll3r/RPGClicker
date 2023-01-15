@@ -6,13 +6,13 @@ public class PlayerInfo : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI playerName;
     [SerializeField] private TextMeshProUGUI lvl;
+    [SerializeField] private TextMeshProUGUI points;
     [SerializeField] private TextMeshProUGUI damage;
     [SerializeField] private TextMeshProUGUI defense;
     [SerializeField] private TextMeshProUGUI health;
     [SerializeField] private TextMeshProUGUI critDamage;
     [SerializeField] private TextMeshProUGUI critRate;
     [SerializeField] private TextMeshProUGUI maxCritRate;
-    [SerializeField] private TextMeshProUGUI accuracy;
     [SerializeField] private TextMeshProUGUI hpSteal;
     [SerializeField] private TextMeshProUGUI hpStealLimit;
     [SerializeField] private TextMeshProUGUI strength;
@@ -24,6 +24,7 @@ public class PlayerInfo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dexterityBonuses;
 
     [Header("More Stats")]
+    [SerializeField] private TextMeshProUGUI maxPets;
     [SerializeField] private TextMeshProUGUI expBonus;
     [SerializeField] private TextMeshProUGUI goldBonus;
     [SerializeField] private TextMeshProUGUI twoslotDropBonus;
@@ -96,13 +97,13 @@ public class PlayerInfo : MonoBehaviour
     {
         playerName.text = Player.Data.nickname;
         lvl.text = $"{Player.Data.level}";
+        points.text = $"{Player.Data.remainingPoints}";
         damage.text = $"{Player.Data.damage.GetValue()}";
         defense.text = $"{Player.Data.defense.GetValue()}";
         health.text = $"{Player.Data.health.GetValue()}";
         critDamage.text = $"{Player.Data.criticalDamage.GetValue()}%";
         critRate.text = $"{Player.Data.criticalRate.GetValue()}%";
         maxCritRate.text = $"{Player.Data.maxCriticalRate.GetValue()}%";
-        accuracy.text = $"{Player.Data.accuracy.GetValue()}";
         hpSteal.text = $"{Player.Data.hpSteal.GetValue()}%";
         hpStealLimit.text = $"{Player.Data.hpStealLimit.GetValue()}";
         strength.text = $"{Player.Data.strength.GetValue()}";
@@ -114,6 +115,7 @@ public class PlayerInfo : MonoBehaviour
         killedMonsters.text = $"{Player.Data.killedMonsters}";
         completedQuests.text = $"{Player.Data.completedQuests}";
         earnedAchievements.text = $"{Player.Data.earnedAchievements}";
+        maxPets.text = $"{Player.Data.maxPets.GetValue()}";
         CheckPoints();
     }
 }

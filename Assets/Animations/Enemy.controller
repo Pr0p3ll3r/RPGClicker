@@ -532,40 +532,40 @@ AnimatorStateMachine:
     m_Position: {x: 520, y: 170, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3562622702496516715}
-    m_Position: {x: 520, y: 370, z: 0}
+    m_Position: {x: 520, y: 450, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2880869725912417128}
     m_Position: {x: 280, y: 270, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4179546911333343741}
-    m_Position: {x: 280, y: 470, z: 0}
+    m_Position: {x: 430, y: 620, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8845121710720752029}
-    m_Position: {x: 280, y: 320, z: 0}
+    m_Position: {x: 280, y: 420, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5431929501479369116}
-    m_Position: {x: 520, y: 320, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 6051818303965671274}
     m_Position: {x: 520, y: 270, z: 0}
   - serializedVersion: 1
+    m_State: {fileID: 6051818303965671274}
+    m_Position: {x: 280, y: 520, z: 0}
+  - serializedVersion: 1
     m_State: {fileID: 5210225509703064698}
-    m_Position: {x: 520, y: 470, z: 0}
+    m_Position: {x: 280, y: 470, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2859351256143581493}
     m_Position: {x: 280, y: 220, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -202052380232170600}
-    m_Position: {x: 520, y: 420, z: 0}
+    m_Position: {x: 520, y: 500, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2734169278171903058}
-    m_Position: {x: 280, y: 420, z: 0}
+    m_Position: {x: 520, y: 320, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -560333197841572702}
     m_Position: {x: 280, y: 370, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7642106926536710093}
-    m_Position: {x: 520, y: 220, z: 0}
+    m_Position: {x: 280, y: 320, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3524127261516548735}
     m_Position: {x: 790, y: 270, z: 0}
@@ -682,7 +682,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OrcKing
+  m_Name: Orc King
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
