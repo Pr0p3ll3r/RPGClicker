@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f4d05af8e2b28e458d358be48badf59, type: 3}
+  m_Name: Lvl88 Blood Lich
+  m_EditorClassIdentifier: 
+  enemyName: Blood Lich
+  icon: {fileID: -373345351, guid: b0c163342d94cfd4792780f72d5705a3, type: 3}
+  level: 88
+  health: 10
+  damage: 0
+  defense: 0
+  criticalDamage: 0
+  criticalChance: 0
+  exp: 0
+  gold: 0
+  loot:
+  - item: {fileID: 0}
+    weight: 100
+  - item: {fileID: 11400000, guid: 21e7e1a11153fff4b9f66b2ff1ae2269, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 9af2c961499841d46bb8d2b248486ba5, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 504db45f9f97fa240a45dc28b9e46847, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 2fcff351c1525cf40a4a98388c9091b6, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 97b65123bff327549ad43ee913f0af73, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: ab97ae27abacdb647b1b25376cb5be58, type: 2}
+    weight: 0.01
+  isTowerMaster: 0
+  isBoss: 1
+  achievement: {fileID: 0}
+  equipment:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfaa4bb3e2346e44db6183006e316bc4, type: 3}
+  m_Name: 8 Swamp
+  m_EditorClassIdentifier: 
+  locationName: Swamp
+  price: 100
+  lvlMin: 65
+  isDungeon: 0
+  enemies:
+  - {fileID: 11400000, guid: 4fa2897f2e254164d9631785630cac46, type: 2}
+  boss: {fileID: 11400000, guid: 07931fc4a8c7b1548a403d8e96aac452, type: 2}

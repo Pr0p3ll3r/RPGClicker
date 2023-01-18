@@ -104,6 +104,32 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1102 &-7444460890359693390
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Giant Spider
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: f5c4a9e73aa4a4748abd1b60f67800b0, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &-6266508476301837970
 AnimatorState:
   serializedVersion: 6
@@ -538,16 +564,13 @@ AnimatorStateMachine:
     m_Position: {x: 280, y: 270, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4179546911333343741}
-    m_Position: {x: 430, y: 620, z: 0}
+    m_Position: {x: 330, y: 600, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8845121710720752029}
     m_Position: {x: 280, y: 420, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5431929501479369116}
     m_Position: {x: 520, y: 270, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 6051818303965671274}
-    m_Position: {x: 280, y: 520, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5210225509703064698}
     m_Position: {x: 280, y: 470, z: 0}
@@ -556,7 +579,7 @@ AnimatorStateMachine:
     m_Position: {x: 280, y: 220, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -202052380232170600}
-    m_Position: {x: 520, y: 500, z: 0}
+    m_Position: {x: 390, y: 520, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2734169278171903058}
     m_Position: {x: 520, y: 320, z: 0}
@@ -587,6 +610,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -469985295786740830}
     m_Position: {x: 790, y: 470, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -7444460890359693390}
+    m_Position: {x: 520, y: 220, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -722,32 +748,6 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 4efae75524436484580f55f9af15c1fc, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &6051818303965671274
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Stone Golem
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 0e4482ea7a133a04797233af6059b645, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

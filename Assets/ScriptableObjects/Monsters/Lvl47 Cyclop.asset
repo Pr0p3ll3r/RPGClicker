@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Lvl47 Cyclop
   m_EditorClassIdentifier: 
   enemyName: Cyclop
-  level: 1
+  icon: {fileID: -2048266666, guid: bdcbc9c7d1c9a9d499fc33f7fdeeb9a8, type: 3}
+  level: 47
   health: 10
   damage: 0
   defense: 0
@@ -42,5 +43,23 @@ MonoBehaviour:
     weight: 5
   - item: {fileID: 11400000, guid: 865452143c6376f4f8d0b98a1011caac, type: 2}
     weight: 5
-  isTowerEnemy: 0
+  isTowerMaster: 0
   isBoss: 0
+  achievement: {fileID: 0}
+  equipment:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

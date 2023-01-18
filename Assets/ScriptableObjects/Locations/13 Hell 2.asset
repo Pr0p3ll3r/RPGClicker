@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfaa4bb3e2346e44db6183006e316bc4, type: 3}
+  m_Name: 13 Hell 2
+  m_EditorClassIdentifier: 
+  locationName: Hell
+  price: 100
+  lvlMin: 99
+  isDungeon: 0
+  enemies:
+  - {fileID: 11400000, guid: 0f51c491cdcbdd24ab5c4ed449eeaa49, type: 2}
+  boss: {fileID: 11400000, guid: 05caad2cd8179a948a69696615850e0e, type: 2}

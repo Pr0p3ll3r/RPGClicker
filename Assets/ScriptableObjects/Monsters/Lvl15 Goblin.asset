@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lvl15 Goblin
   m_EditorClassIdentifier: 
   enemyName: Goblin
-  icon: {fileID: -1049337199, guid: 30aa4dd58aa76e04095bedc02797bbe5, type: 3}
+  icon: {fileID: -797467815, guid: bdcbc9c7d1c9a9d499fc33f7fdeeb9a8, type: 3}
   level: 15
   health: 400
   damage: 7
@@ -43,5 +43,23 @@ MonoBehaviour:
     weight: 5
   - item: {fileID: 11400000, guid: 865452143c6376f4f8d0b98a1011caac, type: 2}
     weight: 5
-  isTowerEnemy: 0
+  isTowerMaster: 0
   isBoss: 0
+  achievement: {fileID: 0}
+  equipment:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

@@ -130,8 +130,33 @@ MonoBehaviour:
   locations:
   - {fileID: 11400000, guid: 7c29b70c824fac14894c3a5e518f657f, type: 2}
   - {fileID: 11400000, guid: 2fec22345ad683745abb831ed24c298d, type: 2}
+  - {fileID: 11400000, guid: 772d66cc84c4f114bb82bbe7e0c1d52a, type: 2}
+  - {fileID: 11400000, guid: 5669e96bd56890a4db827e1a2883f038, type: 2}
+  - {fileID: 11400000, guid: 5387394dbd3466b46b0bba2c8ecdc0a8, type: 2}
+  - {fileID: 11400000, guid: 5808123d3c441364eae23b794e02006b, type: 2}
+  - {fileID: 11400000, guid: bde156f7fb6d7ff458e9399e86bc6e86, type: 2}
+  - {fileID: 11400000, guid: f08e0dcdbc8b8bf4ab4a43e4df69dade, type: 2}
+  - {fileID: 11400000, guid: 66ded0ef3065965418ce076b847a0df2, type: 2}
+  - {fileID: 11400000, guid: cfdb0155f6149bb46a1e4248c009811f, type: 2}
+  - {fileID: 11400000, guid: 7f0ec0c6fa3040f4d826b3784cfbd1d8, type: 2}
+  - {fileID: 11400000, guid: 94875c72c973194459627366685b9db9, type: 2}
+  - {fileID: 11400000, guid: f981f3a420bd3754a8986a8c2fd724ce, type: 2}
+  - {fileID: 11400000, guid: bcf25ff7eb025814eb7fc77aaf844094, type: 2}
   dungeons:
   - {fileID: 11400000, guid: c34f95fccd94c71468b2b52fd394eb54, type: 2}
+  - {fileID: 11400000, guid: 8b92f91e1b047b34aba8174c9a0b9e69, type: 2}
+  - {fileID: 11400000, guid: 8922f032dca5fe642a2d2bf32823c3fe, type: 2}
+  - {fileID: 11400000, guid: f1afeacf06ab9d042aad2af9bce2f5e2, type: 2}
+  - {fileID: 11400000, guid: 1d011cfdc6eac474bb865edbf8449991, type: 2}
+  - {fileID: 11400000, guid: 029c76be5beb8d74b91b387a3df21c94, type: 2}
+  - {fileID: 11400000, guid: e909a9c87f506174ebaa8922ec597128, type: 2}
+  - {fileID: 11400000, guid: d3afe0ba612cfba468a79d621e8769ea, type: 2}
+  - {fileID: 11400000, guid: ae0cb3176cd32c34ab2b195e1cb17d82, type: 2}
+  - {fileID: 11400000, guid: a4eae909fa51388459375a2e416461bb, type: 2}
+  - {fileID: 11400000, guid: e6d24e29f0b541a45b3d90bbf3860f0b, type: 2}
+  - {fileID: 11400000, guid: 5c9a5a00803e1b84d82efd0ef076d288, type: 2}
+  - {fileID: 11400000, guid: bbade83d6f9f0ca4cbd7542c7252d62c, type: 2}
+  - {fileID: 11400000, guid: e2aaede64b8ac9a40a0b6a63bd2d9f5b, type: 2}
   rarityBonuses:
   - {fileID: 11400000, guid: 60304dfad7afcb648a893974b334ce81, type: 2}
   - {fileID: 11400000, guid: c83c2d3a1668d5644964a482eb55106c, type: 2}

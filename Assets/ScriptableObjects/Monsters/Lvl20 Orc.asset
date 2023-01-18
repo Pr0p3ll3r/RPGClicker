@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lvl20 Orc
   m_EditorClassIdentifier: 
   enemyName: Orc
-  icon: {fileID: 56487811, guid: 829754d493dcbae4d9505980dda5f50e, type: 3}
+  icon: {fileID: 14011610, guid: bdcbc9c7d1c9a9d499fc33f7fdeeb9a8, type: 3}
   level: 20
   health: 400
   damage: 10
@@ -43,5 +43,23 @@ MonoBehaviour:
     weight: 5
   - item: {fileID: 11400000, guid: ee5edf9aac725a3408bd35ea3f41bb9e, type: 2}
     weight: 5
-  isTowerEnemy: 0
+  isTowerMaster: 0
   isBoss: 0
+  achievement: {fileID: 0}
+  equipment:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

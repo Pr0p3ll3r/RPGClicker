@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f4d05af8e2b28e458d358be48badf59, type: 3}
+  m_Name: Lvl38 Pharaoh
+  m_EditorClassIdentifier: 
+  enemyName: Pharaoh
+  icon: {fileID: 2139911786, guid: b0c163342d94cfd4792780f72d5705a3, type: 3}
+  level: 38
+  health: 10
+  damage: 0
+  defense: 0
+  criticalDamage: 0
+  criticalChance: 0
+  exp: 0
+  gold: 0
+  loot:
+  - item: {fileID: 0}
+    weight: 100
+  - item: {fileID: 11400000, guid: 4d682e1bb210d614c9ea60a93a3442ac, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 31543798dbdd04d4bb59f78af575ced8, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 7745473fe744da84aaf3f00ec464b31f, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: c732189504678d042abef9970123f87a, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: eeec6d3e285abac4daeffc33fc4cc497, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: ab97ae27abacdb647b1b25376cb5be58, type: 2}
+    weight: 0.01
+  isTowerMaster: 0
+  isBoss: 1
+  achievement: {fileID: 0}
+  equipment:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

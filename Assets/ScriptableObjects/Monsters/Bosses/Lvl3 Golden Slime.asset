@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lvl3 Golden Slime
   m_EditorClassIdentifier: 
   enemyName: Golden Slime
-  icon: {fileID: 1948174921, guid: 3b376616b8d38184caf962366b9d1ad6, type: 3}
+  icon: {fileID: -1233220200, guid: bdcbc9c7d1c9a9d499fc33f7fdeeb9a8, type: 3}
   level: 3
   health: 200
   damage: 2

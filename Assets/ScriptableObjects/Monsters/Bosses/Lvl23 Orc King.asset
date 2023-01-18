@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lvl23 Orc King
   m_EditorClassIdentifier: 
   enemyName: Orc King
-  icon: {fileID: 33877150, guid: e267c460e335beb478f7e309eba2b617, type: 3}
+  icon: {fileID: -1552869336, guid: b0c163342d94cfd4792780f72d5705a3, type: 3}
   level: 23
   health: 500
   damage: 12
@@ -37,5 +37,23 @@ MonoBehaviour:
     weight: 5
   - item: {fileID: 11400000, guid: ab97ae27abacdb647b1b25376cb5be58, type: 2}
     weight: 0.01
-  isTowerEnemy: 0
+  isTowerMaster: 0
   isBoss: 1
+  achievement: {fileID: 0}
+  equipment:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
