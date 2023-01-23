@@ -267,6 +267,7 @@ public class PlayerData
                 break;
             case Stats.MaxPets:
                 maxPets.AddModifier(amount);
+                Player.Instance.Unlock2ndPetSlot();
                 break;
         }
     }

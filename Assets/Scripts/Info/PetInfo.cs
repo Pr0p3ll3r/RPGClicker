@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class PetInfo : MonoBehaviour
 {
     [SerializeField] private Image petIcon;
-    [SerializeField] private Sprite emptyIcon;
     [SerializeField] private TextMeshProUGUI petName;
     [SerializeField] private ItemStatInfo lvl;
     [SerializeField] private Image expBar;
@@ -13,7 +12,7 @@ public class PetInfo : MonoBehaviour
     [SerializeField] private Transform statParent;
     [SerializeField] private GameObject statPrefab;
     [SerializeField] private Button unequipButton;
-
+    
     private Pet pet;
 
     public void SetUp(Pet _pet)
@@ -56,7 +55,7 @@ public class PetInfo : MonoBehaviour
         lvl.SetUp("", "");
         exp.text = "0/0";
         petName.text = "Slot for Pet";
-        petIcon.sprite = emptyIcon;
+        petIcon.sprite = Database.data.emptySlot;
         expBar.transform.parent.gameObject.SetActive(false);
     }
 
@@ -81,5 +80,10 @@ public class PetInfo : MonoBehaviour
             exp.text = $"{pet.exp}/{requireExp}";
         }
         lvl.SetUp("Level:", $"{pet.level}");
+    }
+
+    public void UnlockSlot()
+    {
+        petIcon.sprite = Database.data.emptySlot;
     }
 }

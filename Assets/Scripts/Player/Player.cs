@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -24,10 +23,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Transform popupPosition;
 
-    [SerializeField] private TextMeshProUGUI healthRegenerationTimer;
     [SerializeField] private float healthRegenerationTime = 30;
-
     private float regeneration;
+
     private PlayerInfo playerInfo;
     private Enemy Enemy => Enemy.Instance;
     public bool IsDead { get; private set; }
@@ -40,6 +38,7 @@ public class Player : MonoBehaviour
         hud.UpdateHealthBar();
         petsInfo = petList.GetComponentsInChildren<PetInfo>();
         RefreshPetList();
+        Unlock2ndPetSlot();
         regeneration = PlayerPrefs.GetFloat("HealthRegeneration", healthRegenerationTime);
     }
 
@@ -75,14 +74,14 @@ public class Player : MonoBehaviour
         if (regeneration > 0)
         {
             regeneration -= Time.deltaTime;
-            healthRegenerationTimer.text = $"Regenerate in {Mathf.FloorToInt(regeneration + 1):00}";
+            hud.RefreshRegenerationTimer($"Regenerate in {Mathf.FloorToInt(regeneration + 1):00}");
         }
         else
         {
             Data.currentHealth++;
             hud.UpdateHealthBar();
             regeneration = healthRegenerationTime;
-            healthRegenerationTimer.text = "";
+            hud.RefreshRegenerationTimer("");
         }          
     }
 
@@ -115,7 +114,7 @@ public class Player : MonoBehaviour
         hud.UpdateHealthBar();
         if(Data.IsFullHP())
         {
-            healthRegenerationTimer.text = "";
+            hud.RefreshRegenerationTimer("");
             regeneration = healthRegenerationTime;
         }           
     }
@@ -158,7 +157,7 @@ public class Player : MonoBehaviour
         hud.ShowRevivePanel();
         GameManager.Instance.PlayerDeath();
         regeneration = healthRegenerationTime;
-        healthRegenerationTimer.text = "";
+        hud.RefreshRegenerationTimer("");
         Inventory.ChangeGoldAmount(-Inventory.data.gold / 2);
     }
 
@@ -203,16 +202,15 @@ public class Player : MonoBehaviour
         hud.UpdateHealthBar();
         playerInfo.RefreshStats();
         regeneration = healthRegenerationTime;
-        healthRegenerationTimer.text = "";
+        hud.RefreshRegenerationTimer("");
     }
 
     public bool Equip(Equipment item)
     {
-        Equipment previousItem;
         if (item.lvlRequired <= Data.level)
         {
             Inventory.RemoveItem(item);
-            Equipment.EquipItem(item, out previousItem);
+            Equipment.EquipItem(item, out Equipment previousItem);
             item.AddStats(Data);
             if (previousItem != null)
             {
@@ -261,7 +259,6 @@ public class Player : MonoBehaviour
                 }
             }
             Inventory.RemoveItem(pet);
-            Inventory.RefreshUI();
             RefreshPetList();
             pet.AddStats(Data);
         }
@@ -313,6 +310,12 @@ public class Player : MonoBehaviour
             }
         }
         return false;
+    }
+    
+    public void Unlock2ndPetSlot()
+    {
+        if(Data.maxPets.GetValue() == 2)
+            petsInfo[1].UnlockSlot();
     }
 
     private void OnApplicationQuit()

@@ -8,6 +8,7 @@ public class RebirthBonusInfo : MonoBehaviour
     [SerializeField] private Image bonusIcon;
     [SerializeField] private TextMeshProUGUI currentBonus;
     [SerializeField] private TextMeshProUGUI nextBonus;
+    [SerializeField] private TextMeshProUGUI bonusCost;
     [SerializeField] private Button upgradeButton;
     [SerializeField] private RebirthSystem rebirthSystem;
 
@@ -18,12 +19,24 @@ public class RebirthBonusInfo : MonoBehaviour
         upgradeButton.onClick.RemoveAllListeners();
         bonusIcon.sprite = bonus.icon;
         int level = bonus.CurrentLevel;
-        bonusName.text = $"{bonus.bonusName} ({level}/{bonus.levels.Length - 1})";     
-        currentBonus.text = $"Current: +{bonus.CurrentValue}";
-        if(level == bonus.levels.Length - 1)
-            nextBonus.text = "MAXED";
+        bonusName.text = $"{bonus.bonusName} ({level}/{bonus.levels.Length - 1})";
+        if (bonus.stat.ToString().Contains("Percent"))
+            currentBonus.text = $"Current: +{bonus.CurrentValue}% {Utils.GetShortName(bonus.stat)}";
         else
-            nextBonus.text = $"Next: +{bonus.levels[level + 1].value}";
+            currentBonus.text = $"Current: +{bonus.CurrentValue} {Utils.GetShortName(bonus.stat)}";
+        if(level == bonus.levels.Length - 1) 
+        {
+            nextBonus.text = "Next: MAXED";
+            bonusCost.text = "Cost: X";
+        }
+        else
+        {
+            if(bonus.stat.ToString().Contains("Percent"))
+                nextBonus.text = $"Next: +{bonus.levels[level + 1].value}%";
+            else
+                nextBonus.text = $"Next: +{bonus.levels[level + 1].value}";
+            bonusCost.text = $"Cost: {bonus.levels[level + 1].cost} points";
+        }          
         upgradeButton.onClick.AddListener(delegate { Upgrade(bonus); });
 
         if (level == bonus.levels.Length - 1 || Data.rebirthRemainingPoints < bonus.levels[level + 1].cost)
@@ -36,11 +49,11 @@ public class RebirthBonusInfo : MonoBehaviour
 
     private void Upgrade(RebirthBonus bonus)
     {
+        SoundManager.Instance.PlayOneShot("Click");
         Data.AddStat(bonus.stat, bonus.levels[bonus.CurrentLevel + 1].value);
         bonus.CurrentValue += bonus.levels[bonus.CurrentLevel + 1].value;
+        Data.rebirthRemainingPoints -= bonus.levels[bonus.CurrentLevel + 1].cost;
         bonus.CurrentLevel++;
-        Data.rebirthRemainingPoints--;
-        SoundManager.Instance.PlayOneShot("Click");
         SetUp(bonus);
         rebirthSystem.RefreshBonus(bonus);
     }

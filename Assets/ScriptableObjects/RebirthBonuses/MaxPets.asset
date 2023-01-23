@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79f74738d4a56d4bb876cedcb688cac, type: 3}
   m_Name: MaxPets
   m_EditorClassIdentifier: 
+  ID: 1
   bonusName: Max Pets
-  icon: {fileID: 1948174921, guid: 3b376616b8d38184caf962366b9d1ad6, type: 3}
-  stat: 15
+  icon: {fileID: -1233220200, guid: bdcbc9c7d1c9a9d499fc33f7fdeeb9a8, type: 3}
+  stat: 14
   levels:
   - value: 0
     cost: 0

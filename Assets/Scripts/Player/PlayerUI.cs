@@ -14,6 +14,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private GameObject vignette;
     [SerializeField] private GameObject revivePanel;
     [SerializeField] private TextMeshProUGUI reviveTimer;
+    [SerializeField] private TextMeshProUGUI healthRegenerationTimer;
 
     [SerializeField] private GameObject statsPanel;
     [SerializeField] private GameObject moreStatsPanel;
@@ -98,6 +99,11 @@ public class PlayerUI : MonoBehaviour
             revivePanel.SetActive(false);
             Player.Revive();
         }           
+    }
+
+    public void RefreshRegenerationTimer(string text)
+    {
+        healthRegenerationTimer.text = text;
     }
 
     private void ClosePanels()

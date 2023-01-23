@@ -60,6 +60,8 @@ public static class Utils
                 return "Intelligence";
             case Stats.Dexterity:
                 return "Dexterity";
+            case Stats.MaxPets:
+                return "Max Pets";
             default:
                 return "";
         }
@@ -86,17 +88,19 @@ public static class Utils
             case Stats.HPStealLimit:
                 return "HP ST LMT";
             case Stats.GoldBonusPercent:
-                return "GOLD BONUS";
+                return "GOLD BON";
             case Stats.TwoSlotItemDropPercent:
-                return "TWO-SLOT DROP";
+                return "2-SLOT DROP";
             case Stats.ExpBonusPercent:
-                return "EXP BONUS";
+                return "EXP BON";
             case Stats.Strength:
                 return "STR";
             case Stats.Intelligence:
                 return "INT";
             case Stats.Dexterity:
                 return "DEX";
+            case Stats.MaxPets:
+                return "MAX PETS";
             default:
                 return "";
         }
