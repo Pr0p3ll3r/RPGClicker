@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Location", menuName = "RPG/Location")]
 public class Location : ScriptableObject, ISerializationCallbackReceiver
 {
+    public int ID;
     public string locationName;
     public int price = 1;
     public int lvlMin = 1;

@@ -49,5 +49,10 @@ public class DatabaseSO : ScriptableObject, ISerializationCallbackReceiver
         {
             rebirthBonuses[i].ID = i;
         }
+
+        for (int i = 0; i < locations.Length; i++)
+        {
+            locations[i].ID = i;
+        }
     }
 }

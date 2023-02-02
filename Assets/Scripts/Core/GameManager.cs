@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour
         mainPanel.SetActive(true);
         Database.data.locations[0].BossDefeated = true;
         UnlockLocation(Database.data.locations[0]);
-        ChangeLocation(Database.data.locations[0]);
+        ChangeLocation(Database.data.locations[PlayerPrefs.GetInt("LastLocation", 0)]);
         foreach (EquipmentSlot slot in PlayerEquipment.Instance.Slots)
             slot.SetRightPlaceholder();
         if (Player.Data.completedQuests < Database.data.quests.Length)
@@ -172,7 +172,6 @@ public class GameManager : MonoBehaviour
 
     private void Reborn()
     {
-        Database.data.locations[0].BossDefeated = true;
         foreach (Location location in Database.data.locations)
         {
             location.OnAfterDeserialize();
@@ -347,7 +346,8 @@ public class GameManager : MonoBehaviour
 
     private void ChangeLocation(Location newLocation)
     {
-        previousLocation = currentLocation;
+        if(currentLocation != null && !currentLocation.isDungeon && !currentLocation.enemies[0].isTowerMaster)
+            previousLocation = currentLocation;
         currentLocation = newLocation;
         locationName.text = currentLocation.locationName;
         adventurePanel.SetActive(false);
@@ -430,5 +430,9 @@ public class GameManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         Data.Save(Player.Instance, PlayerInventory.Instance, PlayerEquipment.Instance.Slots);
+        if (!currentLocation.isDungeon && !currentLocation.enemies[0].isTowerMaster)
+            PlayerPrefs.SetInt("LastLocation", currentLocation.ID);
+        else
+            PlayerPrefs.SetInt("LastLocation", previousLocation.ID);
     }
 }
