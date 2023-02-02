@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfaa4bb3e2346e44db6183006e316bc4, type: 3}
   m_Name: Tower
   m_EditorClassIdentifier: 
+  ID: 0
   locationName: Tower
-  price: 1
+  price: 0
   lvlMin: 1
   isDungeon: 0
   enemies:

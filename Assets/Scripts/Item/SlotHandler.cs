@@ -8,9 +8,14 @@ public class SlotHandler : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         if(inventory)
-            PlayerInventory.Instance.DisplayItemInfo(GetComponentInParent<InventorySlot>().item, inventory); 
+        {
+            if(GetComponentInParent<InventorySlot>())
+                ItemInfoManager.Instance.DisplayItemInfo(GetComponentInParent<InventorySlot>().item, inventory);
+            else //is Enemy Item
+                ItemInfoManager.Instance.DisplayItemInfo(GetComponentInParent<EquipmentSlot>().item, inventory, true);
+        }         
         else
-            PlayerInventory.Instance.DisplayItemInfo(GetComponentInParent<EquipmentSlot>().item, inventory);
+            ItemInfoManager.Instance.DisplayItemInfo(GetComponentInParent<EquipmentSlot>().item, inventory);
 
         SoundManager.Instance.PlayOneShot("Click");
     }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -44,8 +42,15 @@ public class Armory : MonoBehaviour
 
     private PlayerInventory Inventory => PlayerInventory.Instance;
     private GameManager GameManager => GameManager.Instance;
+    private ItemInfoManager ItemInfoManager => ItemInfoManager.Instance;
+    private SoundManager SoundManager => SoundManager.Instance;
 
     private void Start()
+    {
+        ClosePanels();
+    }
+
+    public void ClosePanels()
     {
         currentItemInfo.SetActive(false);
         afterUpgradeItemInfo.SetActive(false);
@@ -56,7 +61,7 @@ public class Armory : MonoBehaviour
 
     public void OpenCraftingPanel(Blueprint b)
     {
-        SoundManager.Instance.PlayOneShot("Click");
+        SoundManager.PlayOneShot("Click");
         craftingPanel.SetActive(true);
         currentItemInfo.GetComponent<ItemInfo>().SetUp(b, false, null);
         afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUpCraft(b.resultItem);
@@ -77,22 +82,22 @@ public class Armory : MonoBehaviour
             Item resultItem = b.resultItem.GetCopy();
             GameManager.ShowText("Success", Color.green);
             Inventory.AddItem(resultItem, 1);
-            SoundManager.Instance.PlayOneShot("Success");
+            SoundManager.PlayOneShot("Success");
         }
         else
         {
             GameManager.ShowText("Failed", Color.red);
-            SoundManager.Instance.PlayOneShot("Failed");
+            SoundManager.PlayOneShot("Failed");
         }
         craftingPanel.SetActive(false);
         currentItemInfo.SetActive(false);
         afterUpgradeItemInfo.SetActive(false);
-        Inventory.CloseItemsInfo();
+        ItemInfoManager.CloseItemsInfo();
     }
 
     public void OpenUpgradePanel(Equipment eq)
     {
-        SoundManager.Instance.PlayOneShot("Click");
+        SoundManager.PlayOneShot("Click");
         normalUpgradeButton.interactable = eq.CanStillBeUpgraded();
         extremeUpgradeButton.interactable = eq.CanStillBeExtremeUpgraded();
         divineUpgradeButton.interactable = eq.CanStillBeDivineUpgraded();
@@ -122,7 +127,7 @@ public class Armory : MonoBehaviour
     /// <param name="upgradeMode"></param>
     private void OpenUpgrade(Equipment eq, int upgradeMode)
     {
-        SoundManager.Instance.PlayOneShot("Click");
+        SoundManager.PlayOneShot("Click");
         Equipment eqAfter = (Equipment)eq.GetCopy();
         upgradeButton.onClick.RemoveAllListeners();
         int chance = 0;
@@ -191,13 +196,13 @@ public class Armory : MonoBehaviour
                     eq.chaosGrade.level++;
                     break;
             }
-            Inventory.DisplayItemInfo(eq, true);
-            SoundManager.Instance.PlayOneShot("Success");
+            ItemInfoManager.DisplayItemInfo(eq, true);
+            SoundManager.PlayOneShot("Success");
         }
         else
         {
             GameManager.ShowText("Failed", Color.red);
-            SoundManager.Instance.PlayOneShot("Failed");
+            SoundManager.PlayOneShot("Failed");
         }
         Inventory.ChangeGoldAmount(-price);
         OpenUpgradePanel(eq);
@@ -205,7 +210,7 @@ public class Armory : MonoBehaviour
 
     public void OpenEnhancePanel(Item item)
     {
-        SoundManager.Instance.PlayOneShot("Click");
+        SoundManager.PlayOneShot("Click");
 
         foreach (Transform child in listOfScrolls.transform)
             Destroy(child.gameObject);
@@ -272,7 +277,7 @@ public class Armory : MonoBehaviour
 
     private void OpenEnhance(Item item, Scroll scroll)
     {
-        SoundManager.Instance.PlayOneShot("Click");  
+        SoundManager.PlayOneShot("Click");  
         enhanceButton.onClick.RemoveAllListeners();
         int chance = 100;
         int price = 0;
@@ -333,13 +338,13 @@ public class Armory : MonoBehaviour
                     pet.AddScroll(scroll.scrollStat);
                     break;
             }
-            Inventory.DisplayItemInfo(item, true);
-            SoundManager.Instance.PlayOneShot("Success");
+            ItemInfoManager.DisplayItemInfo(item, true);
+            SoundManager.PlayOneShot("Success");
         }
         else
         {
             GameManager.ShowText("Failed", Color.red);
-            SoundManager.Instance.PlayOneShot("Failed");
+            SoundManager.PlayOneShot("Failed");
         }
         Inventory.ChangeGoldAmount(-price);
         OpenEnhancePanel(item);

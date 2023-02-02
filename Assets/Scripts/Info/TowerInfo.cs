@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class TowerInfo : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class TowerInfo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI criticalDamage;
     [SerializeField] private TextMeshProUGUI criticalChance;
     [SerializeField] private EquipmentSlot[] slots;
+    [SerializeField] private ItemInfo selectedItem;
 
     public void SetUp(EnemyData data)
     {
@@ -49,7 +51,7 @@ public class TowerInfo : MonoBehaviour
             {
                 slots[i].ClearSlot();
                 if (data.equipment[i] != null)
-                    slots[i].FillSlot(data.equipment[i]);
+                    slots[i].FillSlot(data.equipment[i]);                 
             }
         }
     }

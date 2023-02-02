@@ -27,7 +27,7 @@ public class ItemInfo : MonoBehaviour
     private PlayerInventory Inventory => PlayerInventory.Instance;
     private Player Player => Player.Instance;
 
-    public void SetUp(Item item, bool equipped, Equipment toCompare)
+    public void SetUp(Item item, bool equipped, Equipment toCompare, bool isEnemyItem = false)
     {
         if (toCompare != null)
             itemToCompare = toCompare;
@@ -41,7 +41,7 @@ public class ItemInfo : MonoBehaviour
         if (item.description != "")
             description.gameObject.SetActive(true);
 
-        if(!equipped)
+        if(!isEnemyItem && !equipped)
         {
             sellButton.onClick.AddListener(delegate { SellItem(item); });
             sellButton.gameObject.SetActive(true);
@@ -177,7 +177,7 @@ public class ItemInfo : MonoBehaviour
                 }
             }
 
-            if (!equipped)
+            if (!isEnemyItem && !equipped)
             {
                 equipButton.onClick.AddListener(delegate { EquipItem(eq); });
                 equipButton.gameObject.SetActive(true);
@@ -191,7 +191,7 @@ public class ItemInfo : MonoBehaviour
                 enhanceButton.gameObject.SetActive(true);
                 enhanceButton.interactable = eq.ScrollsCanStillBeAdded();          
             }
-            else
+            else if(!isEnemyItem)
             {
                 unequipButton.onClick.AddListener(delegate { UnequipItem(eq); });
                 unequipButton.gameObject.SetActive(true);
@@ -315,7 +315,7 @@ public class ItemInfo : MonoBehaviour
     private void CloseItemInfo()
     {
         SoundManager.Instance.PlayOneShot("Click");
-        Inventory.CloseItemsInfo();
+        ItemInfoManager.Instance.CloseItemsInfo();
     }
 
     /// <summary>

@@ -19,8 +19,6 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private Transform itemList;
     public InventoryData data = new InventoryData();
     [SerializeField] private TextMeshProUGUI goldText;
-    [SerializeField] private GameObject equippedItemInfo;
-    [SerializeField] private GameObject selectedItemInfo;
 
     void Awake()
     {
@@ -30,8 +28,6 @@ public class PlayerInventory : MonoBehaviour
 
     private void Start()
     {     
-        equippedItemInfo.SetActive(false);
-        selectedItemInfo.SetActive(false);
         RefreshUI();
     }
 
@@ -181,49 +177,6 @@ public class PlayerInventory : MonoBehaviour
 
         if (amount <= 0) return true;
         else return false;
-    }
-
-    public void DisplayItemInfo(Item item, bool inventory)
-    {
-        PlayerEquipment equipment = PlayerEquipment.Instance;
-        selectedItemInfo.SetActive(false);
-        equippedItemInfo.SetActive(false);
-        if (inventory)
-        {
-            if (item.itemType == ItemType.Equipment)
-            {
-                Equipment selectedEq = (Equipment)item;
-                int index = Utils.GetRightSlot(selectedEq);
-                Equipment equippedEq = null;
-                if (index > -1)
-                    equippedEq = equipment.Slots[index].item;
-                selectedItemInfo.GetComponent<ItemInfo>().SetUp(selectedEq, false, equippedEq);
-                selectedItemInfo.SetActive(true);
-                //compare with first empty or first equipped by index
-                if (equippedEq != null)
-                {
-                    equippedItemInfo.GetComponent<ItemInfo>().SetUp(equippedEq, true, selectedEq);
-                    equippedItemInfo.SetActive(true);
-                }               
-            }
-            else
-            {
-                selectedItemInfo.GetComponent<ItemInfo>().SetUp(item, false, null);
-                selectedItemInfo.SetActive(true);
-            }
-        }
-        else
-        {
-            Equipment equippedEq = (Equipment)item;
-            equippedItemInfo.GetComponent<ItemInfo>().SetUp(equippedEq, true, null);
-            equippedItemInfo.SetActive(true);
-        }           
-    }
-
-    public void CloseItemsInfo()
-    {
-        equippedItemInfo.SetActive(false);
-        selectedItemInfo.SetActive(false);
     }
 
     public bool HaveEnoughGold(int neededGold)
