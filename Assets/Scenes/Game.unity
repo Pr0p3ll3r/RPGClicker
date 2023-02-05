@@ -10063,7 +10063,7 @@ GameObject:
   m_Component:
   - component: {fileID: 519407108}
   m_Layer: 0
-  m_Name: CriticalChance
+  m_Name: CriticalRate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14555,7 +14555,7 @@ GameObject:
   - component: {fileID: 661656067}
   - component: {fileID: 661656066}
   m_Layer: 0
-  m_Name: CriticalChance
+  m_Name: CriticalRate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26257,7 +26257,7 @@ GameObject:
   - component: {fileID: 1250952126}
   - component: {fileID: 1250952125}
   m_Layer: 0
-  m_Name: CriticalChanceTitle
+  m_Name: CriticalRateTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26303,7 +26303,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Critical Chance:'
+  m_text: 'Critical Rate:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a4e4b478631d9a44d805adfb5863c72e, type: 2}
   m_sharedMaterial: {fileID: 1539115049030319989, guid: a4e4b478631d9a44d805adfb5863c72e, type: 2}
@@ -44650,7 +44650,7 @@ MonoBehaviour:
   damage: {fileID: 811414979}
   defense: {fileID: 2044593776}
   criticalDamage: {fileID: 435139632}
-  criticalChance: {fileID: 661656066}
+  criticalRate: {fileID: 661656066}
   slots:
   - {fileID: 419892678}
   - {fileID: 257199186}

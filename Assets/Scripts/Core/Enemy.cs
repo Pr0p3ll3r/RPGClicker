@@ -88,7 +88,7 @@ public class Enemy : MonoBehaviour
         if (IsDead) return;
 
         int damage = Data.damage;
-        Utils.Critical(Data.criticalChance, Data.criticalDamage, ref damage);
+        Utils.Critical(Data.criticalDamage, Data.criticalRate, ref damage);
         damage -= player.Data.defense.GetValue();
         damage = Mathf.Clamp(damage, 1, int.MaxValue);
         player.TakeDamage(damage);

@@ -11,7 +11,7 @@ public class EnemyData : ScriptableObject
     public int damage;
     public int defense;
     public int criticalDamage;
-    public int criticalChance;
+    public int criticalRate;
 
     public int exp;
     public int gold;
