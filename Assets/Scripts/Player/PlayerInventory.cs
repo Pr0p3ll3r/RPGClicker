@@ -4,7 +4,13 @@ using UnityEngine;
 [System.Serializable]
 public class InventoryData
 {
-    public int gold;
+    [field: SerializeField]
+    private uint gold;
+    public uint Gold
+    {
+        get { return gold; }
+        set { gold = value; gold = System.Math.Clamp(gold, 0, 4000000000); }
+    }
     public InventoryData()
     {
         gold = 0;
@@ -41,7 +47,7 @@ public class PlayerInventory : MonoBehaviour
                 slots[i].FillSlot(slots[i].item);
         }
 
-        goldText.text = data.gold.ToString();
+        goldText.text = data.Gold.ToString();
     }
 
     public bool AddItem(Item item, int amount)
@@ -85,8 +91,8 @@ public class PlayerInventory : MonoBehaviour
 
     public void ChangeGoldAmount(int amount)
     {
-        data.gold += amount;
-        goldText.text = data.gold.ToString();
+        data.Gold += (uint)amount;
+        goldText.text = data.Gold.ToString();
     }
 
     public void RemoveItem(Item _item, int amount)
@@ -181,7 +187,7 @@ public class PlayerInventory : MonoBehaviour
 
     public bool HaveEnoughGold(int neededGold)
     {
-        if (data.gold >= neededGold)
+        if (data.Gold >= neededGold)
             return true;
         return false;
     }

@@ -158,7 +158,7 @@ public class Player : MonoBehaviour
         GameManager.Instance.PlayerDeath();
         regeneration = healthRegenerationTime;
         hud.RefreshRegenerationTimer("");
-        Inventory.ChangeGoldAmount(-Inventory.data.gold / 2);
+        Inventory.ChangeGoldAmount((int)(-Inventory.data.Gold / 2));
     }
 
     public void Revive()
@@ -181,7 +181,7 @@ public class Player : MonoBehaviour
             MyPets[i] = null;
         }
         //Clear Inventory
-        Inventory.ChangeGoldAmount(-Inventory.data.gold);
+        Inventory.ChangeGoldAmount((int)-Inventory.data.Gold);
         for (int i = 0; i < Inventory.slots.Length; i++)
         {
             Inventory.slots[i].item = null;
