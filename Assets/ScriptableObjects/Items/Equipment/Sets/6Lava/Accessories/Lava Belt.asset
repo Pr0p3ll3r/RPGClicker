@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc3e9056b2f44744dad1f2b9d3b9b02f, type: 3}
+  m_Name: Lava Belt
+  m_EditorClassIdentifier: 
+  ID: 71
+  itemName: Lava Belt
+  icon: {fileID: -218387879, guid: 111f4609a522c6d46999fd8f7d413e03, type: 3}
+  itemType: 0
+  description: Can be worn by every class
+  maxInStack: 1
+  stackable: 0
+  price: 10000
+  normalGrade:
+    level: 0
+    maxLevel: 9
+    stats:
+    - stat: 3
+      values: 1a0000001b0000001c0000001d0000001e0000001f00000020000000210000002200000023000000
+    prices: a0860100400d0300e0930400801a060020a10700c027090060ae0a0000350c00a0bb0d00
+  equipmentTypeSlot: 9
+  rarity: 0
+  canBeUsedBy: 0000000001000000020000000300000004000000
+  lvlRequired: 100
+  canBeUpgraded: 1
+  canBeExtremeUpgraded: 0
+  canBeDivineUpgraded: 0
+  canBeChaosUpgraded: 1
+  scrollsCanBeAdded: 0
+  rarityBonus: {fileID: 0}
+  is2HWeapon: 0
+  extremeGrade:
+    level: 0
+    maxLevel: 0
+    stats: []
+    prices: 
+  divineGrade:
+    level: 0
+    maxLevel: 0
+    stats: []
+    prices: 
+  scrollsStat: []
+  chaosGrade:
+    level: 0
+    maxLevel: 15
+    stats:
+    - stat: 2
+      values: 0000000000000000000000005a00000064000000780000008c000000a0000000be000000dc000000fa000000220100004a01000072010000a4010000
+    - stat: 1
+      values: 0a0000000f00000014000000190000001e00000028000000320000003c00000046000000500000005f0000006e0000007d0000008c0000009b000000
+    - stat: 0
+      values: 0a0000000f00000014000000190000001e00000028000000320000003c00000046000000500000005f0000006e0000007d0000008c0000009b000000
+    - stat: 3
+      values: 000000000000000000000000010000000200000003000000040000000500000007000000080000000b0000000e000000110000001400000019000000
+    prices: 

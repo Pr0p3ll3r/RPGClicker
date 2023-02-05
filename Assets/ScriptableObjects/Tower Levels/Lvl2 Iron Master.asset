@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: Iron Master
   icon: {fileID: 417159493, guid: 625964c3175290c458f3a40e8f690313, type: 3}
   level: 40
-  health: 10
+  health: 100
   damage: 0
   defense: 0
   criticalDamage: 0

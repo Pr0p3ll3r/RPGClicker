@@ -4,6 +4,7 @@
 public class Equipment : Item
 {
     [Header("Equipment")]
+    public Grade normalGrade;
     public EquipmentType equipmentTypeSlot;
     public EquipmentRarity rarity;
     public PlayerClass[] canBeUsedBy;
@@ -72,8 +73,7 @@ public class Equipment : Item
     }
 
     [Header("Armor and Weapon")]
-    public StatBonus rarityBonus;
-    public Grade normalGrade;
+    public StatBonus rarityBonus;  
     public bool is2HWeapon;
     public Grade extremeGrade;
     public Grade divineGrade;

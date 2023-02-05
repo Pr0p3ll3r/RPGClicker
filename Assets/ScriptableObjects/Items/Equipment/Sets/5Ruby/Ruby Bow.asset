@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc3e9056b2f44744dad1f2b9d3b9b02f, type: 3}
+  m_Name: Ruby Bow
+  m_EditorClassIdentifier: 
+  ID: 63
+  itemName: Ruby Bow
+  icon: {fileID: -735264262, guid: eff6633938febe54d8ee653b4bbc1199, type: 3}
+  itemType: 0
+  description: Can be worn by archers
+  maxInStack: 1
+  stackable: 0
+  price: 1000
+  normalGrade:
+    level: 0
+    maxLevel: 20
+    stats:
+    - stat: 0
+      values: 7a0000007c0000007e00000080000000820000008400000086000000880000008a0000008c0000008e00000090000000920000009400000096000000980000009a0000009c0000009e000000a0000000a2000000
+    prices: 204e0000409c000060ea000080380100a0860100c0d40100e02202000071020020bf0200400d0300605b030080a90300a0f70300c0450400e093040000e2040020300500407e050060cc0500801a0600
+  equipmentTypeSlot: 0
+  rarity: 0
+  canBeUsedBy: 02000000
+  lvlRequired: 80
+  canBeUpgraded: 1
+  canBeExtremeUpgraded: 1
+  canBeDivineUpgraded: 0
+  canBeChaosUpgraded: 0
+  scrollsCanBeAdded: 1
+  rarityBonus: {fileID: 0}
+  is2HWeapon: 1
+  extremeGrade:
+    level: 0
+    maxLevel: 5
+    stats:
+    - stat: 0
+      values: 280000005000000078000000a0000000c8000000f0000000
+    - stat: 6
+      values: 0000000064000000c80000002c01000090010000f4010000
+    - stat: 3
+      values: 0000000000000000000000000a000000140000001e000000
+    prices: 002d3101005a62020087930300b4c40480969800001bb700
+  divineGrade:
+    level: 0
+    maxLevel: 0
+    stats: []
+    prices: 
+  scrollsStat:
+  - {fileID: 0}
+  - {fileID: 0}
+  chaosGrade:
+    level: 0
+    maxLevel: 0
+    stats: []
+    prices: 

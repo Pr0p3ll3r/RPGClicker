@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc3e9056b2f44744dad1f2b9d3b9b02f, type: 3}
+  m_Name: Lava Shield
+  m_EditorClassIdentifier: 
+  ID: 81
+  itemName: Lava Shield
+  icon: {fileID: -803546302, guid: eff6633938febe54d8ee653b4bbc1199, type: 3}
+  itemType: 0
+  description: Can be worn by shielders
+  maxInStack: 1
+  stackable: 0
+  price: 10000
+  normalGrade:
+    level: 0
+    maxLevel: 20
+    stats:
+    - stat: 1
+      values: 4c0000004d0000004e0000004f000000500000005100000052000000530000005400000055000000560000005700000058000000590000005a0000005b0000005c0000005d0000005e0000005f00000060000000
+    prices: a0860100400d0300e0930400801a060020a10700c027090060ae0a0000350c00a0bb0d0040420f0080841e00c0c62d0000093d00404b4c00808d5b00c0cf6a0000127a004054890080969800002d3101
+  equipmentTypeSlot: 1
+  rarity: 0
+  canBeUsedBy: 04000000
+  lvlRequired: 100
+  canBeUpgraded: 1
+  canBeExtremeUpgraded: 1
+  canBeDivineUpgraded: 1
+  canBeChaosUpgraded: 0
+  scrollsCanBeAdded: 1
+  rarityBonus: {fileID: 0}
+  is2HWeapon: 0
+  extremeGrade:
+    level: 0
+    maxLevel: 6
+    stats:
+    - stat: 0
+      values: 14000000280000003c000000500000006400000078000000
+    - stat: 6
+      values: 00000000320000006400000096000000c8000000fa000000
+    - stat: 3
+      values: 0000000000000000050000000a0000000f00000014000000
+    prices: 002d3101002d3101002d3101002d3101002d3101002d3101
+  divineGrade:
+    level: 0
+    maxLevel: 15
+    stats:
+    - stat: 0
+      values: 
+    prices: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  scrollsStat:
+  - {fileID: 0}
+  - {fileID: 0}
+  chaosGrade:
+    level: 0
+    maxLevel: 0
+    stats: []
+    prices: 

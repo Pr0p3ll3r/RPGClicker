@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc3e9056b2f44744dad1f2b9d3b9b02f, type: 3}
+  m_Name: Ruby Shield
+  m_EditorClassIdentifier: 
+  ID: 67
+  itemName: Ruby Shield
+  icon: {fileID: -1340626051, guid: eff6633938febe54d8ee653b4bbc1199, type: 3}
+  itemType: 0
+  description: Can be worn by shielders
+  maxInStack: 1
+  stackable: 0
+  price: 1000
+  normalGrade:
+    level: 0
+    maxLevel: 20
+    stats:
+    - stat: 1
+      values: 3d0000003e0000003f000000400000004100000042000000430000004400000045000000460000004700000048000000490000004a0000004b0000004c0000004d0000004e0000004f0000005000000051000000
+    prices: 10270000204e000030750000409c000050c3000060ea00007011010080380100905f0100a0860100b0ad0100c0d40100d0fb0100e0220200f0490200007102001098020020bf020030e60200400d0300
+  equipmentTypeSlot: 1
+  rarity: 0
+  canBeUsedBy: 04000000
+  lvlRequired: 80
+  canBeUpgraded: 1
+  canBeExtremeUpgraded: 1
+  canBeDivineUpgraded: 0
+  canBeChaosUpgraded: 0
+  scrollsCanBeAdded: 1
+  rarityBonus: {fileID: 0}
+  is2HWeapon: 0
+  extremeGrade:
+    level: 0
+    maxLevel: 5
+    stats:
+    - stat: 0
+      values: 14000000280000003c000000500000006400000078000000
+    - stat: 6
+      values: 00000000320000006400000096000000c8000000fa000000
+    - stat: 3
+      values: 0000000000000000050000000a0000000f00000014000000
+    prices: 40420f0080841e00c0c62d0000093d00404b4c00808d5b00
+  divineGrade:
+    level: 0
+    maxLevel: 0
+    stats: []
+    prices: 
+  scrollsStat:
+  - {fileID: 0}
+  - {fileID: 0}
+  chaosGrade:
+    level: 0
+    maxLevel: 0
+    stats: []
+    prices: 

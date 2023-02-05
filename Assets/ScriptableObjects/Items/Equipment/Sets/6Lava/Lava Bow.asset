@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc3e9056b2f44744dad1f2b9d3b9b02f, type: 3}
+  m_Name: Lava Bow
+  m_EditorClassIdentifier: 
+  ID: 77
+  itemName: Lava Bow
+  icon: {fileID: -309114756, guid: eff6633938febe54d8ee653b4bbc1199, type: 3}
+  itemType: 0
+  description: Can be worn by archers
+  maxInStack: 1
+  stackable: 0
+  price: 10000
+  normalGrade:
+    level: 0
+    maxLevel: 20
+    stats:
+    - stat: 0
+      values: 980000009a0000009c0000009e000000a0000000a2000000a4000000a6000000a8000000aa000000ac000000ae000000b0000000b2000000b4000000b6000000b8000000ba000000bc000000be000000c0000000
+    prices: 400d0300801a0600c027090000350c0040420f00804f1200c05c1500006a180040771b0080841e0000093d00808d5b0000127a0080969800001bb700809fd5000024f40080a81201002d3101005a6202
+  equipmentTypeSlot: 0
+  rarity: 0
+  canBeUsedBy: 02000000
+  lvlRequired: 100
+  canBeUpgraded: 1
+  canBeExtremeUpgraded: 1
+  canBeDivineUpgraded: 1
+  canBeChaosUpgraded: 0
+  scrollsCanBeAdded: 1
+  rarityBonus: {fileID: 0}
+  is2HWeapon: 1
+  extremeGrade:
+    level: 0
+    maxLevel: 6
+    stats:
+    - stat: 0
+      values: 280000005000000078000000a0000000c8000000f0000000
+    - stat: 6
+      values: 0000000064000000c80000002c01000090010000f4010000
+    - stat: 3
+      values: 00000000000000000a000000140000001e00000028000000
+    prices: 002d3101002d3101002d3101002d3101002d3101002d3101
+  divineGrade:
+    level: 0
+    maxLevel: 15
+    stats:
+    - stat: 0
+      values: 
+    prices: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  scrollsStat:
+  - {fileID: 0}
+  - {fileID: 0}
+  chaosGrade:
+    level: 0
+    maxLevel: 0
+    stats: []
+    prices: 
