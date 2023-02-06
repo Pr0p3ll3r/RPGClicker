@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Ruby Master
   icon: {fileID: 1265354102, guid: 625964c3175290c458f3a40e8f690313, type: 3}
-  level: 100
+  level: 80
   health: 100
   damage: 0
   defense: 0
   criticalDamage: 0
-  criticalChance: 0
+  criticalRate: 0
   exp: 0
   gold: 0
   loot: []
@@ -27,19 +27,19 @@ MonoBehaviour:
   isBoss: 0
   achievement: {fileID: 11400000, guid: e152fd085b6366d4d88a9d941ef07426, type: 2}
   equipment:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 2d8e100990ec311499168cc6c42be84b, type: 2}
+  - {fileID: 11400000, guid: 670f3827bd7c8354981827902d98422d, type: 2}
+  - {fileID: 11400000, guid: e7db88d2b15ad9a41be49828315c30eb, type: 2}
+  - {fileID: 11400000, guid: 36f56bdcd3c94b94f82b008caeb9b9d5, type: 2}
+  - {fileID: 11400000, guid: 5c35a9a0f0cdc2847bcfad2b68b0e9d1, type: 2}
+  - {fileID: 11400000, guid: 5c35a9a0f0cdc2847bcfad2b68b0e9d1, type: 2}
+  - {fileID: 11400000, guid: 1d2821ed927d14e479eb881d0096338c, type: 2}
+  - {fileID: 11400000, guid: 44c2b38485e0740439b13e9fa17feb24, type: 2}
+  - {fileID: 11400000, guid: 8844be77933d4ad4cb0af3185b6c05cf, type: 2}
+  - {fileID: 11400000, guid: 8844be77933d4ad4cb0af3185b6c05cf, type: 2}
+  - {fileID: 11400000, guid: 8844be77933d4ad4cb0af3185b6c05cf, type: 2}
+  - {fileID: 11400000, guid: 8844be77933d4ad4cb0af3185b6c05cf, type: 2}
+  - {fileID: 11400000, guid: 2efbebd148bc71046b6d6745665138a6, type: 2}
+  - {fileID: 11400000, guid: 2efbebd148bc71046b6d6745665138a6, type: 2}
+  - {fileID: 11400000, guid: 59eecca237a766f49b23105ad242bc0f, type: 2}
+  - {fileID: 11400000, guid: 59eecca237a766f49b23105ad242bc0f, type: 2}

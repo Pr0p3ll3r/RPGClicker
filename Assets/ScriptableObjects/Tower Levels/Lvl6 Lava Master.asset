@@ -19,7 +19,7 @@ MonoBehaviour:
   damage: 0
   defense: 0
   criticalDamage: 0
-  criticalChance: 0
+  criticalRate: 0
   exp: 0
   gold: 0
   loot: []
@@ -27,19 +27,19 @@ MonoBehaviour:
   isBoss: 0
   achievement: {fileID: 11400000, guid: e152fd085b6366d4d88a9d941ef07426, type: 2}
   equipment:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: a7cdc4b076318814d93904f3eec013c3, type: 2}
+  - {fileID: 11400000, guid: cc236c16a3d86324da89d8bb44d21800, type: 2}
+  - {fileID: 11400000, guid: c4f17f83ab8f071449c4fd23b043f40c, type: 2}
+  - {fileID: 11400000, guid: ab9ec59f832019f47b579b9b176c0390, type: 2}
+  - {fileID: 11400000, guid: 2ad077542a411d24e9af036083a2a185, type: 2}
+  - {fileID: 11400000, guid: 2ad077542a411d24e9af036083a2a185, type: 2}
+  - {fileID: 11400000, guid: ae07ffdbec0272048be6ce1d426c5d92, type: 2}
+  - {fileID: 11400000, guid: 97dd84a53c7d3434eb5f26e3c6128798, type: 2}
+  - {fileID: 11400000, guid: 84bdbf108d5c66847baa32ab17494d0c, type: 2}
+  - {fileID: 11400000, guid: 84bdbf108d5c66847baa32ab17494d0c, type: 2}
+  - {fileID: 11400000, guid: 84bdbf108d5c66847baa32ab17494d0c, type: 2}
+  - {fileID: 11400000, guid: 84bdbf108d5c66847baa32ab17494d0c, type: 2}
+  - {fileID: 11400000, guid: 03404fe882fab1a4b947c6f5da7a5b91, type: 2}
+  - {fileID: 11400000, guid: 03404fe882fab1a4b947c6f5da7a5b91, type: 2}
+  - {fileID: 11400000, guid: dcecb74b9235acc4f81af08fd647488c, type: 2}
+  - {fileID: 11400000, guid: dcecb74b9235acc4f81af08fd647488c, type: 2}

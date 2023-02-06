@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc3e9056b2f44744dad1f2b9d3b9b02f, type: 3}
+  m_Name: Gold Earrings
+  m_EditorClassIdentifier: 
+  ID: 31
+  itemName: Gold Earrings
+  icon: {fileID: -1556109727, guid: 111f4609a522c6d46999fd8f7d413e03, type: 3}
+  itemType: 0
+  description: Can be worn by every class
+  maxInStack: 1
+  stackable: 0
+  price: 10
+  normalGrade:
+    level: 4
+    maxLevel: 4
+    stats:
+    - stat: 7
+      values: 0500000006000000070000000800000009000000
+    prices: 64000000c80000002c01000090010000
+  equipmentTypeSlot: 10
+  rarity: 0
+  canBeUsedBy: 0000000001000000020000000300000004000000
+  lvlRequired: 40
+  canBeUpgraded: 1
+  canBeExtremeUpgraded: 0
+  canBeDivineUpgraded: 0
+  canBeChaosUpgraded: 0
+  scrollsCanBeAdded: 0
+  rarityBonus: {fileID: 0}
+  is2HWeapon: 0
+  extremeGrade:
+    level: 0
+    maxLevel: 0
+    stats: []
+    prices: 
+  divineGrade:
+    level: 0
+    maxLevel: 0
+    stats: []
+    prices: 
+  scrollsStat: []
+  chaosGrade:
+    level: 0
+    maxLevel: 0
+    stats: []
+    prices: 

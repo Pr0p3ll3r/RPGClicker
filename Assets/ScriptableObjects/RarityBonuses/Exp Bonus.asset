@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Exp Bonus
   m_EditorClassIdentifier: 
   ID: 5
-  stat: 11
+  stat: 10
   values: 000000000f0000001e0000002d000000

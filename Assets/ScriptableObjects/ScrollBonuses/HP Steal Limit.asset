@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5a16ed72bbdf14bba16cab447a666b, type: 3}
   m_Name: HP Steal Limit
   m_EditorClassIdentifier: 
-  ID: 0
-  stat: 8
+  ID: 7
+  stat: 7
   values: 0a00000005000000

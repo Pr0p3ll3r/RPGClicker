@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Diamond Master
   icon: {fileID: 956146900, guid: 625964c3175290c458f3a40e8f690313, type: 3}
-  level: 80
+  level: 60
   health: 100
   damage: 0
   defense: 0
   criticalDamage: 0
-  criticalChance: 0
+  criticalRate: 0
   exp: 0
   gold: 0
   loot: []
@@ -27,19 +27,19 @@ MonoBehaviour:
   isBoss: 0
   achievement: {fileID: 11400000, guid: e152fd085b6366d4d88a9d941ef07426, type: 2}
   equipment:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: e77256c45e553304d8bed04b311ee8e5, type: 2}
+  - {fileID: 11400000, guid: aa187c20c19e48746bd526165cff5bfe, type: 2}
+  - {fileID: 11400000, guid: 276570aa1c814d446b64ff7fa846465f, type: 2}
+  - {fileID: 11400000, guid: c9ee6420b075d4a469c6bfefa6a8828d, type: 2}
+  - {fileID: 11400000, guid: 565d3d0f3519f9a4d962e20ba4219ac8, type: 2}
+  - {fileID: 11400000, guid: 565d3d0f3519f9a4d962e20ba4219ac8, type: 2}
+  - {fileID: 11400000, guid: 85b914c80aa02cd4bacf71516679fcdd, type: 2}
+  - {fileID: 11400000, guid: 745bc8239eadd1b4aa7a803b56234194, type: 2}
+  - {fileID: 11400000, guid: cd7e4370bd3f07f4f957e8d86ab0aa12, type: 2}
+  - {fileID: 11400000, guid: cd7e4370bd3f07f4f957e8d86ab0aa12, type: 2}
+  - {fileID: 11400000, guid: cd7e4370bd3f07f4f957e8d86ab0aa12, type: 2}
+  - {fileID: 11400000, guid: cd7e4370bd3f07f4f957e8d86ab0aa12, type: 2}
+  - {fileID: 11400000, guid: ed5558de694d0ad47854755ff748e0d7, type: 2}
+  - {fileID: 11400000, guid: ed5558de694d0ad47854755ff748e0d7, type: 2}
+  - {fileID: 11400000, guid: 18480e222a7e68f498f0e8c32e133c12, type: 2}
+  - {fileID: 11400000, guid: 18480e222a7e68f498f0e8c32e133c12, type: 2}

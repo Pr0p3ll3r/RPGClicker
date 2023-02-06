@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5a16ed72bbdf14bba16cab447a666b, type: 3}
   m_Name: Exp Bonus
   m_EditorClassIdentifier: 
-  ID: 0
-  stat: 11
+  ID: 4
+  stat: 10
   values: 0f0000000a000000

@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Scroll HP Steal Limit
   icon: {fileID: 2607994691028543399, guid: 4f994cdb05a8a484f9665f1ce9d29a74, type: 3}
   itemType: 2
-  description: A Scroll used to fill a slot in the helmet/boots or pet
+  description: A Scroll used to fill a slot in a helmet/boots or pet
   maxInStack: 999
   stackable: 1
   price: 0

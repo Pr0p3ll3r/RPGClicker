@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5a16ed72bbdf14bba16cab447a666b, type: 3}
   m_Name: Two-Slot Item Drop
   m_EditorClassIdentifier: 
-  ID: 9
-  stat: 10
+  ID: 8
+  stat: 9
   values: 0000000096000000c8000000fa000000

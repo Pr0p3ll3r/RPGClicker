@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Iron Master
   icon: {fileID: 417159493, guid: 625964c3175290c458f3a40e8f690313, type: 3}
-  level: 40
+  level: 20
   health: 100
   damage: 0
   defense: 0
   criticalDamage: 0
-  criticalChance: 0
+  criticalRate: 0
   exp: 0
   gold: 0
   loot: []
@@ -27,19 +27,19 @@ MonoBehaviour:
   isBoss: 0
   achievement: {fileID: 11400000, guid: e152fd085b6366d4d88a9d941ef07426, type: 2}
   equipment:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 178d35b3fc4ec3348b9ad51f582b476f, type: 2}
+  - {fileID: 11400000, guid: 7fb79fc59acb3d546b253ad70628b8a4, type: 2}
+  - {fileID: 11400000, guid: e3527fba8f12bf143a982d395be2bec2, type: 2}
+  - {fileID: 11400000, guid: cd251b53a9fd42c4991bccbc74fb1c58, type: 2}
+  - {fileID: 11400000, guid: 2b4864c038651ee4d8154916c5680322, type: 2}
+  - {fileID: 11400000, guid: 2b4864c038651ee4d8154916c5680322, type: 2}
+  - {fileID: 11400000, guid: e51f74007549cad438ae6e92cfda9ada, type: 2}
+  - {fileID: 11400000, guid: ec3f5aa837ddf374b82fb7e482846a7c, type: 2}
+  - {fileID: 11400000, guid: 7643f2da4cd66674684e50a710f253bd, type: 2}
+  - {fileID: 11400000, guid: 7643f2da4cd66674684e50a710f253bd, type: 2}
+  - {fileID: 11400000, guid: 7643f2da4cd66674684e50a710f253bd, type: 2}
+  - {fileID: 11400000, guid: 7643f2da4cd66674684e50a710f253bd, type: 2}
+  - {fileID: 11400000, guid: 7950a190cc1823640bcbbb40833aa3a9, type: 2}
+  - {fileID: 11400000, guid: 7950a190cc1823640bcbbb40833aa3a9, type: 2}
+  - {fileID: 11400000, guid: 45634d4743b882e4e9f72da690361075, type: 2}
+  - {fileID: 11400000, guid: 45634d4743b882e4e9f72da690361075, type: 2}
