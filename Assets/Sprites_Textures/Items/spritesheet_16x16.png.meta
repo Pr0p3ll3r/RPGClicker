@@ -4329,7 +4329,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet_16x16_150
+      name: DivineCore
       rect:
         serializedVersion: 2
         x: 96
@@ -4497,7 +4497,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet_16x16_158
+      name: ChaosCore
       rect:
         serializedVersion: 2
         x: 224
@@ -6807,7 +6807,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet_16x16_268
+      name: Blueprint
       rect:
         serializedVersion: 2
         x: 192
@@ -6954,7 +6954,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blueprint
+      name: spritesheet_16x16_275
       rect:
         serializedVersion: 2
         x: 48
@@ -8593,7 +8593,6 @@ TextureImporter:
       spritesheet_16x16_205: -5765849071265643169
       spritesheet_16x16_168: 8136125706371385449
       spritesheet_16x16_204: 4773959659835498304
-      spritesheet_16x16_268: -2487794804310676429
       Gold Chestplate: 5367102645604608502
       spritesheet_16x16_322: -1774382620467178882
       spritesheet_16x16_221: -6221380400280393233
@@ -8684,7 +8683,9 @@ TextureImporter:
       spritesheet_16x16_191: -1778218901292092026
       Iron Gloves: 701334144051075334
       spritesheet_16x16_43: 1072796973745308101
+      spritesheet_16x16_275: -900634570973846901
       spritesheet_16x16_164: 2558052404510915204
+      ChaosCore: -1551652896029731425
       spritesheet_16x16_99: 8168345966591394503
       spritesheet_16x16_345: -7650150752823567931
       spritesheet_16x16_88: 3141081191839009519
@@ -8734,7 +8735,6 @@ TextureImporter:
       spritesheet_16x16_15: 5651723158275140057
       spritesheet_16x16_310: 3329316347563575725
       spritesheet_16x16_74: 4309415310507313882
-      spritesheet_16x16_150: 6613708675518738141
       Diamond Shield: 7730120186900130073
       spritesheet_16x16_76: -8021201541867875670
       spritesheet_16x16_36: 4280332470143145209
@@ -8752,6 +8752,7 @@ TextureImporter:
       spritesheet_16x16_116: -2689047993623020199
       spritesheet_16x16_107: -5301447779580228923
       spritesheet_16x16_201: -2453289629197179864
+      DivineCore: 6613708675518738141
       Wooden Helmet: -2650294036199017241
       spritesheet_16x16_304: 3382340716553928063
       spritesheet_16x16_291: -6479057538699681362
@@ -8768,7 +8769,7 @@ TextureImporter:
       spritesheet_16x16_326: 5914467412353710219
       spritesheet_16x16_160: 650717519381547632
       spritesheet_16x16_264: 697419640637963290
-      Blueprint: -900634570973846901
+      Blueprint: -2487794804310676429
       spritesheet_16x16_217: 340999481055245665
       spritesheet_16x16_335: -3709422294006208184
       spritesheet_16x16_295: -8594803241429462710
@@ -8887,7 +8888,6 @@ TextureImporter:
       spritesheet_16x16_238: 7134318060516000048
       spritesheet_16x16_349: -5973716601481167368
       spritesheet_16x16_57: -1551652896029731425
-      spritesheet_16x16_158: 1058496470708151085
       spritesheet_16x16_119: 4674224726878878948
   spritePackingTag: 
   pSDRemoveMatte: 0

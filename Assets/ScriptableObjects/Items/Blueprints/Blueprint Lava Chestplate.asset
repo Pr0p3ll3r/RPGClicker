@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 966419439a071b84a8dfb12b399b23fc, type: 3}
   m_Name: Blueprint Lava Chestplate
   m_EditorClassIdentifier: 
-  ID: 91
+  ID: 90
   itemName: Blueprint Lava Chestplate
-  icon: {fileID: -3785583486000893709, guid: b7fff23f234fd9346978fef62c10f4f2, type: 3}
+  icon: {fileID: -2487794804310676429, guid: 4d6cfa3da87ee404784dddcb70aee7de, type: 3}
   itemType: 1
   description: 
   maxInStack: 999
   stackable: 1
   price: 0
   resultItem: {fileID: 11400000, guid: 55bc35ae384eb534d84865e6cc493f7a, type: 2}
-  needItems: []
+  requiredItems: []

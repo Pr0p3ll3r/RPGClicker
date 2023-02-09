@@ -17,10 +17,17 @@ public class Armory : MonoBehaviour
     [SerializeField] private Button upgradeButton;
     [SerializeField] private TextMeshProUGUI upgradeChance;
     [SerializeField] private TextMeshProUGUI upgradePrice;
+    [SerializeField] private TextMeshProUGUI upgradeRequiredItem;
     [SerializeField] private int[] normalUpgradeChances = new int[20];
-    [SerializeField] private int[] extremeUpgradeChances = new int[6];
+    [SerializeField] private int[] extremeUpgradeChances = new int[6];  
+    [SerializeField] private Item extremeUpgradeRequiredItem;
+    [SerializeField] private int[] extremeUpgradeRequiredItemAmount = new int[6];
     [SerializeField] private int[] divineUpgradeChances = new int[15];
+    [SerializeField] private Item divineUpgradeRequiredItem;
+    [SerializeField] private int[] divineUpgradeRequiredItemAmount = new int[15];
     [SerializeField] private int[] chaosUpgradeChances = new int[15];
+    [SerializeField] private Item chaosUpgradeRequiredItem;
+    [SerializeField] private int[] chaosUpgradeRequiredItemAmount = new int[15];
 
     [Header("Enhancing")]
     [SerializeField] private GameObject enhancingPanel;
@@ -130,8 +137,8 @@ public class Armory : MonoBehaviour
         SoundManager.PlayOneShot("Click");
         Equipment eqAfter = (Equipment)eq.GetCopy();
         upgradeButton.onClick.RemoveAllListeners();
-        int chance = 0;
-        int price = 0;
+        int chance = 0, price = 0, requiredItemInInventory = 0, requiredItemAmount = 0;
+        upgradeRequiredItem.text = "";
         switch (upgradeMode)
         {
             case 0:
@@ -143,40 +150,52 @@ public class Armory : MonoBehaviour
                 chance = extremeUpgradeChances[eq.extremeGrade.level];
                 eqAfter.extremeGrade.level++;
                 price = eq.extremeGrade.prices[eq.extremeGrade.level];
+                requiredItemInInventory = Inventory.HowMany(extremeUpgradeRequiredItem);
+                requiredItemAmount = eq.is2HWeapon ? extremeUpgradeRequiredItemAmount[eq.extremeGrade.level] * 2 : extremeUpgradeRequiredItemAmount[eq.extremeGrade.level];
+                upgradeRequiredItem.text = $"Extreme core {requiredItemInInventory}/{requiredItemAmount}";
                 break;
             case 2:
                 chance = divineUpgradeChances[eq.divineGrade.level];
                 eqAfter.divineGrade.level++;
                 price = eq.divineGrade.prices[eq.divineGrade.level];
+                requiredItemInInventory = Inventory.HowMany(divineUpgradeRequiredItem);
+                requiredItemAmount = eq.is2HWeapon ? divineUpgradeRequiredItemAmount[eq.divineGrade.level] * 2 : divineUpgradeRequiredItemAmount[eq.divineGrade.level];
+                upgradeRequiredItem.text = $"Divine core {requiredItemInInventory}/{requiredItemAmount}";
                 break;
             case 3:
                 chance = chaosUpgradeChances[eq.chaosGrade.level];
                 eqAfter.chaosGrade.level++;
                 price = eq.chaosGrade.prices[eq.chaosGrade.level];
+                requiredItemInInventory = Inventory.HowMany(chaosUpgradeRequiredItem);
+                requiredItemAmount = chaosUpgradeRequiredItemAmount[eq.extremeGrade.level];
+                upgradeRequiredItem.text = $"Chaos core {requiredItemInInventory}/{requiredItemAmount}";
                 break;
         }
         afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUp(eqAfter, true, eq);
         Destroy(eqAfter);
         upgradePrice.text = $"Price: {price}";
         upgradeChance.text = $"Chance: {chance}%";
-        upgradeButton.onClick.AddListener(delegate {Upgrade(eq, chance, upgradeMode, price); });
+        upgradeButton.onClick.AddListener(delegate {Upgrade(eq, chance, upgradeMode, price, requiredItemAmount); });
+
+        upgradeButton.interactable = false;
+        upgradeRequiredItem.color = Color.red;
+        upgradePrice.color = Color.red;
 
         if (Inventory.HaveEnoughGold(price))
         {
-            upgradeButton.interactable = true;
             upgradePrice.color = Color.green;
-        }           
-        else
-        {
-            upgradeButton.interactable = false;
-            upgradePrice.color = Color.red;
+            if (requiredItemInInventory >= requiredItemAmount)
+            {
+                upgradeButton.interactable = true;
+                upgradeRequiredItem.color = Color.green;
+            }
         }
         upgradeButtons.SetActive(false);
         afterUpgradeItemInfo.SetActive(true);
         upgradeOptions.SetActive(true);
     }
 
-    private void Upgrade(Equipment eq, int chance, int upgradeMode, int price)
+    private void Upgrade(Equipment eq, int chance, int upgradeMode, int price, int requiredItemAmount)
     {
         if (Chance(chance))
         {
@@ -203,6 +222,18 @@ public class Armory : MonoBehaviour
         {
             GameManager.ShowText("Failed", Color.red);
             SoundManager.PlayOneShot("Failed");
+            switch (upgradeMode)
+            {
+                case 1:
+                    Inventory.RemoveItem(extremeUpgradeRequiredItem, requiredItemAmount);
+                    break;
+                case 2:
+                    Inventory.RemoveItem(divineUpgradeRequiredItem, requiredItemAmount);
+                    break;
+                case 3:
+                    Inventory.RemoveItem(chaosUpgradeRequiredItem, requiredItemAmount);
+                    break;
+            }
         }
         Inventory.ChangeGoldAmount(-price);
         OpenUpgradePanel(eq);

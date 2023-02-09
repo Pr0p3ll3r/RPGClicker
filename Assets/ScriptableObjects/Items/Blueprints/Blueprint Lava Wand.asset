@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 966419439a071b84a8dfb12b399b23fc, type: 3}
   m_Name: Blueprint Lava Wand
   m_EditorClassIdentifier: 
-  ID: 98
+  ID: 97
   itemName: Blueprint Lava Wand
-  icon: {fileID: -3785583486000893709, guid: b7fff23f234fd9346978fef62c10f4f2, type: 3}
+  icon: {fileID: -2487794804310676429, guid: 4d6cfa3da87ee404784dddcb70aee7de, type: 3}
   itemType: 1
   description: 
   maxInStack: 999
   stackable: 1
   price: 0
   resultItem: {fileID: 11400000, guid: fa7b6edc95b2c5942a71559177006ba8, type: 2}
-  needItems: []
+  requiredItems: []
