@@ -222,18 +222,18 @@ public class Armory : MonoBehaviour
         {
             GameManager.ShowText("Failed", Color.red);
             SoundManager.PlayOneShot("Failed");
-            switch (upgradeMode)
-            {
-                case 1:
-                    Inventory.RemoveItem(extremeUpgradeRequiredItem, requiredItemAmount);
-                    break;
-                case 2:
-                    Inventory.RemoveItem(divineUpgradeRequiredItem, requiredItemAmount);
-                    break;
-                case 3:
-                    Inventory.RemoveItem(chaosUpgradeRequiredItem, requiredItemAmount);
-                    break;
-            }
+        }
+        switch (upgradeMode)
+        {
+            case 1:
+                Inventory.RemoveItem(extremeUpgradeRequiredItem, requiredItemAmount);
+                break;
+            case 2:
+                Inventory.RemoveItem(divineUpgradeRequiredItem, requiredItemAmount);
+                break;
+            case 3:
+                Inventory.RemoveItem(chaosUpgradeRequiredItem, requiredItemAmount);
+                break;
         }
         Inventory.ChangeGoldAmount(-price);
         OpenUpgradePanel(eq);
