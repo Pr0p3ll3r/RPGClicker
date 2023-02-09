@@ -104,8 +104,8 @@ public class PlayerInventory : MonoBehaviour
             if (slot.item.ID == _item.ID)
             {
                 int itemAmount = slot.amount;
+                slot.amount -= amount;
                 amount -= itemAmount;
-                slot.amount -= itemAmount;
 
                 if (slot.amount <= 0) RemoveItem(slot.item);
                 if (amount == 0) break;
@@ -132,7 +132,7 @@ public class PlayerInventory : MonoBehaviour
             slots[i].item = slots[i + 1].item;
             slots[i].amount = slots[i + 1].amount;
         }
-        if (slots[slots.Length-1] != null)
+        if (slots[slots.Length - 1] != null)
         {
             slots[slots.Length - 1].item = null;
             slots[slots.Length - 1].amount = 0;
