@@ -40,6 +40,7 @@ public class Armory : MonoBehaviour
     [SerializeField] private TextMeshProUGUI enhanceChance;
     [SerializeField] private TextMeshProUGUI enhancePrice;
     [SerializeField] private int[] enhancePricesPet = new int[2];
+    [SerializeField] private int[] enhanceChances = new int[2];
 
     [Header("Crafting")]
     [SerializeField] private GameObject craftingPanel;
@@ -310,7 +311,7 @@ public class Armory : MonoBehaviour
     {
         SoundManager.PlayOneShot("Click");  
         enhanceButton.onClick.RemoveAllListeners();
-        int chance = 100;
+        int chance = 0;
         int price = 0;
         switch (item.itemType)
         {
@@ -319,16 +320,23 @@ public class Armory : MonoBehaviour
                 eqAfter.AddScroll(scroll.scrollStat);
                 afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUp(eqAfter, true, (Equipment)item);              
                 price = eqAfter.UsedScrollsSlot() == 0 ? eqAfter.price : eqAfter.price * 2;
+                chance = enhanceChances[eqAfter.UsedScrollsSlot()];
                 Destroy(eqAfter);
                 break;
             case ItemType.Pet:
                 Pet petAfter = (Pet)item.GetCopy();
                 petAfter.AddScroll(scroll.scrollStat);
                 afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUp(petAfter, true, null);               
-                if(petAfter.UsedScrollsSlot() - 1 <= 5)
+                if(petAfter.UsedScrollsSlot() <= 5)
+                {
                     price = enhancePricesPet[0];
+                    chance = enhanceChances[0];
+                }
                 else
+                {             
                     price = enhancePricesPet[1];
+                    chance = enhanceChances[1];
+                }
                 Destroy(petAfter);
                 break;
         }
@@ -380,13 +388,6 @@ public class Armory : MonoBehaviour
         Inventory.ChangeGoldAmount(-price);
         OpenEnhancePanel(item);
     }
-
-    //private void ChangeNumberOfCores()
-    //{
-    //    int chance = 100;
-    //    int amount = 0;
-    //    enhanceChance.text =  $"Chance: {chance}%";
-    //}
 
     bool Chance(int chance)
     {
