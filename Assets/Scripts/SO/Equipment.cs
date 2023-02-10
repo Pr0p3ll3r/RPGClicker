@@ -57,7 +57,7 @@ public class Equipment : Item
         }
         return false;
     }
-    public int GetSellPrice()
+    public override int GetSellPrice()
     {
         int sellPrice;
         sellPrice = price;

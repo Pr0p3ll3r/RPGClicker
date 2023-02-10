@@ -16,6 +16,10 @@ public class Item : ScriptableObject
     {
 		return Instantiate(this);
 	}
+	public virtual int GetSellPrice()
+	{
+		return price;
+	}
 }
 
 public enum ItemType

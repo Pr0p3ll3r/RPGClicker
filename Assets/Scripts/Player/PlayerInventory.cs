@@ -147,7 +147,7 @@ public class PlayerInventory : MonoBehaviour
         {
             if (slot.item == _item)
             {
-                int price = slot.item.price * slot.amount;
+                int price = slot.item.GetSellPrice() * slot.amount;
                 ChangeGoldAmount(price);
                 GameManager.Instance.ShowText($"+{price} Gold", Color.yellow);
                 RemoveItem(slot.item);

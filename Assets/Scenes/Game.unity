@@ -28756,7 +28756,7 @@ MonoBehaviour:
   enhanceButton: {fileID: 543639008}
   enhanceChance: {fileID: 27372839}
   enhancePrice: {fileID: 466767095}
-  enhancePrices: f4010000e8030000
+  enhancePricesPet: a0860100400d0300
   craftingPanel: {fileID: 1781013741}
   craftButton: {fileID: 400986261}
   craftChanceText: {fileID: 825666908}

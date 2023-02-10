@@ -39,7 +39,7 @@ public class Armory : MonoBehaviour
     [SerializeField] private Button enhanceButton;
     [SerializeField] private TextMeshProUGUI enhanceChance;
     [SerializeField] private TextMeshProUGUI enhancePrice;
-    [SerializeField] private int[] enhancePrices = new int[2];
+    [SerializeField] private int[] enhancePricesPet = new int[2];
 
     [Header("Crafting")]
     [SerializeField] private GameObject craftingPanel;
@@ -318,18 +318,18 @@ public class Armory : MonoBehaviour
                 Equipment eqAfter = (Equipment)item.GetCopy();
                 eqAfter.AddScroll(scroll.scrollStat);
                 afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUp(eqAfter, true, (Equipment)item);              
-                price = enhancePrices[eqAfter.UsedScrollsSlot() - 1];
+                price = eqAfter.UsedScrollsSlot() == 0 ? eqAfter.price : eqAfter.price * 2;
                 Destroy(eqAfter);
                 break;
             case ItemType.Pet:
                 Pet petAfter = (Pet)item.GetCopy();
                 petAfter.AddScroll(scroll.scrollStat);
-                afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUp(petAfter, true, null);
-                Destroy(petAfter);
+                afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUp(petAfter, true, null);               
                 if(petAfter.UsedScrollsSlot() - 1 <= 5)
-                    price = enhancePrices[0];
+                    price = enhancePricesPet[0];
                 else
-                    price = enhancePrices[1];
+                    price = enhancePricesPet[1];
+                Destroy(petAfter);
                 break;
         }
         enhanceChance.text = $"Chance: {chance}%";
