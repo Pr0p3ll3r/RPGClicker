@@ -10,41 +10,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f4d05af8e2b28e458d358be48badf59, type: 3}
-  m_Name: Lvl78 Zombie
+  m_Name: Lvl96 Peerless Solar
   m_EditorClassIdentifier: 
-  enemyName: Zombie
-  icon: {fileID: 0}
-  level: 78
+  enemyName: Peerless Solar
+  icon: {fileID: -1107097872, guid: b0c163342d94cfd4792780f72d5705a3, type: 3}
+  level: 96
   health: 10
   damage: 0
   defense: 0
   criticalDamage: 0
-  criticalChance: 0
+  criticalRate: 0
   exp: 0
   gold: 0
   loot:
   - item: {fileID: 0}
     weight: 100
-  - item: {fileID: 11400000, guid: 7fb5fcd40603b3b47b606752e1505429, type: 2}
+  - item: {fileID: 11400000, guid: 6b8a297f61e4f684e89956d3cef02a11, type: 2}
     weight: 5
-  - item: {fileID: 11400000, guid: 14447488517e3c844b819eea0f762896, type: 2}
+  - item: {fileID: 11400000, guid: 2031a8c6f9f711f4a9e03ea9c6ce84df, type: 2}
     weight: 5
-  - item: {fileID: 11400000, guid: 1f8bf76e9fc221247a528a193b357c08, type: 2}
+  - item: {fileID: 11400000, guid: 318438a7c26c4754abe02fbf4cec8926, type: 2}
     weight: 5
-  - item: {fileID: 11400000, guid: 8f9b4cac39e41f4499e5d5399b3d845f, type: 2}
+  - item: {fileID: 11400000, guid: f40b1544727470042ae9ebf1045ee9ed, type: 2}
     weight: 5
-  - item: {fileID: 11400000, guid: c4728fb92f682f44bae3b2218310323e, type: 2}
+  - item: {fileID: 11400000, guid: 6fc193b8c68098a4a9a7adba494e7030, type: 2}
     weight: 5
-  - item: {fileID: 11400000, guid: dbbe3bd8154837444b355292c97fa349, type: 2}
-    weight: 5
-  - item: {fileID: 11400000, guid: 4784816ef8df8e442949be68dc571441, type: 2}
-    weight: 5
-  - item: {fileID: 11400000, guid: 46100280d0a8e3c44991394140734bc7, type: 2}
-    weight: 5
-  - item: {fileID: 11400000, guid: 865452143c6376f4f8d0b98a1011caac, type: 2}
-    weight: 5
+  - item: {fileID: 11400000, guid: 6435b4c94df08484fa2136829cad8f09, type: 2}
+    weight: 1
+  - item: {fileID: 11400000, guid: d9d59ffad4a791446a0de1c7e17ed454, type: 2}
+    weight: 1
   isTowerMaster: 0
-  isBoss: 0
+  isBoss: 1
   achievement: {fileID: 0}
   equipment:
   - {fileID: 0}

@@ -1,3 +1,4 @@
+using Microsoft.Cci;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject towerPanel;
     [SerializeField] private GameObject questPanel;
     [SerializeField] private GameObject rebirthPanel;
+    [SerializeField] private GameObject gatePanel;
 
     [Header("Adventure")]
     [SerializeField] private GameObject locationPrefab;
@@ -86,6 +88,7 @@ public class GameManager : MonoBehaviour
         towerPanel.SetActive(false);
         questPanel.SetActive(false);
         rebirthPanel.SetActive(false);
+        gatePanel.SetActive(false);
 
         CreateLocationList();
         CloseAdventurePanels();
@@ -344,9 +347,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void ChangeLocation(Location newLocation)
+    public void ChangeLocation(Location newLocation)
     {
-        if(currentLocation != null && !currentLocation.isDungeon && !currentLocation.enemies[0].isTowerMaster)
+        if(currentLocation != null && !currentLocation.isDungeon && !currentLocation.isGate && !currentLocation.enemies[0].isTowerMaster)
             previousLocation = currentLocation;
         currentLocation = newLocation;
         locationName.text = currentLocation.locationName;
@@ -357,6 +360,11 @@ public class GameManager : MonoBehaviour
         {
             dungeonEnemyCount = 0;
             newLocation.BossDefeated = false;
+        }
+
+        if(!newLocation.isGate)
+        {
+            GateManager.inGate = false;
         }
 
         NextEnemy();
@@ -393,6 +401,10 @@ public class GameManager : MonoBehaviour
                 dungeonEnemy.text = $"BOSS";
             }
         }
+        else if (currentLocation.isGate)
+        {
+            Enemy.SetUp(currentLocation.enemies[0]);
+        }
         else
         {
             if (currentLocation.BossDefeated)
@@ -425,6 +437,11 @@ public class GameManager : MonoBehaviour
             fightButton.interactable = false;
             towerInfo.SetUp(null);
         }
+    }
+
+    public void StopGate()
+    {
+        ChangeLocation(previousLocation);
     }
 
     private void OnApplicationQuit()

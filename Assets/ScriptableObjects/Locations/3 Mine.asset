@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfaa4bb3e2346e44db6183006e316bc4, type: 3}
   m_Name: 3 Mine
   m_EditorClassIdentifier: 
+  ID: 2
   locationName: Mine
   price: 100
-  lvlMin: 11
+  lvlMin: 15
   isDungeon: 0
+  isGate: 0
   enemies:
   - {fileID: 11400000, guid: d1221f400581a60479964229e41c7449, type: 2}
   boss: {fileID: 11400000, guid: c70ca93262f57c145a2ddfc9d274b3f6, type: 2}

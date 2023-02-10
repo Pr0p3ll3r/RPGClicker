@@ -19,7 +19,7 @@ MonoBehaviour:
   damage: 5
   defense: 0
   criticalDamage: 0
-  criticalChance: 0
+  criticalRate: 0
   exp: 12
   gold: 20
   loot:
@@ -35,8 +35,8 @@ MonoBehaviour:
     weight: 5
   - item: {fileID: 11400000, guid: 97b65123bff327549ad43ee913f0af73, type: 2}
     weight: 5
-  - item: {fileID: 11400000, guid: ab97ae27abacdb647b1b25376cb5be58, type: 2}
-    weight: 0.01
+  - item: {fileID: 11400000, guid: 118934e0f17456549bf8cc66ae9dbb92, type: 2}
+    weight: 1
   isTowerMaster: 0
   isBoss: 1
   achievement: {fileID: 0}

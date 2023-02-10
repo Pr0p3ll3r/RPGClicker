@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfaa4bb3e2346e44db6183006e316bc4, type: 3}
-  m_Name: 13 Hell 2
+  m_Name: 12 Heaven
   m_EditorClassIdentifier: 
-  locationName: Hell
+  ID: 12
+  locationName: Heaven
   price: 100
-  lvlMin: 99
+  lvlMin: 91
   isDungeon: 0
+  isGate: 0
   enemies:
-  - {fileID: 11400000, guid: 0f51c491cdcbdd24ab5c4ed449eeaa49, type: 2}
-  boss: {fileID: 11400000, guid: 05caad2cd8179a948a69696615850e0e, type: 2}
+  - {fileID: 11400000, guid: 043b66aab7e6dc64bb4c634706e1af57, type: 2}
+  boss: {fileID: 11400000, guid: fe5889fe0dbbabf49982303d2d728154, type: 2}

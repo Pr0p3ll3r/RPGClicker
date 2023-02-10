@@ -10,6 +10,7 @@ public class Location : ScriptableObject, ISerializationCallbackReceiver
     public bool Unlocked { get; set; }
     public bool BossDefeated { get; set;}
     public bool isDungeon = false;
+    public bool isGate = false;
     public EnemyData[] enemies;
     public EnemyData boss;
 

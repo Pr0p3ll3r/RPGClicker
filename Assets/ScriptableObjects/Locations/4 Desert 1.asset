@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfaa4bb3e2346e44db6183006e316bc4, type: 3}
   m_Name: 4 Desert 1
   m_EditorClassIdentifier: 
+  ID: 3
   locationName: Desert
   price: 100
   lvlMin: 24
   isDungeon: 0
+  isGate: 0
   enemies:
+  - {fileID: 11400000, guid: 7d58b6146308c9546aef9af37eec36b4, type: 2}
   - {fileID: 11400000, guid: f4e94f270955fe841a517422f336a6c8, type: 2}
   boss: {fileID: 11400000, guid: 6edf54929d6a6594ab8eb68d64322c72, type: 2}

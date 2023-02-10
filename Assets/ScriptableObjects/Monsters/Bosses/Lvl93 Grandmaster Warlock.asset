@@ -19,24 +19,26 @@ MonoBehaviour:
   damage: 0
   defense: 0
   criticalDamage: 0
-  criticalChance: 0
+  criticalRate: 0
   exp: 0
   gold: 0
   loot:
   - item: {fileID: 0}
     weight: 100
-  - item: {fileID: 11400000, guid: 21e7e1a11153fff4b9f66b2ff1ae2269, type: 2}
+  - item: {fileID: 11400000, guid: 6b8a297f61e4f684e89956d3cef02a11, type: 2}
     weight: 5
-  - item: {fileID: 11400000, guid: 9af2c961499841d46bb8d2b248486ba5, type: 2}
+  - item: {fileID: 11400000, guid: 2031a8c6f9f711f4a9e03ea9c6ce84df, type: 2}
     weight: 5
-  - item: {fileID: 11400000, guid: 504db45f9f97fa240a45dc28b9e46847, type: 2}
+  - item: {fileID: 11400000, guid: 318438a7c26c4754abe02fbf4cec8926, type: 2}
     weight: 5
-  - item: {fileID: 11400000, guid: 2fcff351c1525cf40a4a98388c9091b6, type: 2}
+  - item: {fileID: 11400000, guid: f40b1544727470042ae9ebf1045ee9ed, type: 2}
     weight: 5
-  - item: {fileID: 11400000, guid: 97b65123bff327549ad43ee913f0af73, type: 2}
+  - item: {fileID: 11400000, guid: 6fc193b8c68098a4a9a7adba494e7030, type: 2}
     weight: 5
-  - item: {fileID: 11400000, guid: ab97ae27abacdb647b1b25376cb5be58, type: 2}
-    weight: 0.01
+  - item: {fileID: 11400000, guid: 6435b4c94df08484fa2136829cad8f09, type: 2}
+    weight: 1
+  - item: {fileID: 11400000, guid: 6304859a1ae5086438f88d7bbbd027cd, type: 2}
+    weight: 1
   isTowerMaster: 0
   isBoss: 1
   achievement: {fileID: 0}

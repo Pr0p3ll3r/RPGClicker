@@ -19,29 +19,29 @@ MonoBehaviour:
   damage: 0
   defense: 0
   criticalDamage: 0
-  criticalChance: 0
+  criticalRate: 0
   exp: 0
   gold: 0
   loot:
   - item: {fileID: 0}
     weight: 100
-  - item: {fileID: 11400000, guid: 7fb5fcd40603b3b47b606752e1505429, type: 2}
+  - item: {fileID: 11400000, guid: 324dcd5e7ba63c84b90971750ee5dfbc, type: 2}
     weight: 5
-  - item: {fileID: 11400000, guid: 14447488517e3c844b819eea0f762896, type: 2}
+  - item: {fileID: 11400000, guid: 325314c433d039f4dbc054b98635277d, type: 2}
     weight: 5
-  - item: {fileID: 11400000, guid: 1f8bf76e9fc221247a528a193b357c08, type: 2}
+  - item: {fileID: 11400000, guid: c8651d53b77512147b34712ed1b67cb8, type: 2}
     weight: 5
-  - item: {fileID: 11400000, guid: 8f9b4cac39e41f4499e5d5399b3d845f, type: 2}
+  - item: {fileID: 11400000, guid: 0f4848f7aa4af8b4d9616c10a8d5e78c, type: 2}
     weight: 5
-  - item: {fileID: 11400000, guid: c4728fb92f682f44bae3b2218310323e, type: 2}
+  - item: {fileID: 11400000, guid: a60ab176e37edaa45a8e63e6d9af5193, type: 2}
     weight: 5
-  - item: {fileID: 11400000, guid: dbbe3bd8154837444b355292c97fa349, type: 2}
+  - item: {fileID: 11400000, guid: e489f4b89c9b247498337ad5d980bd41, type: 2}
     weight: 5
-  - item: {fileID: 11400000, guid: 4784816ef8df8e442949be68dc571441, type: 2}
+  - item: {fileID: 11400000, guid: b2fa5b6a98e85104ab7d99ceb749e72f, type: 2}
     weight: 5
-  - item: {fileID: 11400000, guid: 46100280d0a8e3c44991394140734bc7, type: 2}
+  - item: {fileID: 11400000, guid: 4ab2c575eff44d54ab5fd08208ff1dc1, type: 2}
     weight: 5
-  - item: {fileID: 11400000, guid: 865452143c6376f4f8d0b98a1011caac, type: 2}
+  - item: {fileID: 11400000, guid: f56ded5b6f09d1242a887655953ab80c, type: 2}
     weight: 5
   isTowerMaster: 0
   isBoss: 0

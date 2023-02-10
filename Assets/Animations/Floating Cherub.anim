@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Glaring Overlord
+  m_Name: Floating Cherub
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,15 +20,15 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -1638335384, guid: b0c163342d94cfd4792780f72d5705a3, type: 3}
+      value: {fileID: -907406992, guid: bdcbc9c7d1c9a9d499fc33f7fdeeb9a8, type: 3}
     - time: 0.25
-      value: {fileID: 2112725369, guid: b0c163342d94cfd4792780f72d5705a3, type: 3}
+      value: {fileID: -907254851, guid: bdcbc9c7d1c9a9d499fc33f7fdeeb9a8, type: 3}
     - time: 0.5
-      value: {fileID: 1247519530, guid: b0c163342d94cfd4792780f72d5705a3, type: 3}
+      value: {fileID: -907406992, guid: bdcbc9c7d1c9a9d499fc33f7fdeeb9a8, type: 3}
     - time: 0.75
-      value: {fileID: 2112725369, guid: b0c163342d94cfd4792780f72d5705a3, type: 3}
+      value: {fileID: -1579976155, guid: bdcbc9c7d1c9a9d499fc33f7fdeeb9a8, type: 3}
     - time: 1
-      value: {fileID: -1638335384, guid: b0c163342d94cfd4792780f72d5705a3, type: 3}
+      value: {fileID: -907406992, guid: bdcbc9c7d1c9a9d499fc33f7fdeeb9a8, type: 3}
     attribute: m_Sprite
     path: Look
     classID: 114
@@ -48,11 +48,11 @@ AnimationClip:
       customType: 0
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -1638335384, guid: b0c163342d94cfd4792780f72d5705a3, type: 3}
-    - {fileID: 2112725369, guid: b0c163342d94cfd4792780f72d5705a3, type: 3}
-    - {fileID: 1247519530, guid: b0c163342d94cfd4792780f72d5705a3, type: 3}
-    - {fileID: 2112725369, guid: b0c163342d94cfd4792780f72d5705a3, type: 3}
-    - {fileID: -1638335384, guid: b0c163342d94cfd4792780f72d5705a3, type: 3}
+    - {fileID: -907406992, guid: bdcbc9c7d1c9a9d499fc33f7fdeeb9a8, type: 3}
+    - {fileID: -907254851, guid: bdcbc9c7d1c9a9d499fc33f7fdeeb9a8, type: 3}
+    - {fileID: -907406992, guid: bdcbc9c7d1c9a9d499fc33f7fdeeb9a8, type: 3}
+    - {fileID: -1579976155, guid: bdcbc9c7d1c9a9d499fc33f7fdeeb9a8, type: 3}
+    - {fileID: -907406992, guid: bdcbc9c7d1c9a9d499fc33f7fdeeb9a8, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

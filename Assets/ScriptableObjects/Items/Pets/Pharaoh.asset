@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53c013e8d0c06b74781a4612a4e65701, type: 3}
-  m_Name: GiantSpider
+  m_Name: Pharaoh
   m_EditorClassIdentifier: 
-  ID: 84
-  itemName: Giant Spider
-  icon: {fileID: 0}
+  ID: 111
+  itemName: Pharaoh
+  icon: {fileID: 2139911786, guid: b0c163342d94cfd4792780f72d5705a3, type: 3}
   itemType: 3
   description: 
   maxInStack: 1

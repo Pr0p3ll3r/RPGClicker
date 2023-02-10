@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f4d05af8e2b28e458d358be48badf59, type: 3}
+  m_Name: Lvl78 Corpse Walker
+  m_EditorClassIdentifier: 
+  enemyName: Corpse Walker
+  icon: {fileID: 0}
+  level: 78
+  health: 10
+  damage: 0
+  defense: 0
+  criticalDamage: 0
+  criticalRate: 0
+  exp: 0
+  gold: 0
+  loot:
+  - item: {fileID: 0}
+    weight: 100
+  - item: {fileID: 11400000, guid: 486f1309e05bc7b40bfa3789647bd464, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 5006ab56267058140838724f71f65fc8, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 55f9857e50c8cc24fa3352e4144644c8, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: e5800967f204d0c47914d0e339e3f3ce, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 9b3b732796db63545ae8d7e0a2873d19, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 959aeb14f98127043a72aa28aae5627e, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: a417f4f26d94bae479989475183902e9, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 5e6ea72ae5da75542b5848e3bc04ba65, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: f8cb985414cff03449407e1d1aa18328, type: 2}
+    weight: 5
+  isTowerMaster: 0
+  isBoss: 0
+  achievement: {fileID: 0}
+  equipment:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
