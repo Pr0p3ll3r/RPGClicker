@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 2
   bonusName: Defense
-  icon: {fileID: 21300000, guid: a9f04f2f65ed34f45ac6889dfdbd6096, type: 3}
+  icon: {fileID: 21300000, guid: 2ebfd72cb8ec42d4dab04af8aa8af388, type: 3}
   stat: 1
   levels:
   - value: 0

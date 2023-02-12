@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfaa4bb3e2346e44db6183006e316bc4, type: 3}
   m_Name: 5 Pyramid
   m_EditorClassIdentifier: 
+  ID: 0
   locationName: Pyramid
-  price: 100
+  price: 1000
   lvlMin: 35
   isDungeon: 1
+  isGate: 0
   enemies:
   - {fileID: 11400000, guid: aa938bd92fb013649a28fe4c8b7f2554, type: 2}
   boss: {fileID: 11400000, guid: a859601cc941f0c4ebb7d2843f9b8c3f, type: 2}

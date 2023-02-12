@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff4eb6a90eef46c4dbbae1fa25a61d4d, type: 3}
   m_Name: HP Steal Limit
   m_EditorClassIdentifier: 
-  ID: 106
+  ID: 105
   itemName: Scroll HP Steal Limit
   icon: {fileID: 2607994691028543399, guid: 4f994cdb05a8a484f9665f1ce9d29a74, type: 3}
   itemType: 2
   description: A Scroll used to fill a slot in a helmet/boots or pet
   maxInStack: 999
   stackable: 1
-  price: 0
+  price: 1
   scrollStat: {fileID: 11400000, guid: 2e5f64f5835d0d943977121c32fbfce0, type: 2}
   inHelmet: 1
   inChestplate: 0

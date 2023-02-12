@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfaa4bb3e2346e44db6183006e316bc4, type: 3}
   m_Name: 11 Altar of the Undead
   m_EditorClassIdentifier: 
+  ID: 0
   locationName: Altar of the Undead
-  price: 100
+  price: 1000
   lvlMin: 78
   isDungeon: 1
+  isGate: 0
   enemies:
   - {fileID: 11400000, guid: 49d822ce05e1adf49bd6452ff9481f18, type: 2}
   boss: {fileID: 11400000, guid: 1668fed39a59503458483da45b0df953, type: 2}

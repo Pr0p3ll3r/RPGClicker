@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79f74738d4a56d4bb876cedcb688cac, type: 3}
   m_Name: MaxCriticalRate
   m_EditorClassIdentifier: 
-  ID: 2
+  ID: 4
   bonusName: Max Critical Rate
-  icon: {fileID: 21300000, guid: a9f04f2f65ed34f45ac6889dfdbd6096, type: 3}
+  icon: {fileID: 21300000, guid: f78a9f3f49feeaf4b97f968dc72c7837, type: 3}
   stat: 5
   levels:
   - value: 0

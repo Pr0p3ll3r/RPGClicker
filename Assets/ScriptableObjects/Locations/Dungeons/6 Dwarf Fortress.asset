@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfaa4bb3e2346e44db6183006e316bc4, type: 3}
   m_Name: 6 Dwarf Fortress
   m_EditorClassIdentifier: 
+  ID: 0
   locationName: Dwarf Fortress
-  price: 100
+  price: 1000
   lvlMin: 42
   isDungeon: 1
+  isGate: 0
   enemies:
   - {fileID: 11400000, guid: ff48b5c1e73e31941ab0a51dca3f75ea, type: 2}
   boss: {fileID: 11400000, guid: b323e3a5d12e1c14e8fd6e3d42cf2173, type: 2}

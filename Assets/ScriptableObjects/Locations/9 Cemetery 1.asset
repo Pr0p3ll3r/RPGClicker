@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfaa4bb3e2346e44db6183006e316bc4, type: 3}
   m_Name: 9 Cemetery 1
   m_EditorClassIdentifier: 
+  ID: 9
   locationName: Cemetery 1
-  price: 100
+  price: 1000
   lvlMin: 71
   isDungeon: 0
+  isGate: 0
   enemies:
   - {fileID: 11400000, guid: f7c1002e692f978409380341fc00ca00, type: 2}
   boss: {fileID: 11400000, guid: 0ac2bd516f4777348a2a971c2534f035, type: 2}

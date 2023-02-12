@@ -19,7 +19,7 @@ MonoBehaviour:
   description: A Scroll used to fill a slot in a chestplate/gloves or pet
   maxInStack: 999
   stackable: 1
-  price: 0
+  price: 1
   scrollStat: {fileID: 11400000, guid: f71126b4a5982da448e528bc398fc573, type: 2}
   inHelmet: 0
   inChestplate: 1

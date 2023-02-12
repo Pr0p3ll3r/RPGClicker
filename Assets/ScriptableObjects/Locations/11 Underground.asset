@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfaa4bb3e2346e44db6183006e316bc4, type: 3}
   m_Name: 11 Underground
   m_EditorClassIdentifier: 
+  ID: 11
   locationName: Underground
-  price: 100
+  price: 1000
   lvlMin: 84
   isDungeon: 0
+  isGate: 0
   enemies:
   - {fileID: 11400000, guid: 1d9897bcd260f0249b54a5fcbb638bb7, type: 2}
   boss: {fileID: 11400000, guid: 0db7d20b5326c8d45808801e67068dd4, type: 2}

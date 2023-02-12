@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff4eb6a90eef46c4dbbae1fa25a61d4d, type: 3}
   m_Name: Gold Bonus
   m_EditorClassIdentifier: 
-  ID: 104
+  ID: 103
   itemName: Scroll Gold Bonus
   icon: {fileID: 2607994691028543399, guid: 4f994cdb05a8a484f9665f1ce9d29a74, type: 3}
   itemType: 2
   description: A Scroll used to fill a slot in a helmet/chestplate/boots or pet
   maxInStack: 999
   stackable: 1
-  price: 0
+  price: 1
   scrollStat: {fileID: 11400000, guid: 43ab80065c27c7443a8b8e674e63ec78, type: 2}
   inHelmet: 1
   inChestplate: 1

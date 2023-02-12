@@ -121,15 +121,12 @@ public class QuestManager : MonoBehaviour
             {
                 case PlayerClass.Warrior:
                     reward = LootTable.QuestRewardRandom(currentQuest.rewardWarrior);
-                    Inventory.AddItem(reward.item, reward.amount);
                     break;
                 case PlayerClass.Blader:
                     reward = LootTable.QuestRewardRandom(currentQuest.rewardBlader);
-                    Inventory.AddItem(reward.item, reward.amount);
                     break;
                 case PlayerClass.Archer:
                     reward = LootTable.QuestRewardRandom(currentQuest.rewardArcher);
-                    Inventory.AddItem(reward.item, reward.amount);
                     break;
                 case PlayerClass.Wizard:
                     reward = LootTable.QuestRewardRandom(currentQuest.rewardWizard);

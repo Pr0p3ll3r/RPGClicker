@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Lvl24 Giant Cobra
   m_EditorClassIdentifier: 
   enemyName: Giant Cobra
-  icon: {fileID: 1043575828, guid: bdcbc9c7d1c9a9d499fc33f7fdeeb9a8, type: 3}
+  icon: {fileID: -159771003, guid: bdcbc9c7d1c9a9d499fc33f7fdeeb9a8, type: 3}
   level: 24
-  health: 55
-  damage: 12
+  health: 700
+  damage: 50
   defense: 0
   criticalDamage: 0
   criticalRate: 0

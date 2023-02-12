@@ -15,8 +15,8 @@ MonoBehaviour:
   enemyName: Goblin
   icon: {fileID: -797467815, guid: bdcbc9c7d1c9a9d499fc33f7fdeeb9a8, type: 3}
   level: 15
-  health: 400
-  damage: 7
+  health: 600
+  damage: 25
   defense: 0
   criticalDamage: 0
   criticalRate: 0

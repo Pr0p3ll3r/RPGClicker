@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79f74738d4a56d4bb876cedcb688cac, type: 3}
   m_Name: HealthStealLimit
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 11
   bonusName: HP Steal Limit
-  icon: {fileID: -3282236179042937268, guid: 4d6cfa3da87ee404784dddcb70aee7de, type: 3}
+  icon: {fileID: 21300000, guid: a2a4231e63e5c524fb1b80df42e2bc5e, type: 3}
   stat: 7
   levels:
   - value: 0

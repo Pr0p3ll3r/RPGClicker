@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79f74738d4a56d4bb876cedcb688cac, type: 3}
   m_Name: CriticalDamage
   m_EditorClassIdentifier: 
-  ID: 2
+  ID: 3
   bonusName: Critical Damage
-  icon: {fileID: 21300000, guid: a9f04f2f65ed34f45ac6889dfdbd6096, type: 3}
+  icon: {fileID: 21300000, guid: 170f3b394cf2c3a409b2e9720b83328d, type: 3}
   stat: 3
   levels:
   - value: 0

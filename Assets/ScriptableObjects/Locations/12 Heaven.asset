@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 12
   locationName: Heaven
-  price: 100
+  price: 1000
   lvlMin: 91
   isDungeon: 0
   isGate: 0

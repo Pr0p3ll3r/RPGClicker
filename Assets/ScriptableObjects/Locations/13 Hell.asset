@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfaa4bb3e2346e44db6183006e316bc4, type: 3}
   m_Name: 13 Hell
   m_EditorClassIdentifier: 
+  ID: 13
   locationName: Hell
-  price: 100
+  price: 1000
   lvlMin: 99
   isDungeon: 0
+  isGate: 0
   enemies:
   - {fileID: 11400000, guid: 0f51c491cdcbdd24ab5c4ed449eeaa49, type: 2}
   boss: {fileID: 11400000, guid: 05caad2cd8179a948a69696615850e0e, type: 2}

@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfaa4bb3e2346e44db6183006e316bc4, type: 3}
   m_Name: 9 Abandoned Island
   m_EditorClassIdentifier: 
+  ID: 0
   locationName: Abandoned Island
-  price: 100
+  price: 1000
   lvlMin: 65
   isDungeon: 1
+  isGate: 0
   enemies:
   - {fileID: 11400000, guid: 4fa2897f2e254164d9631785630cac46, type: 2}
   boss: {fileID: 11400000, guid: 07931fc4a8c7b1548a403d8e96aac452, type: 2}

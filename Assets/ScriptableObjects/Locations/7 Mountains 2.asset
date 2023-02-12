@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfaa4bb3e2346e44db6183006e316bc4, type: 3}
   m_Name: 7 Mountains 2
   m_EditorClassIdentifier: 
+  ID: 7
   locationName: Mountains 2
-  price: 100
+  price: 1000
   lvlMin: 58
   isDungeon: 0
+  isGate: 0
   enemies:
   - {fileID: 11400000, guid: e103feae9ff75a344873ff50d904b463, type: 2}
   boss: {fileID: 11400000, guid: 97e8057e83fe8ea40beb0662f21f2f13, type: 2}

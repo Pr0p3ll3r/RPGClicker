@@ -19,7 +19,7 @@ MonoBehaviour:
   description: A Scroll used to fill a slot in a helmet/chestplate/boots or pet
   maxInStack: 999
   stackable: 1
-  price: 0
+  price: 1
   scrollStat: {fileID: 11400000, guid: bf7ea2010feff7c4ca635e9bd3b06680, type: 2}
   inHelmet: 1
   inChestplate: 1
