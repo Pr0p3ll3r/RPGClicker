@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d6633374216784ab984303c5c21304, type: 3}
+  m_Name: 16 Hell Gate
+  m_EditorClassIdentifier: 
+  ID: 1
+  achievementName: Hell Gate
+  tiers:
+  - goal: {fileID: 11400000, guid: f9cac9306390c1841b4e0bb419025c21, type: 2}
+    amount: 100
+    rewards:
+    - stat: 9
+      value: 100
+  - goal: {fileID: 11400000, guid: f9cac9306390c1841b4e0bb419025c21, type: 2}
+    amount: 200
+    rewards:
+    - stat: 9
+      value: 100
+  - goal: {fileID: 11400000, guid: f9cac9306390c1841b4e0bb419025c21, type: 2}
+    amount: 500
+    rewards:
+    - stat: 9
+      value: 100
+  - goal: {fileID: 11400000, guid: f9cac9306390c1841b4e0bb419025c21, type: 2}
+    amount: 1000
+    rewards:
+    - stat: 9
+      value: 100
+  - goal: {fileID: 11400000, guid: f9cac9306390c1841b4e0bb419025c21, type: 2}
+    amount: 2000
+    rewards:
+    - stat: 9
+      value: 100
+  - goal: {fileID: 11400000, guid: f9cac9306390c1841b4e0bb419025c21, type: 2}
+    amount: 5000
+    rewards:
+    - stat: 9
+      value: 100
+  differentEnemies: 0

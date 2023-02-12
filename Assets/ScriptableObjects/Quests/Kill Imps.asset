@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bbe7c88c025c944b64fa8aacc779c9, type: 3}
+  m_Name: Kill Imps
+  m_EditorClassIdentifier: 
+  ID: 0
+  goal: {fileID: 11400000, guid: f9cac9306390c1841b4e0bb419025c21, type: 2}
+  amount: 50
+  randomReward: 1
+  rewardWarrior:
+  - item: {fileID: 11400000, guid: 482d29406e7d358429f05fc29c994b39, type: 2}
+    amount: 10
+  rewardBlader:
+  - item: {fileID: 11400000, guid: 482d29406e7d358429f05fc29c994b39, type: 2}
+    amount: 10
+  rewardArcher:
+  - item: {fileID: 11400000, guid: 482d29406e7d358429f05fc29c994b39, type: 2}
+    amount: 10
+  rewardWizard:
+  - item: {fileID: 11400000, guid: 482d29406e7d358429f05fc29c994b39, type: 2}
+    amount: 10
+  rewardShielder:
+  - item: {fileID: 11400000, guid: 482d29406e7d358429f05fc29c994b39, type: 2}
+    amount: 10

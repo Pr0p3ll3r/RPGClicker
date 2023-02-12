@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bbe7c88c025c944b64fa8aacc779c9, type: 3}
+  m_Name: Kill Stone Golems
+  m_EditorClassIdentifier: 
+  ID: 0
+  goal: {fileID: 11400000, guid: ff48b5c1e73e31941ab0a51dca3f75ea, type: 2}
+  amount: 10
+  randomReward: 0
+  rewardWarrior:
+  - item: {fileID: 11400000, guid: 324dcd5e7ba63c84b90971750ee5dfbc, type: 2}
+    amount: 1
+  rewardBlader:
+  - item: {fileID: 11400000, guid: 4ab2c575eff44d54ab5fd08208ff1dc1, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 4ab2c575eff44d54ab5fd08208ff1dc1, type: 2}
+    amount: 1
+  rewardArcher:
+  - item: {fileID: 11400000, guid: c8651d53b77512147b34712ed1b67cb8, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: e98ab44142480024c99c5643c823e3ab, type: 2}
+    amount: 1
+  rewardWizard:
+  - item: {fileID: 11400000, guid: f56ded5b6f09d1242a887655953ab80c, type: 2}
+    amount: 1
+  rewardShielder:
+  - item: {fileID: 11400000, guid: 4ab2c575eff44d54ab5fd08208ff1dc1, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: b2fa5b6a98e85104ab7d99ceb749e72f, type: 2}
+    amount: 1

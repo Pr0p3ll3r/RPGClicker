@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bbe7c88c025c944b64fa8aacc779c9, type: 3}
+  m_Name: Complete Dragon Nests
+  m_EditorClassIdentifier: 
+  ID: 1
+  goal: {fileID: 11400000, guid: 97e8057e83fe8ea40beb0662f21f2f13, type: 2}
+  amount: 5
+  randomReward: 1
+  rewardWarrior:
+  - item: {fileID: 11400000, guid: 0e553d12adabe9b4698ae6b20ddd1a83, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 52570193ea46ae14db26be70ea6294ca, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 04a442a7d883ec04baed701944fb558e, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: eb0a5acbc5ebed849bd2eff3fea8b859, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: da1f1330a5d9b94488f526930fa491f8, type: 2}
+    amount: 1
+  rewardBlader:
+  - item: {fileID: 11400000, guid: 0e553d12adabe9b4698ae6b20ddd1a83, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 52570193ea46ae14db26be70ea6294ca, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 04a442a7d883ec04baed701944fb558e, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: eb0a5acbc5ebed849bd2eff3fea8b859, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: da1f1330a5d9b94488f526930fa491f8, type: 2}
+    amount: 1
+  rewardArcher:
+  - item: {fileID: 11400000, guid: 0e553d12adabe9b4698ae6b20ddd1a83, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 52570193ea46ae14db26be70ea6294ca, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 04a442a7d883ec04baed701944fb558e, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: eb0a5acbc5ebed849bd2eff3fea8b859, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: da1f1330a5d9b94488f526930fa491f8, type: 2}
+    amount: 1
+  rewardWizard:
+  - item: {fileID: 11400000, guid: 0e553d12adabe9b4698ae6b20ddd1a83, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 52570193ea46ae14db26be70ea6294ca, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 04a442a7d883ec04baed701944fb558e, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: eb0a5acbc5ebed849bd2eff3fea8b859, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: da1f1330a5d9b94488f526930fa491f8, type: 2}
+    amount: 1
+  rewardShielder:
+  - item: {fileID: 11400000, guid: 0e553d12adabe9b4698ae6b20ddd1a83, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 52570193ea46ae14db26be70ea6294ca, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 04a442a7d883ec04baed701944fb558e, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: eb0a5acbc5ebed849bd2eff3fea8b859, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: da1f1330a5d9b94488f526930fa491f8, type: 2}
+    amount: 1

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f47222897a906df4f87f1f02fc026303, type: 3}
   m_Name: Divine Core
   m_EditorClassIdentifier: 
-  ID: 114
+  ID: 111
   itemName: Divine Core
   icon: {fileID: 6613708675518738141, guid: 4d6cfa3da87ee404784dddcb70aee7de, type: 3}
   itemType: 4
-  description: 
+  description: Used for divine upgrading
   maxInStack: 999
   stackable: 1
   price: 1

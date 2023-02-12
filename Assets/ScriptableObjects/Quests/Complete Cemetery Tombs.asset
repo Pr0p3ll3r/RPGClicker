@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bbe7c88c025c944b64fa8aacc779c9, type: 3}
+  m_Name: Complete Cemetery Tombs
+  m_EditorClassIdentifier: 
+  ID: 1
+  goal: {fileID: 11400000, guid: 0ac2bd516f4777348a2a971c2534f035, type: 2}
+  amount: 5
+  randomReward: 1
+  rewardWarrior:
+  - item: {fileID: 11400000, guid: 0c48e1bd174f8e045bd232162d86cac1, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 90f9b9b56f659994e9565c75b4e9ac46, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 477fa7ff757aaf943a42a1d24637275d, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 0a513da88b139a747b873c729ac671ab, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 899c024a75123dc4094f18a8979a449d, type: 2}
+    amount: 1
+  rewardBlader:
+  - item: {fileID: 11400000, guid: 0c48e1bd174f8e045bd232162d86cac1, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 90f9b9b56f659994e9565c75b4e9ac46, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 477fa7ff757aaf943a42a1d24637275d, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 0a513da88b139a747b873c729ac671ab, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 899c024a75123dc4094f18a8979a449d, type: 2}
+    amount: 1
+  rewardArcher:
+  - item: {fileID: 11400000, guid: 0c48e1bd174f8e045bd232162d86cac1, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 90f9b9b56f659994e9565c75b4e9ac46, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 477fa7ff757aaf943a42a1d24637275d, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 0a513da88b139a747b873c729ac671ab, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 899c024a75123dc4094f18a8979a449d, type: 2}
+    amount: 1
+  rewardWizard:
+  - item: {fileID: 11400000, guid: 0c48e1bd174f8e045bd232162d86cac1, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 90f9b9b56f659994e9565c75b4e9ac46, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 477fa7ff757aaf943a42a1d24637275d, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 0a513da88b139a747b873c729ac671ab, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 899c024a75123dc4094f18a8979a449d, type: 2}
+    amount: 1
+  rewardShielder:
+  - item: {fileID: 11400000, guid: 0c48e1bd174f8e045bd232162d86cac1, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 90f9b9b56f659994e9565c75b4e9ac46, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 477fa7ff757aaf943a42a1d24637275d, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 0a513da88b139a747b873c729ac671ab, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 899c024a75123dc4094f18a8979a449d, type: 2}
+    amount: 1

@@ -51,7 +51,7 @@ public static class Utils
             case Stats.GoldBonusPercent:
                 return "Gold Bonus";
             case Stats.TwoSlotItemDropPercent:
-                return "Two-Slot Item Drop";
+                return "2-Slot Item Drop";
             case Stats.ExpBonusPercent:
                 return "Exp Bonus";
             case Stats.Strength:
@@ -90,7 +90,7 @@ public static class Utils
             case Stats.GoldBonusPercent:
                 return "GOLD BON";
             case Stats.TwoSlotItemDropPercent:
-                return "2-SLOT DROP";
+                return "2-SLOT";
             case Stats.ExpBonusPercent:
                 return "EXP BON";
             case Stats.Strength:

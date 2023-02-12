@@ -39,9 +39,19 @@ MonoBehaviour:
     weight: 1
   - item: {fileID: 11400000, guid: 6304859a1ae5086438f88d7bbbd027cd, type: 2}
     weight: 1
+  - item: {fileID: 11400000, guid: 558679a0a6793134eb961e68378fea2e, type: 2}
+    weight: 1
+  - item: {fileID: 11400000, guid: 8c7f5651d52e31b4a9ffbefdbbb967d7, type: 2}
+    weight: 1
+  - item: {fileID: 11400000, guid: 835a4cd1a29a42e4e878b3d6a9fd18ba, type: 2}
+    weight: 1
+  - item: {fileID: 11400000, guid: c3ca88bf706a70848ab924944eff5f99, type: 2}
+    weight: 1
+  - item: {fileID: 11400000, guid: efe7aaf00e93e514e89520bd5b40693f, type: 2}
+    weight: 1
   isTowerMaster: 0
   isBoss: 1
-  achievement: {fileID: 0}
+  achievement: {fileID: 11400000, guid: 3fbc9cf89f99fe54bb4a218370745601, type: 2}
   equipment:
   - {fileID: 0}
   - {fileID: 0}

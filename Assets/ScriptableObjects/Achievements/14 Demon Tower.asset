@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d6633374216784ab984303c5c21304, type: 3}
+  m_Name: 14 Demon Tower
+  m_EditorClassIdentifier: 
+  ID: 0
+  achievementName: Demon Tower
+  tiers:
+  - goal: {fileID: 11400000, guid: 05caad2cd8179a948a69696615850e0e, type: 2}
+    amount: 10
+    rewards:
+    - stat: 0
+      value: 4
+    - stat: 1
+      value: 6
+  - goal: {fileID: 11400000, guid: 05caad2cd8179a948a69696615850e0e, type: 2}
+    amount: 50
+    rewards:
+    - stat: 0
+      value: 6
+    - stat: 1
+      value: 8
+  - goal: {fileID: 11400000, guid: 05caad2cd8179a948a69696615850e0e, type: 2}
+    amount: 100
+    rewards:
+    - stat: 0
+      value: 8
+    - stat: 1
+      value: 10
+  - goal: {fileID: 11400000, guid: 05caad2cd8179a948a69696615850e0e, type: 2}
+    amount: 200
+    rewards:
+    - stat: 0
+      value: 10
+    - stat: 1
+      value: 12
+  - goal: {fileID: 11400000, guid: 05caad2cd8179a948a69696615850e0e, type: 2}
+    amount: 500
+    rewards:
+    - stat: 0
+      value: 12
+    - stat: 1
+      value: 14
+  - goal: {fileID: 11400000, guid: 05caad2cd8179a948a69696615850e0e, type: 2}
+    amount: 1000
+    rewards:
+    - stat: 0
+      value: 14
+    - stat: 1
+      value: 16
+  differentEnemies: 0

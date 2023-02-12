@@ -39,7 +39,7 @@ MonoBehaviour:
     weight: 1
   isTowerMaster: 0
   isBoss: 1
-  achievement: {fileID: 0}
+  achievement: {fileID: 11400000, guid: e95efb4fa57d94544bd7c376d0d570ab, type: 2}
   equipment:
   - {fileID: 0}
   - {fileID: 0}

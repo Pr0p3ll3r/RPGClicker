@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f47222897a906df4f87f1f02fc026303, type: 3}
   m_Name: Extreme Core
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 110
   itemName: Extreme Core
   icon: {fileID: -2799914031068688302, guid: ac43bce901366274f9ae3b435e1249b4, type: 3}
   itemType: 4
-  description: 
+  description: Used for extreme upgrading
   maxInStack: 999
   stackable: 1
   price: 1

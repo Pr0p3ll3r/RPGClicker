@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d6633374216784ab984303c5c21304, type: 3}
+  m_Name: 5 Pyramid
+  m_EditorClassIdentifier: 
+  ID: 0
+  achievementName: Pyramid
+  tiers:
+  - goal: {fileID: 11400000, guid: a859601cc941f0c4ebb7d2843f9b8c3f, type: 2}
+    amount: 10
+    rewards:
+    - stat: 10
+      value: 1
+  - goal: {fileID: 11400000, guid: a859601cc941f0c4ebb7d2843f9b8c3f, type: 2}
+    amount: 50
+    rewards:
+    - stat: 10
+      value: 2
+  - goal: {fileID: 11400000, guid: a859601cc941f0c4ebb7d2843f9b8c3f, type: 2}
+    amount: 100
+    rewards:
+    - stat: 10
+      value: 3
+  - goal: {fileID: 11400000, guid: a859601cc941f0c4ebb7d2843f9b8c3f, type: 2}
+    amount: 200
+    rewards:
+    - stat: 10
+      value: 4
+  - goal: {fileID: 11400000, guid: a859601cc941f0c4ebb7d2843f9b8c3f, type: 2}
+    amount: 500
+    rewards:
+    - stat: 10
+      value: 5
+  - goal: {fileID: 11400000, guid: a859601cc941f0c4ebb7d2843f9b8c3f, type: 2}
+    amount: 1000
+    rewards:
+    - stat: 10
+      value: 6
+  differentEnemies: 0

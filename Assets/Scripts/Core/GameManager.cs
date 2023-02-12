@@ -196,7 +196,15 @@ public class GameManager : MonoBehaviour
             {
                 if (lastlootSlot == lootSlots)
                     ClearLootList();
+#if UNITY_EDITOR
                 Debug.Log("Dropped: " + drop.itemName);
+                if (drop.itemType == ItemType.Equipment) 
+                {
+                    Equipment dropEq = (Equipment)drop;
+                    Debug.Log("Rarity: " + dropEq.rarity);
+                    Debug.Log("Scroll Slots: " + dropEq.scrollsStat.Length);
+                }
+#endif    
                 Inventory.AddItem(drop, 1);
                 lootList.GetChild(lastlootSlot).GetComponent<InventorySlot>().FillSlot(drop);
                 lastlootSlot++;

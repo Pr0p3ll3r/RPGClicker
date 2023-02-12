@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f47222897a906df4f87f1f02fc026303, type: 3}
   m_Name: Chaos Core
   m_EditorClassIdentifier: 
-  ID: 115
+  ID: 112
   itemName: Chaos Core
   icon: {fileID: -1551652896029731425, guid: 4d6cfa3da87ee404784dddcb70aee7de, type: 3}
   itemType: 4
-  description: 
+  description: Used for chaos upgrading
   maxInStack: 999
   stackable: 1
   price: 1

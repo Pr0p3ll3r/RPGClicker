@@ -21,6 +21,4 @@ MonoBehaviour:
   stackable: 1
   price: 0
   resultItem: {fileID: 11400000, guid: d357dd010c489e743aa95a1f47dda50c, type: 2}
-  requiredItems:
-  - item: {fileID: 11400000, guid: 6541df9c91fd5364fb567745a172460c, type: 2}
-    amount: 2
+  requiredItems: []

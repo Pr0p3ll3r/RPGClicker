@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bbe7c88c025c944b64fa8aacc779c9, type: 3}
+  m_Name: Kill Foxes
+  m_EditorClassIdentifier: 
+  ID: 0
+  goal: {fileID: 11400000, guid: 52c610e00afd94c42af53bc3f142a122, type: 2}
+  amount: 10
+  randomReward: 1
+  rewardWarrior:
+  - item: {fileID: 11400000, guid: dbbe3bd8154837444b355292c97fa349, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 8f9b4cac39e41f4499e5d5399b3d845f, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: c4728fb92f682f44bae3b2218310323e, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 14447488517e3c844b819eea0f762896, type: 2}
+    amount: 1
+  rewardBlader:
+  - item: {fileID: 11400000, guid: dbbe3bd8154837444b355292c97fa349, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 8f9b4cac39e41f4499e5d5399b3d845f, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: c4728fb92f682f44bae3b2218310323e, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 14447488517e3c844b819eea0f762896, type: 2}
+    amount: 1
+  rewardArcher:
+  - item: {fileID: 11400000, guid: dbbe3bd8154837444b355292c97fa349, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 8f9b4cac39e41f4499e5d5399b3d845f, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: c4728fb92f682f44bae3b2218310323e, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 14447488517e3c844b819eea0f762896, type: 2}
+    amount: 1
+  rewardWizard:
+  - item: {fileID: 11400000, guid: dbbe3bd8154837444b355292c97fa349, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 8f9b4cac39e41f4499e5d5399b3d845f, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: c4728fb92f682f44bae3b2218310323e, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 14447488517e3c844b819eea0f762896, type: 2}
+    amount: 1
+  rewardShielder:
+  - item: {fileID: 11400000, guid: dbbe3bd8154837444b355292c97fa349, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 8f9b4cac39e41f4499e5d5399b3d845f, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: c4728fb92f682f44bae3b2218310323e, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 14447488517e3c844b819eea0f762896, type: 2}
+    amount: 1
