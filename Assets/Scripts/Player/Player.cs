@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -35,11 +36,10 @@ public class Player : MonoBehaviour
         hud = GetComponent<PlayerUI>();
         playerInfo = GetComponent<PlayerInfo>();
         ls = GetComponent<LevelSystem>();
-        hud.UpdateHealthBar();
         petsInfo = petList.GetComponentsInChildren<PetInfo>();
         RefreshPetList();
         Unlock2ndPetSlot();
-        regeneration = PlayerPrefs.GetFloat("HealthRegeneration", healthRegenerationTime);
+        LoadHealthRegeneration();
     }
 
     private void OnEnable()
@@ -225,6 +225,7 @@ public class Player : MonoBehaviour
         }
         playerInfo.RefreshStats();
         Equipment.RefreshUI();
+        hud.UpdateHealthBar();
         return true;
     }
 
@@ -243,6 +244,7 @@ public class Player : MonoBehaviour
         }
         playerInfo.RefreshStats();
         Equipment.RefreshUI();
+        hud.UpdateHealthBar();
         return true;
     }
 
@@ -261,6 +263,8 @@ public class Player : MonoBehaviour
             Inventory.RemoveItem(pet);
             RefreshPetList();
             pet.AddStats(Data);
+            hud.UpdateHealthBar();
+            playerInfo.RefreshStats();
         }
         else
         {
@@ -282,6 +286,8 @@ public class Player : MonoBehaviour
             }
             Inventory.AddItem(pet, 1);
             pet.RemoveStats(Data);
+            hud.UpdateHealthBar();
+            playerInfo.RefreshStats();
         }
         else
         {
@@ -321,5 +327,29 @@ public class Player : MonoBehaviour
     private void OnApplicationQuit()
     {
         PlayerPrefs.SetFloat("HealthRegeneration", regeneration);
+        PlayerPrefs.SetString("LastTime", DateTime.UtcNow.ToString());
+    }
+
+    private void LoadHealthRegeneration()
+    {
+        regeneration = PlayerPrefs.GetFloat("HealthRegeneration", healthRegenerationTime);
+        if (PlayerPrefs.HasKey("LastTime"))
+        {
+            DateTime lastTime = DateTime.Parse(PlayerPrefs.GetString("LastTime"));
+            float seconds = (float)DateTime.UtcNow.Subtract(lastTime).TotalSeconds;
+            //Debug.Log("Passed: " + seconds);
+            float left = seconds;
+            regeneration -= seconds;
+            if (regeneration <= 0)
+            {
+                int regenerated = 1 + Mathf.FloorToInt(left / healthRegenerationTime);
+                //Debug.Log("Regenerated: " + regenerated + " times");
+                left -= healthRegenerationTime * (regenerated - 1);
+                Data.currentHealth += regenerated;
+                Data.currentHealth = Mathf.Clamp(Data.currentHealth, 0, Data.health.GetValue());
+                regeneration = left;
+            }
+        }
+        hud.UpdateHealthBar();
     }
 }
