@@ -14,7 +14,6 @@ public class TowerInfo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI criticalDamage;
     [SerializeField] private TextMeshProUGUI criticalRate;
     [SerializeField] private EquipmentSlot[] slots;
-    [SerializeField] private ItemInfo selectedItem;
 
     public void SetUp(EnemyData data)
     {
