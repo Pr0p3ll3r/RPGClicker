@@ -74,7 +74,7 @@ public class QuestManager : MonoBehaviour
                     }
                     break;
             }
-            getRewardButton.onClick.AddListener(delegate { GetRewards(); });
+            getRewardButton.onClick.AddListener(delegate { SoundManager.Instance.PlayOneShot("Click"); GetRewards(); });
             if (currentQuestProgress == currentQuest.amount)
                 getRewardButton.interactable = true;
         }
