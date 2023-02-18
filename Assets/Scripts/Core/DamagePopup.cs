@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -8,12 +6,14 @@ public class DamagePopup : MonoBehaviour, IPooledObject
     private TextMeshProUGUI text;
     private float disappearTime;
     private Color textColor;
+    private RectTransform rectTransform;
 
     public ObjectPooler Pool { get; set; }
 
     void Awake()
     {
         text = GetComponent<TextMeshProUGUI>();
+        rectTransform = GetComponent<RectTransform>();
     }
 
     public void Setup(int damage, bool crit)
@@ -33,7 +33,7 @@ public class DamagePopup : MonoBehaviour, IPooledObject
 
     private void Update()
     {
-        transform.position += new Vector3(0, 500f) * Time.deltaTime;
+        rectTransform.anchoredPosition += new Vector2(0, 300f) * Time.deltaTime;
 
         disappearTime -= Time.deltaTime;
         if(disappearTime < 0)
