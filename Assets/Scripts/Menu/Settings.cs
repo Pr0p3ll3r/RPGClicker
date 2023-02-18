@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
@@ -48,6 +49,12 @@ public class Settings : MonoBehaviour
             audioMixer.SetFloat("musicVolume", 0);
             ChangeSetting("Music", 1);
         }
+    }
+
+    public void ResetGame()
+    {
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene(0);
     }
 
     public static bool GetSetting(string name)
