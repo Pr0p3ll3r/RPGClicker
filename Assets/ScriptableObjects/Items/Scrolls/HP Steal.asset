@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 104
   itemName: Scroll HP Steal
-  icon: {fileID: 2607994691028543399, guid: 4f994cdb05a8a484f9665f1ce9d29a74, type: 3}
+  icon: {fileID: 71317272, guid: 1ff1e07e7a4376441bfe9e8057820e12, type: 3}
   itemType: 2
   description: A Scroll used to fill a slot in a gloves or pet
   maxInStack: 999

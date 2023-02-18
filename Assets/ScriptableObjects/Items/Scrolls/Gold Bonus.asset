@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 103
   itemName: Scroll Gold Bonus
-  icon: {fileID: 2607994691028543399, guid: 4f994cdb05a8a484f9665f1ce9d29a74, type: 3}
+  icon: {fileID: -99579247, guid: 1ff1e07e7a4376441bfe9e8057820e12, type: 3}
   itemType: 2
   description: A Scroll used to fill a slot in a helmet/chestplate/boots or pet
   maxInStack: 999

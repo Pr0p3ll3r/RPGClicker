@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 8
   bonusName: INT
-  icon: {fileID: 21300000, guid: 56e1a7831b9aebb478d37589c9969906, type: 3}
+  icon: {fileID: 21300000, guid: 5fd582db3db9199409a9bed39191dcab, type: 3}
   stat: 12
   levels:
   - value: 0

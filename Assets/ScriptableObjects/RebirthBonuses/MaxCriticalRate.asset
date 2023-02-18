@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 4
   bonusName: Max Critical Rate
-  icon: {fileID: 21300000, guid: f78a9f3f49feeaf4b97f968dc72c7837, type: 3}
+  icon: {fileID: 21300000, guid: 2ba6b151d01ef654e945854cff09e391, type: 3}
   stat: 5
   levels:
   - value: 0
