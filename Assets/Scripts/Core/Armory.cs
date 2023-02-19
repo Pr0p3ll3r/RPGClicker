@@ -386,7 +386,7 @@ public class Armory : MonoBehaviour
             SoundManager.PlayOneShot("Failed");
         }
         Inventory.ChangeGoldAmount(-price);
-        OpenEnhancePanel(item);
+        ClosePanels();
     }
 
     bool Chance(int chance)
