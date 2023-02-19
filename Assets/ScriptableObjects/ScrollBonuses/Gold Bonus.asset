@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5a16ed72bbdf14bba16cab447a666b, type: 3}
   m_Name: Gold Bonus
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 5
   stat: 8
   values: 0f0000000a000000
+  statIcon: {fileID: -3282236179042937268, guid: 4d6cfa3da87ee404784dddcb70aee7de, type: 3}

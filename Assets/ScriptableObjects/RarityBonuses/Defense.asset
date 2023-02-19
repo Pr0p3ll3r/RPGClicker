@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c5a16ed72bbdf14bba16cab447a666b, type: 3}
   m_Name: Defense
   m_EditorClassIdentifier: 
-  ID: 4
+  ID: 3
   stat: 1
   values: 00000000020000000400000006000000
+  statIcon: {fileID: 0}

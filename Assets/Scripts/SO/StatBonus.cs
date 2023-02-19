@@ -10,4 +10,5 @@ public class StatBonus : ScriptableObject
     /// <para>In Rarity: 0 - Common value, 1 - Uncommon value, 2 - Epic value, 3 - Legendary value</para>
     /// </summary>
     public int[] values;
+    public Sprite statIcon;
 }

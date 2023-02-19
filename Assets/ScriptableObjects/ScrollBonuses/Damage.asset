@@ -15,3 +15,4 @@ MonoBehaviour:
   ID: 0
   stat: 0
   values: 0200000005000000
+  statIcon: {fileID: 21300000, guid: fe8469e169803f84ea37944255c6936d, type: 3}
