@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ee7646d5414e4f489099466f831ccff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slot: {fileID: 8968031962890365765}
   icon: {fileID: 4341035550259695047}
   placeholderIcon: {fileID: 0}
   placeholderSwordIcon: {fileID: 0}

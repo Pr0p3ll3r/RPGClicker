@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class EquipmentSlot : MonoBehaviour
 {
+    [SerializeField] private Image slot;
     [SerializeField] private Image icon;
     [SerializeField] private Sprite placeholderIcon;
     [SerializeField] private Sprite placeholderSwordIcon;
@@ -13,14 +14,15 @@ public class EquipmentSlot : MonoBehaviour
     [SerializeField] private Sprite placeholderBlockedIcon;
 
     public Equipment item;
-    public EquipmentType equipmentType;  
+    public EquipmentType equipmentType;
 
     public void FillSlot(Equipment _item)
     {
         item = _item;
         icon.enabled = true;   
         icon.raycastTarget = true;
-        icon.sprite = Database.data.items[_item.ID].icon;                 
+        icon.sprite = Database.data.items[item.ID].icon;
+        slot.color = Utils.SetColor(item.rarity);
     }
 
     public void ClearSlot()
@@ -28,6 +30,7 @@ public class EquipmentSlot : MonoBehaviour
         item = null;
         icon.sprite = placeholderIcon;
         icon.raycastTarget = false;
+        slot.color = Color.white;
     }
 
     public void SetRightPlaceholder()

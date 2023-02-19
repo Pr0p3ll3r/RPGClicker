@@ -123,4 +123,19 @@ public static class Utils
 
         return -1;
     }
+
+    public static Color SetColor(EquipmentRarity rarity)
+    {
+        switch (rarity)
+        {            
+            case EquipmentRarity.Uncommon:
+                return Color.green;
+            case EquipmentRarity.Epic:
+                return new Color32(163, 53, 238, 255);
+            case EquipmentRarity.Legendary:
+                return new Color32(255, 165, 0, 255);
+            default:
+                return Color.white;
+        }
+    }
 }
