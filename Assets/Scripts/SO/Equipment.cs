@@ -26,7 +26,7 @@ public class Equipment : Item
     {
         if (!canBeExtremeUpgraded) return false;
 
-        if (extremeGrade.level == extremeGrade.maxLevel)
+        if (normalGrade.level < 15 || extremeGrade.level == extremeGrade.maxLevel)
             return false;
         return true;
     }
@@ -34,7 +34,7 @@ public class Equipment : Item
     {
         if(!canBeDivineUpgraded) return false;
 
-        if (divineGrade.level == divineGrade.maxLevel)
+        if (normalGrade.level < 15 && divineGrade.level == divineGrade.maxLevel)
             return false;
         return true;
     }

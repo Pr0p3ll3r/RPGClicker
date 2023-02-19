@@ -320,14 +320,14 @@ public class Armory : MonoBehaviour
                 eqAfter.AddScroll(scroll.scrollStat);
                 afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUp(eqAfter, true, (Equipment)item);              
                 price = eqAfter.UsedScrollsSlot() == 0 ? eqAfter.price : eqAfter.price * 2;
-                chance = enhanceChances[eqAfter.UsedScrollsSlot()];
+                chance = enhanceChances[eqAfter.UsedScrollsSlot() - 1];
                 Destroy(eqAfter);
                 break;
             case ItemType.Pet:
                 Pet petAfter = (Pet)item.GetCopy();
                 petAfter.AddScroll(scroll.scrollStat);
                 afterUpgradeItemInfo.GetComponent<ItemInfo>().SetUp(petAfter, true, null);               
-                if(petAfter.UsedScrollsSlot() <= 5)
+                if(petAfter.UsedScrollsSlot() - 1 <= 5)
                 {
                     price = enhancePricesPet[0];
                     chance = enhanceChances[0];
