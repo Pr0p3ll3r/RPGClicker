@@ -1,4 +1,3 @@
-using Microsoft.Cci;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,16 +10,12 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
 
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = Screen.currentResolution.refreshRate;
-
         Database.data = database;
     }
 
     [Header("Main")]
     [SerializeField] private Transform lootList;
     [SerializeField] private Animation popupText;
-    [SerializeField] private GameObject exitBox;
     [SerializeField] private DatabaseSO database;
     [SerializeField] private TextMeshProUGUI locationName;
 
@@ -63,11 +58,8 @@ public class GameManager : MonoBehaviour
     private QuestManager questManager;
     private AchievementManager achievementManager;
 
-    int fingerCount;
-    bool screenPressed = false;
-
     private int lastlootSlot;
-    private int lootSlots = 6;
+    private readonly int lootSlots = 6;
 
     private Location currentLocation;
     private Location previousLocation;
@@ -110,28 +102,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        //if (screenPressed)
-        //{
-        //    fingerCount = 0;
-        //    foreach (Touch touch in Input.touches)
-        //    {
-        //        if (touch.phase == TouchPhase.Began && fingerCount < 1)
-        //        {
-        //            Attack();
-        //        }
-        //        fingerCount++;
-        //    }
-        //    screenPressed = false;
-        //}
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            exitBox.SetActive(true);
-        }
-    }
-
     private void OnEnable()
     {
         RebirthSystem.OnRebirth += Reborn;
@@ -171,6 +141,14 @@ public class GameManager : MonoBehaviour
         else
             questManager.SetQuest(null);
         SetTower();
+    }
+
+    public void ClickHandler()
+    {
+        if (Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
+        {
+            Player.Instance.Attack();
+        }
     }
 
     private void Reborn()
@@ -244,11 +222,6 @@ public class GameManager : MonoBehaviour
         popupText.GetComponentInChildren<TextMeshProUGUI>().color = color;
         popupText.Stop();
         popupText.Play();
-    }
-
-    public void CheckFingers()
-    {
-        screenPressed = true;
     }
 
     public void QuitGame()

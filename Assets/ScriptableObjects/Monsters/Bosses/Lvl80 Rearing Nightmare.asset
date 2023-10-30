@@ -16,7 +16,7 @@ MonoBehaviour:
   icon: {fileID: -70601828, guid: b0c163342d94cfd4792780f72d5705a3, type: 3}
   level: 80
   health: 9000
-  damage: 120
+  damage: 130
   defense: 0
   criticalDamage: 0
   criticalRate: 0
