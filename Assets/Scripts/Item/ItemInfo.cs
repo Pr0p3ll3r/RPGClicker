@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ItemInfo : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI itemName;
+    [SerializeField] private Image itemSlot;
     [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI description;
     [SerializeField] private ItemStatInfo price;
@@ -36,6 +37,7 @@ public class ItemInfo : MonoBehaviour
         itemName.text = item.itemName;
         itemName.color = Color.white;
         itemIcon.sprite = item.icon;
+        itemSlot.color = Color.white;
         price.SetUp("Price:", $"{item.price}");
         description.text = item.description;
         if (item.description != "")
@@ -100,14 +102,17 @@ public class ItemInfo : MonoBehaviour
                 case EquipmentRarity.Uncommon:
                     rarity.SetColor(Color.green);
                     itemName.color = Color.green;
+                    itemSlot.color = Color.green;
                     break;
                 case EquipmentRarity.Epic:
                     rarity.SetColor(new Color32(163, 53, 238, 255));
                     itemName.color = new Color32(163, 53, 238, 255);
+                    itemSlot.color = new Color32(163, 53, 238, 255);
                     break;
                 case EquipmentRarity.Legendary:
                     rarity.SetColor(new Color32(255, 165, 0, 255));
                     itemName.color = new Color32(255, 165, 0, 255);
+                    itemSlot.color = new Color32(255, 165, 0, 255);
                     break;
             }
             ItemStatInfo rarityBonus = Instantiate(statPrefab, statParent).GetComponent<ItemStatInfo>();
