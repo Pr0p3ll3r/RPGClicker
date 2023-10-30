@@ -31,7 +31,7 @@ MonoBehaviour:
   rarity: 0
   canBeUsedBy: 0000000001000000020000000300000004000000
   lvlRequired: 20
-  canBeUpgraded: 1
+  canBeUpgraded: 0
   canBeExtremeUpgraded: 0
   canBeDivineUpgraded: 0
   canBeChaosUpgraded: 0

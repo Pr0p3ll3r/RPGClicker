@@ -66,10 +66,12 @@ public static class LootTable
         {
             eq.rarity = RandomRarity();
             if (eq.rarity != EquipmentRarity.Common)
-            {
                 eq.rarityBonus = Database.data.rarityBonuses[Random.Range(0, Database.data.rarityBonuses.Length)];
-            }
-            eq.scrollsStat = new StatBonus[RandomNumberOfSlots()];
+
+            if(eq.equipmentTypeSlot >= EquipmentType.Amulet)
+                eq.scrollsStat = new StatBonus[0];
+            else 
+                eq.scrollsStat = new StatBonus[RandomNumberOfSlots()];
         }
         return eq;
     }
