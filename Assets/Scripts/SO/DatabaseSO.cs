@@ -16,10 +16,6 @@ public class DatabaseSO : ScriptableObject, ISerializationCallbackReceiver
 
     public void OnBeforeSerialize()
     {
-    }
-
-    public void OnAfterDeserialize()
-    {     
         for (int i = 0; i < items.Length; i++)
         {
             items[i].ID = i;
@@ -54,5 +50,9 @@ public class DatabaseSO : ScriptableObject, ISerializationCallbackReceiver
         {
             locations[i].ID = i;
         }
+    }
+
+    public void OnAfterDeserialize()
+    {      
     }
 }
