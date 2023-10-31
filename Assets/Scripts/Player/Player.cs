@@ -153,6 +153,7 @@ public class Player : MonoBehaviour
     public void Die()
     {
         //SoundManager.Instance.Play("PlayerDeath");
+        InitializeAds.Instance.ShowInterstitialAd();
         IsDead = true;
         hud.ShowRevivePanel();
         GameManager.Instance.PlayerDeath();
