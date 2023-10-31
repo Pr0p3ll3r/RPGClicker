@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c013e8d0c06b74781a4612a4e65701, type: 3}
   m_Name: GrandmasterWarlock
   m_EditorClassIdentifier: 
-  ID: 110
+  ID: 117
   itemName: Grandmaster Warlock
   icon: {fileID: -823529535, guid: b0c163342d94cfd4792780f72d5705a3, type: 3}
   itemType: 3
-  description: 
+  description: Miniature Grandmaster Warlock can be used as a Pet
   maxInStack: 1
   stackable: 0
-  price: 1
+  price: 100000
   level: 1
   exp: 0
   scrollsStat:

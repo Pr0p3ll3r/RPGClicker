@@ -16,10 +16,10 @@ MonoBehaviour:
   itemName: Orc King
   icon: {fileID: -1552869336, guid: b0c163342d94cfd4792780f72d5705a3, type: 3}
   itemType: 3
-  description: 
+  description: Miniature Orc King can be used as a Pet
   maxInStack: 1
   stackable: 0
-  price: 1
+  price: 100000
   level: 1
   exp: 0
   scrollsStat:
