@@ -24,7 +24,8 @@ public class PlayerInventory : MonoBehaviour
     public InventorySlot[] slots;
     [SerializeField] private Transform itemList;
     public InventoryData data = new InventoryData();
-    [SerializeField] private TextMeshProUGUI goldText;
+    [SerializeField] private TextMeshProUGUI mainGoldText;
+    [SerializeField] private TextMeshProUGUI inventoryGoldText;
 
     void Awake()
     {
@@ -47,7 +48,8 @@ public class PlayerInventory : MonoBehaviour
                 slots[i].FillSlot(slots[i].item);
         }
 
-        goldText.text = data.Gold.ToString();
+        mainGoldText.text = data.Gold.ToString();
+        inventoryGoldText.text = data.Gold.ToString();
     }
 
     public bool AddItem(Item item, int amount)
@@ -92,7 +94,8 @@ public class PlayerInventory : MonoBehaviour
     public void ChangeGoldAmount(int amount)
     {
         data.Gold += (uint)amount;
-        goldText.text = data.Gold.ToString();
+        mainGoldText.text = data.Gold.ToString();
+        inventoryGoldText.text = data.Gold.ToString();
     }
 
     public void RemoveItem(Item _item, int amount)
