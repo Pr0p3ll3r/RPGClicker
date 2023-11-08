@@ -9,11 +9,12 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-
         Database.data = database;
+        Application.targetFrameRate = Screen.currentResolution.refreshRate;
     }
 
     [Header("Main")]
+    [SerializeField] private GameObject exitPanel;
     [SerializeField] private Transform lootList;
     [SerializeField] private Animation popupText;
     [SerializeField] private DatabaseSO database;
@@ -81,6 +82,7 @@ public class GameManager : MonoBehaviour
         questPanel.SetActive(false);
         rebirthPanel.SetActive(false);
         gatePanel.SetActive(false);
+        exitPanel.SetActive(false);
 
         CreateLocationList();
         CloseAdventurePanels();
@@ -99,6 +101,14 @@ public class GameManager : MonoBehaviour
         {
             Data.Load();
             SetGame();
+        }
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            exitPanel.SetActive(true);
         }
     }
 
