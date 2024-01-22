@@ -19,7 +19,7 @@ MonoBehaviour:
   description: Can be worn by shielders
   maxInStack: 1
   stackable: 0
-  price: 100
+  price: 1000
   normalGrade:
     level: 0
     maxLevel: 20

@@ -5,14 +5,13 @@ using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
 {
-    [SerializeField] private Sprite soundOn, soundOff, musicOn, musicOff;
-    [SerializeField] private Image soundImage, musicImage;
+    [SerializeField] private Sprite soundOn, soundOff;
+    [SerializeField] private Image soundImage;
     [SerializeField] private AudioMixer audioMixer;
 
     void Start()
     {
         SetSounds();
-        SetMusic();
     }
 
     public void ChangeSounds()
@@ -30,24 +29,6 @@ public class Settings : MonoBehaviour
             soundImage.sprite = soundOn;
             audioMixer.SetFloat("sfxVolume", 0);
             ChangeSetting("Sounds", 1);
-        }
-    }
-
-    public void ChangeMusic()
-    {
-        bool active = GetSetting("Music");
-
-        if (active)
-        {
-            musicImage.sprite = musicOff;
-            audioMixer.SetFloat("musicVolume", -80);
-            ChangeSetting("Music", 0);
-        }
-        else
-        {
-            musicImage.sprite = musicOn;
-            audioMixer.SetFloat("musicVolume", 0);
-            ChangeSetting("Music", 1);
         }
     }
 
@@ -80,22 +61,6 @@ public class Settings : MonoBehaviour
         {
             soundImage.sprite = soundOff;
             audioMixer.SetFloat("sfxVolume", -80);
-        }
-    }
-
-    private void SetMusic()
-    {
-        bool active = GetSetting("Music");
-
-        if (active)
-        {
-            musicImage.sprite = musicOn;
-            audioMixer.SetFloat("musicVolume", 0);
-        }
-        else
-        {
-            musicImage.sprite = musicOff;
-            audioMixer.SetFloat("musicVolume", -80);
         }
     }
 }

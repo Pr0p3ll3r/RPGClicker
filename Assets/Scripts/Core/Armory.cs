@@ -289,7 +289,7 @@ public class Armory : MonoBehaviour
                 }
 
                 GameObject scrollObject = Instantiate(scrollPrefab, listOfScrolls);
-                scrollObject.GetComponent<InventorySlot>().FillSlot(slot.item);
+                scrollObject.GetComponent<InventorySlot>().FillSlot(slot.item, slot.amount);
                 scrollObject.GetComponent<Button>().onClick.AddListener(delegate { OpenEnhance(item, scroll); });
                 i++;
             }

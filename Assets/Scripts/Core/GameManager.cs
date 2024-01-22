@@ -443,4 +443,16 @@ public class GameManager : MonoBehaviour
         else
             PlayerPrefs.SetInt("LastLocation", previousLocation.ID);
     }
+
+    void OnApplicationPause(bool pauseStatus)
+    {
+        if (pauseStatus)
+        {
+            Data.Save(Player.Instance, PlayerInventory.Instance, PlayerEquipment.Instance.Slots);
+            if (!currentLocation.isDungeon && !currentLocation.enemies[0].isTowerMaster)
+                PlayerPrefs.SetInt("LastLocation", currentLocation.ID);
+            else
+                PlayerPrefs.SetInt("LastLocation", previousLocation.ID);
+        }
+    }
 }

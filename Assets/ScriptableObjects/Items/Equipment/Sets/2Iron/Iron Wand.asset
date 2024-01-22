@@ -19,7 +19,7 @@ MonoBehaviour:
   description: Can be worn by wizards
   maxInStack: 1
   stackable: 0
-  price: 1
+  price: 10
   normalGrade:
     level: 0
     maxLevel: 20

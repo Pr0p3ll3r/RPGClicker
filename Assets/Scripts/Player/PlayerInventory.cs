@@ -45,7 +45,7 @@ public class PlayerInventory : MonoBehaviour
             if (slots[i].item == null)
                 slots[i].ClearSlot();
             else
-                slots[i].FillSlot(slots[i].item);
+                slots[i].FillSlot(slots[i].item, slots[i].amount);
         }
 
         mainGoldText.text = data.Gold.ToString();
